@@ -4,6 +4,10 @@
 
 微信：outlookFil
 
+演示地址：http://iot.192886.xyz:81/
+
+微信获取
+
 ## 平台简介
 
 Universal IoT
