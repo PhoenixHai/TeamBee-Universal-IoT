@@ -18,11 +18,14 @@ import cn.imoulife.protocol.entity.RespBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/** 乐橙配置 */
+/**
+ * 乐橙配置
+ */
 @Component
 public class ImoulifeCallbackConfig {
 
-  @Autowired private ImoulifeRequest imoulifeRequest;
+  @Autowired
+  private ImoulifeRequest imoulifeRequest;
 
   private String location = "https://iot.iotuniv.cn/iot/lechengEvents";
 

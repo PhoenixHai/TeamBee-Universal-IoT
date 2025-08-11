@@ -114,13 +114,13 @@ public class MQTTTopicManagerParseTypeTest {
 
     // 测试无效主题
     String[] invalidTopics = {
-      "$qiantang/invalid/property/product123/device456",
-      "$qiantang/up/invalid/product123/device456",
-      "invalid/up/property/product123/device456",
-      "$qiantang/up/property/",
-      "$qiantang/up/property/product123",
-      "",
-      null
+        "$qiantang/invalid/property/product123/device456",
+        "$qiantang/up/invalid/product123/device456",
+        "invalid/up/property/product123/device456",
+        "$qiantang/up/property/",
+        "$qiantang/up/property/product123",
+        "",
+        null
     };
 
     for (String topic : invalidTopics) {
@@ -140,12 +140,14 @@ public class MQTTTopicManagerParseTypeTest {
       String propertyTopic = prefix + "/up/property/product123/device456";
       MQTTTopicType propertyType = manager.parseTopicType(propertyTopic);
       assertEquals(
-          MQTTTopicType.THING_PROPERTY_UP, propertyType, "前缀 " + prefix + " 的物模型属性上报应该正确解析");
+          MQTTTopicType.THING_PROPERTY_UP, propertyType,
+          "前缀 " + prefix + " 的物模型属性上报应该正确解析");
 
       // 测试透传上行
       String passthroughTopic = prefix + "/up/product123/device456";
       MQTTTopicType passthroughType = manager.parseTopicType(passthroughTopic);
-      assertEquals(MQTTTopicType.PASSTHROUGH_UP, passthroughType, "前缀 " + prefix + " 的透传上行应该正确解析");
+      assertEquals(MQTTTopicType.PASSTHROUGH_UP, passthroughType,
+          "前缀 " + prefix + " 的透传上行应该正确解析");
     }
   }
 

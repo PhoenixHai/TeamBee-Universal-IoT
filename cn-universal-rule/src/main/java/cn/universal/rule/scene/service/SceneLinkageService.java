@@ -53,16 +53,21 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class SceneLinkageService {
 
-  @Resource private SceneLinkageMapper sceneLinkageMapper;
-  @Resource private SenceIoTDeviceDownService downService;
+  @Resource
+  private SceneLinkageMapper sceneLinkageMapper;
+  @Resource
+  private SenceIoTDeviceDownService downService;
 
   private final Map<String, DeviceUp> deviceUpMap;
 
-  @Resource private ISysJobService jobService;
+  @Resource
+  private ISysJobService jobService;
 
-  @Resource private IoTDeviceRuleLogMapper ioTDeviceRuleLogMapper;
+  @Resource
+  private IoTDeviceRuleLogMapper ioTDeviceRuleLogMapper;
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
   public SceneLinkageService(List<DeviceUp> deviceUps) {
     //    Map<String, DeviceUp> beans = SpringUtil.getBeansOfType(DeviceUp.class);
@@ -197,7 +202,9 @@ public class SceneLinkageService {
     return sceneLinkageMapper.deleteSceneLinkageById(id);
   }
 
-  /** 执行动作 */
+  /**
+   * 执行动作
+   */
   public List<ExeRunContext> functionDown(Long id) {
     SceneLinkage sceneLinkage = selectSceneLinkageById(id);
     List<ExeRunContext> runContexts = downService.deviceDown(new JSONObject(), sceneLinkage);
@@ -216,7 +223,9 @@ public class SceneLinkageService {
     return runContexts;
   }
 
-  /** 执行动作 */
+  /**
+   * 执行动作
+   */
   public List<ExeRunContext> quartzFunctionDown(Long id) {
     String key = "quartzFunctionDown:exec:";
     boolean flag =
@@ -274,7 +283,8 @@ public class SceneLinkageService {
               jobService.insertJob(sysJob);
             } catch (SchedulerException e) {
               log.error(
-                  "场景联动调度任务新增失败，场景={},名称={}", sceneLinkage.getId(), sceneLinkage.getSceneName());
+                  "场景联动调度任务新增失败，场景={},名称={}", sceneLinkage.getId(),
+                  sceneLinkage.getSceneName());
             }
           });
     }
@@ -282,7 +292,9 @@ public class SceneLinkageService {
     return rows;
   }
 
-  /** 根据场景联动id 删除调度任务 */
+  /**
+   * 根据场景联动id 删除调度任务
+   */
   public void delJob(Long id) {
     // 根据调度任务名查找对应任务
     List<SysJob> jobs = jobService.selectJobByName("sceneId:" + id);
@@ -295,7 +307,9 @@ public class SceneLinkageService {
     }
   }
 
-  /** 根据场景联动id 暂停调度任务 */
+  /**
+   * 根据场景联动id 暂停调度任务
+   */
   public void pauseJob(Long id) {
     List<SysJob> jobs = jobService.selectJobByName("sceneId:" + id);
     if (!CollectionUtils.isEmpty(jobs)) {
@@ -310,7 +324,9 @@ public class SceneLinkageService {
     }
   }
 
-  /** 根据场景联动id 恢复调度任务 */
+  /**
+   * 根据场景联动id 恢复调度任务
+   */
   public void resumeJob(Long id) {
     List<SysJob> jobs = jobService.selectJobByName("sceneId:" + id);
     if (!CollectionUtils.isEmpty(jobs)) {
@@ -325,7 +341,9 @@ public class SceneLinkageService {
     }
   }
 
-  /** 分页查询场景联动执行日志 */
+  /**
+   * 分页查询场景联动执行日志
+   */
   public List<IoTDeviceRuleLog> getSceneLinkageLogPage(String sceneId, int pageNum, int pageSize) {
     // 分页
     PageHelper.startPage(pageNum, pageSize);

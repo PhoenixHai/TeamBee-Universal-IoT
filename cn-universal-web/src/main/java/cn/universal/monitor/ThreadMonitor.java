@@ -34,7 +34,9 @@ public class ThreadMonitor {
   private final AtomicLong lastThreadCount = new AtomicLong(0);
   private final AtomicLong lastDeadlockCount = new AtomicLong(0);
 
-  /** 每30秒检查一次线程状态 */
+  /**
+   * 每30秒检查一次线程状态
+   */
   @Scheduled(fixedRate = 30000)
   public void monitorThreads() {
     try {
@@ -55,7 +57,8 @@ public class ThreadMonitor {
       long lastCount = lastThreadCount.get();
       if (lastCount > 0 && threadCount > lastCount + 50) {
         log.warn(
-            "线程数量异常增长！当前: {}, 上次: {}, 增长: {}", threadCount, lastCount, threadCount - lastCount);
+            "线程数量异常增长！当前: {}, 上次: {}, 增长: {}", threadCount, lastCount,
+            threadCount - lastCount);
       }
       lastThreadCount.set(threadCount);
 
@@ -64,7 +67,8 @@ public class ThreadMonitor {
       for (ThreadInfo threadInfo : threadInfos) {
         if (threadInfo.getThreadState() == Thread.State.BLOCKED) {
           log.warn(
-              "检测到阻塞线程: {} - 阻塞时间: {}ms", threadInfo.getThreadName(), threadInfo.getBlockedTime());
+              "检测到阻塞线程: {} - 阻塞时间: {}ms", threadInfo.getThreadName(),
+              threadInfo.getBlockedTime());
         }
       }
 
@@ -82,7 +86,9 @@ public class ThreadMonitor {
     }
   }
 
-  /** 获取线程转储 */
+  /**
+   * 获取线程转储
+   */
   public String getThreadDump() {
     try {
       ThreadInfo[] threadInfos = threadMXBean.dumpAllThreads(true, true);
@@ -120,7 +126,9 @@ public class ThreadMonitor {
     }
   }
 
-  /** 检查是否有死锁 */
+  /**
+   * 检查是否有死锁
+   */
   public boolean hasDeadlock() {
     try {
       long[] deadlockedThreadIds = threadMXBean.findDeadlockedThreads();
@@ -131,7 +139,9 @@ public class ThreadMonitor {
     }
   }
 
-  /** 获取线程统计信息 */
+  /**
+   * 获取线程统计信息
+   */
   public ThreadStats getThreadStats() {
     return ThreadStats.builder()
         .totalThreads(threadMXBean.getThreadCount())
@@ -141,7 +151,9 @@ public class ThreadMonitor {
         .build();
   }
 
-  /** 线程统计信息 */
+  /**
+   * 线程统计信息
+   */
   public static class ThreadStats {
 
     private final int totalThreads;

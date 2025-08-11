@@ -29,11 +29,11 @@ public interface ICodecService {
   /**
    * 解码 - 最完善的方法，支持所有协议类型
    *
-   * @param productKey 产品Key
-   * @param payload 原始数据
-   * @param context 上下文对象
+   * @param productKey  产品Key
+   * @param payload     原始数据
+   * @param context     上下文对象
    * @param elementType 目标类型
-   * @param <R> 泛型类型
+   * @param <R>         泛型类型
    * @return 解码后的对象列表
    */
   <R> List<R> decode(String productKey, String payload, Object context, Class<R> elementType);
@@ -41,10 +41,10 @@ public interface ICodecService {
   /**
    * 解码 - 简化版本
    *
-   * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param productKey  产品Key
+   * @param payload     原始数据
    * @param elementType 目标类型
-   * @param <R> 泛型类型
+   * @param <R>         泛型类型
    * @return 解码后的对象列表
    */
   <R> List<R> decode(String productKey, String payload, Class<R> elementType);
@@ -53,7 +53,7 @@ public interface ICodecService {
    * 解码为UPRequest列表
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return UPRequest列表
    */
   List<UPRequest> decode(String productKey, String payload);
@@ -62,7 +62,7 @@ public interface ICodecService {
    * 编码
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return 编码后的字符串
    */
   String encode(String productKey, String payload);
@@ -71,7 +71,7 @@ public interface ICodecService {
    * 预解码
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return 预解码后的UPRequest
    */
   UPRequest preDecode(String productKey, String payload);
@@ -79,8 +79,8 @@ public interface ICodecService {
   /**
    * 通用编解码方法 - 支持所有CodecMethod类型
    *
-   * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param productKey  产品Key
+   * @param payload     原始数据
    * @param codecMethod 编解码方法类型
    * @return 编解码结果
    */
@@ -90,7 +90,7 @@ public interface ICodecService {
    * IoT到第三方数据转换编解码
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return 转换后的数据
    */
   String iotToYour(String productKey, String payload);
@@ -99,7 +99,7 @@ public interface ICodecService {
    * 第三方到IoT数据转换编解码
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return 转换后的数据
    */
   String yourToIot(String productKey, String payload);
@@ -107,7 +107,7 @@ public interface ICodecService {
   /**
    * 检查是否支持指定的编解码方法
    *
-   * @param productKey 产品Key
+   * @param productKey  产品Key
    * @param codecMethod 编解码方法类型
    * @return 是否支持
    */

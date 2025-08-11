@@ -29,14 +29,17 @@ import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-/** 乐橙请求工具 */
+/**
+ * 乐橙请求工具
+ */
 @Slf4j
 @Component
 public class ImoulifeRequest {
 
   public static final String EXPIRE_CODE = "TK1002";
 
-  @Resource private ImoulifeConfig imoulifeConfig;
+  @Resource
+  private ImoulifeConfig imoulifeConfig;
 
   private volatile ImoulifeToken accessToken = new ImoulifeToken();
   private volatile ImoulifeToken kitToken = new ImoulifeToken();

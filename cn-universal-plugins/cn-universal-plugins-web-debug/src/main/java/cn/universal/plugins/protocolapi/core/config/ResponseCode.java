@@ -8,13 +8,19 @@ package cn.universal.plugins.protocolapi.core.config;
  */
 public class ResponseCode {
 
-  /** 执行成功的code值 */
+  /**
+   * 执行成功的code值
+   */
   private int success = 1;
 
-  /** 参数验证未通过的code值 */
+  /**
+   * 参数验证未通过的code值
+   */
   private int invalid = 0;
 
-  /** 执行出现异常的code值 */
+  /**
+   * 执行出现异常的code值
+   */
   private int exception = -1;
 
   public int getSuccess() {

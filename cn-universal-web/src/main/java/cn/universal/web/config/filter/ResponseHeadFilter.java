@@ -36,7 +36,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ResponseHeadFilter implements Filter {
 
-  /** cookies 白名单 */
+  /**
+   * cookies 白名单
+   */
   private Set<String> whileCookies = Stream.of("").collect(Collectors.toSet());
 
   @Override
@@ -80,5 +82,6 @@ public class ResponseHeadFilter implements Filter {
   }
 
   @Override
-  public void destroy() {}
+  public void destroy() {
+  }
 }

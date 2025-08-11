@@ -25,7 +25,9 @@ import java.util.regex.Pattern;
 
 public final class XssHtmlFilter {
 
-  /** regex flag union representing /si modifiers in php */
+  /**
+   * regex flag union representing /si modifiers in php
+   */
   private static final int REGEX_FLAGS_SI = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
 
   private static final Pattern P_COMMENTS = Pattern.compile("<!--(.*?)-->", Pattern.DOTALL);
@@ -61,34 +63,54 @@ public final class XssHtmlFilter {
   private static final ConcurrentMap<String, Pattern> P_REMOVE_SELF_BLANKS =
       new ConcurrentHashMap<String, Pattern>();
 
-  /** set of allowed html elements, along with allowed attributes for each element */
+  /**
+   * set of allowed html elements, along with allowed attributes for each element
+   */
   private final Map<String, List<String>> vAllowed;
 
-  /** counts of open tags for each (allowable) html element */
+  /**
+   * counts of open tags for each (allowable) html element
+   */
   private final Map<String, Integer> vTagCounts = new HashMap<String, Integer>();
 
-  /** html elements which must always be self-closing (e.g. "<img />") */
+  /**
+   * html elements which must always be self-closing (e.g. "<img />")
+   */
   private final String[] vSelfClosingTags;
 
-  /** html elements which must always have separate opening and closing tags (e.g. "<b></b>") */
+  /**
+   * html elements which must always have separate opening and closing tags (e.g. "<b></b>")
+   */
   private final String[] vNeedClosingTags;
 
-  /** set of disallowed html elements */
+  /**
+   * set of disallowed html elements
+   */
   private final String[] vDisallowed;
 
-  /** attributes which should be checked for valid protocols */
+  /**
+   * attributes which should be checked for valid protocols
+   */
   private final String[] vProtocolAtts;
 
-  /** allowed protocols */
+  /**
+   * allowed protocols
+   */
   private final String[] vAllowedProtocols;
 
-  /** tags which should be removed if they contain no content (e.g. "<b></b>" or "<b />") */
+  /**
+   * tags which should be removed if they contain no content (e.g. "<b></b>" or "<b />")
+   */
   private final String[] vRemoveBlanks;
 
-  /** entities allowed within html markup */
+  /**
+   * entities allowed within html markup
+   */
   private final String[] vAllowedEntities;
 
-  /** flag determining whether comments are allowed in input String. */
+  /**
+   * flag determining whether comments are allowed in input String.
+   */
   private final boolean stripComment;
 
   private final boolean encodeQuotes;
@@ -101,7 +123,9 @@ public final class XssHtmlFilter {
    */
   private final boolean alwaysMakeTags;
 
-  /** Default constructor. */
+  /**
+   * Default constructor.
+   */
   public XssHtmlFilter() {
     vAllowed = new HashMap<>();
 
@@ -123,13 +147,13 @@ public final class XssHtmlFilter {
     vAllowed.put("i", noAtts);
     vAllowed.put("em", noAtts);
 
-    vSelfClosingTags = new String[] {"img"};
-    vNeedClosingTags = new String[] {"a", "b", "strong", "i", "em"};
-    vDisallowed = new String[] {};
-    vAllowedProtocols = new String[] {"http", "mailto", "https"};
-    vProtocolAtts = new String[] {"src", "href"};
-    vRemoveBlanks = new String[] {"a", "b", "strong", "i", "em"};
-    vAllowedEntities = new String[] {"amp", "gt", "lt", "quot"};
+    vSelfClosingTags = new String[]{"img"};
+    vNeedClosingTags = new String[]{"a", "b", "strong", "i", "em"};
+    vDisallowed = new String[]{};
+    vAllowedProtocols = new String[]{"http", "mailto", "https"};
+    vProtocolAtts = new String[]{"src", "href"};
+    vRemoveBlanks = new String[]{"a", "b", "strong", "i", "em"};
+    vAllowedEntities = new String[]{"amp", "gt", "lt", "quot"};
     stripComment = true;
     encodeQuotes = true;
     alwaysMakeTags = false;

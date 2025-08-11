@@ -33,7 +33,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-/** 阿里云存储 @Author Lion Li */
+/**
+ * 阿里云存储 @Author Lion Li
+ */
 @Lazy
 @Service
 public class AliyunCloudStorageServiceImpl extends AbstractCloudStorageService

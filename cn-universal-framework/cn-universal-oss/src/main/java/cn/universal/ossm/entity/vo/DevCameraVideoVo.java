@@ -32,33 +32,50 @@ public class DevCameraVideoVo implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  /** 主键ID */
-  @Id private Long id;
+  /**
+   * 主键ID
+   */
+  @Id
+  private Long id;
 
-  /** 设备序列号 */
+  /**
+   * 设备序列号
+   */
   @Column(name = "device_id")
   private String deviceId;
 
-  /** 录像地址 */
+  /**
+   * 录像地址
+   */
   @Column(name = "url")
   private String url;
 
-  /** 录像标识 */
+  /**
+   * 录像标识
+   */
   @Column(name = "video_index")
   private int videoIndex;
 
-  /** 录像状态 */
+  /**
+   * 录像状态
+   */
   @Column(name = "status")
   private String status;
 
-  /** 创建人 */
+  /**
+   * 创建人
+   */
   @Column(name = "create_by")
   private String createBy;
 
-  /** 总数 */
+  /**
+   * 总数
+   */
   private String total;
 
-  /** 创建时间 */
+  /**
+   * 创建时间
+   */
   @Column(name = "create_time")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private Date createTime;

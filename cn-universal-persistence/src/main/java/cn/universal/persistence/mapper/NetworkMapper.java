@@ -33,7 +33,7 @@ public interface NetworkMapper extends BaseMapper<Network> {
   /**
    * 根据端口查询TCP网络组件（排除指定ID）
    *
-   * @param port 端口
+   * @param port      端口
    * @param excludeId 排除的网络组件ID
    * @return 网络组件列表
    */
@@ -43,8 +43,8 @@ public interface NetworkMapper extends BaseMapper<Network> {
   /**
    * 根据主机和用户名查询MQTT网络组件（排除指定ID）
    *
-   * @param host 主机地址
-   * @param username 用户名
+   * @param host      主机地址
+   * @param username  用户名
    * @param excludeId 排除的网络组件ID
    * @return 网络组件列表
    */
@@ -84,7 +84,7 @@ public interface NetworkMapper extends BaseMapper<Network> {
   /**
    * 根据类型和唯一标识查询网络组件
    *
-   * @param type 类型
+   * @param type    类型
    * @param unionId 唯一标识
    * @return 网络组件
    */
@@ -126,7 +126,7 @@ public interface NetworkMapper extends BaseMapper<Network> {
   /**
    * 更新网络组件状态
    *
-   * @param id 网络组件ID
+   * @param id    网络组件ID
    * @param state 状态
    * @return 影响行数
    */
@@ -135,7 +135,7 @@ public interface NetworkMapper extends BaseMapper<Network> {
   /**
    * 根据端口查询TCP网络组件数量（排除指定ID）
    *
-   * @param port 端口
+   * @param port      端口
    * @param excludeId 排除的网络组件ID
    * @return 数量
    */

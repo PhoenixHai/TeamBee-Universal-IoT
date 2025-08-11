@@ -39,9 +39,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class IoTInnerAuthContext {
 
-  @Resource private UserApplicationService userApplicationService;
+  @Resource
+  private UserApplicationService userApplicationService;
 
-  @Resource private IoTUserMapper iotUserMapper;
+  @Resource
+  private IoTUserMapper iotUserMapper;
 
   public JSONObject checkAndDecryptMsg(String encrypt, HttpServletRequest request) {
 
@@ -64,7 +66,8 @@ public class IoTInnerAuthContext {
     if (Duration.between(now, temporalAccessor).abs().getSeconds()
         > IotConstant.HTTP_AUTH_TIMEOUT) {
       log.info(
-          "app=[{}] IP=[{}] 验证已过期", iotUserApplication.getUnionId(), IPUtils.getIpAddr(request));
+          "app=[{}] IP=[{}] 验证已过期", iotUserApplication.getUnionId(),
+          IPUtils.getIpAddr(request));
       throw new BizException("auth expire", 10000);
     }
 
@@ -85,7 +88,8 @@ public class IoTInnerAuthContext {
               .decrypt(
                   encrypt.trim(), iotUserApplication.getAppId(), iotUserApplication.getAppSecret());
       if (encrypt == null) {
-        log.info("app【{}】from {} 解密错误", iotUserApplication.getAppId(), IPUtils.getIpAddr(request));
+        log.info("app【{}】from {} 解密错误", iotUserApplication.getAppId(),
+            IPUtils.getIpAddr(request));
         throw new BizException("decrypt msg failed", 10000);
       }
     }

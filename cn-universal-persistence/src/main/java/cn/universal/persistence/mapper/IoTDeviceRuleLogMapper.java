@@ -15,4 +15,6 @@ package cn.universal.persistence.mapper;
 import cn.universal.persistence.common.BaseMapper;
 import cn.universal.persistence.entity.IoTDeviceRuleLog;
 
-public interface IoTDeviceRuleLogMapper extends BaseMapper<IoTDeviceRuleLog> {}
+public interface IoTDeviceRuleLogMapper extends BaseMapper<IoTDeviceRuleLog> {
+
+}

@@ -42,7 +42,7 @@ public class MqttProtocolAutoConfiguration {
   public MqttProtocolAutoConfiguration() {
     log.info("[CORE_MQTT] MQTT-v2核心模块自动配置已启用");
   }
-  
+
   @PostConstruct
   public void registerProtocol() {
     if (moduleInfo != null) {
@@ -50,7 +50,7 @@ public class MqttProtocolAutoConfiguration {
       log.info("[MQTT自动配置] 核心协议模块已注册到运行时注册表");
     }
   }
-  
+
   @PreDestroy
   public void unregisterProtocol() {
     if (moduleInfo != null) {

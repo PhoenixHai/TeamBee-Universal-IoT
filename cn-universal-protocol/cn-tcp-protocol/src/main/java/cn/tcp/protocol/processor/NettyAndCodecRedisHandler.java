@@ -14,16 +14,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/** Netty和编解码Redis事件处理器 替代NettyAndCodecConsumer */
+/**
+ * Netty和编解码Redis事件处理器 替代NettyAndCodecConsumer
+ */
 @Slf4j
 @Component
 public class NettyAndCodecRedisHandler implements ProductConfigProcessor {
 
-  @Autowired private InstanceIdProvider instanceIdProvider;
+  @Autowired
+  private InstanceIdProvider instanceIdProvider;
 
-  @Autowired private TcpServerManager tcpServerManager;
+  @Autowired
+  private TcpServerManager tcpServerManager;
 
-  /** 处理产品刷新和编解码重载事件 */
+  /**
+   * 处理产品刷新和编解码重载事件
+   */
   @Override
   public void handleProductConfigUpdated(EventMessage message) {
     try {
@@ -53,7 +59,9 @@ public class NettyAndCodecRedisHandler implements ProductConfigProcessor {
     }
   }
 
-  /** 处理产品刷新逻辑 */
+  /**
+   * 处理产品刷新逻辑
+   */
   private void processProductFlush(EventMessage data) {
     log.info("处理产品刷新消息: {}", data);
     JSONObject jsonObject = JSONUtil.parseObj(JSONUtil.toJsonStr(data.getData()));
@@ -68,7 +76,9 @@ public class NettyAndCodecRedisHandler implements ProductConfigProcessor {
     }
   }
 
-  /** 处理TCP服务器重载 */
+  /**
+   * 处理TCP服务器重载
+   */
   private void handleTcpServerReload(JSONObject jsonObject) {
     if (jsonObject == null
         || !jsonObject.containsKey("productKey")
@@ -93,7 +103,9 @@ public class NettyAndCodecRedisHandler implements ProductConfigProcessor {
     }
   }
 
-  /** 处理编解码重载 */
+  /**
+   * 处理编解码重载
+   */
   private boolean handleCodecReload(JSONObject jsonObject) {
     if (ProductFlushType.script.name().equals(jsonObject.getStr("type"))) {
       String provider = jsonObject.getStr("provider");
@@ -111,7 +123,9 @@ public class NettyAndCodecRedisHandler implements ProductConfigProcessor {
     return false;
   }
 
-  /** 判断是否是自己发送的消息 */
+  /**
+   * 判断是否是自己发送的消息
+   */
   private boolean isOwnMessage(EventMessage message) {
     try {
       String nodeId = message.getNodeId();

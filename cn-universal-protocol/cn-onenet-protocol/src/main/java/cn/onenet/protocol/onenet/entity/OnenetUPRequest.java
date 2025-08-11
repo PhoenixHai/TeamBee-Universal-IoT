@@ -14,4 +14,6 @@ package cn.onenet.protocol.onenet.entity;
 
 import cn.universal.persistence.base.BaseUPRequest;
 
-public class OnenetUPRequest extends BaseUPRequest {}
+public class OnenetUPRequest extends BaseUPRequest {
+
+}

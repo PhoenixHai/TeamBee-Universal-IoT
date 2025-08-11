@@ -64,7 +64,9 @@ public class IoTDevicePropertiesBO {
 
   private GeoPoint geoValue;
 
-  /** 最后更新时间 */
+  /**
+   * 最后更新时间
+   */
   private long timestamp;
 
   private Object objectValue;

@@ -62,11 +62,14 @@ public interface JsonCodeConstants {
 
   JsonCode CRON_ID_REQUIRED = new JsonCode(1024, "cron表达式不能为空");
 
-  JsonCode NAME_INVALID = new JsonCode(1025, "名称不能包含特殊字符，只允许中文、数字、字母以及+_-.()的组合且不能.开头");
+  JsonCode NAME_INVALID = new JsonCode(1025,
+      "名称不能包含特殊字符，只允许中文、数字、字母以及+_-.()的组合且不能.开头");
 
-  JsonCode DATASOURCE_KEY_INVALID = new JsonCode(1026, "数据源Key不能包含特殊字符，只允许中文、数字、字母以及_组合");
+  JsonCode DATASOURCE_KEY_INVALID = new JsonCode(1026,
+      "数据源Key不能包含特殊字符，只允许中文、数字、字母以及_组合");
 
-  JsonCode FILE_SAVE_FAILURE = new JsonCode(1027, "保存失败,同一组下分组名称不能重复且不能包含特殊字符。");
+  JsonCode FILE_SAVE_FAILURE = new JsonCode(1027,
+      "保存失败,同一组下分组名称不能重复且不能包含特殊字符。");
 
   JsonCode PARAMETER_INVALID = new JsonCode(1028, "参数验证失败");
 

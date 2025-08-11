@@ -14,7 +14,9 @@ package cn.onenet.protocol.nb.entity;
 
 import cn.onenet.protocol.nb.config.Config;
 
-/** Created by zhuocongbin date 2018/3/15 */
+/**
+ * Created by zhuocongbin date 2018/3/15
+ */
 public class Observe extends CommonEntity {
 
   private Boolean cancel;
@@ -25,8 +27,8 @@ public class Observe extends CommonEntity {
   private Double st;
 
   /**
-   * @param imei 设备IMEI，必填
-   * @param objId 订阅对象ID，必填
+   * @param imei   设备IMEI，必填
+   * @param objId  订阅对象ID，必填
    * @param cancel 订阅或者取消订阅，必填 其他可选参数，可以通过相关set函数设置
    */
   public Observe(String imei, Integer objId, Boolean cancel) {

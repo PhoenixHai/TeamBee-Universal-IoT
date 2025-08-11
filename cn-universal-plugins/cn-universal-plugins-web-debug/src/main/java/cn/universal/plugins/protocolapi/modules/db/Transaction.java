@@ -23,13 +23,17 @@ public class Transaction {
     this.transactionStatus = dataSourceTransactionManager.getTransaction(TRANSACTION_DEFINITION);
   }
 
-  /** 回滚事务 */
+  /**
+   * 回滚事务
+   */
   @Comment("回滚事务")
   public void rollback() {
     this.dataSourceTransactionManager.rollback(this.transactionStatus);
   }
 
-  /** 提交事务 */
+  /**
+   * 提交事务
+   */
   @Comment("提交事务")
   public void commit() {
     this.dataSourceTransactionManager.commit(this.transactionStatus);

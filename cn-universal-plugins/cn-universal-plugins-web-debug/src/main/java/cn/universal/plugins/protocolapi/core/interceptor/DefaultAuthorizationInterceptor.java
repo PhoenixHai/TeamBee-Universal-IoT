@@ -40,7 +40,7 @@ public class DefaultAuthorizationInterceptor implements AuthorizationInterceptor
   public MagicUser login(String username, String password) throws MagicLoginException {
     if (requireLogin
         && Objects.equals(
-            MD5Utils.encrypt(String.format("%s||%s", username, password)), this.validToken)) {
+        MD5Utils.encrypt(String.format("%s||%s", username, password)), this.validToken)) {
       return configMagicUser;
     }
     throw new MagicLoginException("用户名或密码不正确");

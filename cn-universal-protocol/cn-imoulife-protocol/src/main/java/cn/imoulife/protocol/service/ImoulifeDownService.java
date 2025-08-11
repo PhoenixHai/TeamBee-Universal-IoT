@@ -34,17 +34,21 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class ImoulifeDownService extends AbstractDownService<ImoulifeDownRequest> {
 
-  @Resource private ImouLifeModuleInfo imouLifeModuleInfo;
-  @Resource private ImoulifeDownHandle imoulifeDownHandle;
+  @Resource
+  private ImouLifeModuleInfo imouLifeModuleInfo;
+  @Resource
+  private ImoulifeDownHandle imoulifeDownHandle;
 
   @Override
   public String code() {
     return imouLifeModuleInfo.getCode();
   }
+
   @Override
   public String name() {
     return imouLifeModuleInfo.getName();
   }
+
   @Override
   public R down(String msg) {
     log.info("imoulife down msg={}", msg);

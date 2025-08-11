@@ -12,7 +12,9 @@
 
 package cn.universal.ossm.oss.exception;
 
-/** OSS异常类 @Author Lion Li */
+/**
+ * OSS异常类 @Author Lion Li
+ */
 public class OssException extends RuntimeException {
 
   private static final long serialVersionUID = 1L;

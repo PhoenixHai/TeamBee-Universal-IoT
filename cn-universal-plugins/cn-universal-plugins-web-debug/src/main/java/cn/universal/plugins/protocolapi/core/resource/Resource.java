@@ -101,11 +101,11 @@ public interface Resource {
   /**
    * 处理导出
    *
-   * @param zos zip 输出流
-   * @param path 路径
+   * @param zos       zip 输出流
+   * @param path      路径
    * @param directory 目录资源对象
    * @param resources 资源集合
-   * @param excludes 排除的目录
+   * @param excludes  排除的目录
    * @throws IOException 处理过程中抛出的异常
    */
   default void processExport(
@@ -142,7 +142,7 @@ public interface Resource {
   /**
    * 处理导出
    *
-   * @param os 输出流
+   * @param os       输出流
    * @param excludes 排除的目录
    * @throws IOException 处理过程中抛出的异常
    */
@@ -160,8 +160,11 @@ public interface Resource {
    */
   byte[] read();
 
-  /** 读取当前资源下的所有内容,主要是缓存作用。 */
-  default void readAll() {}
+  /**
+   * 读取当前资源下的所有内容,主要是缓存作用。
+   */
+  default void readAll() {
+  }
 
   /**
    * 获取子目录

@@ -12,7 +12,9 @@
 
 package cn.universal.core.exception;
 
-/** 文件信息异常类 @Author ruoyi */
+/**
+ * 文件信息异常类 @Author ruoyi
+ */
 public class FileException extends BaseException {
 
   private static final long serialVersionUID = 1L;

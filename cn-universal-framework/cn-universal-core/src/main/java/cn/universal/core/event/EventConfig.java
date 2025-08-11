@@ -15,7 +15,9 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 @Configuration
 public class EventConfig {
 
-  /** 配置Redis消息监听器容器 */
+  /**
+   * 配置Redis消息监听器容器
+   */
   @Bean
   public RedisMessageListenerContainer redisMessageListenerContainer(
       RedisConnectionFactory connectionFactory) {

@@ -19,20 +19,28 @@ import org.springframework.http.converter.HttpMessageConverter;
 
 public class MagicConfiguration {
 
-  /** 拦截器 */
+  /**
+   * 拦截器
+   */
   private final List<RequestInterceptor> requestInterceptors = new ArrayList<>();
 
-  /** 编辑器配置文件 */
+  /**
+   * 编辑器配置文件
+   */
   private String editorConfig;
 
   private MagicAPIService magicAPIService;
 
   private MagicDynamicDataSource magicDynamicDataSource;
 
-  /** 请求出错时，是否抛出异常 */
+  /**
+   * 请求出错时，是否抛出异常
+   */
   private boolean throwException = false;
 
-  /** 结果处理器 */
+  /**
+   * 结果处理器
+   */
   private ResultProvider resultProvider;
 
   private MagicNotifyService magicNotifyService;
@@ -51,7 +59,9 @@ public class MagicConfiguration {
 
   private List<MagicDynamicRegistry<? extends MagicEntity>> magicDynamicRegistries;
 
-  /** debug 超时时间 */
+  /**
+   * debug 超时时间
+   */
   private int debugTimeout;
 
   private boolean enableWeb = false;
@@ -185,7 +195,9 @@ public class MagicConfiguration {
     this.magicDynamicRegistries = magicDynamicRegistries;
   }
 
-  /** 打印banner */
+  /**
+   * 打印banner
+   */
   public void printBanner(List<String> plugins) {
     System.out.println("  __  __                _           _     ____  ___ ");
     System.out.println(" |  \\/  |  __ _   __ _ (_)  ___    / \\   |  _ \\|_ _|");

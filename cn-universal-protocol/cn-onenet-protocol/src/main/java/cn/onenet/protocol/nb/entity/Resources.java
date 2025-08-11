@@ -14,7 +14,9 @@ package cn.onenet.protocol.nb.entity;
 
 import cn.onenet.protocol.nb.config.Config;
 
-/** Created by zhuocongbin date 2018/3/16 */
+/**
+ * Created by zhuocongbin date 2018/3/16
+ */
 public class Resources extends CommonEntity {
 
   /**

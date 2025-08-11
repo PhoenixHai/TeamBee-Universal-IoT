@@ -34,9 +34,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class TcpUPProcessorChain {
 
-  @Autowired private ProcessorExecutor processorExecutor;
+  @Autowired
+  private ProcessorExecutor processorExecutor;
 
-  @Autowired private List<TcpUPMessageProcessor> processors;
+  @Autowired
+  private List<TcpUPMessageProcessor> processors;
 
   /**
    * 处理TCP消息
@@ -51,7 +53,8 @@ public class TcpUPProcessorChain {
     }
     MDC.put(IotConstant.TRACE_ID, request.getRequestId());
     log.debug(
-        "[TCP_V2_UP] 开始处理TCP消息，设备: {}, 请求ID: {}", request.getDeviceId(), request.getRequestId());
+        "[TCP_V2_UP] 开始处理TCP消息，设备: {}, 请求ID: {}", request.getDeviceId(),
+        request.getRequestId());
 
     // 使用ProcessorExecutor执行处理器链
     boolean success =
@@ -81,7 +84,7 @@ public class TcpUPProcessorChain {
             },
             result -> result != null && ProcessorResult.CONTINUE.equals(result), // 成功检查：结果不为null且成功
             processor -> processor.supports(request) // 支持性检查
-            );
+        );
 
     log.debug("[TCP_V2_UP] TCP消息处理完成，设备: {}, 成功: {}", request.getDeviceId(), success);
     MDC.clear();
@@ -117,39 +120,53 @@ public class TcpUPProcessorChain {
     return successCount;
   }
 
-  /** 获取处理器数量 */
+  /**
+   * 获取处理器数量
+   */
   public int getProcessorCount() {
     return processors.size();
   }
 
-  /** 获取处理器名称列表（用于调试） */
+  /**
+   * 获取处理器名称列表（用于调试）
+   */
   public List<String> getProcessorNames() {
     return processorExecutor.getProcessorNames(processors);
   }
 
-  /** 检查是否有指定名称的处理器 */
+  /**
+   * 检查是否有指定名称的处理器
+   */
   public boolean hasProcessor(String name) {
     return processors.stream().anyMatch(p -> p.getName().equals(name));
   }
 
-  /** 获取启用的处理器数量 */
+  /**
+   * 获取启用的处理器数量
+   */
   public long getEnabledProcessorCount() {
     return processorExecutor.getEnabledProcessorCount(processors);
   }
 
-  /** 检查指定处理器是否启用 */
+  /**
+   * 检查指定处理器是否启用
+   */
   public boolean isProcessorEnabled(String name) {
     return processorExecutor.isProcessorEnabled(processors, name);
   }
 
-  /** 获取处理器链健康状态 */
+  /**
+   * 获取处理器链健康状态
+   */
   public boolean isHealthy() {
     return processors.stream()
         .filter(TcpUPMessageProcessor::isEnabled)
         .allMatch(TcpUPMessageProcessor::isHealthy);
   }
 
-  /** 获取处理器链统计信息 */
+  /**
+   * 获取处理器链统计信息
+   */
   public String getStatistics() {
     StringBuilder stats = new StringBuilder();
     stats.append("TCP处理器链统计信息:\n");

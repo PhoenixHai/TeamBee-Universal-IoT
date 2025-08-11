@@ -7,16 +7,24 @@ package cn.universal.plugins.protocolapi.core.model;
  */
 public class JsonBean<T> {
 
-  /** 状态码 */
+  /**
+   * 状态码
+   */
   private int code = 1;
 
-  /** 状态说明 */
+  /**
+   * 状态说明
+   */
   private String message = "success";
 
-  /** 实际数据 */
+  /**
+   * 实际数据
+   */
   private T data;
 
-  /** 服务器时间 */
+  /**
+   * 服务器时间
+   */
   private long timestamp = System.currentTimeMillis();
 
   private Integer executeTime;
@@ -37,7 +45,8 @@ public class JsonBean<T> {
     this.data = data;
   }
 
-  public JsonBean() {}
+  public JsonBean() {
+  }
 
   public JsonBean(JsonCode jsonCode) {
     this(jsonCode, null);

@@ -30,13 +30,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/monitor/mqtt/v2/management")
 public class MqttManagementController {
 
-  @Autowired private IoTProductDeviceService ioTProductDeviceService;
+  @Autowired
+  private IoTProductDeviceService ioTProductDeviceService;
 
-  @Autowired private ThirdMQTTServerManager mqttServerManager;
+  @Autowired
+  private ThirdMQTTServerManager mqttServerManager;
 
   // ==================== 客户端状态查询 ====================
 
-  /** 获取所有MQTT客户端状态 */
+  /**
+   * 获取所有MQTT客户端状态
+   */
   @GetMapping("/clients/status")
   public ResponseEntity<Map<String, Object>> getAllClientsStatus() {
     try {
@@ -61,7 +65,9 @@ public class MqttManagementController {
     }
   }
 
-  /** 获取指定产品的客户端状态 */
+  /**
+   * 获取指定产品的客户端状态
+   */
   @GetMapping("/clients/{unionId}/status")
   public ResponseEntity<Map<String, Object>> getClientStatus(@PathVariable String networkUnionId) {
     try {
@@ -96,7 +102,9 @@ public class MqttManagementController {
 
   // ==================== 客户端管理操作 ====================
 
-  /** 启动MQTT客户端 */
+  /**
+   * 启动MQTT客户端
+   */
   @PostMapping("/clients/{networkUnionId}/start")
   public ResponseEntity<Map<String, Object>> startClient(@PathVariable String networkUnionId) {
     try {
@@ -121,7 +129,9 @@ public class MqttManagementController {
     }
   }
 
-  /** 停止MQTT客户端 */
+  /**
+   * 停止MQTT客户端
+   */
   @PostMapping("/clients/{networkUnionId}/stop")
   public ResponseEntity<Map<String, Object>> stopClient(@PathVariable String networkUnionId) {
     try {
@@ -146,7 +156,9 @@ public class MqttManagementController {
     }
   }
 
-  /** 重启MQTT客户端 */
+  /**
+   * 重启MQTT客户端
+   */
   @PostMapping("/clients/{networkUnionId}/restart")
   public ResponseEntity<Map<String, Object>> restartClient(@PathVariable String networkUnionId) {
     try {
@@ -173,7 +185,9 @@ public class MqttManagementController {
 
   // ==================== 配置管理 ====================
 
-  /** 重新加载所有配置 */
+  /**
+   * 重新加载所有配置
+   */
   @PostMapping("/config/reload")
   public ResponseEntity<Map<String, Object>> reloadAllConfigs() {
     try {
@@ -198,7 +212,9 @@ public class MqttManagementController {
 
   // ==================== 消息发布 ====================
 
-  /** 发布消息到指定主题 */
+  /**
+   * 发布消息到指定主题
+   */
   @PostMapping("/clients/{productKey}/publish")
   public R<?> publishMessage(
       @PathVariable String productKey,
@@ -251,7 +267,9 @@ public class MqttManagementController {
 
   // ==================== 系统管理 ====================
 
-  /** 获取服务器管理信息 */
+  /**
+   * 获取服务器管理信息
+   */
   @GetMapping("/server/info")
   public ResponseEntity<Map<String, Object>> getServerInfo() {
     try {
@@ -281,7 +299,9 @@ public class MqttManagementController {
     }
   }
 
-  /** 批量操作 - 启动所有客户端 */
+  /**
+   * 批量操作 - 启动所有客户端
+   */
   @PostMapping("/clients/start-all")
   public ResponseEntity<Map<String, Object>> startAllClients() {
     try {

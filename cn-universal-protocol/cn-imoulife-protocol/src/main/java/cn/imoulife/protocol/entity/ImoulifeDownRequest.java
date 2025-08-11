@@ -41,45 +41,71 @@ public class ImoulifeDownRequest extends BaseDownRequest {
   @Data
   public class ImoulifeRequestData {
 
-    /** imei运营商NB号码，长度15 */
+    /**
+     * imei运营商NB号码，长度15
+     */
     private String imei;
 
-    /** 验证码 */
+    /**
+     * 验证码
+     */
     private String appKey;
 
-    /** 长度不超过15 */
+    /**
+     * 长度不超过15
+     */
     private String imsi;
 
-    /** 水电表 表号 */
+    /**
+     * 水电表 表号
+     */
     private String meterNo;
 
-    /** 设备型号 */
+    /**
+     * 设备型号
+     */
     private String deviceModel;
 
-    /** 设备名称 */
+    /**
+     * 设备名称
+     */
     private String deviceName;
 
-    /** 公司名称 */
+    /**
+     * 公司名称
+     */
     private String companyNo;
 
     private Map<String, Object> configuration;
 
-    /** 派生元数据，有的设备属性，功能，事件 可能会增加 */
+    /**
+     * 派生元数据，有的设备属性，功能，事件 可能会增加
+     */
     private Map<String, Object> deriveMetadata;
 
-    /** 经度 */
+    /**
+     * 经度
+     */
     private String longitude;
 
-    /** 维度 */
+    /**
+     * 维度
+     */
     private String latitude;
 
-    /** 安装位置 */
+    /**
+     * 安装位置
+     */
     private String location;
 
-    /** 设备指令缓存时长 */
+    /**
+     * 设备指令缓存时长
+     */
     private int ttl;
 
-    /** 报文类型（16进制还是字符串） */
+    /**
+     * 报文类型（16进制还是字符串）
+     */
     private int dataType;
   }
 

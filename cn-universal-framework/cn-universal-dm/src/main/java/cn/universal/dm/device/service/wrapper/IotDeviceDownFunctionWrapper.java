@@ -40,11 +40,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class IotDeviceDownFunctionWrapper implements IotDownWrapper {
 
-  @Resource private IoTCacheRemoveService iotCacheRemoveService;
+  @Resource
+  private IoTCacheRemoveService iotCacheRemoveService;
 
-  @Resource private IoTDeviceShadowMapper ioTDeviceShadowMapper;
+  @Resource
+  private IoTDeviceShadowMapper ioTDeviceShadowMapper;
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
   // 保存功能期望值
   @Override

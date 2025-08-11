@@ -8,7 +8,9 @@ import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-/** 阿里云IoT平台消息格式适配器 */
+/**
+ * 阿里云IoT平台消息格式适配器
+ */
 @Component
 @Slf4j
 public class AliyunIoTMessageAdapter extends AbstractIoTMessageAdapter {
@@ -58,7 +60,9 @@ public class AliyunIoTMessageAdapter extends AbstractIoTMessageAdapter {
     }
   }
 
-  /** 将属性数据转换为阿里云格式 阿里云格式：{"items":{"propertyId":{"value":"xxx","time":timestamp}}} */
+  /**
+   * 将属性数据转换为阿里云格式 阿里云格式：{"items":{"propertyId":{"value":"xxx","time":timestamp}}}
+   */
   private Map<String, Object> convertProperties(Map<String, Object> properties) {
     Map<String, Object> items = new HashMap<>();
 

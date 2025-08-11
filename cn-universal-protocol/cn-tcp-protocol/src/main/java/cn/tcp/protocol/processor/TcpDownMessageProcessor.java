@@ -42,12 +42,16 @@ public interface TcpDownMessageProcessor extends BaseMessageProcessor {
    */
   boolean supports(TcpDownRequest request);
 
-  /** 处理前的预检查（可选） */
+  /**
+   * 处理前的预检查（可选）
+   */
   default boolean preCheck(TcpDownRequest request) {
     return true;
   }
 
-  /** 处理后的后置操作（可选） */
+  /**
+   * 处理后的后置操作（可选）
+   */
   default void postProcess(TcpDownRequest request, R<?> result) {
     // 默认不做任何操作
   }

@@ -17,7 +17,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class MagicDebugHandler {
 
-  /** 设置断点 当本机没有该Session时，通知其他机器处理 */
+  /**
+   * 设置断点 当本机没有该Session时，通知其他机器处理
+   */
   @Message(MessageType.SET_BREAKPOINT)
   public boolean setBreakPoint(MagicConsoleSession session, String scriptId, String breakpoints) {
     MagicScriptDebugContext context =
@@ -30,7 +32,9 @@ public class MagicDebugHandler {
     return false;
   }
 
-  /** 恢复断点 当本机没有该Session时，通知其他机器处理 */
+  /**
+   * 恢复断点 当本机没有该Session时，通知其他机器处理
+   */
   @Message(MessageType.RESUME_BREAKPOINT)
   public boolean resumeBreakpoint(
       MagicConsoleSession session, String scriptId, String stepInto, String breakpoints) {

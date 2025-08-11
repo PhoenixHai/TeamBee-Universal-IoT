@@ -128,7 +128,8 @@
         #{networkUnionId}
       </if>
       <if test="deviceNode != null  and deviceNode != ''">and device_node = #{deviceNode}</if>
-      <if test="gwProductKey != null  and gwProductKey != ''">and gw_product_key = #{gwProductKey}</if>
+      <if test="gwProductKey != null  and gwProductKey != ''">and gw_product_key = #{gwProductKey}
+      </if>
       <if test="classifiedName != null  and classifiedName != ''">and classified_name like
         concat('%', #{classifiedName}, '%')
       </if>
@@ -192,7 +193,9 @@
         #{networkUnionId}
       </if>
       <if test="deviceNode != null  and deviceNode != ''">and a.device_node = #{deviceNode}</if>
-      <if test="gwProductKey != null  and gwProductKey != ''">and a.gw_product_key = #{gwProductKey}</if>
+      <if test="gwProductKey != null  and gwProductKey != ''">and a.gw_product_key =
+        #{gwProductKey}
+      </if>
       <if test="classifiedId != null  and classifiedId != ''">and classified_id = #{classifiedId}
       </if>
       <if test="classifiedName != null  and classifiedName != ''">and a.classified_name like
@@ -256,7 +259,9 @@
         #{networkUnionId}
       </if>
       <if test="deviceNode != null  and deviceNode != ''">and a.device_node = #{deviceNode}</if>
-      <if test="gwProductKey != null  and gwProductKey != ''">and a.gw_product_key = #{gwProductKey}</if>
+      <if test="gwProductKey != null  and gwProductKey != ''">and a.gw_product_key =
+        #{gwProductKey}
+      </if>
       <if test="classifiedId != null  and classifiedId != ''">and a.classified_id = #{classifiedId}
       </if>
       <if test="classifiedName != null  and classifiedName != ''">and a.classified_name like

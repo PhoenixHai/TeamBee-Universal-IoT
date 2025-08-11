@@ -2,13 +2,19 @@ package cn.universal.plugins.protocolapi.core.event;
 
 public class MagicEvent {
 
-  /** 消息类型 */
+  /**
+   * 消息类型
+   */
   private final String type;
 
-  /** 消息动作 */
+  /**
+   * 消息动作
+   */
   private final EventAction action;
 
-  /** 消息来源 */
+  /**
+   * 消息来源
+   */
   private String source;
 
   public MagicEvent(String type, EventAction action, String source) {

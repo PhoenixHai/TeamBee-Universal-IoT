@@ -16,16 +16,24 @@ import com.github.cm.heclouds.onenet.studio.api.entity.common.Device;
 
 public class Devices extends Device {
 
-  /** 设备名称 */
+  /**
+   * 设备名称
+   */
   private String name;
 
-  /** 设备描述 */
+  /**
+   * 设备描述
+   */
   private String desc;
 
-  /** 设备imei */
+  /**
+   * 设备imei
+   */
   private String imei;
 
-  /** 设备imsi */
+  /**
+   * 设备imsi
+   */
   private String imsi;
 
   public String getName() {

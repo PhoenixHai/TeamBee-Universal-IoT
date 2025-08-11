@@ -14,18 +14,24 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.stereotype.Component;
 
-/** Redis事件订阅者 处理集群间的消息通信 */
+/**
+ * Redis事件订阅者 处理集群间的消息通信
+ */
 @Slf4j
 @Component
 public class RedisEventSubscriber {
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
-  @Resource private InstanceIdProvider instanceIdProvider;
+  @Resource
+  private InstanceIdProvider instanceIdProvider;
 
-  @Autowired private RedisMessageListenerContainer container;
+  @Autowired
+  private RedisMessageListenerContainer container;
 
-  @Autowired private EventProcessorFactory eventProcessorFactory;
+  @Autowired
+  private EventProcessorFactory eventProcessorFactory;
 
   // 定义一个通用的带异常处理的适配器创建方法
   private MessageListenerAdapter createAdapter(Object delegate, String methodName) {
@@ -90,7 +96,9 @@ public class RedisEventSubscriber {
     log.info("[Redis事件订阅] 已启动事件监听器");
   }
 
-  /** 处理电子围栏事件 */
+  /**
+   * 处理电子围栏事件
+   */
   public void handleFenceEvent(EventMessage message) {
     if (isOwnMessage(message)) {
       return;
@@ -105,7 +113,9 @@ public class RedisEventSubscriber {
     }
   }
 
-  /** 处理TCP下行指令事件 */
+  /**
+   * 处理TCP下行指令事件
+   */
   public void handleTcpDownEvent(EventMessage message) {
     if (isOwnMessage(message)) {
       return;
@@ -120,7 +130,9 @@ public class RedisEventSubscriber {
     }
   }
 
-  /** 处理产品配置更新事件 */
+  /**
+   * 处理产品配置更新事件
+   */
   public void handleProductConfigUpdated(EventMessage message) {
     if (isOwnMessage(message)) {
       return;
@@ -135,7 +147,9 @@ public class RedisEventSubscriber {
     }
   }
 
-  /** 处理协议配置更新事件 */
+  /**
+   * 处理协议配置更新事件
+   */
   public void handleProtocolUpdated(EventMessage message) {
     if (isOwnMessage(message)) {
       return;
@@ -150,7 +164,9 @@ public class RedisEventSubscriber {
     }
   }
 
-  /** 判断是否是自己发送的消息 */
+  /**
+   * 判断是否是自己发送的消息
+   */
   private boolean isOwnMessage(EventMessage message) {
     try {
       String nodeId = message.getNodeId();

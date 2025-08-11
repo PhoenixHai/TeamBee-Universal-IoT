@@ -20,4 +20,6 @@ import cn.universal.persistence.entity.RuleModelInstance;
  *
  * @since 2023/1/13 14:31
  */
-public interface RuleModelInstanceMapper extends BaseMapper<RuleModelInstance> {}
+public interface RuleModelInstanceMapper extends BaseMapper<RuleModelInstance> {
+
+}

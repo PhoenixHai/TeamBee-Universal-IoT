@@ -33,7 +33,8 @@ public class ExpressTemplate {
 
   private static final ExpressRunner RUNNER = new ExpressRunner();
 
-  @Resource private RuleFunctionTemplate ruleFunctionTemplate;
+  @Resource
+  private RuleFunctionTemplate ruleFunctionTemplate;
 
   @PostConstruct
   public void initFunction() {

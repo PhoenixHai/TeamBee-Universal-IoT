@@ -5,7 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/** 通知渠道工厂类 用于管理和获取各种通知渠道 */
+/**
+ * 通知渠道工厂类 用于管理和获取各种通知渠道
+ */
 @Component
 public class NoticeChannelFactory {
 
@@ -50,6 +52,6 @@ public class NoticeChannelFactory {
         "sms_tencent", // 腾讯云短信
         "audio_ali", // 阿里云语音
         "audio_tencent" // 腾讯云语音
-        );
+    );
   }
 }

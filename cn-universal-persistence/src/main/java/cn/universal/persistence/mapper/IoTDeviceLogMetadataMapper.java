@@ -24,7 +24,7 @@ public interface IoTDeviceLogMetadataMapper extends BaseMapper<IoTDeviceLogMetad
   /**
    * 删除属性最大的条数
    *
-   * @param iotId iotId
+   * @param iotId      iotId
    * @param maxStorage 最大存储条数
    * @return 影响条数
    */
@@ -36,7 +36,7 @@ public interface IoTDeviceLogMetadataMapper extends BaseMapper<IoTDeviceLogMetad
   /**
    * 删除属性最大的条数
    *
-   * @param iotId iotId
+   * @param iotId      iotId
    * @param maxStorage 最大存储条数
    * @return 影响条数
    */

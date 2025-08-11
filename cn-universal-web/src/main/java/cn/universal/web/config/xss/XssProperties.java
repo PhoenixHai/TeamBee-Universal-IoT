@@ -23,9 +23,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class XssProperties {
 
-  /** 开启xss */
+  /**
+   * 开启xss
+   */
   private Boolean enabled = true;
 
-  /** 放行url */
+  /**
+   * 放行url
+   */
   private List<String> skipUrl = new ArrayList<>();
 }

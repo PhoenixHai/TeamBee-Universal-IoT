@@ -52,10 +52,14 @@ public interface IoTDeviceMapper extends BaseMapper<IoTDevice> {
    */
   List<IoTDeviceDTO> selectDevInstanceBOV2List(Map<String, Object> map);
 
-  /** 计算应用设备数量 */
+  /**
+   * 计算应用设备数量
+   */
   List<IoTDeviceCountVO> countDevByApplication(String appUniqueId);
 
-  /** 查询设备元数据 */
+  /**
+   * 查询设备元数据
+   */
   IoTDeviceMetadataBO selectDevMetadataBo(String iotId);
 
   List<IoTDevice> selectList(
@@ -108,10 +112,14 @@ public interface IoTDeviceMapper extends BaseMapper<IoTDevice> {
 
   int bindApp(@Param("id") String[] id, @Param("appUniqueId") String appUniqueId);
 
-  /** 设备绑定应用 */
+  /**
+   * 设备绑定应用
+   */
   int apiBindApp(@Param("appUniqueId") String appUniqueId, @Param("iotId") String iotId);
 
-  /** 设备应用解绑 */
+  /**
+   * 设备应用解绑
+   */
   int apiUnBindApp(@Param("iotId") String iotId);
 
   /**
@@ -130,12 +138,16 @@ public interface IoTDeviceMapper extends BaseMapper<IoTDevice> {
    */
   public int deleteDevInstanceByIds(String[] ids);
 
-  /** 根据分组id获取设备集合 */
+  /**
+   * 根据分组id获取设备集合
+   */
   List<IoTDevice> selectDevListByIds(String groupId);
 
   int selectDevByAppUniqueId(String[] id);
 
-  /** 查询所以设备型号 */
+  /**
+   * 查询所以设备型号
+   */
   List<IoTDeviceCompanyVO> selectAllBySupportChild(
       @Param("supportChild") Boolean supportChild, @Param("apps") String apps);
 
@@ -143,7 +155,9 @@ public interface IoTDeviceMapper extends BaseMapper<IoTDevice> {
 
   IoTDevice getOneByIotId(@Param("query") IoTDeviceQuery query);
 
-  /** 根据产品key查型号配置 */
+  /**
+   * 根据产品key查型号配置
+   */
   IoTDeviceModelVO getModelByProductKey(String productKey);
 
   List<IoTDevice> selectNotBindDevInstanceList(
@@ -160,7 +174,9 @@ public interface IoTDeviceMapper extends BaseMapper<IoTDevice> {
   List<String> selectOfflineThresholdIotIds(
       @Param("productKey") String productKey, @Param("difference") String difference);
 
-  /** 选择离线摄像头 */
+  /**
+   * 选择离线摄像头
+   */
   List<IoTDevice> selectOfflineCamera(
       @Param("productKeyList") List<String> productKeyList,
       @Param("discardValue") Integer discardValue,
@@ -168,12 +184,16 @@ public interface IoTDeviceMapper extends BaseMapper<IoTDevice> {
       @Param("start") Integer start,
       @Param("limit") Integer limit);
 
-  /** 查询设备历史总数 */
+  /**
+   * 查询设备历史总数
+   */
   public int selectDevInstanceHistory(IoTDeviceHistoryBO ioTDeviceHistoryBO);
 
   public int insertDevInstanceHistory(IoTDeviceHistoryBO ioTDeviceHistoryBO);
 
-  /** 修改设备配置字段 */
+  /**
+   * 修改设备配置字段
+   */
   public int updateDevConfiguration(Map<String, String> map);
 
   List<IoTDeviceVO> selectFenceDevice(IoTDeviceBO ioTDeviceBO);
@@ -200,21 +220,33 @@ public interface IoTDeviceMapper extends BaseMapper<IoTDevice> {
 
   IoTDevice getOneByExtId(@Param("extId") String extId);
 
-  /** 根据productKey统计设备数量 */
+  /**
+   * 根据productKey统计设备数量
+   */
   int countByProductKey(String productKey);
 
-  /** 批量刷新设备日志，更新online_time和state，初始化registry_time（如为空） */
+  /**
+   * 批量刷新设备日志，更新online_time和state，初始化registry_time（如为空）
+   */
   void batchFlushLog(@Param("iotIds") Set<String> iotIds);
 
-  /** 统计所有设备总数 */
+  /**
+   * 统计所有设备总数
+   */
   long countAllDevices();
 
-  /** 统计在线设备总数 */
+  /**
+   * 统计在线设备总数
+   */
   long countOnlineDevices();
 
-  /** 根据创建者统计设备总数 */
+  /**
+   * 根据创建者统计设备总数
+   */
   long countDevicesByCreator(@Param("creatorId") String creatorId);
 
-  /** 根据创建者统计在线设备总数 */
+  /**
+   * 根据创建者统计在线设备总数
+   */
   long countOnlineDevicesByCreator(@Param("creatorId") String creatorId);
 }

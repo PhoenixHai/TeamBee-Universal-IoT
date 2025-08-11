@@ -25,7 +25,9 @@ import cn.onenet.protocol.nb.online.ResourcesOpe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Created by zhuocongbin date 2018/3/15 */
+/**
+ * Created by zhuocongbin date 2018/3/15
+ */
 public class ApiSample {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ApiSample.class);

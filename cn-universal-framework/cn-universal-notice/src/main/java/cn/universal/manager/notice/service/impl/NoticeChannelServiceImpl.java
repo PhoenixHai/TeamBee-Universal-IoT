@@ -12,7 +12,8 @@ import tk.mybatis.mapper.entity.Example;
 @Service
 public class NoticeChannelServiceImpl implements NoticeChannelService {
 
-  @Autowired private NoticeChannelMapper noticeChannelMapper;
+  @Autowired
+  private NoticeChannelMapper noticeChannelMapper;
 
   @Override
   public List<NoticeChannel> list() {

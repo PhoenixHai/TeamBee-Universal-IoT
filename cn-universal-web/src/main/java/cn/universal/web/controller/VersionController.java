@@ -39,7 +39,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/** 程序版本 */
+/**
+ * 程序版本
+ */
 @RestController
 @RequestMapping("/test")
 @Slf4j
@@ -47,7 +49,8 @@ public class VersionController {
 
   //  @Resource private RocketMQMonitor rocketMQMonitor;
 
-  @Resource private IotUPProviderService iotUPProviderService;
+  @Resource
+  private IotUPProviderService iotUPProviderService;
 
   @GetMapping("/v1/debug/log")
   public Object update(@RequestParam String name, @RequestParam LogLevel level) {
@@ -59,7 +62,9 @@ public class VersionController {
     return "只允许debug和info";
   }
 
-  /** TCL门锁推送接口校验 */
+  /**
+   * TCL门锁推送接口校验
+   */
   @GetMapping("/check")
   public Object tclCheck() {
     return "success";
@@ -103,9 +108,12 @@ public class VersionController {
     return readGitProperties();
   }
 
-  @Resource private LogbackLoggingSystem loggingSystem;
-  @Resource private StringRedisTemplate stringRedisTemplate;
-  @Resource private TableShardStrategyByIotId tableShardStrategyByIotId;
+  @Resource
+  private LogbackLoggingSystem loggingSystem;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private TableShardStrategyByIotId tableShardStrategyByIotId;
 
   //  @GetMapping("/debug/tcp/devices")
   //  public Object tcpDevices(@RequestParam String name, @RequestParam LogLevel level) {
@@ -120,7 +128,9 @@ public class VersionController {
     return getTableShardIdByIotId(iotId);
   }
 
-  /** 读取文件 */
+  /**
+   * 读取文件
+   */
   private JSONObject readGitProperties() {
     FileSystemResource classPathResource = new FileSystemResource("./version.json");
     InputStream inputStream = null;
@@ -132,7 +142,9 @@ public class VersionController {
     return JSONUtil.parseObj(readFromInputStream(inputStream));
   }
 
-  /** 读取文件里面的值 */
+  /**
+   * 读取文件里面的值
+   */
   private String readFromInputStream(InputStream inputStream) {
     StringBuilder stringBuilder = new StringBuilder();
     try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -152,7 +164,8 @@ public class VersionController {
     return s[1];
   }
 
-  @Resource private BatchFunctionTask batchFunctionTask;
+  @Resource
+  private BatchFunctionTask batchFunctionTask;
 
   @GetMapping("/log/shaw")
   public void getBatchFunctionTask() {
@@ -164,7 +177,9 @@ public class VersionController {
     batchFunctionTask.consumer();
   }
 
-  /** echo - 打印请求体和请求头 */
+  /**
+   * echo - 打印请求体和请求头
+   */
   @RequestMapping("/echo")
   public Object testLog(@RequestBody String body, HttpServletRequest request) {
 

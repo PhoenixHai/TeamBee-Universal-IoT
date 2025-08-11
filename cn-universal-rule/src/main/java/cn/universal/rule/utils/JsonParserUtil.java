@@ -31,8 +31,8 @@ public class JsonParserUtil {
   /**
    * 获取指定json节点数据
    *
-   * @param json json数据
-   * @param key 获取数据key
+   * @param json  json数据
+   * @param key   获取数据key
    * @param clazz 获取数据类型
    * @return T 数据
    */
@@ -48,8 +48,8 @@ public class JsonParserUtil {
   /**
    * 获取指定json节点数据
    *
-   * @param json json数据
-   * @param key 获取数据key
+   * @param json  json数据
+   * @param key   获取数据key
    * @param clazz 获取数据类型
    * @return T 数据
    */
@@ -61,7 +61,7 @@ public class JsonParserUtil {
    * 获取指定json节点数据
    *
    * @param json json数据
-   * @param key 获取数据key
+   * @param key  获取数据key
    * @return 数据
    */
   public static Object getValue(JSONObject json, String key) {

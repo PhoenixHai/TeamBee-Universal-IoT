@@ -9,25 +9,38 @@ import cn.universal.plugins.protocolapi.core.event.EventAction;
  */
 public class MagicNotify {
 
-  /** 消息来源(instanceId) */
+  /**
+   * 消息来源(instanceId)
+   */
   private String from;
 
-  /** 文件或文件夹id */
+  /**
+   * 文件或文件夹id
+   */
   private String id;
 
-  /** 动作 */
+  /**
+   * 动作
+   */
   private EventAction action = null;
 
-  /** 操作对象，如接口、函数、分组、数据源 */
+  /**
+   * 操作对象，如接口、函数、分组、数据源
+   */
   private String type = null;
 
-  /** WebSocket clientId */
+  /**
+   * WebSocket clientId
+   */
   private String clientId;
 
-  /** WebSocket消息内容 */
+  /**
+   * WebSocket消息内容
+   */
   private String content;
 
-  public MagicNotify() {}
+  public MagicNotify() {
+  }
 
   public MagicNotify(String from) {
     this.from = from;

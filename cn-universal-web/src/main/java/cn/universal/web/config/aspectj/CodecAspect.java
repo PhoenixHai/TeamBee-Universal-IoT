@@ -33,17 +33,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 
-/** 编解码切面 @Author Aleo */
+/**
+ * 编解码切面 @Author Aleo
+ */
 @Aspect
 @Component
 @Slf4j
 public class CodecAspect {
 
-  @Resource private MessageCodecService messageCodecService;
+  @Resource
+  private MessageCodecService messageCodecService;
 
-  /** 设置切入点 */
+  /**
+   * 设置切入点
+   */
   @Pointcut("@annotation(cn.universal.web.config.annotation.Codec)")
-  public void codecCut() {}
+  public void codecCut() {
+  }
 
   /**
    * 获取方法参数中的唯一key和要转码对象

@@ -13,7 +13,9 @@ import java.util.Map;
  */
 public class IfSqlNode extends SqlNode {
 
-  /** 判断表达式 */
+  /**
+   * 判断表达式
+   */
   private final String test;
 
   private final SqlNode nextNode;

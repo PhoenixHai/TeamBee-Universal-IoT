@@ -33,11 +33,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-/** 文件上传 服务层实现 @Author Lion Li */
+/**
+ * 文件上传 服务层实现 @Author Lion Li
+ */
 @Service
 public class SysOssServiceImpl implements ISysOssService {
 
-  @Resource private SysOssMapper sysOssMapper;
+  @Resource
+  private SysOssMapper sysOssMapper;
 
   @Value("${codec.path:cn-universal}")
   private String prePath;

@@ -8,7 +8,8 @@ import java.util.Date;
 @Table(name = "notice_send_record")
 public class NoticeSendRecord implements Serializable {
 
-  @Id private Long id;
+  @Id
+  private Long id;
   private Long templateId;
   private Long configId;
   private String receivers;

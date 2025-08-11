@@ -19,7 +19,8 @@ public class MagicAPIPluginStarter implements ApplicationRunner {
 
   private static final Logger logger = LoggerFactory.getLogger(MagicAPIPluginStarter.class);
 
-  @Autowired private MagicAPIProperties pluginProperties;
+  @Autowired
+  private MagicAPIProperties pluginProperties;
 
   @Override
   public void run(ApplicationArguments args) throws Exception {

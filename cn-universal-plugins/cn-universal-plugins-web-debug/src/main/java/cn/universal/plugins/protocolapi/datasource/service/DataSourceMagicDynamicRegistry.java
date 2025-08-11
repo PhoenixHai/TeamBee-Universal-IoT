@@ -37,10 +37,10 @@ public class DataSourceMagicDynamicRegistry extends AbstractMagicDynamicRegistry
 
   // copy from DataSourceBuilder
   private static final String[] DATA_SOURCE_TYPE_NAMES =
-      new String[] {
-        "com.zaxxer.hikari.HikariDataSource",
-        "org.apache.tomcat.jdbc.pool.DataSource",
-        "org.apache.commons.dbcp2.BasicDataSource"
+      new String[]{
+          "com.zaxxer.hikari.HikariDataSource",
+          "org.apache.tomcat.jdbc.pool.DataSource",
+          "org.apache.commons.dbcp2.BasicDataSource"
       };
 
   public DataSourceMagicDynamicRegistry(

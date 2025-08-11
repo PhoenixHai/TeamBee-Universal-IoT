@@ -19,7 +19,9 @@ import cn.universal.ossm.oss.service.ICloudStorageService;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/** 文件上传Factory @Author Lion Li */
+/**
+ * 文件上传Factory @Author Lion Li
+ */
 public class OssFactory {
 
   //  private static ISysConfigService sysConfigService;

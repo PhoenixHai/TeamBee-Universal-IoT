@@ -30,9 +30,11 @@ public class InstanceIdProvider {
   @Value("${node.offline.threshold.minutes:2}")
   private int offlineThresholdMinutes;
 
-  @Resource private ServerProperties serverProperties;
+  @Resource
+  private ServerProperties serverProperties;
 
-  @Autowired private Environment environment;
+  @Autowired
+  private Environment environment;
 
   @Autowired(required = false)
   private StringRedisTemplate redisTemplate;
@@ -46,7 +48,9 @@ public class InstanceIdProvider {
     // 构造函数中不生成实例ID，延迟到依赖注入完成后
   }
 
-  /** 初始化实例ID 在依赖注入完成后调用 */
+  /**
+   * 初始化实例ID 在依赖注入完成后调用
+   */
   @jakarta.annotation.PostConstruct
   public void init() {
     this.instanceId = generateInstanceId();
@@ -117,7 +121,9 @@ public class InstanceIdProvider {
     return id.substring(0, Math.min(id.length(), 20)) + "...";
   }
 
-  /** 更新实例心跳 每15秒执行一次，保持实例活跃状态 */
+  /**
+   * 更新实例心跳 每15秒执行一次，保持实例活跃状态
+   */
   @Scheduled(fixedRate = 15 * 1000) // 15秒（从30秒改为15秒）
   public void updateHeartbeat() {
     if (redisTemplate == null) {
@@ -265,7 +271,8 @@ public class InstanceIdProvider {
         }
       }
 
-      log.debug("获取活跃实例列表: count={}, instances={}", activeInstances.size(), activeInstances);
+      log.debug("获取活跃实例列表: count={}, instances={}", activeInstances.size(),
+          activeInstances);
       return activeInstances;
     } catch (Exception e) {
       log.warn("获取活跃实例列表失败: error={}", e.getMessage());

@@ -32,13 +32,17 @@ import java.util.List;
  */
 public class BaseApiController {
 
-  @Resource protected IoTDeviceService iotDeviceService;
+  @Resource
+  protected IoTDeviceService iotDeviceService;
 
-  @Resource private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
 
-  @Resource protected UserApplicationService userApplicationService;
+  @Resource
+  protected UserApplicationService userApplicationService;
 
-  @Resource private IIotUserService iIotUserService;
+  @Resource
+  private IIotUserService iIotUserService;
 
   /***
    * 获取用户唯一标志

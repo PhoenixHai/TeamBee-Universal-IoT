@@ -27,6 +27,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CTAIoTUPRequest extends BaseUPRequest implements Serializable {
 
-  /** 解析报文返回 */
+  /**
+   * 解析报文返回
+   */
   private String replyPayload;
 }

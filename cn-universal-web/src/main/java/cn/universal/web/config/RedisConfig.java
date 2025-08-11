@@ -30,7 +30,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
 
-  @Autowired private RedisProperties redisProperties;
+  @Autowired
+  private RedisProperties redisProperties;
 
   @Bean
   public RedisTemplate<String, Object> redisTemplate(

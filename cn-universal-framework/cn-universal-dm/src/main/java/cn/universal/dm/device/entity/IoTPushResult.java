@@ -15,52 +15,84 @@ import lombok.Data;
 @Builder
 public class IoTPushResult {
 
-  /** 推送是否成功 */
+  /**
+   * 推送是否成功
+   */
   private boolean ok;
 
-  /** 第三方平台类型 */
+  /**
+   * 第三方平台类型
+   */
   private String platform;
 
-  /** 产品Key */
+  /**
+   * 产品Key
+   */
   private String productKey;
 
-  /** 设备ID */
+  /**
+   * 设备ID
+   */
   private String deviceId;
 
-  /** 推送渠道 (HTTP, MQTT, Kafka, RocketMQ等) */
+  /**
+   * 推送渠道 (HTTP, MQTT, Kafka, RocketMQ等)
+   */
   private String channel;
 
-  /** 推送消息内容 */
+  /**
+   * 推送消息内容
+   */
   private String messageContent;
 
-  /** 推送时间 */
+  /**
+   * 推送时间
+   */
   private LocalDateTime pushTime;
 
-  /** 响应时间(毫秒) */
+  /**
+   * 响应时间(毫秒)
+   */
   private Long responseTime;
 
-  /** 错误信息 */
+  /**
+   * 错误信息
+   */
   private String errorMessage;
 
-  /** 错误代码 */
+  /**
+   * 错误代码
+   */
   private String errorCode;
 
-  /** 重试次数 */
+  /**
+   * 重试次数
+   */
   private Integer retryCount;
 
-  /** 最大重试次数 */
+  /**
+   * 最大重试次数
+   */
   private Integer maxRetryCount;
 
-  /** 推送状态 (SUCCESS, FAILED, RETRYING, TIMEOUT) */
+  /**
+   * 推送状态 (SUCCESS, FAILED, RETRYING, TIMEOUT)
+   */
   private PushStatus status;
 
-  /** 推送配置ID */
+  /**
+   * 推送配置ID
+   */
   private String configId;
 
-  /** 请求ID，用于追踪 */
+  /**
+   * 请求ID，用于追踪
+   */
   private String requestId;
 
-  /** 推送状态枚举 */
+  /**
+   * 推送状态枚举
+   */
   public enum PushStatus {
     SUCCESS("成功"),
     FAILED("失败"),
@@ -79,7 +111,9 @@ public class IoTPushResult {
     }
   }
 
-  /** 创建成功结果 */
+  /**
+   * 创建成功结果
+   */
   public static IoTPushResult success(
       String platform,
       String productKey,
@@ -101,7 +135,9 @@ public class IoTPushResult {
         .build();
   }
 
-  /** 创建失败结果 */
+  /**
+   * 创建失败结果
+   */
   public static IoTPushResult failed(
       String platform,
       String productKey,
@@ -125,7 +161,9 @@ public class IoTPushResult {
         .build();
   }
 
-  /** 创建重试结果 */
+  /**
+   * 创建重试结果
+   */
   public static IoTPushResult retry(IoTPushResult original, String errorMessage) {
     return IoTPushResult.builder()
         .ok(false)

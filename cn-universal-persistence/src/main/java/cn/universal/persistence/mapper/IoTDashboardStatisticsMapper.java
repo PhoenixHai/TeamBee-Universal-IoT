@@ -21,10 +21,10 @@ public interface IoTDashboardStatisticsMapper extends BaseMapper<IoTDashboardSta
   /**
    * 根据日期和指标类型查询统计数据
    *
-   * @param statDate 统计日期
+   * @param statDate   统计日期
    * @param metricType 指标类型
    * @param productKey 产品Key
-   * @param channel 渠道
+   * @param channel    渠道
    * @return 统计数据列表
    */
   List<IoTDashboardStatistics> selectByDateAndMetric(
@@ -36,11 +36,11 @@ public interface IoTDashboardStatisticsMapper extends BaseMapper<IoTDashboardSta
   /**
    * 查询指定日期范围的统计数据
    *
-   * @param startDate 开始日期
-   * @param endDate 结束日期
+   * @param startDate  开始日期
+   * @param endDate    结束日期
    * @param metricType 指标类型
    * @param productKey 产品Key
-   * @param channel 渠道
+   * @param channel    渠道
    * @return 统计数据列表
    */
   List<IoTDashboardStatistics> selectByDateRange(
@@ -53,9 +53,9 @@ public interface IoTDashboardStatisticsMapper extends BaseMapper<IoTDashboardSta
   /**
    * 根据唯一键查询统计数据
    *
-   * @param statDate 统计日期
+   * @param statDate   统计日期
    * @param productKey 产品Key
-   * @param channel 渠道
+   * @param channel    渠道
    * @param metricType 指标类型
    * @return 统计数据，如果不存在返回null
    */
@@ -68,12 +68,12 @@ public interface IoTDashboardStatisticsMapper extends BaseMapper<IoTDashboardSta
   /**
    * 根据唯一键更新统计数据
    *
-   * @param statDate 统计日期
-   * @param productKey 产品Key
-   * @param channel 渠道
-   * @param metricType 指标类型
+   * @param statDate    统计日期
+   * @param productKey  产品Key
+   * @param channel     渠道
+   * @param metricType  指标类型
    * @param metricValue 指标值
-   * @param updateTime 更新时间
+   * @param updateTime  更新时间
    * @return 影响行数
    */
   int updateByUniqueKey(

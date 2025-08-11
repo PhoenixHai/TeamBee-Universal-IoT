@@ -17,7 +17,9 @@ import cn.onenet.protocol.nb.exception.OnenetNBException;
 import java.io.IOException;
 import java.util.Properties;
 
-/** Created by zhuocongbin date 2018/3/15 Loading global properties */
+/**
+ * Created by zhuocongbin date 2018/3/15 Loading global properties
+ */
 public class Config {
 
   public static String domainName;

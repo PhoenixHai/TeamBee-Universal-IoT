@@ -48,11 +48,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class FenceDelayConsumer extends IoTUPPushAdapter {
 
-  @Resource private IoTDeviceGeoFenceMapper ioTDeviceGeoFenceMapper;
-  @Resource private IoTDeviceLogShardMapper ioTDeviceLogShardMapper;
-  @Resource private IIoTDeviceDataService iIoTDeviceDataService;
+  @Resource
+  private IoTDeviceGeoFenceMapper ioTDeviceGeoFenceMapper;
+  @Resource
+  private IoTDeviceLogShardMapper ioTDeviceLogShardMapper;
+  @Resource
+  private IIoTDeviceDataService iIoTDeviceDataService;
 
-  @Resource private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
 
   public void consumer(String message) {
     JSONObject jsonObject = JSONUtil.parseObj(message);

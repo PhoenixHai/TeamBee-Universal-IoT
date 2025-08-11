@@ -36,7 +36,7 @@ public interface IoTDeviceLifeCycle extends IoTAction {
    * 设备创建
    *
    * @param productKey 产品唯一标识
-   * @param deviceId 设备编号
+   * @param deviceId   设备编号
    */
   void create(String productKey, String deviceId, DownRequest downRequest);
 
@@ -46,7 +46,7 @@ public interface IoTDeviceLifeCycle extends IoTAction {
    * 设备离线
    *
    * @param productKey 产品key
-   * @param deviceId 设备编号
+   * @param deviceId   设备编号
    */
   void offline(String productKey, String deviceId);
 
@@ -95,9 +95,10 @@ public interface IoTDeviceLifeCycle extends IoTAction {
    * <p>主要用于统一记录日志，推送消息
    *
    * @param ioTDeviceDTO 设备信息
-   * @param functions 功能
+   * @param functions    功能
    */
-  default void command(IoTDeviceDTO ioTDeviceDTO, String commandId, Object functions) {}
+  default void command(IoTDeviceDTO ioTDeviceDTO, String commandId, Object functions) {
+  }
 
   /**
    * 指令下发
@@ -105,9 +106,10 @@ public interface IoTDeviceLifeCycle extends IoTAction {
    * <p>主要用于统一记录日志，推送消息
    *
    * @param ioTDeviceDTO 设备信息
-   * @param functions 功能
+   * @param functions    功能
    */
-  default void commandSuccess(IoTDeviceDTO ioTDeviceDTO, String commandId, Object functions) {}
+  default void commandSuccess(IoTDeviceDTO ioTDeviceDTO, String commandId, Object functions) {
+  }
 
   /**
    * 指令回复
@@ -115,7 +117,8 @@ public interface IoTDeviceLifeCycle extends IoTAction {
    * <p>主要用于统一记录日志，推送消息
    *
    * @param ioTDeviceDTO 设备信息
-   * @param resp 功能
+   * @param resp         功能
    */
-  default void commandResp(IoTDeviceDTO ioTDeviceDTO, String commandId, Object resp) {}
+  default void commandResp(IoTDeviceDTO ioTDeviceDTO, String commandId, Object resp) {
+  }
 }

@@ -51,8 +51,8 @@ import org.springframework.context.ApplicationListener;
 
 public class DefaultMagicResourceService
     implements MagicResourceService,
-        JsonCodeConstants,
-        ApplicationListener<ApplicationStartedEvent> {
+    JsonCodeConstants,
+    ApplicationListener<ApplicationStartedEvent> {
 
   private final Resource root;
 
@@ -407,7 +407,7 @@ public class DefaultMagicResourceService
   /**
    * 移动分组
    *
-   * @param src 分组信息
+   * @param src    分组信息
    * @param target 目标分组ID
    */
   private boolean moveGroup(Group src, String target) {
@@ -470,7 +470,7 @@ public class DefaultMagicResourceService
    * 移动文件
    *
    * @param entity 文件信息
-   * @param group 目标分组
+   * @param group  目标分组
    */
   private <T extends MagicEntity> boolean moveFile(T entity, Group group) {
     isTrue(!root.readonly(), IS_READ_ONLY);
@@ -488,10 +488,10 @@ public class DefaultMagicResourceService
     isTrue(
         !storage.requirePath()
             || pathCache.get(storage.folder()).entrySet().stream()
-                .noneMatch(
-                    entry ->
-                        entry.getValue().equals(newMappingKey)
-                            && !entry.getKey().equals(entity.getId())),
+            .noneMatch(
+                entry ->
+                    entry.getValue().equals(newMappingKey)
+                        && !entry.getKey().equals(entity.getId())),
         MOVE_PATH_CONFLICT);
     // 设置修改时间，修改人
     entity.setUpdateBy(WebUtils.currentUserName());
@@ -932,7 +932,9 @@ public class DefaultMagicResourceService
     }
   }
 
-  /** 兼容1.x版本 */
+  /**
+   * 兼容1.x版本
+   */
   private String mappingV1Type(String type) {
     if ("1".equals(type)) {
       return "api";

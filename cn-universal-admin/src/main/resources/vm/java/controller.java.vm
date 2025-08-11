@@ -28,7 +28,7 @@ import io.swagger.annotations.Api;
  * @date ${datetime}
  */
 @RestController
-@Api(value = "${functionName}管理" , tags = {"${functionName}管理" })
+@Api(value = "${functionName}管理", tags = {"${functionName}管理"})
 @RequestMapping("/admin/${moduleName}/${businessName}")
 public class ${ClassName}Controller extends BaseController {
 

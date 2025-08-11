@@ -73,25 +73,33 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j(topic = "api_log")
 public class ApiControllerV1 extends BaseApiController {
 
-  @Resource private IoTDeviceService iotDeviceService;
+  @Resource
+  private IoTDeviceService iotDeviceService;
 
   @Resource(name = "ioTDeviceActionAfterService")
   private IoTDeviceLifeCycle ioTDeviceLifeCycle;
 
-  @Resource private IoTDeviceShadowService iotDeviceShadowService;
-  @Resource private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTDeviceShadowService iotDeviceShadowService;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
 
-  @Resource private IoTDeviceSubscribeService iotDeviceSubscribeService;
+  @Resource
+  private IoTDeviceSubscribeService iotDeviceSubscribeService;
 
-  @Resource private IIoTDeviceDataService iIoTDeviceDataService;
+  @Resource
+  private IIoTDeviceDataService iIoTDeviceDataService;
 
   @Resource(name = "httpUPService")
   private IUP httpUPService;
 
-  /** 设备增加 */
+  /**
+   * 设备增加
+   */
   @PostMapping("/device/{productKey}/add")
   public R devAdd(@PathVariable("productKey") String productKey, @RequestBody String downRequest) {
-    log.info("V2设备添加设备，用户={},productKey={} deviceId={} ", iotUnionId(), productKey, downRequest);
+    log.info("V2设备添加设备，用户={},productKey={} deviceId={} ", iotUnionId(), productKey,
+        downRequest);
     String unionId = iotUnionId();
     JSONObject obj = JSONUtil.parseObj(downRequest);
     if (obj.isEmpty()) {
@@ -131,10 +139,13 @@ public class ApiControllerV1 extends BaseApiController {
     return IotServiceImplFactory.getIDown(ioTProduct.getThirdPlatform()).down(obj);
   }
 
-  /** 设备批量增加 */
+  /**
+   * 设备批量增加
+   */
   @PostMapping("/device/{productKey}/batch/add")
   public R devAdds(@PathVariable("productKey") String productKey, @RequestBody String downRequest) {
-    log.info("V2设备批量添加设备，用户={},productKey={} deviceId={} ", iotUnionId(), productKey, downRequest);
+    log.info("V2设备批量添加设备，用户={},productKey={} deviceId={} ", iotUnionId(), productKey,
+        downRequest);
     JSONArray obj = JSONUtil.parseArray(downRequest);
     if (obj == null || obj.isEmpty()) {
       return R.error(APIErrorCode.DATA_CAN_NOT_NULL.getCode(), "参数为空");
@@ -159,7 +170,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok(reasons);
   }
 
-  /** 设备上线 */
+  /**
+   * 设备上线
+   */
   @PutMapping("/online/{productKey}/{deviceId}")
   public R online(
       @PathVariable("productKey") String productKey, @PathVariable("deviceId") String deviceId) {
@@ -174,7 +187,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok();
   }
 
-  /** 设备删除 */
+  /**
+   * 设备删除
+   */
   @DeleteMapping("/device/del/{productKey}/{deviceId}")
   public R devDel(
       @PathVariable("productKey") String productKey, @PathVariable("deviceId") String deviceId) {
@@ -222,7 +237,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok(objectMap);
   }
 
-  /** 设备查询,通过deviceId */
+  /**
+   * 设备查询,通过deviceId
+   */
   @GetMapping("/device/info/{productKey}/{deviceId}")
   public R deviceInfo(
       @PathVariable("productKey") String productKey, @PathVariable("deviceId") String deviceId) {
@@ -236,7 +253,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok(ioTDeviceVO);
   }
 
-  /** 设备影子查询，设备状态数据查询 */
+  /**
+   * 设备影子查询，设备状态数据查询
+   */
   @GetMapping(value = "/device/shadow/{productKey}/{deviceId}")
   public R shadow(
       @PathVariable("productKey") String productKey, @PathVariable("deviceId") String deviceId) {
@@ -252,7 +271,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok(propertiesBOS);
   }
 
-  /** 设备影子查询 */
+  /**
+   * 设备影子查询
+   */
   @RequestMapping(value = "/device/phoenix/shadow/{iotId}")
   public R shadow(@PathVariable("iotId") String iotId) {
     log.info("当前用户={}", TtlAuthContextHolder.getInstance().getContext());
@@ -266,7 +287,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok(propertiesBOS);
   }
 
-  /** 智家二维码解析接口 */
+  /**
+   * 智家二维码解析接口
+   */
   @PostMapping(value = "/device/phoenix/scan")
   public R scan(@RequestBody ScanDTO scanDTO) {
     // 产品配置的Key=snDecode
@@ -314,7 +337,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok(resultScanDTO);
   }
 
-  /** 属性上报 */
+  /**
+   * 属性上报
+   */
   @PostMapping("/device/report/properties/{productKey}/{deviceId}")
   public R reportProperties(
       @PathVariable("productKey") String productKey,
@@ -336,7 +361,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok();
   }
 
-  /** 事件上报 */
+  /**
+   * 事件上报
+   */
   @PostMapping("/device/report/event/{productKey}/{deviceId}")
   public R reportEvent(
       @PathVariable("productKey") String productKey,
@@ -358,7 +385,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok();
   }
 
-  /** 功能调用 */
+  /**
+   * 功能调用
+   */
   @PostMapping("/device/function/{productKey}/{deviceId}")
   public R actionFunction(
       @PathVariable("productKey") String productKey,
@@ -386,7 +415,9 @@ public class ApiControllerV1 extends BaseApiController {
     return IotServiceImplFactory.getIDown(ioTDeviceDTO.getThirdPlatform()).down(fuction);
   }
 
-  /** 通用数据上报 */
+  /**
+   * 通用数据上报
+   */
   @Codec
   @RequestMapping(value = "/device/report/codec/{productKey}/{deviceId}")
   public Object codecCommon(
@@ -404,7 +435,9 @@ public class ApiControllerV1 extends BaseApiController {
     return R.ok();
   }
 
-  /** 设备消息订阅 */
+  /**
+   * 设备消息订阅
+   */
   @PostMapping("/device/subscribe/{iotId}")
   public R subscribe(@PathVariable("iotId") String iotId, @RequestBody IoTDeviceSubscribeBO sub) {
     String iotUnionId = iotUnionId();
@@ -420,7 +453,9 @@ public class ApiControllerV1 extends BaseApiController {
         ioTDeviceDTO.getIotId(), ioTDeviceDTO.getProductKey(), iotUnionId, applicationId, sub);
   }
 
-  /** 设备消息订阅 */
+  /**
+   * 设备消息订阅
+   */
   @PostMapping("/device/subscribe/{productKey}/{deviceId}")
   public R subscribe(
       @PathVariable("productKey") String productKey,
@@ -439,7 +474,9 @@ public class ApiControllerV1 extends BaseApiController {
         ioTDeviceDTO.getIotId(), productKey, unionId, applicationId, sub);
   }
 
-  /** 属性消息 */
+  /**
+   * 属性消息
+   */
   @GetMapping("/device/log/meta/{iotId}/{messageType}/{property}")
   public R logMeta(
       @PathVariable("iotId") String iotId,

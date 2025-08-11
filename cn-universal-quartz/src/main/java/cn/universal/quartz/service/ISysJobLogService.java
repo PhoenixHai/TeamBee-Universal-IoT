@@ -15,7 +15,9 @@ package cn.universal.quartz.service;
 import cn.universal.quartz.domain.SysJobLog;
 import java.util.List;
 
-/** 定时任务调度日志信息信息 服务层 @Author ruoyi */
+/**
+ * 定时任务调度日志信息信息 服务层 @Author ruoyi
+ */
 public interface ISysJobLogService {
 
   //  TableDataInfo<SysJobLog> selectPageJobLogList(SysJobLog jobLog);
@@ -59,6 +61,8 @@ public interface ISysJobLogService {
    */
   public int deleteJobLogById(Long jobId);
 
-  /** 清空任务日志 */
+  /**
+   * 清空任务日志
+   */
   public void cleanJobLog();
 }

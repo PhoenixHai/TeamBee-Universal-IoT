@@ -7,8 +7,11 @@ public interface MagicPluginConfiguration {
 
   Plugin plugin();
 
-  /** 注册Controller */
+  /**
+   * 注册Controller
+   */
   default MagicControllerRegister controllerRegister() {
-    return (mapping, configuration) -> {};
+    return (mapping, configuration) -> {
+    };
   }
 }

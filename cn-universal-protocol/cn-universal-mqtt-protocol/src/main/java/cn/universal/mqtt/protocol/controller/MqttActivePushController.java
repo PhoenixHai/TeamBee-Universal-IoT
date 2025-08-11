@@ -52,13 +52,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/monitor/mqtt/v2/push")
 public class MqttActivePushController {
 
-  @Autowired private ThirdMQTTServerManager mqttServerManager;
+  @Autowired
+  private ThirdMQTTServerManager mqttServerManager;
 
-  @Autowired private ThirdMQTTConfigService mqttConfigService;
+  @Autowired
+  private ThirdMQTTConfigService mqttConfigService;
 
-  @Autowired private SysMQTTManager sysMQTTManager;
+  @Autowired
+  private SysMQTTManager sysMQTTManager;
 
-  @Autowired private IoTProductDeviceService ioTProductDeviceService;
+  @Autowired
+  private IoTProductDeviceService ioTProductDeviceService;
 
   @Autowired(required = false)
   private MqttMockDataService mqttMockDataService;
@@ -75,11 +79,11 @@ public class MqttActivePushController {
    * 主动推送消息（GET方式）
    *
    * @param productKey 产品Key
-   * @param deviceId 设备ID
-   * @param payload 消息内容
-   * @param topic 可选的自定义主题
-   * @param qos 可选的QoS级别，默认为1
-   * @param retained 可选的保留标志，默认为false
+   * @param deviceId   设备ID
+   * @param payload    消息内容
+   * @param topic      可选的自定义主题
+   * @param qos        可选的QoS级别，默认为1
+   * @param retained   可选的保留标志，默认为false
    * @return 推送结果
    */
   @GetMapping("/send")
@@ -125,7 +129,8 @@ public class MqttActivePushController {
       }
 
       if (success) {
-        log.info("[MQTT_PUSH] 消息推送成功 - 产品: {}, 设备: {}, 主题: {}", productKey, deviceId, publishTopic);
+        log.info("[MQTT_PUSH] 消息推送成功 - 产品: {}, 设备: {}, 主题: {}", productKey, deviceId,
+            publishTopic);
 
         Map<String, Object> result = new HashMap<>();
         result.put("success", true);
@@ -243,7 +248,7 @@ public class MqttActivePushController {
    * 根据ProductKey批量推送消息
    *
    * @param productKey 产品Key
-   * @param request 批量推送请求
+   * @param request    批量推送请求
    * @return 推送结果
    */
   @PostMapping("/broadcast/{productKey}")
@@ -279,7 +284,8 @@ public class MqttActivePushController {
       boolean success = mqttServerManager.publishMessage(networkUnionId, publishMessage);
 
       if (success) {
-        log.info("[MQTT_BROADCAST] 广播消息推送成功 - 产品: {}, 主题: {}", productKey, broadcastTopic);
+        log.info("[MQTT_BROADCAST] 广播消息推送成功 - 产品: {}, 主题: {}", productKey,
+            broadcastTopic);
 
         Map<String, Object> result = new HashMap<>();
         result.put("success", true);
@@ -363,7 +369,9 @@ public class MqttActivePushController {
     }
   }
 
-  /** 构建推送主题 */
+  /**
+   * 构建推送主题
+   */
   private String buildPushTopic(String productKey, String deviceId, String customTopic) {
     if (customTopic != null && !customTopic.trim().isEmpty()) {
       // 使用自定义主题，支持变量替换
@@ -374,7 +382,9 @@ public class MqttActivePushController {
     return "/" + productKey + "/" + deviceId + "/down";
   }
 
-  /** 构建广播主题 */
+  /**
+   * 构建广播主题
+   */
   private String buildBroadcastTopic(String productKey, String customTopic) {
     if (customTopic != null && !customTopic.trim().isEmpty()) {
       // 使用自定义主题，支持变量替换
@@ -385,7 +395,9 @@ public class MqttActivePushController {
     return "/" + productKey + "/broadcast";
   }
 
-  /** 推送请求实体 */
+  /**
+   * 推送请求实体
+   */
   public static class PushRequest {
 
     private String productKey;
@@ -463,7 +475,9 @@ public class MqttActivePushController {
     }
   }
 
-  /** 广播请求实体 */
+  /**
+   * 广播请求实体
+   */
   public static class BroadcastRequest {
 
     private String payload;

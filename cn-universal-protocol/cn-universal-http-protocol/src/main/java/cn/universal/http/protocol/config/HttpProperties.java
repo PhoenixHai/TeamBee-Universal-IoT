@@ -25,6 +25,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 public class HttpProperties {
 
-  /** 是否启用HTTP协议模块 */
+  /**
+   * 是否启用HTTP协议模块
+   */
   private boolean enabled = true;
 }

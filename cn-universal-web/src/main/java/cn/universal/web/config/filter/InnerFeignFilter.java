@@ -46,7 +46,8 @@ public class InnerFeignFilter implements Filter {
     log.info("init success InnerFeignFilter");
   }
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
   private static final long TIME = 1000 * 60 * 5;
 

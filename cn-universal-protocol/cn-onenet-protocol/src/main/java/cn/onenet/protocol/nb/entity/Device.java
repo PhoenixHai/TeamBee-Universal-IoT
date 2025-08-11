@@ -18,7 +18,9 @@ import cn.hutool.json.JSONObject;
 import cn.onenet.protocol.nb.config.Config;
 import java.util.List;
 
-/** Created by zhuocongbin date 2018/3/16 */
+/**
+ * Created by zhuocongbin date 2018/3/16
+ */
 public class Device extends CommonEntity {
 
   // 设备名称，字符和数字组成的字符串，必填参数

@@ -18,4 +18,6 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ImoulifeUPRequest extends BaseUPRequest {}
+public class ImoulifeUPRequest extends BaseUPRequest {
+
+}

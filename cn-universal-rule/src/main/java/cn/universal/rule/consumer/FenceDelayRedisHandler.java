@@ -8,16 +8,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/** 电子围栏延迟事件Redis处理器 替代FenceDelayConsumerConfigure */
+/**
+ * 电子围栏延迟事件Redis处理器 替代FenceDelayConsumerConfigure
+ */
 @Slf4j
 @Component
 public class FenceDelayRedisHandler implements FenceEventProcessor {
 
-  @Autowired private InstanceIdProvider instanceIdProvider;
+  @Autowired
+  private InstanceIdProvider instanceIdProvider;
 
-  @Autowired private FenceDelayConsumer fenceDelayConsumer;
+  @Autowired
+  private FenceDelayConsumer fenceDelayConsumer;
 
-  /** 处理电子围栏延迟事件 */
+  /**
+   * 处理电子围栏延迟事件
+   */
   @Override
   public void handleFenceEvent(EventMessage message) {
     try {
@@ -35,7 +41,9 @@ public class FenceDelayRedisHandler implements FenceEventProcessor {
     }
   }
 
-  /** 处理围栏延迟逻辑 */
+  /**
+   * 处理围栏延迟逻辑
+   */
   private void processFenceDelay(EventMessage message) {
     try {
       log.info("处理围栏延迟消息: {}", message);
@@ -45,7 +53,9 @@ public class FenceDelayRedisHandler implements FenceEventProcessor {
     }
   }
 
-  /** 判断是否是自己发送的消息 */
+  /**
+   * 判断是否是自己发送的消息
+   */
   private boolean isOwnMessage(EventMessage message) {
     try {
       String nodeId = message.getNodeId();

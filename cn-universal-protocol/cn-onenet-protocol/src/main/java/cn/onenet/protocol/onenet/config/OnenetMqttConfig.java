@@ -16,8 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 〈一句话功能简述〉<br>
- * 〈MQTT接收消息处理〉 @Author Aleo
+ * 〈一句话功能简述〉<br> 〈MQTT接收消息处理〉 @Author Aleo
  *
  * @create 2018/6/4
  * @since 1.0.0

@@ -31,11 +31,15 @@ public class ProductConfigCache {
   private static final String REDIS_KEY = "iot:product:config";
   private final ConcurrentHashMap<String, TcpProductConfig> localCache = new ConcurrentHashMap<>();
 
-  @Autowired private IoTProductMapper ioTProductMapper;
-  @Autowired private StringRedisTemplate redisTemplate;
-  @Autowired private ObjectMapper objectMapper;
+  @Autowired
+  private IoTProductMapper ioTProductMapper;
+  @Autowired
+  private StringRedisTemplate redisTemplate;
+  @Autowired
+  private ObjectMapper objectMapper;
 
-  @Autowired private IoTCertificateMapper ioTCertificateMapper;
+  @Autowired
+  private IoTCertificateMapper ioTCertificateMapper;
 
   @PostConstruct
   public void init() {
@@ -50,7 +54,8 @@ public class ProductConfigCache {
     log.debug("[ProductConfigCache] get: productKey={}", productKey);
     TcpProductConfig config = localCache.get(productKey);
     if (config != null) {
-      log.debug("[ProductConfigCache] localCache命中: productKey={}, config={}", productKey, config);
+      log.debug("[ProductConfigCache] localCache命中: productKey={}, config={}", productKey,
+          config);
       return config;
     }
     String json = (String) redisTemplate.opsForHash().get(REDIS_KEY, productKey);
@@ -61,7 +66,8 @@ public class ProductConfigCache {
         log.debug("[ProductConfigCache] redis命中: productKey={}, config={}", productKey, config);
         return config;
       } catch (Exception e) {
-        log.error("[ProductConfigCache] redis反序列化异常: productKey={}, json={}", productKey, json, e);
+        log.error("[ProductConfigCache] redis反序列化异常: productKey={}, json={}", productKey,
+            json, e);
       }
     }
     IoTProduct product = null;
@@ -93,7 +99,8 @@ public class ProductConfigCache {
           .opsForHash()
           .put(REDIS_KEY, productKey, objectMapper.writeValueAsString(config));
     } catch (Exception e) {
-      log.error("[ProductConfigCache] redis写入异常: productKey={}, config={}", productKey, config, e);
+      log.error("[ProductConfigCache] redis写入异常: productKey={}, config={}", productKey, config,
+          e);
     }
   }
 

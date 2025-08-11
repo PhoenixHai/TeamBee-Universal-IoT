@@ -24,12 +24,16 @@ public class IoTMessageConvertHolder implements ApplicationContextAware {
     adapterMap.forEach((key, value) -> adapterMap.put(value.name(), value));
   }
 
-  /** 格式化上行消息 */
+  /**
+   * 格式化上行消息
+   */
   public String formatUpMessage(BaseUPRequest upRequest) {
     return null;
   }
 
-  /** 格式化下行消息 */
+  /**
+   * 格式化下行消息
+   */
   public String formatDownMessage(BaseDownRequest downRequest) {
     return null;
   }

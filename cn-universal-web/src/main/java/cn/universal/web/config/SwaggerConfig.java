@@ -23,7 +23,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/** Swagger/OpenAPI 3 配置 */
+/**
+ * Swagger/OpenAPI 3 配置
+ */
 @Configuration
 @EnableKnife4j
 public class SwaggerConfig {

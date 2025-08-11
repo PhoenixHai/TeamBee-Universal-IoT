@@ -14,7 +14,9 @@ package cn.universal.persistence.query;
 
 import java.util.List;
 
-/** 分页工具类 @Title: @Description: @Author:刘利海 @Since:2018年9月26日 */
+/**
+ * 分页工具类 @Title: @Description: @Author:刘利海 @Since:2018年9月26日
+ */
 public class PageBean<T> extends DataTransferObject {
 
   private static final long serialVersionUID = 1L;
@@ -29,15 +31,16 @@ public class PageBean<T> extends DataTransferObject {
   // 列表数据
   private List<T> list;
 
-  public PageBean() {}
+  public PageBean() {
+  }
 
   /**
    * 分页
    *
-   * @param list 列表数据
+   * @param list       列表数据
    * @param totalCount 总记录数
-   * @param pageSize 每页记录数
-   * @param currPage 当前页数
+   * @param pageSize   每页记录数
+   * @param currPage   当前页数
    */
   public PageBean(List<T> list, Long totalCount, int pageSize, int currPage) {
     this.list = list;

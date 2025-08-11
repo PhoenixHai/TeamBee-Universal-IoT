@@ -11,7 +11,8 @@ public class Page {
 
   private long offset;
 
-  public Page() {}
+  public Page() {
+  }
 
   public Page(long limit, long offset) {
     if (offset < 0) {

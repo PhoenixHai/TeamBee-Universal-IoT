@@ -13,7 +13,9 @@ package cn.universal.core.service;
 
 public interface UniversalUP {
 
-  /** 通用消息组件 */
+  /**
+   * 通用消息组件
+   */
   String name();
 
   /**
@@ -27,7 +29,8 @@ public interface UniversalUP {
    * 重新发送云端指令
    *
    * @param productKey 产品key
-   * @param deviceId 设备序列号
+   * @param deviceId   设备序列号
    */
-  default void resendStoreCommand(String productKey, String deviceId) {}
+  default void resendStoreCommand(String productKey, String deviceId) {
+  }
 }

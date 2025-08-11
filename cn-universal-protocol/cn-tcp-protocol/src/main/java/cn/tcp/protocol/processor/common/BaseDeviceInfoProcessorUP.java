@@ -41,11 +41,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class BaseDeviceInfoProcessorUP extends AbstratIoTService
     implements TcpUPMessageProcessor {
 
-  @Autowired protected DeviceIdentityExtractorRegistry extractorRegistry;
+  @Autowired
+  protected DeviceIdentityExtractorRegistry extractorRegistry;
 
-  @Autowired protected TcpConnectionManager tcpConnectionManager;
+  @Autowired
+  protected TcpConnectionManager tcpConnectionManager;
 
-  @Autowired private ICodecService codecService;
+  @Autowired
+  private ICodecService codecService;
 
   @Override
   public String getName() {
@@ -62,7 +65,9 @@ public abstract class BaseDeviceInfoProcessorUP extends AbstratIoTService
     return 10; // 设备信息处理是第一步
   }
 
-  /** 获处理类型名称 */
+  /**
+   * 获处理类型名称
+   */
   protected abstract String getProcessorType();
 
   @Override
@@ -73,7 +78,8 @@ public abstract class BaseDeviceInfoProcessorUP extends AbstratIoTService
     }
     if (message.getProductConfig().getAlwaysPreDecode() && StrUtil.isBlank(message.getDeviceId())) {
       UPRequest upRequest = codecService.preDecode(productKey, message.getPayload());
-      log.info("[{}] 开始deviceId 识别,执行[preDecode],返回={}", getName(), JSONUtil.toJsonStr(upRequest));
+      log.info("[{}] 开始deviceId 识别,执行[preDecode],返回={}", getName(),
+          JSONUtil.toJsonStr(upRequest));
       if (upRequest == null || StrUtil.isBlank(upRequest.getDeviceId())) {
         log.warn("[{}] preDecode 协议不存在 or 无法识别deviceId,停止运行", getName(), productKey);
         return ProcessorResult.STOP;
@@ -95,12 +101,15 @@ public abstract class BaseDeviceInfoProcessorUP extends AbstratIoTService
           deviceId,
           message.getChannelContext().channel().id());
     } else {
-      log.debug("[{}] 设备已注册，跳过重复注册: productKey={}, deviceId={}", getName(), productKey, deviceId);
+      log.debug("[{}] 设备已注册，跳过重复注册: productKey={}, deviceId={}", getName(), productKey,
+          deviceId);
     }
     return ProcessorResult.CONTINUE;
   }
 
-  /** 回填产品信息 */
+  /**
+   * 回填产品信息
+   */
   protected boolean fillProductInfo(TcpUPRequest request) {
     try {
       String productKey = request.getProductKey();
@@ -123,7 +132,9 @@ public abstract class BaseDeviceInfoProcessorUP extends AbstratIoTService
     }
   }
 
-  /** 回填设备信息 */
+  /**
+   * 回填设备信息
+   */
   protected boolean fillDeviceInfo(TcpUPRequest request) {
     try {
       if (request.getIoTDeviceDTO() != null) {

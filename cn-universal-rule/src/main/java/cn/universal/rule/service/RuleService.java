@@ -50,13 +50,17 @@ import tk.mybatis.mapper.entity.Example;
 @Slf4j
 public class RuleService {
 
-  @Resource private RuleModelMapper ruleModelMapper;
+  @Resource
+  private RuleModelMapper ruleModelMapper;
 
-  @Resource private RuleModelInstanceMapper ruleModelInstanceMapper;
+  @Resource
+  private RuleModelInstanceMapper ruleModelInstanceMapper;
 
-  @Resource private RuleTransmitTemplate ruleTransmitTemplate;
+  @Resource
+  private RuleTransmitTemplate ruleTransmitTemplate;
 
-  @Resource private RuleEngine ruleEngine;
+  @Resource
+  private RuleEngine ruleEngine;
 
   @Async("taskExecutor")
   public void rule(UPRequest param, IoTDeviceDTO instance) {

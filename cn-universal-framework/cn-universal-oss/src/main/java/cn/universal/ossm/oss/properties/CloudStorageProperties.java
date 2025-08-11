@@ -17,7 +17,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-/** OSS云存储 配置属性 @Author Lion Li */
+/**
+ * OSS云存储 配置属性 @Author Lion Li
+ */
 @Data
 @Component
 @ConfigurationProperties(prefix = "cloud-storage")
@@ -33,96 +35,150 @@ public class CloudStorageProperties {
 
   private MinioProperties minio;
 
-  /** 阿里云 配置属性 @Author Lion Li */
+  /**
+   * 阿里云 配置属性 @Author Lion Li
+   */
   @Data
   @NoArgsConstructor
   public static class AliyunProperties {
 
-    /** 阿里云绑定的域名 */
+    /**
+     * 阿里云绑定的域名
+     */
     private String endpoint;
 
-    /** 阿里云路径前缀 */
+    /**
+     * 阿里云路径前缀
+     */
     private String prefix;
 
-    /** 阿里云AccessKeyId */
+    /**
+     * 阿里云AccessKeyId
+     */
     private String accessKeyId;
 
-    /** 阿里云AccessKeySecret */
+    /**
+     * 阿里云AccessKeySecret
+     */
     private String accessKeySecret;
 
-    /** 阿里云BucketName */
+    /**
+     * 阿里云BucketName
+     */
     private String bucketName;
   }
 
-  /** Minio 配置属性 @Author Lion Li */
+  /**
+   * Minio 配置属性 @Author Lion Li
+   */
   @Data
   @NoArgsConstructor
   public static class MinioProperties {
 
-    /** minio域名 */
+    /**
+     * minio域名
+     */
     private String endpoint;
 
-    /** minio ACCESS_KEY */
+    /**
+     * minio ACCESS_KEY
+     */
     private String accessKey;
 
-    /** minio SECRET_KEY */
+    /**
+     * minio SECRET_KEY
+     */
     private String secretKey;
 
-    /** minio 存储空间名 */
+    /**
+     * minio 存储空间名
+     */
     private String bucketName;
   }
 
-  /** 腾讯云COS 配置属性 @Author Lion Li */
+  /**
+   * 腾讯云COS 配置属性 @Author Lion Li
+   */
   @Data
   @NoArgsConstructor
   public static class QcloudProperties {
 
-    /** 腾讯云绑定的域名 */
+    /**
+     * 腾讯云绑定的域名
+     */
     private String endpoint;
 
-    /** 腾讯云路径前缀 */
+    /**
+     * 腾讯云路径前缀
+     */
     private String prefix;
 
-    /** 腾讯云SecretId */
+    /**
+     * 腾讯云SecretId
+     */
     private String secretId;
 
-    /** 腾讯云SecretKey */
+    /**
+     * 腾讯云SecretKey
+     */
     private String secretKey;
 
-    /** 腾讯云BucketName */
+    /**
+     * 腾讯云BucketName
+     */
     private String bucketName;
 
-    /** 七牛是否使用https */
+    /**
+     * 七牛是否使用https
+     */
     private Boolean isHttps;
 
-    /** 腾讯云COS所属地区 */
+    /**
+     * 腾讯云COS所属地区
+     */
     private String region;
   }
 
-  /** 七牛云 配置属性 @Author Lion Li */
+  /**
+   * 七牛云 配置属性 @Author Lion Li
+   */
   @Data
   @NoArgsConstructor
   public static class QiniuProperties {
 
-    /** 七牛绑定的域名 */
+    /**
+     * 七牛绑定的域名
+     */
     private String domain;
 
-    /** 七牛路径前缀 */
+    /**
+     * 七牛路径前缀
+     */
     private String prefix;
 
-    /** 七牛ACCESS_KEY */
+    /**
+     * 七牛ACCESS_KEY
+     */
     private String accessKey;
 
-    /** 七牛SECRET_KEY */
+    /**
+     * 七牛SECRET_KEY
+     */
     private String secretKey;
 
-    /** 七牛存储空间名 */
+    /**
+     * 七牛存储空间名
+     */
     private String bucketName;
 
-    /** 七牛存储区域 */
+    /**
+     * 七牛存储区域
+     */
     private String region;
 
-    /** 七牛是否使用https */
+    /**
+     * 七牛是否使用https
+     */
     private Boolean isHttps;
   }
 }

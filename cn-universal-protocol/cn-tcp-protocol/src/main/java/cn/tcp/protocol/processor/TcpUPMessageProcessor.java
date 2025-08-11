@@ -41,48 +41,70 @@ public interface TcpUPMessageProcessor extends BaseMessageProcessor {
    */
   boolean supports(TcpUPRequest request);
 
-  /** 处理器描述（可选） */
+  /**
+   * 处理器描述（可选）
+   */
   default String getDescription() {
     return getName();
   }
 
-  /** 处理器优先级（可选，用于细粒度排序） */
+  /**
+   * 处理器优先级（可选，用于细粒度排序）
+   */
   default int getPriority() {
     return 0;
   }
 
-  /** 是否必须执行（可选） */
+  /**
+   * 是否必须执行（可选）
+   */
   default boolean isRequired() {
     return false;
   }
 
-  /** 处理前的预检查（可选） */
+  /**
+   * 处理前的预检查（可选）
+   */
   default boolean preCheck(TcpUPRequest request) {
     return true;
   }
 
-  /** 处理后的后置操作（可选） */
+  /**
+   * 处理后的后置操作（可选）
+   */
   default void postProcess(TcpUPRequest request, ProcessorResult result) {
     // 默认不做任何操作
   }
 
-  /** 异常处理（可选） */
+  /**
+   * 异常处理（可选）
+   */
   default void onError(TcpUPRequest request, Exception e) {
     request.setError("处理器 [" + getName() + "] 异常: " + e.getMessage());
   }
 
-  /** 处理结果枚举 */
+  /**
+   * 处理结果枚举
+   */
   enum ProcessorResult {
-    /** 继续处理 - 传递给下一个处理器 */
+    /**
+     * 继续处理 - 传递给下一个处理器
+     */
     CONTINUE,
 
-    /** 停止处理 - 成功完成，不再传递给后续处理器 */
+    /**
+     * 停止处理 - 成功完成，不再传递给后续处理器
+     */
     STOP,
 
-    /** 跳过当前消息 - 忽略该消息，不进行后续处理 */
+    /**
+     * 跳过当前消息 - 忽略该消息，不进行后续处理
+     */
     SKIP,
 
-    /** 处理失败 - 发生错误，停止处理链 */
+    /**
+     * 处理失败 - 发生错误，停止处理链
+     */
     ERROR
   }
 }

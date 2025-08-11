@@ -36,9 +36,13 @@ public class BaseUPRequest extends UPRequest {
 
   private transient IoTProduct ioTProduct;
 
-  /** 指令 */
+  /**
+   * 指令
+   */
   private String commandId;
 
-  /** 指令 */
+  /**
+   * 指令
+   */
   private Integer commandStatus;
 }

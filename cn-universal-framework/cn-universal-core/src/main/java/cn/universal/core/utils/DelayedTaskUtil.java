@@ -52,8 +52,8 @@ public class DelayedTaskUtil {
    * 添加延迟任务
    *
    * @param command 要执行的任务
-   * @param delay 延迟时间
-   * @param unit 时间单位
+   * @param delay   延迟时间
+   * @param unit    时间单位
    */
   public void putTask(Runnable command, long delay, TimeUnit unit) {
     log.info(
@@ -70,10 +70,10 @@ public class DelayedTaskUtil {
   /**
    * 添加固定频率的重复任务
    *
-   * @param command 要执行的任务
+   * @param command      要执行的任务
    * @param initialDelay 初始延迟时间
-   * @param period 重复周期
-   * @param unit 时间单位
+   * @param period       重复周期
+   * @param unit         时间单位
    */
   public void putFixedRateTask(Runnable command, long initialDelay, long period, TimeUnit unit) {
     log.info(
@@ -90,10 +90,10 @@ public class DelayedTaskUtil {
   /**
    * 添加固定延迟的重复任务
    *
-   * @param command 要执行的任务
+   * @param command      要执行的任务
    * @param initialDelay 初始延迟时间
-   * @param delay 重复延迟
-   * @param unit 时间单位
+   * @param delay        重复延迟
+   * @param unit         时间单位
    */
   public void putFixedDelayTask(Runnable command, long initialDelay, long delay, TimeUnit unit) {
     log.info(

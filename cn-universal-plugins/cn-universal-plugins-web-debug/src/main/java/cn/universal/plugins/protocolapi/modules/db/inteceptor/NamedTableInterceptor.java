@@ -10,6 +10,8 @@ import cn.universal.plugins.protocolapi.modules.db.table.NamedTable;
  */
 public interface NamedTableInterceptor {
 
-  /** 执行之前 */
+  /**
+   * 执行之前
+   */
   void preHandle(SqlMode sqlMode, NamedTable namedTable);
 }

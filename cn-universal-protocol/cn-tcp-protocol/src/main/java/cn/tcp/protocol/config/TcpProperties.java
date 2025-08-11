@@ -17,23 +17,30 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * TCP 协议配置属性
- * 
+ *
  * @version 2.0 @Author Aleo
  * @since 2025/1/2
  */
 @ConfigurationProperties(prefix = "tcp.protocol")
 @Data
 public class TcpProperties {
-  
-  /** 是否启用TCP协议模块 */
+
+  /**
+   * 是否启用TCP协议模块
+   */
   private boolean enabled = true;
-  
-  /** 标准TCP配置 */
+
+  /**
+   * 标准TCP配置
+   */
   private Standard standard = new Standard();
-  
+
   @Data
   public static class Standard {
-    /** 是否启用标准TCP */
+
+    /**
+     * 是否启用标准TCP
+     */
     private boolean enabled = true;
   }
 }

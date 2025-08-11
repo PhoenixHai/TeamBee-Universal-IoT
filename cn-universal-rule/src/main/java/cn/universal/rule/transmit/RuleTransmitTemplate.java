@@ -40,7 +40,7 @@ public class RuleTransmitTemplate {
   /**
    * 数据转发代理
    *
-   * @param param 数据
+   * @param param  数据
    * @param target 转发模板
    */
   public String transmit(JSONObject param, RuleTarget target) {
@@ -54,7 +54,7 @@ public class RuleTransmitTemplate {
   /**
    * 测试数据转发代理
    *
-   * @param param 数据
+   * @param param  数据
    * @param target 转发模板
    */
   public String testTransmit(JSONObject param, RuleTarget target) {

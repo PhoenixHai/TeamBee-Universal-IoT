@@ -12,7 +12,9 @@ public class TemplateUtil {
       Pattern.compile("#([a-zA-Z0-9_]+)|#\\{([a-zA-Z0-9_]+)\\}");
   private static final ObjectMapper objectMapper = new ObjectMapper();
 
-  /** 替换模板中的参数，兼容 #xxx 和 #{xxx} 两种格式 */
+  /**
+   * 替换模板中的参数，兼容 #xxx 和 #{xxx} 两种格式
+   */
   public static String replaceParams(String template, Map<String, Object> params) {
     if (template == null || params == null) {
       return template;
@@ -29,7 +31,9 @@ public class TemplateUtil {
     return result.toString();
   }
 
-  /** 解析JSON字符串为Map */
+  /**
+   * 解析JSON字符串为Map
+   */
   @SuppressWarnings("unchecked")
   public static Map<String, Object> parseJson(String json) {
     try {
@@ -42,7 +46,9 @@ public class TemplateUtil {
     }
   }
 
-  /** 将对象转换为JSON字符串 */
+  /**
+   * 将对象转换为JSON字符串
+   */
   public static String toJson(Object obj) {
     try {
       return objectMapper.writeValueAsString(obj);

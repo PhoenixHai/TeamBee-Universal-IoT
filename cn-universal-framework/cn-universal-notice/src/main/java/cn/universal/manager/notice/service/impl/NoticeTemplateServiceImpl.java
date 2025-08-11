@@ -138,7 +138,8 @@ public class NoticeTemplateServiceImpl implements NoticeTemplateService {
         channelFactory
             .getChannel(template.getChannelType())
             .orElseThrow(
-                () -> new IllegalArgumentException("不支持的渠道类型: " + template.getChannelType()));
+                () -> new IllegalArgumentException(
+                    "不支持的渠道类型: " + template.getChannelType()));
 
     // 5. 发送测试消息
     try {

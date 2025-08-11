@@ -52,7 +52,9 @@ public class RuleBo {
   @Schema(description = "规则配置")
   private RuleConfig config;
 
-  /** 描述 */
+  /**
+   * 描述
+   */
   @Schema(description = "描述")
   private String description;
 }

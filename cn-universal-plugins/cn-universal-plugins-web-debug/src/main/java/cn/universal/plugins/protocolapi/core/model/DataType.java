@@ -16,58 +16,86 @@ import org.apache.commons.lang3.time.DateUtils;
  */
 public enum DataType {
 
-  /** Object 类型 */
+  /**
+   * Object 类型
+   */
   Object("object"),
 
-  /** 数组类型 */
+  /**
+   * 数组类型
+   */
   Array("array"),
 
-  /** 任意类型 */
+  /**
+   * 任意类型
+   */
   Any("object"),
 
-  /** Boolean类型 */
+  /**
+   * Boolean类型
+   */
   Boolean(
       false,
-      findInvoker(Boolean.class, "valueOf", new Class<?>[] {String.class}),
+      findInvoker(Boolean.class, "valueOf", new Class<?>[]{String.class}),
       false,
       true,
       "boolean"),
 
-  /** String 类型 */
+  /**
+   * String 类型
+   */
   String("string"),
 
-  /** Integer 类型 */
+  /**
+   * Integer 类型
+   */
   Integer(true, findInvoker(BigDecimal.class, "intValue"), "number"),
 
-  /** Double 类型 */
+  /**
+   * Double 类型
+   */
   Double(true, findInvoker(BigDecimal.class, "doubleValue"), "number"),
-  /** Long 类型 */
+  /**
+   * Long 类型
+   */
   Long(true, findInvoker(BigDecimal.class, "longValue"), "number"),
-  /** Float 类型 */
+  /**
+   * Float 类型
+   */
   Float(true, findInvoker(BigDecimal.class, "floatValue"), "number"),
-  /** Byte 类型 */
+  /**
+   * Byte 类型
+   */
   Byte(true, findInvoker(BigDecimal.class, "byteValue"), "number"),
 
-  /** Short类型 */
+  /**
+   * Short类型
+   */
   Short(true, findInvoker(BigDecimal.class, "shortValue"), "number"),
 
-  /** Date类型 */
+  /**
+   * Date类型
+   */
   Date(
-      findInvoker(DataType.class, "parseDate", new Class<?>[] {String.class}),
+      findInvoker(DataType.class, "parseDate", new Class<?>[]{String.class}),
       false,
       true,
       "string"),
 
-  /** MultipartFile 类型 */
+  /**
+   * MultipartFile 类型
+   */
   MultipartFile(
-      findInvoker(RequestModule.class, "getFile", new Class<?>[] {String.class}),
+      findInvoker(RequestModule.class, "getFile", new Class<?>[]{String.class}),
       true,
       false,
       "file"),
 
-  /** List<MultipartFile> 类型 */
+  /**
+   * List<MultipartFile> 类型
+   */
   MultipartFiles(
-      findInvoker(RequestModule.class, "getFiles", new Class<?>[] {String.class}),
+      findInvoker(RequestModule.class, "getFiles", new Class<?>[]{String.class}),
       true,
       false,
       "file");

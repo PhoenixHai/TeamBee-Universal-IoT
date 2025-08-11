@@ -99,7 +99,9 @@ public class LRUCache extends LinkedHashMap<String, LRUCache.ExpireNode<Object>>
     return size() > this.capacity;
   }
 
-  /** 清理已过期的数据 */
+  /**
+   * 清理已过期的数据
+   */
   private void clean() {
     try {
       lock.writeLock().lock();
@@ -117,7 +119,9 @@ public class LRUCache extends LinkedHashMap<String, LRUCache.ExpireNode<Object>>
     }
   }
 
-  /** 过期时间节点 */
+  /**
+   * 过期时间节点
+   */
   static class ExpireNode<V> {
 
     long expire;

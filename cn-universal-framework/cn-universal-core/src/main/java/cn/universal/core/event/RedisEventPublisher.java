@@ -22,9 +22,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisEventPublisher implements EventPublisher {
 
-  @Autowired private StringRedisTemplate redisTemplate;
+  @Autowired
+  private StringRedisTemplate redisTemplate;
 
-  @Autowired private InstanceIdProvider instanceIdProvider;
+  @Autowired
+  private InstanceIdProvider instanceIdProvider;
 
   @Override
   public void publishEvent(String topic, Object event) {
@@ -51,8 +53,8 @@ public class RedisEventPublisher implements EventPublisher {
   /**
    * 发布延迟事件
    *
-   * @param topic 主题
-   * @param event 事件数据
+   * @param topic        主题
+   * @param event        事件数据
    * @param delaySeconds 延迟秒数
    */
   public void publishEvent(String topic, Object event, long delaySeconds) {
@@ -82,7 +84,8 @@ public class RedisEventPublisher implements EventPublisher {
       } else {
         // 立即发布
         redisTemplate.convertAndSend(topic, message);
-        log.debug("[Redis事件发布] 事件已发布: topic={}, eventId={}", topic, eventMessage.getEventId());
+        log.debug("[Redis事件发布] 事件已发布: topic={}, eventId={}", topic,
+            eventMessage.getEventId());
       }
     } catch (Exception e) {
       log.error("[Redis事件发布] 发布事件失败: topic={}, event={}", topic, event, e);
@@ -114,7 +117,8 @@ public class RedisEventPublisher implements EventPublisher {
           message);
     } catch (Exception e) {
       log.error(
-          "[Redis事件发布] 发布事件失败: topic={}, event={}, excludeNode={}", topic, event, excludeNodeId, e);
+          "[Redis事件发布] 发布事件失败: topic={}, event={}, excludeNode={}", topic, event,
+          excludeNodeId, e);
     }
   }
 }

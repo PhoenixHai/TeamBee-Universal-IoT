@@ -31,7 +31,8 @@ public class ApplicationUriPrinter implements CommandLineRunner {
   @Value("${server.servlet.context-path:}")
   private String contextPath;
 
-  @Autowired private MagicAPIProperties properties;
+  @Autowired
+  private MagicAPIProperties properties;
 
   @Override
   public void run(String... args) throws Exception {
@@ -48,23 +49,24 @@ public class ApplicationUriPrinter implements CommandLineRunner {
     String localUrl =
         schema
             + PathUtils.replaceSlash(
-                String.format(
-                    "localhost:%s/%s/%s/",
-                    port, contextPath, Objects.toString(properties.getPrefix(), "")));
+            String.format(
+                "localhost:%s/%s/%s/",
+                port, contextPath, Objects.toString(properties.getPrefix(), "")));
     String externUrl =
         schema
             + PathUtils.replaceSlash(
-                String.format(
-                    "%s:%s/%s/%s/",
-                    ip, port, contextPath, Objects.toString(properties.getPrefix(), "")));
+            String.format(
+                "%s:%s/%s/%s/",
+                ip, port, contextPath, Objects.toString(properties.getPrefix(), "")));
     System.out.printf(
-        "服务启动成功，magic-api已内置启动! Access URLs:" + "\n\t接口本地地址: \t\t%s" + "\n\t接口外部地址: \t\t%s\n",
+        "服务启动成功，magic-api已内置启动! Access URLs:" + "\n\t接口本地地址: \t\t%s"
+            + "\n\t接口外部地址: \t\t%s\n",
         localUrl, externUrl);
     if (!StringUtils.isEmpty(magicWebPath)) {
       String webPath =
           schema
               + PathUtils.replaceSlash(
-                  String.format("%s:%s/%s/%s/index.html", ip, port, contextPath, magicWebPath));
+              String.format("%s:%s/%s/%s/index.html", ip, port, contextPath, magicWebPath));
       System.out.println("\t接口配置平台: \t\t" + webPath);
     }
     System.out.println("\t可通过配置关闭输出: \tmagic-api.show-url=false");

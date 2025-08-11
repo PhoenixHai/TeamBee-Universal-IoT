@@ -30,7 +30,9 @@ public class MagicDynamicDataSource {
 
   private final Map<String, DataSourceNode> dataSourceMap = new HashMap<>();
 
-  /** 注册默认数据源 */
+  /**
+   * 注册默认数据源
+   */
   public void put(DataSource dataSource) {
     put(null, dataSource);
   }
@@ -48,7 +50,7 @@ public class MagicDynamicDataSource {
    * 注册数据源（可以运行时注册）
    *
    * @param dataSourceKey 数据源Key
-   * @param maxRows 最大返回行数
+   * @param maxRows       最大返回行数
    */
   public void put(String dataSourceKey, DataSource dataSource, int maxRows) {
     put(null, dataSourceKey, dataSourceKey, dataSource, maxRows);
@@ -57,8 +59,8 @@ public class MagicDynamicDataSource {
   /**
    * 注册数据源（可以运行时注册）
    *
-   * @param id 数据源ID
-   * @param dataSourceKey 数据源Key
+   * @param id             数据源ID
+   * @param dataSourceKey  数据源Key
    * @param datasourceName 数据源名称
    */
   public void put(
@@ -90,7 +92,9 @@ public class MagicDynamicDataSource {
     }
   }
 
-  /** 获取全部数据源 */
+  /**
+   * 获取全部数据源
+   */
   public List<String> datasources() {
     return new ArrayList<>(this.dataSourceMap.keySet());
   }
@@ -99,7 +103,9 @@ public class MagicDynamicDataSource {
     return this.dataSourceMap.isEmpty();
   }
 
-  /** 获取全部数据源 */
+  /**
+   * 获取全部数据源
+   */
   public Collection<DataSourceNode> datasourceNodes() {
     return this.dataSourceMap.values();
   }
@@ -123,7 +129,9 @@ public class MagicDynamicDataSource {
     return result;
   }
 
-  /** 获取默认数据源 */
+  /**
+   * 获取默认数据源
+   */
   public DataSourceNode getDataSource() {
     return getDataSource(null);
   }
@@ -142,7 +150,9 @@ public class MagicDynamicDataSource {
     return dataSourceNode;
   }
 
-  /** 设置默认数据源 */
+  /**
+   * 设置默认数据源
+   */
   public void setDefault(DataSource dataSource) {
     put(dataSource);
   }
@@ -172,7 +182,9 @@ public class MagicDynamicDataSource {
 
     private final String name;
 
-    /** 事务管理器 */
+    /**
+     * 事务管理器
+     */
     private final DataSourceTransactionManager dataSourceTransactionManager;
 
     private final JdbcTemplate jdbcTemplate;

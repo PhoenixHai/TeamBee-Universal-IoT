@@ -31,7 +31,8 @@ public class FunctionInfo extends PathMagicEntity {
     try {
       this.parameters =
           JsonUtils.readValue(
-              Objects.toString(parameter, "[]"), new TypeReference<List<Parameter>>() {});
+              Objects.toString(parameter, "[]"), new TypeReference<List<Parameter>>() {
+              });
     } catch (Throwable ignored) {
     }
   }

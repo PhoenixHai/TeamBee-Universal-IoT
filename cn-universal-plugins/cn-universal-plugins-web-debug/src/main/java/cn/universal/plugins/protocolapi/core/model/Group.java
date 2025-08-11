@@ -29,10 +29,14 @@ public class Group extends Attributes<Object> {
 
   private String updateBy;
 
-  /** 路径变量 */
+  /**
+   * 路径变量
+   */
   private List<Path> paths = Collections.emptyList();
 
-  /** 分组选项 */
+  /**
+   * 分组选项
+   */
   private List<BaseDefinition> options = Collections.emptyList();
 
   public Group(String id, String name) {
@@ -40,7 +44,8 @@ public class Group extends Attributes<Object> {
     this.name = name;
   }
 
-  public Group() {}
+  public Group() {
+  }
 
   public String getId() {
     return id;

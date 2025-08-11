@@ -32,19 +32,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/monitor/mqtt/v2/statistics")
 public class MqttStatisticsController {
 
-  @Autowired private ThirdMQTTConfigService mqttConfigService;
+  @Autowired
+  private ThirdMQTTConfigService mqttConfigService;
 
-  @Autowired private ThirdMQTTServerManager mqttServerManager;
+  @Autowired
+  private ThirdMQTTServerManager mqttServerManager;
 
-  @Autowired private SysMQTTManager sysMQTTManager;
+  @Autowired
+  private SysMQTTManager sysMQTTManager;
 
-  @Autowired private MqttMetricsMananer metricsCollector;
+  @Autowired
+  private MqttMetricsMananer metricsCollector;
 
-  @Autowired private MQTTStatisticsLogger statisticsLogger;
+  @Autowired
+  private MQTTStatisticsLogger statisticsLogger;
 
   // ==================== 配置统计 ====================
 
-  /** 获取完整配置统计信息 */
+  /**
+   * 获取完整配置统计信息
+   */
   @GetMapping("/config")
   public ResponseEntity<Map<String, Object>> getConfigStatistics() {
     try {
@@ -68,7 +75,9 @@ public class MqttStatisticsController {
     }
   }
 
-  /** 获取产品列表统计 */
+  /**
+   * 获取产品列表统计
+   */
   @GetMapping("/products")
   public ResponseEntity<Map<String, Object>> getProductStatistics() {
     try {
@@ -99,7 +108,9 @@ public class MqttStatisticsController {
     }
   }
 
-  /** 检查指定产品配置是否存在 */
+  /**
+   * 检查指定产品配置是否存在
+   */
   @GetMapping("/products/{productKey}/exists")
   public ResponseEntity<Map<String, Object>> checkProductExists(@PathVariable String productKey) {
     try {
@@ -127,7 +138,9 @@ public class MqttStatisticsController {
 
   // ==================== 连接统计 ====================
 
-  /** 获取连接统计信息 */
+  /**
+   * 获取连接统计信息
+   */
   @GetMapping("/connections")
   public ResponseEntity<Map<String, Object>> getConnectionStatistics() {
     try {
@@ -187,7 +200,9 @@ public class MqttStatisticsController {
     }
   }
 
-  /** 获取详细的客户端连接信息 */
+  /**
+   * 获取详细的客户端连接信息
+   */
   @GetMapping("/connections/details")
   public ResponseEntity<Map<String, Object>> getConnectionDetails() {
     try {
@@ -244,7 +259,9 @@ public class MqttStatisticsController {
 
   // ==================== 性能指标统计 ====================
 
-  /** 获取性能指标快照 */
+  /**
+   * 获取性能指标快照
+   */
   @GetMapping("/metrics/snapshot")
   public ResponseEntity<Map<String, Object>> getMetricsSnapshot() {
     try {
@@ -284,7 +301,9 @@ public class MqttStatisticsController {
     }
   }
 
-  /** 获取详细的性能统计 */
+  /**
+   * 获取详细的性能统计
+   */
   @GetMapping("/metrics/detailed")
   public ResponseEntity<Map<String, Object>> getDetailedMetrics() {
     try {
@@ -308,7 +327,9 @@ public class MqttStatisticsController {
     }
   }
 
-  /** 重置性能指标 */
+  /**
+   * 重置性能指标
+   */
   @PostMapping("/metrics/reset")
   public ResponseEntity<Map<String, Object>> resetMetrics() {
     try {
@@ -333,7 +354,9 @@ public class MqttStatisticsController {
 
   // ==================== 健康状态统计 ====================
 
-  /** 获取系统健康状态 */
+  /**
+   * 获取系统健康状态
+   */
   @GetMapping("/health")
   public ResponseEntity<Map<String, Object>> getHealthStatus() {
     try {
@@ -402,7 +425,9 @@ public class MqttStatisticsController {
 
   // ==================== 综合统计 ====================
 
-  /** 获取完整的统计概览 */
+  /**
+   * 获取完整的统计概览
+   */
   @GetMapping("/overview")
   public ResponseEntity<Map<String, Object>> getStatisticsOverview() {
     try {
@@ -445,7 +470,7 @@ public class MqttStatisticsController {
           "connectionRate",
           allStatus.size() > 0
               ? String.format(
-                  "%.2f%%", ((connectedCount + systemCoveredCount) * 100.0 / allStatus.size()))
+              "%.2f%%", ((connectedCount + systemCoveredCount) * 100.0 / allStatus.size()))
               : "0.00%");
       overview.put("connections", connectionOverview);
 
@@ -486,7 +511,9 @@ public class MqttStatisticsController {
 
   // ==================== 统计信息日志 ====================
 
-  /** 手动触发统计信息日志打印 */
+  /**
+   * 手动触发统计信息日志打印
+   */
   @PostMapping("/logging/trigger")
   public ResponseEntity<Map<String, Object>> triggerStatisticsLog() {
     try {
@@ -509,7 +536,9 @@ public class MqttStatisticsController {
     }
   }
 
-  /** 获取统计信息日志配置 */
+  /**
+   * 获取统计信息日志配置
+   */
   @GetMapping("/logging/config")
   public ResponseEntity<Map<String, Object>> getLoggingConfig() {
     try {

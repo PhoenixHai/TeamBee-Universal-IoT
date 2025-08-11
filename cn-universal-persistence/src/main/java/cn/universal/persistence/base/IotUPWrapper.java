@@ -25,15 +25,18 @@ public interface IotUPWrapper<T> {
    *
    * @param downRequests 消息原文
    */
-  default void beforePush(List<T> downRequests) {}
+  default void beforePush(List<T> downRequests) {
+  }
 
   /**
    * mqtt 推送
    *
-   * @param topic 主题
+   * @param topic   主题
    * @param message 消息
    */
-  default void mqttPush(String topic, String message) {}
+  default void mqttPush(String topic, String message) {
+  }
 
-  default void tcpPush(String applicationId, String productKey, String message) {}
+  default void tcpPush(String applicationId, String productKey, String message) {
+  }
 }

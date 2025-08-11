@@ -26,7 +26,9 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Created by zhuocongbin date 2018/3/15 */
+/**
+ * Created by zhuocongbin date 2018/3/15
+ */
 public final class HttpSendCenter {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(HttpSendCenter.class);
@@ -89,14 +91,16 @@ public final class HttpSendCenter {
     return handleRequest(request);
   }
 
-  public static void putAsync(String apiKey, String url, JSONObject body, Callback callback) {}
+  public static void putAsync(String apiKey, String url, JSONObject body, Callback callback) {
+  }
 
   public static JSONObject delete(String apiKey, String url) {
     Request request = new Request.Builder().header("api-key", apiKey).url(url).delete().build();
     return handleRequest(request);
   }
 
-  public static void deleteAsync(String apiKey, String url, Callback callback) {}
+  public static void deleteAsync(String apiKey, String url, Callback callback) {
+  }
 
   private static void handleAsyncRequest(Request request, Callback callback) {
     httpClient.newCall(request).enqueue(callback);

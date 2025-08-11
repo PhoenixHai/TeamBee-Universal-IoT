@@ -30,7 +30,7 @@ public interface ResultProvider {
    * 根据异常内容构建结果
    *
    * @param requestEntity 请求信息
-   * @param root 异常对象
+   * @param root          异常对象
    */
   default Object buildResult(RequestEntity requestEntity, Throwable root) {
     MagicScriptException se = null;
@@ -55,7 +55,7 @@ public interface ResultProvider {
    * 构建JSON返回结果，code和message 默认为 1 success
    *
    * @param requestEntity 请求相关信息
-   * @param data 返回内容
+   * @param data          返回内容
    */
   default Object buildResult(RequestEntity requestEntity, Object data) {
     if (data instanceof ExitValue) {
@@ -78,8 +78,8 @@ public interface ResultProvider {
    * 构建JSON返回结果
    *
    * @param requestEntity 请求相关信息
-   * @param code 状态码
-   * @param message 状态说明
+   * @param code          状态码
+   * @param message       状态说明
    */
   default Object buildResult(RequestEntity requestEntity, int code, String message) {
     return buildResult(requestEntity, code, message, null);
@@ -89,7 +89,7 @@ public interface ResultProvider {
    * 构建异常返回结果
    *
    * @param requestEntity 请求相关信息
-   * @param throwable 异常信息
+   * @param throwable     异常信息
    * @since 1.2.2
    */
   default Object buildException(RequestEntity requestEntity, Throwable throwable) {
@@ -100,17 +100,17 @@ public interface ResultProvider {
    * 构建JSON返回结果
    *
    * @param requestEntity 请求相关信息
-   * @param code 状态码
-   * @param message 状态说明
-   * @param data 数据内容，可以通过data的类型判断是否是分页结果进行区分普通结果集和分页结果集
+   * @param code          状态码
+   * @param message       状态说明
+   * @param data          数据内容，可以通过data的类型判断是否是分页结果进行区分普通结果集和分页结果集
    */
   Object buildResult(RequestEntity requestEntity, int code, String message, Object data);
 
   /**
    * @param requestEntity 请求相关信息
-   * @param page 分页对象
-   * @param total 总数
-   * @param data 数据内容
+   * @param page          分页对象
+   * @param total         总数
+   * @param data          数据内容
    */
   default Object buildPageResult(
       RequestEntity requestEntity, Page page, long total, List<Map<String, Object>> data) {

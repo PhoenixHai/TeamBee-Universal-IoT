@@ -14,7 +14,9 @@ package cn.onenet.protocol.nb.entity;
 
 import cn.onenet.protocol.nb.config.Config;
 
-/** Created by zhuocongbin date 2018/3/15 */
+/**
+ * Created by zhuocongbin date 2018/3/15
+ */
 public class Read extends CommonEntity {
 
   public void setObjInstId(Integer objInstId) {
@@ -26,7 +28,7 @@ public class Read extends CommonEntity {
   }
 
   /**
-   * @param imei 设备IMEI
+   * @param imei  设备IMEI
    * @param objId 读对象ID 其他可选参数Object Instance ID,Rescource ID可以通过相关set函数设置
    */
   public Read(String imei, Integer objId) {

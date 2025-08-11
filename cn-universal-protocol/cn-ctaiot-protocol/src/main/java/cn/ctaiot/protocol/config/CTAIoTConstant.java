@@ -24,10 +24,14 @@ import java.util.stream.Stream;
  */
 public interface CTAIoTConstant {
 
-  /** 离线 */
+  /**
+   * 离线
+   */
   int OFFLINE = 0;
 
-  /** 在线 */
+  /**
+   * 在线
+   */
   int ONLINE = 1;
 
   static enum CommandRespons {
@@ -45,23 +49,36 @@ public interface CTAIoTConstant {
      * @see cn.hutool.core.util.HexUtil decodeHex
      */
     HEX,
-    /** */
+    /**
+     *
+     */
     NULL
   }
 
-  /** 消息类型 */
+  /**
+   * 消息类型
+   */
   static enum CTAIoTMessageType {
-    /** 在线离线 */
+    /**
+     * 在线离线
+     */
     deviceOnlineOfflineReport,
-    /** 数据上报 */
+    /**
+     * 数据上报
+     */
     dataReport,
     dataReportTupUnion,
-    /** 事件上报 */
+    /**
+     * 事件上报
+     */
     eventReport,
-    /** 设备命令响应 */
+    /**
+     * 设备命令响应
+     */
     commandResponse;
 
-    private CTAIoTMessageType() {}
+    private CTAIoTMessageType() {
+    }
 
     @JsonCreator
     public static CTAIoTMessageType find(String value) {

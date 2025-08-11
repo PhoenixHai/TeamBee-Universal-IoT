@@ -58,7 +58,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 /**
  * IoT设备服务抽象基类
  *
- * <p>提供IoT平台中设备管理的通用功能，包括： - 产品信息查询和管理 - 设备生命周期管理 - 协议编解码支持 - 设备数据日志记录 - 设备影子服务 - 消息订阅管理 - AES加解密功能
+ * <p>提供IoT平台中设备管理的通用功能，包括： - 产品信息查询和管理 - 设备生命周期管理 - 协议编解码支持 - 设备数据日志记录 - 设备影子服务 - 消息订阅管理 -
+ * AES加解密功能
  *
  * <p>子类通过继承此类获得设备管理的核心能力，专注于实现特定的业务逻辑
  *
@@ -71,21 +72,28 @@ public abstract class AbstratIoTService {
   @Resource(name = "ioTDeviceActionAfterService")
   protected IoTDeviceActionAfterService ioTDeviceActionAfterService;
 
-  @Autowired protected IoTProductDeviceService iotProductDeviceService;
-  @Autowired private IoTDeviceService iotDeviceService;
+  @Autowired
+  protected IoTProductDeviceService iotProductDeviceService;
+  @Autowired
+  private IoTDeviceService iotDeviceService;
 
-  @Autowired protected IoTDeviceShadowService iotDeviceShadowService;
+  @Autowired
+  protected IoTDeviceShadowService iotDeviceShadowService;
 
-  @Resource protected IIoTDeviceDataService iIoTDeviceDataService;
+  @Resource
+  protected IIoTDeviceDataService iIoTDeviceDataService;
 
-  @Resource private IoTDeviceSubscribeService iotDeviceSubscribeService;
+  @Resource
+  private IoTDeviceSubscribeService iotDeviceSubscribeService;
 
   @Resource(name = "ioTDeviceActionAfterService")
   private IoTDeviceLifeCycle ioTDeviceLifeCycle;
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
-  @Autowired private ICodecService codecService;
+  @Autowired
+  private ICodecService codecService;
 
   /**
    * 根据产品唯一编号查询产品信息
@@ -116,8 +124,8 @@ public abstract class AbstratIoTService {
    *
    * <p>根据产品标识、设备标识和消息类型获取对应的订阅地址 用于消息推送和事件通知
    *
-   * @param productKey 产品唯一标识
-   * @param iotId 设备唯一标识
+   * @param productKey  产品唯一标识
+   * @param iotId       设备唯一标识
    * @param messageType 消息类型
    * @return 订阅URL列表
    */
@@ -164,7 +172,8 @@ public abstract class AbstratIoTService {
 
     // 防重复上线：如果最近已经上线过，则不重复执行
     if (needOnline && recentlyOnline) {
-      log.debug("设备最近已上线，跳过重复上线: deviceId={}, reason={}", instanceBO.getDeviceId(), reason);
+      log.debug("设备最近已上线，跳过重复上线: deviceId={}, reason={}", instanceBO.getDeviceId(),
+          reason);
       needOnline = false;
     }
 
@@ -212,9 +221,9 @@ public abstract class AbstratIoTService {
    *
    * <p>批量处理设备上行请求，包括： - 保存设备数据日志到数据库 - 更新设备影子状态 - 过滤调试模式的消息
    *
-   * @param upRequest 上行请求列表
+   * @param upRequest    上行请求列表
    * @param ioTDeviceDTO 设备信息
-   * @param ioTProduct 产品信息
+   * @param ioTProduct   产品信息
    */
   protected void doLogMetadataAndShadow(
       List<? extends BaseUPRequest> upRequest, IoTDeviceDTO ioTDeviceDTO, IoTProduct ioTProduct) {
@@ -257,7 +266,7 @@ public abstract class AbstratIoTService {
    * <p>使用设备唯一标识作为密钥对原始报文进行AES加密 密钥生成规则：使用iotId的MD5值作为密钥
    *
    * @param payload 原始报文内容
-   * @param iotId 设备唯一标识
+   * @param iotId   设备唯一标识
    * @return 加密后的报文
    */
   protected String playloadEncode(String payload, String iotId) {
@@ -271,7 +280,7 @@ public abstract class AbstratIoTService {
    * <p>使用设备唯一标识作为密钥对加密报文进行AES解密 密钥生成规则：使用iotId的MD5值作为密钥
    *
    * @param payload 加密的报文内容
-   * @param iotId 设备唯一标识
+   * @param iotId   设备唯一标识
    * @return 解密后的原始报文
    */
   protected String playloadDecode(String payload, String iotId) {
@@ -346,7 +355,8 @@ public abstract class AbstratIoTService {
       builder.event(event);
       builder.messageType(codec.getMessageType());
       if ("offline".equals(event)) {
-        ioTDeviceActionAfterService.offline(ioTDeviceDTO.getProductKey(), ioTDeviceDTO.getDeviceId());
+        ioTDeviceActionAfterService.offline(ioTDeviceDTO.getProductKey(),
+            ioTDeviceDTO.getDeviceId());
       }
     }
     // 设置data
@@ -401,7 +411,9 @@ public abstract class AbstratIoTService {
     }
   }
 
-  /** 处理事件名称和订阅消息 */
+  /**
+   * 处理事件名称和订阅消息
+   */
   protected void doEventNameAndSubscribe(
       List<? extends UPRequest> upRequests, IoTDeviceDTO ioTDeviceDTO) {
     if (CollectionUtil.isNotEmpty(upRequests)) {

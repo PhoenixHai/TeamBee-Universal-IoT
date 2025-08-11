@@ -30,15 +30,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class DashboardStatisticsTask implements ApplicationRunner {
 
-  @Autowired private IoTDashboardStatisticsMapper dashboardStatisticsMapper;
+  @Autowired
+  private IoTDashboardStatisticsMapper dashboardStatisticsMapper;
 
-  @Autowired private StringRedisTemplate redisTemplate;
+  @Autowired
+  private StringRedisTemplate redisTemplate;
 
-  @Autowired private IoTDeviceMapper ioTDeviceMapper;
+  @Autowired
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Autowired private DashboardService dashboardService;
+  @Autowired
+  private DashboardService dashboardService;
 
-  @Autowired private PushStatisticsProcessor pushStatisticsProcessor;
+  @Autowired
+  private PushStatisticsProcessor pushStatisticsProcessor;
 
   // 分布式锁key前缀
   private static final String LOCK_KEY_PREFIX = "dashboard:statistics:lock:";
@@ -52,7 +57,9 @@ public class DashboardStatisticsTask implements ApplicationRunner {
   // 最小执行间隔（秒）
   private static final long MIN_EXECUTION_INTERVAL = 300; // 5分钟
 
-  /** 获取所有平台列表 */
+  /**
+   * 获取所有平台列表
+   */
   private List<String> getAllPlatforms() {
     try {
       // 从PushStatisticsProcessor的本地缓存中获取活跃的平台
@@ -74,7 +81,9 @@ public class DashboardStatisticsTask implements ApplicationRunner {
     }
   }
 
-  /** 应用启动时初始化统计数据 */
+  /**
+   * 应用启动时初始化统计数据
+   */
   @Override
   public void run(ApplicationArguments args) throws Exception {
     log.info("[仪表盘统计] 应用启动，开始初始化统计数据");
@@ -92,13 +101,17 @@ public class DashboardStatisticsTask implements ApplicationRunner {
     }
   }
 
-  /** 每10分钟刷新数据库统计数据（带分布式锁） */
+  /**
+   * 每10分钟刷新数据库统计数据（带分布式锁）
+   */
   @Scheduled(fixedRate = 600000) // 10分钟 = 600000毫秒
   public void refreshDatabaseStatistics() {
     refreshDatabaseStatisticsWithLock();
   }
 
-  /** 带分布式锁的数据库统计刷新 */
+  /**
+   * 带分布式锁的数据库统计刷新
+   */
   private void refreshDatabaseStatisticsWithLock() {
     String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     String lockKey = LOCK_KEY_PREFIX + today;
@@ -163,7 +176,9 @@ public class DashboardStatisticsTask implements ApplicationRunner {
     }
   }
 
-  /** 刷新平台消息统计数据 */
+  /**
+   * 刷新平台消息统计数据
+   */
   private void refreshPlatformMessageStatistics(LocalDate date) {
     try {
       List<String> platforms = getAllPlatforms();
@@ -277,7 +292,9 @@ public class DashboardStatisticsTask implements ApplicationRunner {
     }
   }
 
-  /** 刷新产品消息统计数据 */
+  /**
+   * 刷新产品消息统计数据
+   */
   private void refreshProductMessageStatistics(LocalDate date) {
     try {
       // 获取所有活跃的产品key
@@ -380,13 +397,16 @@ public class DashboardStatisticsTask implements ApplicationRunner {
     }
   }
 
-  /** 获取活跃的产品key列表 */
+  /**
+   * 获取活跃的产品key列表
+   */
   private List<String> getActiveProductKeys() {
     try {
       // 从PushStatisticsProcessor的本地缓存中获取活跃的产品key
       List<String> productKeys = pushStatisticsProcessor.getActiveProductKeys();
       log.info(
-          "[仪表盘统计] 从PushStatisticsProcessor获取到 {} 个活跃产品key: {}", productKeys.size(), productKeys);
+          "[仪表盘统计] 从PushStatisticsProcessor获取到 {} 个活跃产品key: {}", productKeys.size(),
+          productKeys);
       return productKeys;
 
     } catch (Exception e) {
@@ -396,13 +416,17 @@ public class DashboardStatisticsTask implements ApplicationRunner {
     }
   }
 
-  /** 手动刷新统计数据 */
+  /**
+   * 手动刷新统计数据
+   */
   public void manualRefreshStatistics() {
     log.info("[仪表盘统计] 手动触发统计数据刷新");
     refreshDatabaseStatisticsWithLock();
   }
 
-  /** 检查指定日期的统计数据是否存在 */
+  /**
+   * 检查指定日期的统计数据是否存在
+   */
   public boolean checkStatisticsExists(LocalDate date) {
     try {
       // 检查是否存在当天的MESSAGE_TOTAL记录
@@ -422,7 +446,9 @@ public class DashboardStatisticsTask implements ApplicationRunner {
     }
   }
 
-  /** 清理重复的统计数据 */
+  /**
+   * 清理重复的统计数据
+   */
   public void cleanupDuplicateStatistics(LocalDate date) {
     try {
       log.info("[仪表盘统计] 开始清理{}的重复统计数据", date);

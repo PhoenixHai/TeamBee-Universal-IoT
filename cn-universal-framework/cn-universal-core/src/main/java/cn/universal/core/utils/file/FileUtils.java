@@ -30,7 +30,9 @@ import java.nio.charset.StandardCharsets;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
-/** 文件处理工具类 @Author ruoyi */
+/**
+ * 文件处理工具类 @Author ruoyi
+ */
 public class FileUtils {
 
   public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
@@ -39,7 +41,7 @@ public class FileUtils {
    * 输出指定文件的byte数组
    *
    * @param filePath 文件路径
-   * @param os 输出流
+   * @param os       输出流
    * @return
    */
   public static void writeBytes(String filePath, OutputStream os) throws IOException {
@@ -77,7 +79,7 @@ public class FileUtils {
   /**
    * 写数据到文件中
    *
-   * @param data 数据
+   * @param data      数据
    * @param uploadDir 目标文件
    * @return 目标文件
    * @throws IOException IO异常
@@ -149,7 +151,7 @@ public class FileUtils {
   /**
    * 下载文件名重新编码
    *
-   * @param request 请求对象
+   * @param request  请求对象
    * @param fileName 文件名
    * @return 编码后的文件名
    */
@@ -177,7 +179,7 @@ public class FileUtils {
   /**
    * 下载文件名重新编码
    *
-   * @param response 响应对象
+   * @param response     响应对象
    * @param realFileName 真实文件名
    * @return
    */

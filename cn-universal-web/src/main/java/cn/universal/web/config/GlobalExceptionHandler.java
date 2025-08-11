@@ -52,7 +52,9 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-  /** 未知异常处理 */
+  /**
+   * 未知异常处理
+   */
   @ExceptionHandler(value = Exception.class)
   @ResponseBody
   public R exceptionHandler(Exception e) {
@@ -140,7 +142,9 @@ public class GlobalExceptionHandler {
     return R.error("数据库异常，请联系管理员");
   }
 
-  /** 处理认证异常 */
+  /**
+   * 处理认证异常
+   */
   @ExceptionHandler(AuthenticationException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public void handleAuthenticationException(
@@ -163,7 +167,9 @@ public class GlobalExceptionHandler {
     response.getWriter().write(JSONUtil.toJsonStr(errorResponse));
   }
 
-  /** 处理 OAuth2 认证异常 */
+  /**
+   * 处理 OAuth2 认证异常
+   */
   @ExceptionHandler(OAuth2AuthenticationException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public void handleOAuth2AuthenticationException(
@@ -193,7 +199,9 @@ public class GlobalExceptionHandler {
     response.getWriter().write(JSONUtil.toJsonStr(errorResponse));
   }
 
-  /** 获取错误信息 */
+  /**
+   * 获取错误信息
+   */
   private String getErrorMessage(AuthenticationException exception) {
     if (exception instanceof BadCredentialsException) {
       return exception.getMessage();

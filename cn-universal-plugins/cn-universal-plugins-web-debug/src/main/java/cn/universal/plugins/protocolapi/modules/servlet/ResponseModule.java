@@ -33,7 +33,7 @@ public class ResponseModule {
   /**
    * 文件下载
    *
-   * @param value 文件内容
+   * @param value    文件内容
    * @param filename 文件名
    */
   @Comment("文件下载")
@@ -52,7 +52,7 @@ public class ResponseModule {
   /**
    * 自行构建分页结果
    *
-   * @param total 条数
+   * @param total  条数
    * @param values 数据内容
    */
   @Comment("返回自定义分页结果")
@@ -72,7 +72,9 @@ public class ResponseModule {
     return ResponseEntity.ok(value);
   }
 
-  /** 添加Header */
+  /**
+   * 添加Header
+   */
   @Comment("添加response header")
   public ResponseModule addHeader(
       @Comment(name = "key", value = "header名") String key,
@@ -86,7 +88,9 @@ public class ResponseModule {
     return this;
   }
 
-  /** 设置header */
+  /**
+   * 设置header
+   */
   @Comment("设置response header")
   public ResponseModule setHeader(
       @Comment(name = "key", value = "header名") String key,
@@ -124,7 +128,7 @@ public class ResponseModule {
    * 展示图片
    *
    * @param value 图片内容
-   * @param mime 图片类型，image/png,image/jpeg,image/gif
+   * @param mime  图片类型，image/png,image/jpeg,image/gif
    */
   @Comment("输出图片")
   public ResponseEntity image(
@@ -151,7 +155,8 @@ public class ResponseModule {
    * @param url 目标网址
    */
   @Comment("重定向")
-  public NullValue redirect(@Comment(name = "url", value = "目标网址") String url) throws IOException {
+  public NullValue redirect(@Comment(name = "url", value = "目标网址") String url)
+      throws IOException {
     getResponse().sendRedirect(url);
     return NullValue.INSTANCE;
   }

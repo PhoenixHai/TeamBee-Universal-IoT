@@ -102,7 +102,9 @@ public class MQTTTopicManagerTestData {
 
   // ==================== 主题配置数据 ====================
 
-  /** 创建标准主题配置JSON */
+  /**
+   * 创建标准主题配置JSON
+   */
   public static String createStandardTopicConfigJson() {
     return "{\n"
         + "    \"thing-model\": {\n"
@@ -130,7 +132,9 @@ public class MQTTTopicManagerTestData {
         + "}";
   }
 
-  /** 创建扩展主题配置JSON */
+  /**
+   * 创建扩展主题配置JSON
+   */
   public static String createExtendedTopicConfigJson() {
     return "{\n"
         + "    \"thing-model\": {\n"
@@ -161,7 +165,9 @@ public class MQTTTopicManagerTestData {
         + "}";
   }
 
-  /** 创建空主题配置JSON */
+  /**
+   * 创建空主题配置JSON
+   */
   public static String createEmptyTopicConfigJson() {
     return "{\n"
         + "    \"thing-model\": {\n"
@@ -179,7 +185,9 @@ public class MQTTTopicManagerTestData {
         + "}";
   }
 
-  /** 创建无效主题配置JSON */
+  /**
+   * 创建无效主题配置JSON
+   */
   public static String createInvalidTopicConfigJson() {
     return "{\n"
         + "    \"invalid\": \"json\",\n"
@@ -191,7 +199,9 @@ public class MQTTTopicManagerTestData {
 
   // ==================== 配置Map数据 ====================
 
-  /** 创建标准配置Map */
+  /**
+   * 创建标准配置Map
+   */
   public static Map<String, Object> createStandardConfigMap() {
     Map<String, Object> configMap = new HashMap<>();
     configMap.put("subscribeTopics", "$thing/up/property/+/+,$thing/up/event/+/+,$ota/report/+/+");
@@ -203,7 +213,9 @@ public class MQTTTopicManagerTestData {
     return configMap;
   }
 
-  /** 创建使用分号分隔符的配置Map */
+  /**
+   * 创建使用分号分隔符的配置Map
+   */
   public static Map<String, Object> createSemicolonConfigMap() {
     Map<String, Object> configMap = new HashMap<>();
     configMap.put("subscribeTopics", "$thing/up/property/+/+;$thing/up/event/+/+;$ota/report/+/+");
@@ -211,7 +223,9 @@ public class MQTTTopicManagerTestData {
     return configMap;
   }
 
-  /** 创建带空白字符的配置Map */
+  /**
+   * 创建带空白字符的配置Map
+   */
   public static Map<String, Object> createWhitespaceConfigMap() {
     Map<String, Object> configMap = new HashMap<>();
     configMap.put(
@@ -220,7 +234,9 @@ public class MQTTTopicManagerTestData {
     return configMap;
   }
 
-  /** 创建空配置Map */
+  /**
+   * 创建空配置Map
+   */
   public static Map<String, Object> createEmptyConfigMap() {
     Map<String, Object> configMap = new HashMap<>();
     configMap.put("subscribeTopics", "");
@@ -228,7 +244,9 @@ public class MQTTTopicManagerTestData {
     return configMap;
   }
 
-  /** 创建null配置Map */
+  /**
+   * 创建null配置Map
+   */
   public static Map<String, Object> createNullConfigMap() {
     Map<String, Object> configMap = new HashMap<>();
     configMap.put("subscribeTopics", null);
@@ -236,7 +254,9 @@ public class MQTTTopicManagerTestData {
     return configMap;
   }
 
-  /** 创建异常配置Map */
+  /**
+   * 创建异常配置Map
+   */
   public static Map<String, Object> createExceptionConfigMap() {
     Map<String, Object> configMap = new HashMap<>();
     configMap.put("subscribeTopics", new Object()); // 非字符串类型
@@ -246,7 +266,9 @@ public class MQTTTopicManagerTestData {
 
   // ==================== 主题列表数据 ====================
 
-  /** 获取所有有效主题列表 */
+  /**
+   * 获取所有有效主题列表
+   */
   public static List<String> getAllValidTopics() {
     return Arrays.asList(
         // 固定前缀主题
@@ -266,7 +288,9 @@ public class MQTTTopicManagerTestData {
         VALID_OTA_UPDATE_TOPIC);
   }
 
-  /** 获取物模型主题列表 */
+  /**
+   * 获取物模型主题列表
+   */
   public static List<String> getThingModelTopics() {
     return Arrays.asList(
         // 固定前缀
@@ -279,7 +303,9 @@ public class MQTTTopicManagerTestData {
         VALID_DYNAMIC_THING_DOWN_TOPIC);
   }
 
-  /** 获取透传主题列表 */
+  /**
+   * 获取透传主题列表
+   */
   public static List<String> getPassthroughTopics() {
     return Arrays.asList(
         // 固定前缀
@@ -288,23 +314,31 @@ public class MQTTTopicManagerTestData {
         VALID_DYNAMIC_PASSTHROUGH_UP_TOPIC, VALID_DYNAMIC_PASSTHROUGH_DOWN_TOPIC);
   }
 
-  /** 获取系统级主题列表 */
+  /**
+   * 获取系统级主题列表
+   */
   public static List<String> getSystemLevelTopics() {
     return Arrays.asList(VALID_OTA_REPORT_TOPIC, VALID_OTA_UPDATE_TOPIC);
   }
 
-  /** 获取无效主题列表 */
+  /**
+   * 获取无效主题列表
+   */
   public static List<String> getInvalidTopics() {
     return Arrays.asList(
         INVALID_TOPIC, NULL_TOPIC, EMPTY_TOPIC, BLANK_TOPIC, MALFORMED_TOPIC, INCOMPLETE_TOPIC);
   }
 
-  /** 获取特殊字符主题列表 */
+  /**
+   * 获取特殊字符主题列表
+   */
   public static List<String> getSpecialCharTopics() {
     return Arrays.asList(SPECIAL_CHAR_TOPIC, CHINESE_TOPIC, NUMERIC_TOPIC, MIXED_TOPIC);
   }
 
-  /** 获取历史格式主题列表 */
+  /**
+   * 获取历史格式主题列表
+   */
   public static List<String> getHistoricalTopics() {
     return Arrays.asList(
         HISTORICAL_TOPIC_1, HISTORICAL_TOPIC_2, HISTORICAL_TOPIC_3, HISTORICAL_TOPIC_4);
@@ -312,7 +346,9 @@ public class MQTTTopicManagerTestData {
 
   // ==================== 预期结果数据 ====================
 
-  /** 获取主题类型映射 */
+  /**
+   * 获取主题类型映射
+   */
   public static Map<String, MQTTTopicType> getTopicTypeMapping() {
     Map<String, MQTTTopicType> mapping = new HashMap<>();
     // 固定前缀主题
@@ -333,7 +369,9 @@ public class MQTTTopicManagerTestData {
     return mapping;
   }
 
-  /** 获取主题分类映射 */
+  /**
+   * 获取主题分类映射
+   */
   public static Map<String, MqttConstant.TopicCategory> getTopicCategoryMapping() {
     Map<String, MqttConstant.TopicCategory> mapping = new HashMap<>();
     // 固定前缀主题
@@ -354,7 +392,9 @@ public class MQTTTopicManagerTestData {
     return mapping;
   }
 
-  /** 获取产品Key映射 */
+  /**
+   * 获取产品Key映射
+   */
   public static Map<String, String> getProductKeyMapping() {
     Map<String, String> mapping = new HashMap<>();
     // 固定前缀主题
@@ -380,7 +420,9 @@ public class MQTTTopicManagerTestData {
     return mapping;
   }
 
-  /** 获取设备ID映射 */
+  /**
+   * 获取设备ID映射
+   */
   public static Map<String, String> getDeviceIdMapping() {
     Map<String, String> mapping = new HashMap<>();
     // 固定前缀主题
@@ -408,7 +450,9 @@ public class MQTTTopicManagerTestData {
 
   // ==================== 测试用例数据 ====================
 
-  /** 创建性能测试数据 */
+  /**
+   * 创建性能测试数据
+   */
   public static List<String> createPerformanceTestData() {
     List<String> testData = new ArrayList<>();
     String[] prefixes = {"$thing", "$qiantang", "$custom", "$iot"};
@@ -420,7 +464,9 @@ public class MQTTTopicManagerTestData {
     return testData;
   }
 
-  /** 创建边界测试数据 */
+  /**
+   * 创建边界测试数据
+   */
   public static List<String> createBoundaryTestData() {
     return Arrays.asList(
         // 固定前缀边界测试
@@ -440,10 +486,12 @@ public class MQTTTopicManagerTestData {
         "$iot/up/property/", // 动态前缀空产品Key和设备ID
         "$device/up/property//", // 动态前缀空产品Key
         "$sensor/up/property/product/" // 动态前缀空设备ID
-        );
+    );
   }
 
-  /** 创建压力测试数据 */
+  /**
+   * 创建压力测试数据
+   */
   public static List<String> createStressTestData() {
     List<String> testData = new ArrayList<>();
     Random random = new Random(42); // 固定种子以确保可重复性
@@ -461,7 +509,9 @@ public class MQTTTopicManagerTestData {
 
   // ==================== 辅助方法 ====================
 
-  /** 验证主题信息 */
+  /**
+   * 验证主题信息
+   */
   public static void validateTopicInfo(
       MQTTTopicManager.TopicInfo topicInfo,
       String expectedTopic,
@@ -482,7 +532,9 @@ public class MQTTTopicManagerTestData {
     assertEquals(expectedProductKey + ":" + expectedDeviceId, topicInfo.getDeviceUniqueId());
   }
 
-  /** 验证无效主题信息 */
+  /**
+   * 验证无效主题信息
+   */
   public static void validateInvalidTopicInfo(
       MQTTTopicManager.TopicInfo topicInfo, String expectedTopic) {
     assertNotNull(topicInfo);
@@ -496,7 +548,9 @@ public class MQTTTopicManagerTestData {
     assertNull(topicInfo.getDeviceUniqueId());
   }
 
-  /** 验证主题配置 */
+  /**
+   * 验证主题配置
+   */
   public static void validateTopicConfig(
       MQTTProductConfig.MqttTopicConfig config,
       String expectedPattern,

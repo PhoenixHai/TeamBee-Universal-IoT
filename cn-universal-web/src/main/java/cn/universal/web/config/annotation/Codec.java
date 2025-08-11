@@ -18,7 +18,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/** 指定要执行编解码的方法 @Author Aleo */
+/**
+ * 指定要执行编解码的方法 @Author Aleo
+ */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

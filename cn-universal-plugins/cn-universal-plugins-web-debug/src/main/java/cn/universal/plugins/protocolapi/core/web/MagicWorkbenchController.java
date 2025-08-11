@@ -126,7 +126,9 @@ public class MagicWorkbenchController extends MagicController implements MagicEx
     return allClassTxt;
   }
 
-  /** 获取所有class */
+  /**
+   * 获取所有class
+   */
   @PostMapping("/classes")
   @ResponseBody
   @Valid(requireLogin = false)
@@ -154,7 +156,9 @@ public class MagicWorkbenchController extends MagicController implements MagicEx
     return new JsonBean<>(MagicScriptEngine.getScriptClass(className));
   }
 
-  /** 登录 */
+  /**
+   * 登录
+   */
   @PostMapping("/login")
   @ResponseBody
   @Valid(requireLogin = false)
@@ -353,7 +357,8 @@ public class MagicWorkbenchController extends MagicController implements MagicEx
     notNull(file, FILE_IS_REQUIRED);
     isTrue(allowVisit(request, Authorization.UPLOAD), PERMISSION_INVALID);
     if (configuration.getMagicBackupService() != null) {
-      configuration.getMagicBackupService().doBackupAll("上传前，系统自动全量备份", WebUtils.currentUserName());
+      configuration.getMagicBackupService()
+          .doBackupAll("上传前，系统自动全量备份", WebUtils.currentUserName());
     }
     return new JsonBean<>(magicAPIService.upload(file.getInputStream(), mode));
   }
@@ -382,7 +387,8 @@ public class MagicWorkbenchController extends MagicController implements MagicEx
     byte[] bytes = IoUtils.bytes(file.getInputStream());
     isTrue(sign.equals(SignUtils.sign(timestamp, secretKey, mode, bytes)), SIGN_IS_INVALID);
     if (configuration.getMagicBackupService() != null) {
-      configuration.getMagicBackupService().doBackupAll("推送前，系统自动全量备份", WebUtils.currentUserName());
+      configuration.getMagicBackupService()
+          .doBackupAll("推送前，系统自动全量备份", WebUtils.currentUserName());
     }
     magicAPIService.upload(new ByteArrayInputStream(bytes), mode);
     return new JsonBean<>();

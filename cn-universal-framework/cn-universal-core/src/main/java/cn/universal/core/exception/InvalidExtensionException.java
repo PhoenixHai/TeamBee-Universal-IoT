@@ -15,7 +15,9 @@ package cn.universal.core.exception;
 import java.util.Arrays;
 import org.apache.commons.fileupload.FileUploadException;
 
-/** 文件上传 误异常类 @Author ruoyi */
+/**
+ * 文件上传 误异常类 @Author ruoyi
+ */
 public class InvalidExtensionException extends FileUploadException {
 
   private static final long serialVersionUID = 1L;

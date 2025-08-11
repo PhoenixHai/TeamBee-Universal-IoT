@@ -25,16 +25,24 @@ import java.io.IOException;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-/** 文件上传工具类 @Author ruoyi */
+/**
+ * 文件上传工具类 @Author ruoyi
+ */
 public class FileUploadUtils {
 
-  /** 默认大小 50M */
+  /**
+   * 默认大小 50M
+   */
   public static final long DEFAULT_MAX_SIZE = 50 * 1024 * 1024;
 
-  /** 默认的文件名最大长度 100 */
+  /**
+   * 默认的文件名最大长度 100
+   */
   public static final int DEFAULT_FILE_NAME_LENGTH = 100;
 
-  /** 默认上传的地址 */
+  /**
+   * 默认上传的地址
+   */
   private static String defaultBaseDir = UnivUPloadConfig.getProfile();
 
   public static void setDefaultBaseDir(String defaultBaseDir) {
@@ -64,7 +72,7 @@ public class FileUploadUtils {
    * 根据文件路径上传
    *
    * @param baseDir 相对应用的基目录
-   * @param file 上传的文件
+   * @param file    上传的文件
    * @return 文件名称
    * @throws IOException
    */
@@ -79,20 +87,20 @@ public class FileUploadUtils {
   /**
    * 文件上传
    *
-   * @param baseDir 相对应用的基目录
-   * @param file 上传的文件
+   * @param baseDir          相对应用的基目录
+   * @param file             上传的文件
    * @param allowedExtension 上传文件类型
    * @return 返回上传成功的文件名
-   * @throws FileSizeLimitExceededException 如果超出最大大小
+   * @throws FileSizeLimitExceededException       如果超出最大大小
    * @throws FileNameLengthLimitExceededException 文件名太长
-   * @throws IOException 比如读写文件出错时
-   * @throws InvalidExtensionException 文件校验异常
+   * @throws IOException                          比如读写文件出错时
+   * @throws InvalidExtensionException            文件校验异常
    */
   public static final String upload(String baseDir, MultipartFile file, String[] allowedExtension)
       throws FileSizeLimitExceededException,
-          IOException,
-          FileNameLengthLimitExceededException,
-          InvalidExtensionException {
+      IOException,
+      FileNameLengthLimitExceededException,
+      InvalidExtensionException {
     int fileNamelength = file.getOriginalFilename().length();
     if (fileNamelength > FileUploadUtils.DEFAULT_FILE_NAME_LENGTH) {
       throw new FileNameLengthLimitExceededException(FileUploadUtils.DEFAULT_FILE_NAME_LENGTH);
@@ -108,7 +116,9 @@ public class FileUploadUtils {
     return pathFileName;
   }
 
-  /** 编码文件名 */
+  /**
+   * 编码文件名
+   */
   public static final String extractFilename(MultipartFile file) {
     String fileName = file.getOriginalFilename();
     String extension = getExtension(file);

@@ -7,28 +7,43 @@ package cn.universal.plugins.protocolapi.backup.model;
  */
 public class Backup {
 
-  /** 记录ID */
+  /**
+   * 记录ID
+   */
   private String id;
 
-  /** 备份时间 */
+  /**
+   * 备份时间
+   */
   private Long createDate = 0L;
 
-  /** 标签，只允许有一个 */
+  /**
+   * 标签，只允许有一个
+   */
   private String tag;
 
-  /** 备份类型，api function datasource */
+  /**
+   * 备份类型，api function datasource
+   */
   private String type;
 
-  /** 原名称 */
+  /**
+   * 原名称
+   */
   private String name;
 
-  /** 备份内容 */
+  /**
+   * 备份内容
+   */
   private byte[] content;
 
-  /** 操作人，取用户名，空为系统记录 */
+  /**
+   * 操作人，取用户名，空为系统记录
+   */
   private String createBy;
 
-  public Backup() {}
+  public Backup() {
+  }
 
   public Backup(String id, String type, String name, byte[] content) {
     this.id = id;

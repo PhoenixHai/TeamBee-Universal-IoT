@@ -2,43 +2,69 @@ package cn.universal.plugins.protocolapi.core.config;
 
 public class Constants {
 
-  /** true 常量 */
+  /**
+   * true 常量
+   */
   public static final String CONST_STRING_TRUE = "true";
 
-  /** 空值 */
+  /**
+   * 空值
+   */
   public static final String EMPTY = "";
 
-  /** 表达式验证 */
+  /**
+   * 表达式验证
+   */
   public static final String VALIDATE_TYPE_EXPRESSION = "expression";
 
-  /** 正则验证 */
+  /**
+   * 正则验证
+   */
   public static final String VALIDATE_TYPE_PATTERN = "pattern";
 
-  /** 表达式验证中变量的默认名称 */
+  /**
+   * 表达式验证中变量的默认名称
+   */
   public static final String EXPRESSION_DEFAULT_VAR_NAME = "value";
 
-  /** 脚本中session的变量名 */
+  /**
+   * 脚本中session的变量名
+   */
   public static final String VAR_NAME_SESSION = "session";
 
-  /** 脚本中cookie的变量名 */
+  /**
+   * 脚本中cookie的变量名
+   */
   public static final String VAR_NAME_COOKIE = "cookie";
 
-  /** 脚本中路径变量的变量名 */
+  /**
+   * 脚本中路径变量的变量名
+   */
   public static final String VAR_NAME_PATH_VARIABLE = "path";
 
-  /** 脚本中header的变量名 */
+  /**
+   * 脚本中header的变量名
+   */
   public static final String VAR_NAME_HEADER = "header";
 
-  /** 脚本中query的变量名 */
+  /**
+   * 脚本中query的变量名
+   */
   public static final String VAR_NAME_QUERY = "query";
 
-  /** /** 脚本中RequestBody的变量名 */
+  /**
+   * /** 脚本中RequestBody的变量名
+   */
   public static final String VAR_NAME_REQUEST_BODY = "body";
 
-  /** 脚本中RequestBody的变量值字段类型 */
+  /**
+   * 脚本中RequestBody的变量值字段类型
+   */
   public static final String VAR_NAME_REQUEST_BODY_VALUE_TYPE_OBJECT = "object";
 
-  /** 脚本中RequestBody的变量名字段类型 */
+  /**
+   * 脚本中RequestBody的变量名字段类型
+   */
   public static final String VAR_NAME_REQUEST_BODY_VALUE_TYPE_ARRAY = "array";
 
   public static final String HEADER_REQUEST_SCRIPT_ID = "Magic-Request-Script-Id";
@@ -75,21 +101,33 @@ public class Constants {
 
   public static final String WEBSOCKET_ATTRIBUTE_CLIENT_ID = "cid";
 
-  /** 执行成功的code值 */
+  /**
+   * 执行成功的code值
+   */
   public static int RESPONSE_CODE_SUCCESS = 1;
 
-  /** 执行成功的message值 */
+  /**
+   * 执行成功的message值
+   */
   public static final String RESPONSE_MESSAGE_SUCCESS = "success";
 
-  /** 执行出现异常的code值 */
+  /**
+   * 执行出现异常的code值
+   */
   public static int RESPONSE_CODE_EXCEPTION = -1;
 
-  /** 参数验证未通过的code值 */
+  /**
+   * 参数验证未通过的code值
+   */
   public static int RESPONSE_CODE_INVALID = 0;
 
-  /** 空数组 */
+  /**
+   * 空数组
+   */
   public static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
 
-  /** The Es driver. */
+  /**
+   * The Es driver.
+   */
   public static final String ES_DRIVER = "org.elasticsearch.xpack.sql.jdbc.EsDriver";
 }

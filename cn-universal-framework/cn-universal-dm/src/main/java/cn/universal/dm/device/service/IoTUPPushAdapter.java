@@ -37,13 +37,17 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class IoTUPPushAdapter<T extends BaseUPRequest> {
 
-  @Resource private DeviceExtTemplate deviceExtTemplate;
+  @Resource
+  private DeviceExtTemplate deviceExtTemplate;
 
-  @Resource private UPProcessorManager upProcessorManager;
+  @Resource
+  private UPProcessorManager upProcessorManager;
 
-  @Resource private UPPushConfigService upPushConfigService;
+  @Resource
+  private UPPushConfigService upPushConfigService;
 
-  @Resource private UPPushExecutor upPushExecutor;
+  @Resource
+  private UPPushExecutor upPushExecutor;
 
   private LoadBalance random = new RandomLoadBalance();
 
@@ -76,7 +80,7 @@ public abstract class IoTUPPushAdapter<T extends BaseUPRequest> {
   /**
    * 推送后钩子方法，子类可重写进行结果处理、日志记录等
    *
-   * @param upRequests 上行请求列表
+   * @param upRequests  上行请求列表
    * @param pushResults 推送结果列表
    */
   protected void afterPush(List<T> upRequests, List<IoTPushResult> pushResults) {
@@ -101,7 +105,7 @@ public abstract class IoTUPPushAdapter<T extends BaseUPRequest> {
   /**
    * 推送后扩展点，子类可重写
    *
-   * @param upRequests 上行请求列表
+   * @param upRequests  上行请求列表
    * @param pushResults 推送结果列表
    */
   protected void onAfterPush(List<T> upRequests, List<IoTPushResult> pushResults) {

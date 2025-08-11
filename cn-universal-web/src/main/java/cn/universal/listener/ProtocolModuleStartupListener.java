@@ -54,10 +54,10 @@ public class ProtocolModuleStartupListener implements ApplicationListener<Applic
 
       // 显示核心协议
       displayCoreProtocols();
-      
+
       // 显示可选协议
       displayOptionalProtocols();
-      
+
       // 显示分类统计
       displayCategoryStatistics(stats);
     }
@@ -69,11 +69,11 @@ public class ProtocolModuleStartupListener implements ApplicationListener<Applic
     List<ProtocolModuleInfo> coreProtocols = ProtocolModuleRuntimeRegistry.getCoreProtocols();
     if (!coreProtocols.isEmpty()) {
       log.info("🔒 核心协议模块:");
-      coreProtocols.forEach(protocol -> 
-        log.info("   ✅ {} - {} ({})", 
-          protocol.getCode().toUpperCase(), 
-          protocol.getName(), 
-          protocol.getDescription())
+      coreProtocols.forEach(protocol ->
+          log.info("   ✅ {} - {} ({})",
+              protocol.getCode().toUpperCase(),
+              protocol.getName(),
+              protocol.getDescription())
       );
     }
   }
@@ -82,11 +82,11 @@ public class ProtocolModuleStartupListener implements ApplicationListener<Applic
     List<ProtocolModuleInfo> optionalProtocols = ProtocolModuleRuntimeRegistry.getOptionalProtocols();
     if (!optionalProtocols.isEmpty()) {
       log.info("🔧 可选协议模块:");
-      optionalProtocols.forEach(protocol -> 
-        log.info("   ✅ {} - {} ({})", 
-          protocol.getCode().toUpperCase(), 
-          protocol.getName(), 
-          protocol.getDescription())
+      optionalProtocols.forEach(protocol ->
+          log.info("   ✅ {} - {} ({})",
+              protocol.getCode().toUpperCase(),
+              protocol.getName(),
+              protocol.getDescription())
       );
     }
   }
@@ -94,8 +94,8 @@ public class ProtocolModuleStartupListener implements ApplicationListener<Applic
   private void displayCategoryStatistics(ProtocolModuleRuntimeRegistry.RuntimeStatistics stats) {
     if (!stats.getCategoryStats().isEmpty()) {
       log.info("📊 分类统计:");
-      stats.getCategoryStats().forEach((category, count) -> 
-        log.info("   {} 类协议: {} 个", category.name(), count)
+      stats.getCategoryStats().forEach((category, count) ->
+          log.info("   {} 类协议: {} 个", category.name(), count)
       );
     }
   }

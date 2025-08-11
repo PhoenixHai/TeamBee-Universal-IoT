@@ -38,7 +38,9 @@ public abstract class AbstractUPService<T extends UPRequest> extends AbstratIoTS
   @Autowired
   protected ICodecService codecService;
 
-  /** 消息转换 */
+  /**
+   * 消息转换
+   */
   protected abstract List<T> convert(String request);
 
   @Override
@@ -111,7 +113,9 @@ public abstract class AbstractUPService<T extends UPRequest> extends AbstratIoTS
 
   protected abstract Object realUPAction(String upMsg);
 
-  /** 当前iot组件名称 */
+  /**
+   * 当前iot组件名称
+   */
   protected abstract String currentComponent();
 
   @Override

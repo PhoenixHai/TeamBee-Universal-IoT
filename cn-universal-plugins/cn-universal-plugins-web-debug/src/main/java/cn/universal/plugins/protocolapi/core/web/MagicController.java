@@ -50,7 +50,9 @@ public class MagicController implements JsonCodeConstants {
     }
   }
 
-  /** 判断是否有权限访问按钮 */
+  /**
+   * 判断是否有权限访问按钮
+   */
   boolean allowVisit(MagicHttpServletRequest request, Authorization authorization) {
     if (authorization == null) {
       return true;

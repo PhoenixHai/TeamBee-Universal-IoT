@@ -26,20 +26,31 @@ public interface OnenetConstant {
 
   public static final String PLATFORM_CODE = "onenet";
 
-  /** 离线 */
+  /**
+   * 离线
+   */
   public static int OFFLINE = 0;
 
-  /** 在线 */
+  /**
+   * 在线
+   */
   public static int ONLINE = 1;
 
-  /** 消息类型 */
+  /**
+   * 消息类型
+   */
   public static enum OnenetMessageType {
-    /** 在线离线 */
+    /**
+     * 在线离线
+     */
     deviceOnlineOfflineReport,
-    /** 数据上报 */
+    /**
+     * 数据上报
+     */
     dataReport;
 
-    private OnenetMessageType() {}
+    private OnenetMessageType() {
+    }
 
     @JsonCreator
     public static OnenetMessageType find(String value) {

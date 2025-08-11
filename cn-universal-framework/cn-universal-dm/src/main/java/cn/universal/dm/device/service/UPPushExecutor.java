@@ -32,13 +32,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UPPushExecutor {
 
-  @Autowired private PushStrategyManager pushStrategyManager;
+  @Autowired
+  private PushStrategyManager pushStrategyManager;
 
   /**
    * 根据配置执行推送
    *
    * @param request 上行请求
-   * @param config 推送配置
+   * @param config  推送配置
    * @return 推送结果列表
    */
   public List<IoTPushResult> executePush(BaseUPRequest request, UPPushBO config) {
@@ -66,7 +67,7 @@ public class UPPushExecutor {
    * 批量推送
    *
    * @param requests 请求列表
-   * @param config 推送配置
+   * @param config   推送配置
    * @return 推送结果列表
    */
   public List<IoTPushResult> executeBatchPush(List<BaseUPRequest> requests, UPPushBO config) {

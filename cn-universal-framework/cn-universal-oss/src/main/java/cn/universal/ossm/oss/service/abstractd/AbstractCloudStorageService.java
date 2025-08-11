@@ -22,7 +22,9 @@ import java.io.InputStream;
 import java.util.Date;
 import org.springframework.beans.factory.InitializingBean;
 
-/** 云存储(支持七牛、阿里云、腾讯云、minio) @Author Lion Li */
+/**
+ * 云存储(支持七牛、阿里云、腾讯云、minio) @Author Lion Li
+ */
 public abstract class AbstractCloudStorageService
     implements ICloudStorageService, InitializingBean {
 

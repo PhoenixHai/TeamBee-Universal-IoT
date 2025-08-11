@@ -14,7 +14,9 @@ package cn.universal.persistence.base;
 
 import cn.universal.core.iot.message.DownRequest;
 
-/** 根据产品自定义扩展实现 */
+/**
+ * 根据产品自定义扩展实现
+ */
 public interface IDeviceExt {
 
   String productKey();
@@ -24,12 +26,14 @@ public interface IDeviceExt {
    *
    * @param downRequest
    */
-  default void downExt(DownRequest downRequest) {}
+  default void downExt(DownRequest downRequest) {
+  }
 
   /**
    * 上行扩展
    *
    * @param downRequest
    */
-  default void upExt(BaseUPRequest downRequest) {}
+  default void upExt(BaseUPRequest downRequest) {
+  }
 }

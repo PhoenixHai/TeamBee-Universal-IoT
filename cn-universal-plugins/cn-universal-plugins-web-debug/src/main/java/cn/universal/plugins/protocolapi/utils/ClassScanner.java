@@ -175,7 +175,9 @@ public class ClassScanner {
     return -1;
   }
 
-  /** jdk 8 */
+  /**
+   * jdk 8
+   */
   private static Set<String> addJava8Library() {
     try {
       // 直接反射调用..
@@ -187,7 +189,9 @@ public class ClassScanner {
     return Collections.emptySet();
   }
 
-  /** jdk 9+ */
+  /**
+   * jdk 9+
+   */
   private static Set<String> addJava9PlusLibrary() {
     Set<String> classes = new HashSet<>();
     try {
@@ -203,7 +207,8 @@ public class ClassScanner {
       Method reference = Class.forName("java.lang.module.ResolvedModule").getMethod("reference");
       Method open = Class.forName("java.lang.module.ModuleReference").getMethod("open");
       Method list = Class.forName("java.lang.module.ModuleReader").getMethod("list");
-      modules.forEach(module -> {});
+      modules.forEach(module -> {
+      });
       for (Object module : modules) {
         Object ref = reference.invoke(module);
         try (Closeable reader = (Closeable) open.invoke(ref)) {

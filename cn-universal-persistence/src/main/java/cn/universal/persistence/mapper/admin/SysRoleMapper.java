@@ -18,7 +18,9 @@ import com.github.pagehelper.Page;
 import io.lettuce.core.dynamic.annotation.Param;
 import java.util.List;
 
-/** 角色表 数据层 @Author ruoyi */
+/**
+ * 角色表 数据层 @Author ruoyi
+ */
 // @Mapper
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 

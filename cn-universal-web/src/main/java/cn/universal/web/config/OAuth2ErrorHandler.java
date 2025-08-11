@@ -28,7 +28,9 @@ import org.springframework.security.oauth2.server.authorization.authentication.O
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
-/** OAuth2 错误处理器 用于格式化 OAuth2 认证失败的错误响应 @Author Aleo */
+/**
+ * OAuth2 错误处理器 用于格式化 OAuth2 认证失败的错误响应 @Author Aleo
+ */
 @Slf4j
 @Component
 public class OAuth2ErrorHandler implements AuthenticationFailureHandler {
@@ -56,7 +58,9 @@ public class OAuth2ErrorHandler implements AuthenticationFailureHandler {
     response.getWriter().write(JSONUtil.toJsonStr(errorResponse));
   }
 
-  /** 获取错误信息 */
+  /**
+   * 获取错误信息
+   */
   private String getErrorMessage(AuthenticationException exception) {
     if (exception instanceof BadCredentialsException) {
       return exception.getMessage();

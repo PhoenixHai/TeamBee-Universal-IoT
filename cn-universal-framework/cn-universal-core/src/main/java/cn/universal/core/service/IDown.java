@@ -15,8 +15,11 @@ package cn.universal.core.service;
 import cn.hutool.json.JSONObject;
 import cn.universal.core.base.R;
 
-/** （下行）平台到设备 */
+/**
+ * （下行）平台到设备
+ */
 public interface IDown {
+
   /**
    * 返回服务名称
    *
@@ -61,7 +64,8 @@ public interface IDown {
    * 保存设备云端指令
    *
    * @param productKey 产品key
-   * @param deviceId 设备序列号
+   * @param deviceId   设备序列号
    */
-  default void storeCommand(String productKey, String deviceId, Object data) {}
+  default void storeCommand(String productKey, String deviceId, Object data) {
+  }
 }

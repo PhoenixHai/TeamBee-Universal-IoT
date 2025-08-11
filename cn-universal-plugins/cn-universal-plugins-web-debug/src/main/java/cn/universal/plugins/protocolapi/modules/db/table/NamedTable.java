@@ -93,7 +93,8 @@ public class NamedTable extends Attributes<Object> {
     }
   }
 
-  private NamedTable() {}
+  private NamedTable() {
+  }
 
   @Override
   @Comment("克隆")
@@ -187,7 +188,8 @@ public class NamedTable extends Attributes<Object> {
   }
 
   @Comment("设置要排除的列")
-  public NamedTable excludes(@Comment(name = "properties", value = "排除的列") String... properties) {
+  public NamedTable excludes(
+      @Comment(name = "properties", value = "排除的列") String... properties) {
     if (columns != null) {
       excludeColumns.addAll(Arrays.asList(properties));
     }
@@ -242,7 +244,8 @@ public class NamedTable extends Attributes<Object> {
   }
 
   @Comment("拼接`group by`")
-  public NamedTable groupBy(@Comment(name = "properties", value = "要分组的列") String... properties) {
+  public NamedTable groupBy(
+      @Comment(name = "properties", value = "要分组的列") String... properties) {
     this.groups.addAll(
         Arrays.stream(properties).map(rowMapColumnMapper).collect(Collectors.toList()));
     return this;
@@ -589,85 +592,113 @@ public class NamedTable extends Attributes<Object> {
     this.tableName = tableName;
   }
 
-  /** 获取SQL模块 */
+  /**
+   * 获取SQL模块
+   */
   @Transient
   public SQLModule getSqlModule() {
     return sqlModule;
   }
 
-  /** 获取主键列 */
+  /**
+   * 获取主键列
+   */
   @Transient
   public String getPrimary() {
     return primary;
   }
 
-  /** 获取逻辑删除列 */
+  /**
+   * 获取逻辑删除列
+   */
   @Transient
   public String getLogicDeleteColumn() {
     return logicDeleteColumn;
   }
 
-  /** 获取逻辑删除值 */
+  /**
+   * 获取逻辑删除值
+   */
   @Transient
   public Object getLogicDeleteValue() {
     return logicDeleteValue;
   }
 
-  /** 获取设置的columns */
+  /**
+   * 获取设置的columns
+   */
   @Transient
   public Map<String, Object> getColumns() {
     return columns;
   }
 
-  /** 设置columns */
+  /**
+   * 设置columns
+   */
   @Transient
   public void setColumns(Map<String, Object> columns) {
     this.columns = columns;
   }
 
-  /** 获取设置的fields */
+  /**
+   * 获取设置的fields
+   */
   @Transient
   public List<String> getFields() {
     return fields;
   }
 
-  /** 设置 fields */
+  /**
+   * 设置 fields
+   */
   @Transient
   public void setFields(List<String> fields) {
     this.fields = fields;
   }
 
-  /** 获取设置的group */
+  /**
+   * 获取设置的group
+   */
   @Transient
   public List<String> getGroups() {
     return groups;
   }
 
-  /** 设置 group */
+  /**
+   * 设置 group
+   */
   @Transient
   public void setGroups(List<String> groups) {
     this.groups = groups;
   }
 
-  /** 获取设置的order */
+  /**
+   * 获取设置的order
+   */
   @Transient
   public List<String> getOrders() {
     return orders;
   }
 
-  /** 设置 order */
+  /**
+   * 设置 order
+   */
   @Transient
   public void setOrders(List<String> orders) {
     this.orders = orders;
   }
 
-  /** 获取设置的排除的列 */
+  /**
+   * 获取设置的排除的列
+   */
   @Transient
   public Set<String> getExcludeColumns() {
     return excludeColumns;
   }
 
-  /** 设置排除的列 */
+  /**
+   * 设置排除的列
+   */
   @Transient
   public void setExcludeColumns(Set<String> excludeColumns) {
     this.excludeColumns = excludeColumns;
@@ -683,37 +714,49 @@ public class NamedTable extends Attributes<Object> {
     return defaultPrimaryValue;
   }
 
-  /** 是否设逻辑了逻辑删除 */
+  /**
+   * 是否设逻辑了逻辑删除
+   */
   @Transient
   public boolean isUseLogic() {
     return useLogic;
   }
 
-  /** 设置是否使用逻辑删除 */
+  /**
+   * 设置是否使用逻辑删除
+   */
   @Transient
   public void setUseLogic(boolean useLogic) {
     this.useLogic = useLogic;
   }
 
-  /** 获取是否不过滤空参数 */
+  /**
+   * 获取是否不过滤空参数
+   */
   @Transient
   public boolean isWithBlank() {
     return withBlank;
   }
 
-  /** 设置是否不过滤空参数 */
+  /**
+   * 设置是否不过滤空参数
+   */
   @Transient
   public void setWithBlank(boolean withBlank) {
     this.withBlank = withBlank;
   }
 
-  /** 获取where */
+  /**
+   * 获取where
+   */
   @Transient
   public Where getWhere() {
     return where;
   }
 
-  /** 获取RequestEntity */
+  /**
+   * 获取RequestEntity
+   */
   @Transient
   public RequestEntity getRequestEntity() {
     return RequestContext.getRequestEntity();

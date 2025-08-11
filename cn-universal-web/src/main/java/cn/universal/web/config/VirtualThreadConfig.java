@@ -39,21 +39,27 @@ import org.springframework.web.context.request.RequestContextHolder;
 @EnableAsync
 public class VirtualThreadConfig {
 
-  /** 主要虚拟线程执行器 - 用于一般异步任务 */
+  /**
+   * 主要虚拟线程执行器 - 用于一般异步任务
+   */
   @Bean("virtualThreadExecutor")
   @Primary
   public ExecutorService virtualThreadExecutor() {
     return Executors.newVirtualThreadPerTaskExecutor();
   }
 
-  /** 命名虚拟线程执行器 - 用于需要特定命名的任务 */
+  /**
+   * 命名虚拟线程执行器 - 用于需要特定命名的任务
+   */
   @Bean("namedVirtualThreadExecutor")
   public ExecutorService namedVirtualThreadExecutor() {
     ThreadFactory factory = Thread.ofVirtual().name("iot-vt-", 0).factory();
     return Executors.newThreadPerTaskExecutor(factory);
   }
 
-  /** 虚拟线程调度器 - 用于定时任务 */
+  /**
+   * 虚拟线程调度器 - 用于定时任务
+   */
   @Bean("virtualScheduledExecutor")
   public ScheduledExecutorService virtualScheduledExecutor() {
     ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
@@ -65,14 +71,18 @@ public class VirtualThreadConfig {
     return scheduler.getScheduledExecutor();
   }
 
-  /** 默认异步执行器 - 支持上下文传递 */
+  /**
+   * 默认异步执行器 - 支持上下文传递
+   */
   @Bean("taskExecutor")
   public Executor taskExecutor() {
     ExecutorService virtualExecutor = Executors.newVirtualThreadPerTaskExecutor();
     return new VirtualThreadContextExecutor(virtualExecutor);
   }
 
-  /** 虚拟线程任务装饰器 - 传递MDC和请求上下文 */
+  /**
+   * 虚拟线程任务装饰器 - 传递MDC和请求上下文
+   */
   public static class VirtualThreadTaskDecorator implements TaskDecorator {
 
     @Override
@@ -99,7 +109,9 @@ public class VirtualThreadConfig {
     }
   }
 
-  /** 虚拟线程上下文执行器 - 包装虚拟线程执行器 */
+  /**
+   * 虚拟线程上下文执行器 - 包装虚拟线程执行器
+   */
   public static class VirtualThreadContextExecutor implements Executor {
 
     private final ExecutorService delegate;

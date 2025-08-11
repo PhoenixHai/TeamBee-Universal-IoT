@@ -10,37 +10,59 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-/** 接口信息 */
+/**
+ * 接口信息
+ */
 public class ApiInfo extends PathMagicEntity {
 
-  /** 请求方法 */
+  /**
+   * 请求方法
+   */
   private String method = "GET";
 
-  /** 设置的请求参数 */
+  /**
+   * 设置的请求参数
+   */
   private List<Parameter> parameters = Collections.emptyList();
 
-  /** 设置的接口选项 */
+  /**
+   * 设置的接口选项
+   */
   private List<Option> options = new ArrayList<>();
 
-  /** 请求体 */
+  /**
+   * 请求体
+   */
   private String requestBody;
 
-  /** 请求头 */
+  /**
+   * 请求头
+   */
   private List<Header> headers = Collections.emptyList();
 
-  /** 路径变量 */
+  /**
+   * 路径变量
+   */
   private List<Path> paths = Collections.emptyList();
 
-  /** 输出结果 */
+  /**
+   * 输出结果
+   */
   private String responseBody;
 
-  /** 接口描述 */
+  /**
+   * 接口描述
+   */
   private String description;
 
-  /** 请求体属性 */
+  /**
+   * 请求体属性
+   */
   private BaseDefinition requestBodyDefinition;
 
-  /** 输出结果属性 */
+  /**
+   * 输出结果属性
+   */
   private BaseDefinition responseBodyDefinition;
 
   public String getMethod() {
@@ -93,7 +115,8 @@ public class ApiInfo extends PathMagicEntity {
   }
 
   // 兼容1.x处理。
-  public void setOptionMap(Map<String, Object> optionMap) {}
+  public void setOptionMap(Map<String, Object> optionMap) {
+  }
 
   public String getDescription() {
     return description;
@@ -113,7 +136,8 @@ public class ApiInfo extends PathMagicEntity {
 
   public void setOption(String json) {
     this.options =
-        JsonUtils.readValue(Objects.toString(json, "[]"), new TypeReference<List<Option>>() {});
+        JsonUtils.readValue(Objects.toString(json, "[]"), new TypeReference<List<Option>>() {
+        });
   }
 
   public List<Parameter> getParameters() {

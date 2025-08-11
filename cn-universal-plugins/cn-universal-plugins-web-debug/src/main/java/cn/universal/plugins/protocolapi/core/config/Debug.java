@@ -7,7 +7,9 @@ package cn.universal.plugins.protocolapi.core.config;
  */
 public class Debug {
 
-  /** 断点超时时间 */
+  /**
+   * 断点超时时间
+   */
   private int timeout = 60;
 
   public int getTimeout() {

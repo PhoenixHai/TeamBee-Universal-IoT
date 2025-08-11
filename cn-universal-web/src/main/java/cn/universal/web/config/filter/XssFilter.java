@@ -34,7 +34,8 @@ import org.springframework.util.AntPathMatcher;
 @Slf4j
 public class XssFilter implements Filter {
 
-  @Resource private XssProperties xssProperties;
+  @Resource
+  private XssProperties xssProperties;
 
   private final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
@@ -62,5 +63,6 @@ public class XssFilter implements Filter {
   }
 
   @Override
-  public void destroy() {}
+  public void destroy() {
+  }
 }

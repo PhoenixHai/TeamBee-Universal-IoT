@@ -50,13 +50,14 @@ public interface AuthorizationInterceptor {
    *
    * @param token token值
    */
-  default void logout(String token) {}
+  default void logout(String token) {
+  }
 
   /**
    * 是否拥有页面按钮的权限
    *
-   * @param magicUser 登录的用户对象
-   * @param request HttpServletRequest
+   * @param magicUser     登录的用户对象
+   * @param request       HttpServletRequest
    * @param authorization 鉴权方法
    * @return true 有权限访问， false 无权限访问
    */
@@ -68,10 +69,10 @@ public interface AuthorizationInterceptor {
   /**
    * 是否拥有对该接口的增删改权限
    *
-   * @param magicUser 登录的用户对象
-   * @param request HttpServletRequest
+   * @param magicUser     登录的用户对象
+   * @param request       HttpServletRequest
    * @param authorization 鉴权方法
-   * @param entity 接口、函数、数据源信息
+   * @param entity        接口、函数、数据源信息
    * @return true 有权限访问， false 无权限访问
    */
   default boolean allowVisit(
@@ -85,10 +86,10 @@ public interface AuthorizationInterceptor {
   /**
    * 是否拥有对该分组的增删改权限
    *
-   * @param magicUser 登录的用户对象
-   * @param request HttpServletRequest
+   * @param magicUser     登录的用户对象
+   * @param request       HttpServletRequest
    * @param authorization 鉴权方法
-   * @param group 分组信息
+   * @param group         分组信息
    * @return true 有权限访问， false 无权限访问
    */
   default boolean allowVisit(
@@ -105,5 +106,6 @@ public interface AuthorizationInterceptor {
    * @param user
    * @return
    */
-  default void refreshToken(MagicUser user) {}
+  default void refreshToken(MagicUser user) {
+  }
 }

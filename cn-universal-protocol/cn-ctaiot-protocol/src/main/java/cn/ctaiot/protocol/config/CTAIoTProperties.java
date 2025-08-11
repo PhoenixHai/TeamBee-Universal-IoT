@@ -25,24 +25,38 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "ct.aiot.aep")
 public class CTAIoTProperties {
 
-  /** 是否启用CT-AIoT模块 */
+  /**
+   * 是否启用CT-AIoT模块
+   */
   private boolean enable = false;
 
-  /** 应用ID */
+  /**
+   * 应用ID
+   */
   private String appid;
 
-  /** 应用Key */
+  /**
+   * 应用Key
+   */
   private String appkey;
 
-  /** 应用Secret */
+  /**
+   * 应用Secret
+   */
   private String appsecret;
 
-  /** 服务器地址 */
+  /**
+   * 服务器地址
+   */
   private String server;
 
-  /** 租户ID */
+  /**
+   * 租户ID
+   */
   private String tenantId;
 
-  /** 认证Token */
+  /**
+   * 认证Token
+   */
   private String token;
 }

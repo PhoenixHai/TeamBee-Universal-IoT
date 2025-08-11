@@ -30,7 +30,9 @@ public class EventProcessorFactory {
   @Autowired(required = false)
   private ProductConfigProcessor productConfigProcessor;
 
-  /** 处理电子围栏事件 */
+  /**
+   * 处理电子围栏事件
+   */
   public void handleFenceEvent(EventMessage message) {
     if (fenceEventProcessor != null) {
       try {
@@ -43,7 +45,9 @@ public class EventProcessorFactory {
     }
   }
 
-  /** 处理TCP下行指令事件 */
+  /**
+   * 处理TCP下行指令事件
+   */
   public void handleTcpDown(EventMessage message) {
     if (tcpDownProcessor != null) {
       try {
@@ -56,7 +60,9 @@ public class EventProcessorFactory {
     }
   }
 
-  /** 处理产品配置更新事件 */
+  /**
+   * 处理产品配置更新事件
+   */
   public void handleProductConfigUpdated(EventMessage message) {
     if (productConfigProcessor != null) {
       try {
@@ -69,7 +75,9 @@ public class EventProcessorFactory {
     }
   }
 
-  /** 处理产品配置更新事件 */
+  /**
+   * 处理产品配置更新事件
+   */
   public void handleProtocolUpdated(EventMessage message) {
     if (productConfigProcessor != null) {
       try {

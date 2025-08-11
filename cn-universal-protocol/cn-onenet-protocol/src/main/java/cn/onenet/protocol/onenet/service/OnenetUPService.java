@@ -52,11 +52,14 @@ public class OnenetUPService extends AbstractUPService<OnenetUPRequest> implemen
 
   private static final String PM_NAME = "onenet";
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Resource private OnenetUPHandle onenetUPHandle;
+  @Resource
+  private OnenetUPHandle onenetUPHandle;
 
-  @Autowired private ICodecService codecService;
+  @Autowired
+  private ICodecService codecService;
 
   @Override
   protected List<OnenetUPRequest> convert(String content) {

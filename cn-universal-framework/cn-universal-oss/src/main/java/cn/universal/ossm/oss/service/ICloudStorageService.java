@@ -15,12 +15,16 @@ package cn.universal.ossm.oss.service;
 import cn.universal.ossm.oss.entity.UploadResult;
 import java.io.InputStream;
 
-/** 云存储服务接口 @Author Lion Li */
+/**
+ * 云存储服务接口 @Author Lion Li
+ */
 public interface ICloudStorageService {
 
   void createBucket();
 
-  /** 获取服务商类型 */
+  /**
+   * 获取服务商类型
+   */
   String getServiceType();
 
   /**
@@ -51,7 +55,7 @@ public interface ICloudStorageService {
   /**
    * 文件上传
    *
-   * @param data 文件字节数组
+   * @param data   文件字节数组
    * @param suffix 后缀
    * @return 返回http地址
    */
@@ -61,7 +65,7 @@ public interface ICloudStorageService {
    * 文件上传
    *
    * @param inputStream 字节流
-   * @param path 文件路径，包含文件名
+   * @param path        文件路径，包含文件名
    * @return 返回http地址
    */
   UploadResult upload(InputStream inputStream, String path, String contentType);
@@ -70,7 +74,7 @@ public interface ICloudStorageService {
    * 文件上传
    *
    * @param inputStream 字节流
-   * @param suffix 后缀
+   * @param suffix      后缀
    * @return 返回http地址
    */
   UploadResult uploadSuffix(InputStream inputStream, String suffix, String contentType);

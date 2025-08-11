@@ -26,9 +26,13 @@ public class RocketMQUPRequest extends BaseUPRequest {
 
   private IoTDeviceDTO devBO;
 
-  /** 指令 */
+  /**
+   * 指令
+   */
   private String commandId;
 
-  /** 指令 */
+  /**
+   * 指令
+   */
   private Integer commandStatus;
 }

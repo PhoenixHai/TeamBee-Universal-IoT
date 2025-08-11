@@ -48,7 +48,8 @@ public class RequestModule {
    * @param name 参数名
    */
   @Comment("获取多个文件")
-  public static List<MultipartFile> getFiles(@Comment(name = "name", value = "参数名") String name) {
+  public static List<MultipartFile> getFiles(
+      @Comment(name = "name", value = "参数名") String name) {
     MultipartRequest request = getMultipartHttpServletRequest();
     if (request == null) {
       return null;
@@ -56,7 +57,9 @@ public class RequestModule {
     return request.getFiles(name).stream().filter(it -> !it.isEmpty()).collect(Collectors.toList());
   }
 
-  /** 获取原生HttpServletRequest对象 */
+  /**
+   * 获取原生HttpServletRequest对象
+   */
   @Comment("获取原生HttpServletRequest对象")
   public static MagicHttpServletRequest get() {
     return magicRequestContextHolder.getRequest();

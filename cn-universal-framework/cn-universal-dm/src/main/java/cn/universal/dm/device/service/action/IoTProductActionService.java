@@ -31,20 +31,22 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class IoTProductActionService implements IoTProductAction {
 
-  @Resource private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
 
-  @Resource private IoTCacheRemoveService iotCacheRemoveService;
+  @Resource
+  private IoTCacheRemoveService iotCacheRemoveService;
 
   @Override
   @CacheEvict(
       cacheNames = {
-        "iot_dev_instance_bo",
-        "iot_dev_metadata_bo",
-        "iot_dev_shadow_bo",
-        "iot_dev_action",
-        "selectDevCount",
-        "iot_dev_product_list",
-        "iot_product_device"
+          "iot_dev_instance_bo",
+          "iot_dev_metadata_bo",
+          "iot_dev_shadow_bo",
+          "iot_dev_action",
+          "selectDevCount",
+          "iot_dev_product_list",
+          "iot_product_device"
       },
       allEntries = true)
   public void create(String productKey, String unionId) {
@@ -56,68 +58,76 @@ public class IoTProductActionService implements IoTProductAction {
   @Override
   @CacheEvict(
       cacheNames = {
-        "iot_dev_instance_bo",
-        "iot_dev_metadata_bo",
-        "iot_dev_shadow_bo",
-        "iot_dev_action",
-        "selectDevCount",
-        "iot_dev_product_list",
-        "iot_product_device"
+          "iot_dev_instance_bo",
+          "iot_dev_metadata_bo",
+          "iot_dev_shadow_bo",
+          "iot_dev_action",
+          "selectDevCount",
+          "iot_dev_product_list",
+          "iot_product_device"
       },
       allEntries = true)
-  public void update(IoTProduct product) {}
+  public void update(IoTProduct product) {
+  }
 
   @Override
   @CacheEvict(
       cacheNames = {
-        "iot_dev_instance_bo",
-        "iot_dev_metadata_bo",
-        "iot_dev_shadow_bo",
-        "iot_dev_action",
-        "selectDevCount",
-        "iot_dev_product_list",
-        "iot_product_device"
+          "iot_dev_instance_bo",
+          "iot_dev_metadata_bo",
+          "iot_dev_shadow_bo",
+          "iot_dev_action",
+          "selectDevCount",
+          "iot_dev_product_list",
+          "iot_product_device"
       },
       allEntries = true)
-  public void delete(String productKey) {}
+  public void delete(String productKey) {
+  }
 
   @Override
-  public void enable(String productKey) {}
+  public void enable(String productKey) {
+  }
 
   @Override
-  public void disable(String productKey) {}
+  public void disable(String productKey) {
+  }
 
   @Override
-  public void publish(String productKey) {}
+  public void publish(String productKey) {
+  }
 
   @Override
   @CacheEvict(
       cacheNames = {
-        "iot_dev_instance_bo",
-        "iot_dev_metadata_bo",
-        "iot_dev_shadow_bo",
-        "iot_dev_action",
-        "selectDevCount",
-        "iot_dev_product_list",
-        "iot_product_device"
+          "iot_dev_instance_bo",
+          "iot_dev_metadata_bo",
+          "iot_dev_shadow_bo",
+          "iot_dev_action",
+          "selectDevCount",
+          "iot_dev_product_list",
+          "iot_product_device"
       },
       allEntries = true)
-  public void metadataCreate(String productKey) {}
+  public void metadataCreate(String productKey) {
+  }
 
   @Override
-  public void metadataUpdate(String productKey) {}
+  public void metadataUpdate(String productKey) {
+  }
 
   @Override
   @CacheEvict(
       cacheNames = {
-        "iot_dev_instance_bo",
-        "iot_dev_metadata_bo",
-        "iot_dev_shadow_bo",
-        "iot_dev_action",
-        "selectDevCount",
-        "iot_dev_product_list",
-        "iot_product_device"
+          "iot_dev_instance_bo",
+          "iot_dev_metadata_bo",
+          "iot_dev_shadow_bo",
+          "iot_dev_action",
+          "selectDevCount",
+          "iot_dev_product_list",
+          "iot_product_device"
       },
       allEntries = true)
-  public void metadataDelete(String productKey) {}
+  public void metadataDelete(String productKey) {
+  }
 }

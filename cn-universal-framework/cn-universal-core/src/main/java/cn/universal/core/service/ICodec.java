@@ -51,7 +51,7 @@ public interface ICodec {
    * 下行消息编码
    *
    * @param productKey 产品key
-   * @param payload 消息的原串
+   * @param payload    消息的原串
    */
   default String spliceDown(String productKey, String payload) {
     return null;

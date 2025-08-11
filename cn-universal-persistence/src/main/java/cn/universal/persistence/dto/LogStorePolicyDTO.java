@@ -28,18 +28,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LogStorePolicyDTO {
-  @Builder.Default private Map<String, StorePolicy> properties = new HashMap<String, StorePolicy>();
-  @Builder.Default private Map<String, StorePolicy> event = new HashMap<String, StorePolicy>();
+
+  @Builder.Default
+  private Map<String, StorePolicy> properties = new HashMap<String, StorePolicy>();
+  @Builder.Default
+  private Map<String, StorePolicy> event = new HashMap<String, StorePolicy>();
 
   @Data
   @AllArgsConstructor
   @NoArgsConstructor
   public static class StorePolicy {
 
-    /** 属性英文名 */
+    /**
+     * 属性英文名
+     */
     private String id;
 
-    /** 最大存储条数 */
+    /**
+     * 最大存储条数
+     */
     private int maxStorage;
   }
 }

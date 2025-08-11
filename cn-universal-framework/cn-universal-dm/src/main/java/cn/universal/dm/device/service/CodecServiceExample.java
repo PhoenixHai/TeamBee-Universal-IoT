@@ -32,13 +32,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CodecServiceExample {
 
-  @Autowired private ICodecService codecService;
+  @Autowired
+  private ICodecService codecService;
 
   /**
    * 示例：解码设备上报数据
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return 解码后的UPRequest列表
    */
   public List<UPRequest> decodeDeviceData(String productKey, String payload) {
@@ -55,7 +56,7 @@ public class CodecServiceExample {
    * 示例：编码下行指令
    *
    * @param productKey 产品Key
-   * @param payload 原始指令数据
+   * @param payload    原始指令数据
    * @return 编码后的指令
    */
   public String encodeDownCommand(String productKey, String payload) {
@@ -72,7 +73,7 @@ public class CodecServiceExample {
    * 示例：预解码TCP数据
    *
    * @param productKey 产品Key
-   * @param payload 原始TCP数据
+   * @param payload    原始TCP数据
    * @return 预解码后的UPRequest
    */
   public UPRequest preDecodeTcpData(String productKey, String payload) {
@@ -88,13 +89,14 @@ public class CodecServiceExample {
   /**
    * 示例：通用编解码方法
    *
-   * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param productKey  产品Key
+   * @param payload     原始数据
    * @param codecMethod 编解码方法类型
    * @return 编解码结果
    */
   public String generalCodec(String productKey, String payload, CodecMethod codecMethod) {
-    log.info("开始通用编解码: productKey={}, payload={}, method={}", productKey, payload, codecMethod);
+    log.info("开始通用编解码: productKey={}, payload={}, method={}", productKey, payload,
+        codecMethod);
 
     // 使用统一的通用编解码服务
     String result = codecService.codec(productKey, payload, codecMethod);
@@ -106,27 +108,29 @@ public class CodecServiceExample {
   /**
    * 示例：检查是否支持特定编解码方法
    *
-   * @param productKey 产品Key
+   * @param productKey  产品Key
    * @param codecMethod 编解码方法类型
    * @return 是否支持
    */
   public boolean checkSupport(String productKey, CodecMethod codecMethod) {
     boolean supported = codecService.isSupported(productKey, codecMethod);
-    log.info("检查编解码支持: productKey={}, method={}, supported={}", productKey, codecMethod, supported);
+    log.info("检查编解码支持: productKey={}, method={}, supported={}", productKey, codecMethod,
+        supported);
     return supported;
   }
 
   /**
    * 示例：泛型解码
    *
-   * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param productKey  产品Key
+   * @param payload     原始数据
    * @param elementType 目标类型
-   * @param <T> 泛型类型
+   * @param <T>         泛型类型
    * @return 解码后的对象列表
    */
   public <T> List<T> decodeWithType(String productKey, String payload, Class<T> elementType) {
-    log.info("开始泛型解码: productKey={}, payload={}, elementType={}", productKey, payload, elementType);
+    log.info("开始泛型解码: productKey={}, payload={}, elementType={}", productKey, payload,
+        elementType);
 
     // 使用统一的泛型解码服务
     List<T> result = codecService.decode(productKey, payload, elementType);
@@ -139,7 +143,7 @@ public class CodecServiceExample {
    * 示例：IoT到第三方数据转换
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return 转换后的数据
    */
   public String iotToYour(String productKey, String payload) {
@@ -156,7 +160,7 @@ public class CodecServiceExample {
    * 示例：第三方到IoT数据转换
    *
    * @param productKey 产品Key
-   * @param payload 原始数据
+   * @param payload    原始数据
    * @return 转换后的数据
    */
   public String yourToIot(String productKey, String payload) {

@@ -36,7 +36,8 @@ import org.springframework.web.util.WebUtils;
 @Slf4j
 public class WebLogKits {
 
-  private WebLogKits() {}
+  private WebLogKits() {
+  }
 
   public static JSONObject getParameters(HttpServletRequest request) {
     Enumeration<String> paramNames = request.getParameterNames();

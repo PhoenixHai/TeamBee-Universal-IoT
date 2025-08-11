@@ -5,22 +5,34 @@ import cn.universal.plugins.protocolapi.modules.db.model.Page;
 import java.util.Objects;
 import org.apache.commons.lang3.math.NumberUtils;
 
-/** 分页对象默认提取接口 */
+/**
+ * 分页对象默认提取接口
+ */
 public class DefaultPageProvider implements PageProvider {
 
-  /** page参数名 */
+  /**
+   * page参数名
+   */
   private final String pageName;
 
-  /** pageSize参数名 */
+  /**
+   * pageSize参数名
+   */
   private final String pageSize;
 
-  /** 默认分页大小 */
+  /**
+   * 默认分页大小
+   */
   private final long defaultPageSize;
 
-  /** 默认页数 */
+  /**
+   * 默认页数
+   */
   private final long defaultPage;
 
-  /** 最大页数 */
+  /**
+   * 最大页数
+   */
   private final long maxPageSize;
 
   public DefaultPageProvider(

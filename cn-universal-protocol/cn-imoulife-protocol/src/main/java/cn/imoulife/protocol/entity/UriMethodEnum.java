@@ -19,9 +19,13 @@ package cn.imoulife.protocol.entity;
  * @since ⏰ 2018/11/21
  */
 public enum UriMethodEnum {
-  /** 获取管理员token */
+  /**
+   * 获取管理员token
+   */
   ACCESS_TOKEN("accessToken"),
-  /** 设备列表获取 */
+  /**
+   * 设备列表获取
+   */
   DOWN_TRANSFER("downTransfer");
 
   private String method;

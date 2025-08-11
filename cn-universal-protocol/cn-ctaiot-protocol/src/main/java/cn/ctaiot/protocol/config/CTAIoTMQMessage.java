@@ -36,7 +36,8 @@ public class CTAIoTMQMessage {
   @Qualifier("ctaIoTUPService")
   private IUP upService;
 
-  @Autowired private CTAIoTProperties properties;
+  @Autowired
+  private CTAIoTProperties properties;
 
   @PostConstruct
   public void init() {

@@ -33,7 +33,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class IotRedisFunction {
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
   private static final String DEVICE_PREFIX = "univiot:device:";
 
   // 解析时间字符串为毫秒 (支持格式: 10s, 5m, 1h)

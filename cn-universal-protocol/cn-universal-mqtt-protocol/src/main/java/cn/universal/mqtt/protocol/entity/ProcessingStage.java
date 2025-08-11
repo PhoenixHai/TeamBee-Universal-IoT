@@ -1,6 +1,8 @@
 package cn.universal.mqtt.protocol.entity;
 
-/** 处理阶段枚举 */
+/**
+ * 处理阶段枚举
+ */
 public enum ProcessingStage {
   RECEIVED, // 已接收
   TOPIC_PARSED, // 主题已解析

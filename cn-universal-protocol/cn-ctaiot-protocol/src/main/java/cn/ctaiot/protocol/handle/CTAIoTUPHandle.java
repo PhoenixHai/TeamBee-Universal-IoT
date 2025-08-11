@@ -68,7 +68,7 @@ public class CTAIoTUPHandle extends IoTUPPushAdapter<CTAIoTUPRequest> {
   /**
    * 推送后扩展：结果处理、日志记录等
    *
-   * @param upRequests 上行请求列表
+   * @param upRequests  上行请求列表
    * @param pushResults 推送结果列表
    */
   @Override
@@ -96,7 +96,8 @@ public class CTAIoTUPHandle extends IoTUPPushAdapter<CTAIoTUPRequest> {
       long successCount = pushResults.stream().filter(IoTPushResult::isOk).count();
       long totalCount = pushResults.size();
       double successRate = totalCount > 0 ? (double) successCount / totalCount * 100 : 0;
-      log.info("[CT-AIoT上行][性能统计] 推送成功率: {}/{} ({:.2f}%)", successCount, totalCount, successRate);
+      log.info("[CT-AIoT上行][性能统计] 推送成功率: {}/{} ({:.2f}%)", successCount, totalCount,
+          successRate);
     }
   }
 }

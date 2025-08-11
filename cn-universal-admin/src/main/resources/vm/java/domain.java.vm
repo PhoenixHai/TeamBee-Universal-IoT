@@ -44,9 +44,9 @@ import ${import};
                         #set($comment=$column.columnComment)
                     #end
                     #if($parentheseIndex != -1)
-                    @Excel(name = "${comment}" , readConverterExp = "$column.readConverterExp()")
+                    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
                     #elseif($column.javaType == 'Date')
-                    @Excel(name = "${comment}" , width = 30, dateFormat = "yyyy-MM-dd")
+                    @Excel(name = "${comment}", width = 30, dateFormat = "yyyy-MM-dd")
                     #else
                     @Excel(name = "${comment}")
                     #end

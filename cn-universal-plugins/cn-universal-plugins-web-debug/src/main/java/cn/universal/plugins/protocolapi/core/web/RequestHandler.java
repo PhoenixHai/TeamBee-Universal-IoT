@@ -126,10 +126,10 @@ public class RequestHandler extends MagicController {
   /**
    * 测试入口、实际请求入口
    *
-   * @param request HttpServletRequest
-   * @param response HttpServletResponse
+   * @param request       HttpServletRequest
+   * @param response      HttpServletResponse
    * @param pathVariables 路径变量
-   * @param parameters 表单参数&URL参数
+   * @param parameters    表单参数&URL参数
    * @return 返回请求结果
    * @throws Throwable 处理失败抛出的异常
    */
@@ -161,7 +161,8 @@ public class RequestHandler extends MagicController {
     ApiInfo info = requestEntity.getApiInfo();
     if (info == null) {
       logger.error("{}找不到对应接口", request.getRequestURI());
-      return afterCompletion(requestEntity, buildResult(requestEntity, API_NOT_FOUND, "接口不存在"));
+      return afterCompletion(requestEntity,
+          buildResult(requestEntity, API_NOT_FOUND, "接口不存在"));
     }
     requestEntity.setHeaders(headers);
     List<Path> paths = new ArrayList<>(info.getPaths());
@@ -230,7 +231,7 @@ public class RequestHandler extends MagicController {
       BaseDefinition requestBody = info.getRequestBodyDefinition();
       if (requestBody != null
           && !CONST_STRING_TRUE.equalsIgnoreCase(
-              info.getOptionValue(Options.DISABLED_VALIDATE_REQUEST_BODY))
+          info.getOptionValue(Options.DISABLED_VALIDATE_REQUEST_BODY))
           && !CollectionUtils.isEmpty(requestBody.getChildren())) {
         requestBody.setName(StringUtils.defaultIfBlank(requestBody.getName(), "root"));
         doValidate(
@@ -314,7 +315,8 @@ public class RequestHandler extends MagicController {
       throw new ValidateException(
           jsonCode,
           StringUtils.defaultIfBlank(
-              parameter.getError(), String.format("%s[%s]数据类型错误", comment, parameter.getName())));
+              parameter.getError(),
+              String.format("%s[%s]数据类型错误", comment, parameter.getName())));
     }
     return false;
   }
@@ -392,14 +394,15 @@ public class RequestHandler extends MagicController {
           throw new ValidateException(
               jsonCode,
               StringUtils.defaultIfBlank(
-                  parameter.getError(), String.format("%s[%s]为必填项", comment, parameter.getName())));
+                  parameter.getError(),
+                  String.format("%s[%s]为必填项", comment, parameter.getName())));
         }
         try {
           Object value = convertValue(parameter.getDataType(), parameter.getName(), requestValue);
           if (isFile && parameter.isRequired()) {
             if (value == null
                 || (parameter.getDataType() == DataType.MultipartFiles
-                    && ((List<?>) value).isEmpty())) {
+                && ((List<?>) value).isEmpty())) {
               throw new ValidateException(
                   jsonCode,
                   StringUtils.defaultIfBlank(
@@ -426,7 +429,8 @@ public class RequestHandler extends MagicController {
           throw new ValidateException(
               jsonCode,
               StringUtils.defaultIfBlank(
-                  parameter.getError(), String.format("%s[%s]不合法", comment, parameter.getName())));
+                  parameter.getError(),
+                  String.format("%s[%s]不合法", comment, parameter.getName())));
         }
       }
     }
@@ -460,7 +464,9 @@ public class RequestHandler extends MagicController {
     return parameters;
   }
 
-  /** 转换参数类型 */
+  /**
+   * 转换参数类型
+   */
   private Object convertValue(DataType dataType, String name, String value) {
     if (dataType == null) {
       return value;
@@ -548,7 +554,9 @@ public class RequestHandler extends MagicController {
     return afterCompletion(requestEntity, resultProvider.buildException(requestEntity, root), root);
   }
 
-  /** 读取RequestBody */
+  /**
+   * 读取RequestBody
+   */
   private Object readRequestBody(MagicHttpServletRequest request) throws IOException {
     if (configuration.getHttpMessageConverters() != null && request.getContentType() != null) {
       MediaType mediaType = MediaType.valueOf(request.getContentType());
@@ -566,7 +574,9 @@ public class RequestHandler extends MagicController {
     return null;
   }
 
-  /** 构建 MagicScriptContext */
+  /**
+   * 构建 MagicScriptContext
+   */
   private MagicScriptContext createMagicScriptContext(
       String scriptName, RequestEntity requestEntity) {
     DebugRequest debugRequest = requestEntity.getDebugRequest();
@@ -583,7 +593,9 @@ public class RequestHandler extends MagicController {
     return context;
   }
 
-  /** 包装返回结果 */
+  /**
+   * 包装返回结果
+   */
   private Object response(RequestEntity requestEntity, Object value) {
     if (value instanceof ResponseEntity) {
       return value;
@@ -593,7 +605,9 @@ public class RequestHandler extends MagicController {
     return resultProvider.buildResult(requestEntity, value);
   }
 
-  /** 执行后置拦截器 */
+  /**
+   * 执行后置拦截器
+   */
   private Object doPostHandle(RequestEntity requestEntity, Object value) throws Exception {
     for (RequestInterceptor requestInterceptor : configuration.getRequestInterceptors()) {
       Object target = requestInterceptor.postHandle(requestEntity, value);
@@ -634,7 +648,9 @@ public class RequestHandler extends MagicController {
     return returnValue;
   }
 
-  /** 执行前置拦截器 */
+  /**
+   * 执行前置拦截器
+   */
   private Object doPreHandle(RequestEntity requestEntity) throws Exception {
     for (RequestInterceptor requestInterceptor : configuration.getRequestInterceptors()) {
       Object value = requestInterceptor.preHandle(requestEntity);

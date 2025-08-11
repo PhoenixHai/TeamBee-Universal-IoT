@@ -75,27 +75,40 @@ import org.springframework.util.CollectionUtils;
 @Service
 public class FenceService extends IoTUPPushAdapter {
 
-  @Resource private DelayedTaskUtil delayedTaskUtil;
+  @Resource
+  private DelayedTaskUtil delayedTaskUtil;
 
-  @Resource private IoTDeviceGeoFenceMapper ioTDeviceGeoFenceMapper;
+  @Resource
+  private IoTDeviceGeoFenceMapper ioTDeviceGeoFenceMapper;
 
-  @Resource private IoTDeviceFenceRelMapper ioTDeviceFenceRelMapper;
+  @Resource
+  private IoTDeviceFenceRelMapper ioTDeviceFenceRelMapper;
 
-  @Resource private IoTDeviceLogMapper ioTDeviceLogMapper;
-  @Resource private IoTDeviceLogShardMapper ioTDeviceLogShardMapper;
+  @Resource
+  private IoTDeviceLogMapper ioTDeviceLogMapper;
+  @Resource
+  private IoTDeviceLogShardMapper ioTDeviceLogShardMapper;
 
-  @Resource private IIoTDeviceDataService iIoTDeviceDataService;
+  @Resource
+  private IIoTDeviceDataService iIoTDeviceDataService;
 
-  @Autowired private IoTProductDeviceService iotProductDeviceService;
-  @Resource private StringRedisTemplate stringRedisTemplate;
-  @Resource private EventPublisher eventPublisher;
+  @Autowired
+  private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private EventPublisher eventPublisher;
 
-  /** 日志分表是否开启 */
+  /**
+   * 日志分表是否开启
+   */
   @Value("${shard.log.enable}")
   private Boolean enable;
 
 
-  /** 支持上报坐标设备的电子围栏功能 */
+  /**
+   * 支持上报坐标设备的电子围栏功能
+   */
   public R callFenceFunction(IoTProduct product, IoTDevice ioTDevice, DownRequest downRequest) {
     R r = null;
 
@@ -134,7 +147,9 @@ public class FenceService extends IoTUPPushAdapter {
     return R.ok();
   }
 
-  /** 设置围栏 */
+  /**
+   * 设置围栏
+   */
   public R setFence(IoTDevice ioTDevice, DownRequest downRequest) {
     Map data = (Map) downRequest.getFunction().get("data");
 
@@ -160,7 +175,9 @@ public class FenceService extends IoTUPPushAdapter {
     return R.ok();
   }
 
-  /** 获取电子围栏 */
+  /**
+   * 获取电子围栏
+   */
   public R getFence(IoTDevice ioTDevice, DownRequest downRequest) {
 
     List<IoTDeviceGeoFence> res =
@@ -420,7 +437,7 @@ public class FenceService extends IoTUPPushAdapter {
   /**
    * 设备围栏监测
    *
-   * @param upRequest 上行参数
+   * @param upRequest  上行参数
    * @param instanceBO 设备参数
    */
   @Async("taskExecutor")

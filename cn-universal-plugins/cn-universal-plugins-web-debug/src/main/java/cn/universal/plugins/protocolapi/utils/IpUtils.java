@@ -9,13 +9,13 @@ import org.apache.commons.lang3.StringUtils;
 public class IpUtils {
 
   private static final String[] DEFAULT_IP_HEADER =
-      new String[] {
-        "X-Forwarded-For",
-        "X-Real-IP",
-        "Proxy-Client-IP",
-        "WL-Proxy-Client-IP",
-        "HTTP_CLIENT_IP",
-        "HTTP_X_FORWARDED_FOR"
+      new String[]{
+          "X-Forwarded-For",
+          "X-Real-IP",
+          "Proxy-Client-IP",
+          "WL-Proxy-Client-IP",
+          "HTTP_CLIENT_IP",
+          "HTTP_X_FORWARDED_FOR"
       };
 
   public static String getRealIP(

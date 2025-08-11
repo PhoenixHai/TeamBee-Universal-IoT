@@ -8,16 +8,24 @@ package cn.universal.plugins.protocolapi.core.config;
  */
 public class Backup {
 
-  /** 是否启用备份配置，默认不启用 */
+  /**
+   * 是否启用备份配置，默认不启用
+   */
   private boolean enable = false;
 
-  /** 保留天数，<=0 为不限制 */
+  /**
+   * 保留天数，<=0 为不限制
+   */
   private int maxHistory = -1;
 
-  /** 使用数据库存储时的表名 */
+  /**
+   * 使用数据库存储时的表名
+   */
   private String tableName;
 
-  /** 使用数据库存储时使用的数据源 */
+  /**
+   * 使用数据库存储时使用的数据源
+   */
   private String datasource;
 
   public int getMaxHistory() {

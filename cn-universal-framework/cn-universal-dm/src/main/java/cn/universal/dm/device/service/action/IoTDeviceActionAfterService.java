@@ -63,25 +63,37 @@ import tk.mybatis.mapper.entity.Example;
 public class IoTDeviceActionAfterService extends IoTUPPushAdapter<BaseUPRequest>
     implements IoTDeviceLifeCycle {
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Resource private IIoTDeviceDataService iIoTDeviceDataService;
+  @Resource
+  private IIoTDeviceDataService iIoTDeviceDataService;
 
-  @Resource private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
-  @Resource private IoTDeviceService iotDeviceService;
+  @Resource
+  private IoTDeviceService iotDeviceService;
 
-  @Resource private IoTDeviceLogMapper ioTDeviceLogMapper;
-  @Resource private IoTDeviceLogShardMapper ioTDeviceLogShardMapper;
-  @Resource private IoTUserMapper iotUserMapper;
+  @Resource
+  private IoTDeviceLogMapper ioTDeviceLogMapper;
+  @Resource
+  private IoTDeviceLogShardMapper ioTDeviceLogShardMapper;
+  @Resource
+  private IoTUserMapper iotUserMapper;
 
-  /** 日志分表是否开启 */
+  /**
+   * 日志分表是否开启
+   */
   @Value("${shard.log.enable}")
   private Boolean enable;
 
-  /** 加载第三方平台的生命周期支持情况 */
+  /**
+   * 加载第三方平台的生命周期支持情况
+   */
   private Map<String, Set<String>> lifecycleSupportedConfig = new HashMap<>();
 
   @Autowired
@@ -100,7 +112,9 @@ public class IoTDeviceActionAfterService extends IoTUPPushAdapter<BaseUPRequest>
             });
   }
 
-  /** 校验三分平台是否支持此生命周期 */
+  /**
+   * 校验三分平台是否支持此生命周期
+   */
   @Override
   public boolean thirdSupport(IoTDeviceDTO ioTDeviceDTO, DevLifeCycle devLifeCycle) {
     if (lifecycleSupportedConfig.containsKey(ioTDeviceDTO.getThirdPlatform())) {
@@ -161,7 +175,9 @@ public class IoTDeviceActionAfterService extends IoTUPPushAdapter<BaseUPRequest>
     doUp(Stream.of(upRequest).collect(Collectors.toList()));
   }
 
-  /** 上下线事件 */
+  /**
+   * 上下线事件
+   */
   private void doOnOffline(IoTDeviceDTO ioTDeviceDTO) {
     DeviceMetadata deviceMetadata = ioTDeviceDTO.getDeviceMetadata();
     AbstractEventMetadata onOffline = deviceMetadata.getEventOrNull("onOffline");
@@ -221,7 +237,9 @@ public class IoTDeviceActionAfterService extends IoTUPPushAdapter<BaseUPRequest>
             : DateUtil.format(DateUtil.date(dev.getOnlineTime() * 1000L), "yyyy-MM-dd HH:mm:ss"));
   }
 
-  /** 执行离线状态变更 */
+  /**
+   * 执行离线状态变更
+   */
   private void doDbOffline(String iotId) {
     if (StrUtil.isBlank(iotId)) {
       return;
@@ -235,7 +253,9 @@ public class IoTDeviceActionAfterService extends IoTUPPushAdapter<BaseUPRequest>
     log.info("执行设备离线状态变更，iotId={},影响条数={}", iotId, count);
   }
 
-  /** 执行离线状态变更 */
+  /**
+   * 执行离线状态变更
+   */
   private void doDbOffline(String productKey, String deviceId) {
     if (StrUtil.isBlank(productKey) || StrUtil.isBlank(deviceId)) {
       return;
@@ -292,11 +312,11 @@ public class IoTDeviceActionAfterService extends IoTUPPushAdapter<BaseUPRequest>
   @Override
   @CacheEvict(
       cacheNames = {
-        "iot_dev_instance_bo",
-        "iot_dev_metadata_bo",
-        "iot_dev_shadow_bo",
-        "iot_dev_action",
-        "selectDevCount"
+          "iot_dev_instance_bo",
+          "iot_dev_metadata_bo",
+          "iot_dev_shadow_bo",
+          "iot_dev_action",
+          "selectDevCount"
       },
       allEntries = true)
   public void delete(IoTDeviceDTO ioTDeviceDTO, DownRequest downRequest) {

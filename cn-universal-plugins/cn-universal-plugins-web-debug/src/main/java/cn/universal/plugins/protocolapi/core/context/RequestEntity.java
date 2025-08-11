@@ -29,7 +29,8 @@ public class RequestEntity {
 
   private Map<String, Object> headers;
 
-  private RequestEntity() {}
+  private RequestEntity() {
+  }
 
   public static RequestEntity create() {
     return new RequestEntity();
@@ -120,7 +121,9 @@ public class RequestEntity {
     return requestId;
   }
 
-  /** 获取 RequestBody */
+  /**
+   * 获取 RequestBody
+   */
   public Object getRequestBody() {
     return this.requestBody;
   }

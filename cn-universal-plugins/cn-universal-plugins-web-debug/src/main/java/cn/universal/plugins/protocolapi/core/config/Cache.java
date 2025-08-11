@@ -7,13 +7,19 @@ package cn.universal.plugins.protocolapi.core.config;
  */
 public class Cache {
 
-  /** 是否启用缓存 */
+  /**
+   * 是否启用缓存
+   */
   private boolean enable = false;
 
-  /** 默认缓存容量 */
+  /**
+   * 默认缓存容量
+   */
   private int capacity = 10000;
 
-  /** 默认过期时间,单位为毫秒，-1为不过期 */
+  /**
+   * 默认过期时间,单位为毫秒，-1为不过期
+   */
   private long ttl = -1;
 
   public int getCapacity() {

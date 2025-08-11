@@ -41,10 +41,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CTAIoTDownService extends AbstractDownService<CTAIoTDownRequest> implements ICodec {
 
-  @Resource private CTAIoTModuleInfo ctaIoTModuleInfo;
-  @Resource private CTAIoTDownHandle ctAIoTDownHandle;
-  @Resource private IoTDeviceShadowService ioTDeviceShadowService;
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private CTAIoTModuleInfo ctaIoTModuleInfo;
+  @Resource
+  private CTAIoTDownHandle ctAIoTDownHandle;
+  @Resource
+  private IoTDeviceShadowService ioTDeviceShadowService;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
   @Override
   public String name() {

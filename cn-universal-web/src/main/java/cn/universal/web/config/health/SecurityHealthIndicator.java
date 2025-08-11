@@ -18,7 +18,9 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
-/** 安全健康检查 @Author Aleo */
+/**
+ * 安全健康检查 @Author Aleo
+ */
 @Slf4j
 @Component
 public class SecurityHealthIndicator implements HealthIndicator {

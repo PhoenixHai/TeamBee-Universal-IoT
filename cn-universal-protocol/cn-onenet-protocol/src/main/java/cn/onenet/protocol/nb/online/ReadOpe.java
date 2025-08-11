@@ -18,7 +18,8 @@ import cn.onenet.protocol.nb.utils.HttpSendCenter;
 import okhttp3.Callback;
 
 /**
- * Created by zhuocongbin date 2018/3/15 apiKey: the product of api-key which can be found on OneNET
+ * Created by zhuocongbin date 2018/3/15 apiKey: the product of api-key which can be found on
+ * OneNET
  */
 public class ReadOpe extends BasicOpe {
 

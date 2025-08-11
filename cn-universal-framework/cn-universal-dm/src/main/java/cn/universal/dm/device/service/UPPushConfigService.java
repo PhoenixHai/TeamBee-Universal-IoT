@@ -38,7 +38,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UPPushConfigService {
 
-  @Resource private IoTUserApplicationMapper ioTUserApplicationMapper;
+  @Resource
+  private IoTUserApplicationMapper ioTUserApplicationMapper;
 
   // 本地缓存：应用ID -> 推送配置
   private final Cache<String, UPPushBO> pushConfigCache =
@@ -103,7 +104,9 @@ public class UPPushConfigService {
     }
   }
 
-  /** 清空所有缓存 */
+  /**
+   * 清空所有缓存
+   */
   public void clearCache() {
     pushConfigCache.invalidateAll();
     log.info("[推送配置] 所有缓存已清空");
@@ -160,7 +163,9 @@ public class UPPushConfigService {
     }
   }
 
-  /** 解析HTTP配置 */
+  /**
+   * 解析HTTP配置
+   */
   private UPPushBO.HttpPushConfig parseHttpConfig(JSONObject httpConfig) {
     if (httpConfig == null) {
       return UPPushBO.HttpPushConfig.builder().enable(false).support(false).build();
@@ -175,7 +180,9 @@ public class UPPushConfigService {
         .build();
   }
 
-  /** 解析MQTT配置 */
+  /**
+   * 解析MQTT配置
+   */
   private UPPushBO.MqttPushConfig parseMqttConfig(JSONObject mqttConfig) {
     if (mqttConfig == null) {
       return UPPushBO.MqttPushConfig.builder().enable(false).support(false).build();
@@ -191,7 +198,9 @@ public class UPPushConfigService {
         .build();
   }
 
-  /** 解析Kafka配置 */
+  /**
+   * 解析Kafka配置
+   */
   private UPPushBO.KafkaPushConfig parseKafkaConfig(JSONObject kafkaConfig) {
     if (kafkaConfig == null) {
       return UPPushBO.KafkaPushConfig.builder().enable(false).support(false).build();
@@ -203,7 +212,9 @@ public class UPPushConfigService {
         .build();
   }
 
-  /** 解析RocketMQ配置 */
+  /**
+   * 解析RocketMQ配置
+   */
   private UPPushBO.RocketMQPushConfig parseRocketMQConfig(JSONObject rocketMQConfig) {
     if (rocketMQConfig == null) {
       return UPPushBO.RocketMQPushConfig.builder().enable(false).support(false).build();

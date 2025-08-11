@@ -49,9 +49,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class SenceIoTDeviceDownService {
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
-  @Resource private IoTProductMapper ioTProductMapper;
-  @Resource private NoticeService noticeService;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTProductMapper ioTProductMapper;
+  @Resource
+  private NoticeService noticeService;
 
   public RunStatus matchSuccess(List<ExeRunContext> exeRunContexts) {
     if (CollectionUtil.isEmpty(exeRunContexts)) {
@@ -93,7 +96,8 @@ public class SenceIoTDeviceDownService {
           DownResult downResult = functionDown(downRequest);
           log.debug("device场景联动结果={}", JSONUtil.toJsonStr(downResult));
           if (!downResult.getSuccess()) {
-            log.warn("场景联动指令下发{},设备编号:{},场景编号:{}", "异常", exec.getDeviceId(), sceneLinkage.getId());
+            log.warn("场景联动指令下发{},设备编号:{},场景编号:{}", "异常", exec.getDeviceId(),
+                sceneLinkage.getId());
             exeRunContextBuilder.success(false);
           } else {
             exeRunContextBuilder.success(true);
@@ -139,10 +143,12 @@ public class SenceIoTDeviceDownService {
             exeRunContextBuilder.result(rs != null ? rs.getErrorMessage() : "");
           }
           log.info(
-              "场景联动触发通知成功, 场景id:{}, 模板id:{}", sceneLinkage.getId(), exec.getNoticeTemplateId());
+              "场景联动触发通知成功, 场景id:{}, 模板id:{}", sceneLinkage.getId(),
+              exec.getNoticeTemplateId());
         } catch (Exception e) {
           log.error(
-              "场景联动触发通知失败, 场景id:{}, 模板id:{}", sceneLinkage.getId(), exec.getNoticeTemplateId(), e);
+              "场景联动触发通知失败, 场景id:{}, 模板id:{}", sceneLinkage.getId(),
+              exec.getNoticeTemplateId(), e);
           exeRunContextBuilder.success(false);
         }
         runContexts.add(exeRunContextBuilder.build());

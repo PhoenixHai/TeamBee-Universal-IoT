@@ -42,7 +42,9 @@ public class CacheMonitorController {
   private final CacheManager cacheManager;
   private final ThreadMonitor threadMonitor;
 
-  /** 获取缓存统计信息 */
+  /**
+   * 获取缓存统计信息
+   */
   @GetMapping("/stats")
   public Map<String, Object> getCacheStats() {
     Map<String, Object> result = new HashMap<>();
@@ -90,7 +92,9 @@ public class CacheMonitorController {
     return result;
   }
 
-  /** 清理指定缓存 */
+  /**
+   * 清理指定缓存
+   */
   @PostMapping("/clear/{cacheName}")
   public Map<String, Object> clearCache(@PathVariable String cacheName) {
     Map<String, Object> result = new HashMap<>();
@@ -115,7 +119,9 @@ public class CacheMonitorController {
     return result;
   }
 
-  /** 清理所有缓存 */
+  /**
+   * 清理所有缓存
+   */
   @PostMapping("/clear-all")
   public Map<String, Object> clearAllCaches() {
     Map<String, Object> result = new HashMap<>();
@@ -149,7 +155,9 @@ public class CacheMonitorController {
     return result;
   }
 
-  /** 获取线程转储 */
+  /**
+   * 获取线程转储
+   */
   @GetMapping("/thread-dump")
   public Map<String, Object> getThreadDump() {
     Map<String, Object> result = new HashMap<>();
@@ -167,7 +175,9 @@ public class CacheMonitorController {
     return result;
   }
 
-  /** 检查系统健康状态 */
+  /**
+   * 检查系统健康状态
+   */
   @GetMapping("/health")
   public Map<String, Object> getHealthStatus() {
     Map<String, Object> result = new HashMap<>();

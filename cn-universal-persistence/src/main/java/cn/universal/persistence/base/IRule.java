@@ -18,5 +18,6 @@ package cn.universal.persistence.base;
  */
 public interface IRule {
 
-  default void Rule() {}
+  default void Rule() {
+  }
 }

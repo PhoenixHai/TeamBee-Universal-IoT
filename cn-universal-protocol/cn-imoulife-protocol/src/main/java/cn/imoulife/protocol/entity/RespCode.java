@@ -14,7 +14,6 @@ package cn.imoulife.protocol.entity;
 
 /**
  * @Author 🐤 zhongxin ✉ asimooc@foxmail.com
- *
  * @since ⏰ 2019/1/17
  */
 public enum RespCode {

@@ -47,7 +47,7 @@ public abstract class AbstractCodecService implements ICodecService {
   /**
    * 获取协议定义，确保脚本已加载
    *
-   * @param productKey 产品Key
+   * @param productKey  产品Key
    * @param codecMethod 编解码方法
    * @return 协议支持定义
    */
@@ -67,7 +67,9 @@ public abstract class AbstractCodecService implements ICodecService {
     return protocolDef;
   }
 
-  /** 解码 - 带上下文 */
+  /**
+   * 解码 - 带上下文
+   */
   @Override
   public <R> List<R> decode(
       String productKey, String payload, Object context, Class<R> elementType) {
@@ -100,23 +102,30 @@ public abstract class AbstractCodecService implements ICodecService {
 
     long t2 = System.currentTimeMillis();
     log.info(
-        "产品编号={} 原始报文={} 解码={} 耗时={}ms", productKey, payload, JSONUtil.toJsonStr(rs), (t2 - t1));
+        "产品编号={} 原始报文={} 解码={} 耗时={}ms", productKey, payload, JSONUtil.toJsonStr(rs),
+        (t2 - t1));
     return rs;
   }
 
-  /** 解码 - 简化版本 */
+  /**
+   * 解码 - 简化版本
+   */
   @Override
   public <R> List<R> decode(String productKey, String payload, Class<R> elementType) {
     return decode(productKey, payload, null, elementType);
   }
 
-  /** 解码为UPRequest列表 */
+  /**
+   * 解码为UPRequest列表
+   */
   @Override
   public List<UPRequest> decode(String productKey, String payload) {
     return decode(productKey, payload, null, UPRequest.class);
   }
 
-  /** 编码 */
+  /**
+   * 编码
+   */
   @Override
   public String encode(String productKey, String payload) {
     ProtocolSupportDefinition protocolDef =
@@ -138,7 +147,9 @@ public abstract class AbstractCodecService implements ICodecService {
     return result;
   }
 
-  /** 预解码 */
+  /**
+   * 预解码
+   */
   @Override
   public UPRequest preDecode(String productKey, String payload) {
     ProtocolSupportDefinition protocolDef =
@@ -164,7 +175,9 @@ public abstract class AbstractCodecService implements ICodecService {
     return result;
   }
 
-  /** 通用编解码方法 - 支持所有CodecMethod类型 */
+  /**
+   * 通用编解码方法 - 支持所有CodecMethod类型
+   */
   @Override
   public String codec(String productKey, String payload, CodecMethod codecMethod) {
     ProtocolSupportDefinition protocolDef =
@@ -228,24 +241,31 @@ public abstract class AbstractCodecService implements ICodecService {
     }
 
     long t2 = System.currentTimeMillis();
-    log.info("产品编号={} 原始报文={} {}={} 耗时={}ms", productKey, payload, codecMethod, result, (t2 - t1));
+    log.info("产品编号={} 原始报文={} {}={} 耗时={}ms", productKey, payload, codecMethod, result,
+        (t2 - t1));
     return result;
   }
 
-  /** 检查是否支持指定的编解码方法 */
+  /**
+   * 检查是否支持指定的编解码方法
+   */
   @Override
   public boolean isSupported(String productKey, CodecMethod codecMethod) {
     ProtocolSupportDefinition protocolDef = getProtocolDefinitionNoScript(productKey);
     return protocolDef != null && protocolDef.supportMethod(codecMethod);
   }
 
-  /** IoT到第三方数据转换编解码 */
+  /**
+   * IoT到第三方数据转换编解码
+   */
   @Override
   public String iotToYour(String productKey, String payload) {
     return codec(productKey, payload, CodecMethod.iotToYour);
   }
 
-  /** 第三方到IoT数据转换编解码 */
+  /**
+   * 第三方到IoT数据转换编解码
+   */
   @Override
   public String yourToIot(String productKey, String payload) {
     return codec(productKey, payload, CodecMethod.yourToIot);
@@ -300,9 +320,9 @@ public abstract class AbstractCodecService implements ICodecService {
   /**
    * 当编解码为空时的处理 - 泛型版本
    *
-   * @param payload 原始数据
+   * @param payload     原始数据
    * @param elementType 目标类型
-   * @param <R> 泛型类型
+   * @param <R>         泛型类型
    * @return 处理后的对象列表
    */
   protected <R> List<R> emptyProtocol(String payload, Class<R> elementType) {
@@ -310,11 +330,15 @@ public abstract class AbstractCodecService implements ICodecService {
     try {
       // 1.消息是JSON
       List<R> list1 = doJson(payload, elementType, list);
-      if (list1 != null) return list1;
+      if (list1 != null) {
+        return list1;
+      }
 
       // 2.消息是JSONArray
       List<R> list2 = doJsonArray(payload, elementType, list);
-      if (list2 != null) return list2;
+      if (list2 != null) {
+        return list2;
+      }
 
       // 3.不是JSON也不是JSONArray，创建UPRequest
       UPRequest upRequest = new UPRequest();
@@ -333,10 +357,10 @@ public abstract class AbstractCodecService implements ICodecService {
   /**
    * 处理JSON格式的数据
    *
-   * @param payload 原始数据
+   * @param payload     原始数据
    * @param elementType 目标类型
-   * @param list 结果列表
-   * @param <R> 泛型类型
+   * @param list        结果列表
+   * @param <R>         泛型类型
    * @return 处理后的对象列表
    */
   private <R> List<R> doJson(String payload, Class<R> elementType, List<R> list) {
@@ -355,9 +379,9 @@ public abstract class AbstractCodecService implements ICodecService {
       //   }
       // }
       if (payloadJson != null
-              && (MessageType.PROPERTIES
-                  .name()
-                  .equalsIgnoreCase(payloadJson.getStr("messageType", "")))
+          && (MessageType.PROPERTIES
+          .name()
+          .equalsIgnoreCase(payloadJson.getStr("messageType", "")))
           || MessageType.EVENT.name().equalsIgnoreCase(payloadJson.getStr("messageType", ""))) {
         R upMsg = JSONUtil.toBean(payloadJson, elementType);
         list.add(upMsg);
@@ -388,10 +412,10 @@ public abstract class AbstractCodecService implements ICodecService {
   /**
    * 处理JSONArray格式的数据
    *
-   * @param payload 原始数据
+   * @param payload     原始数据
    * @param elementType 目标类型
-   * @param list 结果列表
-   * @param <R> 泛型类型
+   * @param list        结果列表
+   * @param <R>         泛型类型
    * @return 处理后的对象列表
    */
   private <R> List<R> doJsonArray(String payload, Class<R> elementType, List<R> list) {

@@ -52,7 +52,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @DisplayName("MQTTTopicManager 测试运行器")
 class MQTTTopicManagerTestRunner {
 
-  @InjectMocks private MQTTTopicManager topicManager;
+  @InjectMocks
+  private MQTTTopicManager topicManager;
 
   @BeforeAll
   void setUpClass() {
@@ -195,12 +196,14 @@ class MQTTTopicManagerTestRunner {
       String propertyTopic = prefix + "/up/property/" + productKey + "/" + deviceId;
       MQTTTopicType propertyType = topicManager.parseTopicType(propertyTopic);
       assertEquals(
-          MQTTTopicType.THING_PROPERTY_UP, propertyType, "前缀 " + prefix + " 的物模型属性上报应该正确解析");
+          MQTTTopicType.THING_PROPERTY_UP, propertyType,
+          "前缀 " + prefix + " 的物模型属性上报应该正确解析");
 
       // 测试透传上行
       String passthroughTopic = prefix + "/up/" + productKey + "/" + deviceId;
       MQTTTopicType passthroughType = topicManager.parseTopicType(passthroughTopic);
-      assertEquals(MQTTTopicType.PASSTHROUGH_UP, passthroughType, "前缀 " + prefix + " 的透传上行应该正确解析");
+      assertEquals(MQTTTopicType.PASSTHROUGH_UP, passthroughType,
+          "前缀 " + prefix + " 的透传上行应该正确解析");
 
       System.out.println("动态前缀 " + prefix + " 测试成功");
     }
@@ -408,9 +411,9 @@ class MQTTTopicManagerTestRunner {
   void testCompleteWorkflow() {
     // 模拟完整的MQTT主题处理流程
     String[] testTopics = {
-      MQTTTopicManagerTestData.VALID_THING_PROPERTY_UP_TOPIC,
-      MQTTTopicManagerTestData.VALID_PASSTHROUGH_UP_TOPIC,
-      MQTTTopicManagerTestData.VALID_OTA_REPORT_TOPIC
+        MQTTTopicManagerTestData.VALID_THING_PROPERTY_UP_TOPIC,
+        MQTTTopicManagerTestData.VALID_PASSTHROUGH_UP_TOPIC,
+        MQTTTopicManagerTestData.VALID_OTA_REPORT_TOPIC
     };
 
     for (String topic : testTopics) {

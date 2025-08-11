@@ -130,7 +130,8 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
         tokenContextBuilder.tokenType(OAuth2TokenType.ACCESS_TOKEN).build();
     OAuth2Token generatedAccessToken = tokenGenerator.generate(tokenContext);
     if (generatedAccessToken == null) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("server_error", "无法生成访问令牌", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("server_error", "无法生成访问令牌", null));
     }
 
     OAuth2AccessToken accessToken =

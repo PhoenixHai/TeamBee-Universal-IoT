@@ -30,46 +30,77 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MQTTDeviceInfo {
 
-  /** 产品Key */
+  /**
+   * 产品Key
+   */
   private String productKey;
 
-  /** 设备ID */
+  /**
+   * 设备ID
+   */
   private String deviceId;
 
-  /** 设备唯一标识 */
+  /**
+   * 设备唯一标识
+   */
   private String deviceUniqueId;
 
-  /** 设备名称 */
+  /**
+   * 设备名称
+   */
   private String deviceName;
 
-  /** 设备状态 */
-  @Builder.Default private DeviceStatus status = DeviceStatus.OFFLINE;
+  /**
+   * 设备状态
+   */
+  @Builder.Default
+  private DeviceStatus status = DeviceStatus.OFFLINE;
 
-  /** 最后活跃时间 */
+  /**
+   * 最后活跃时间
+   */
   private LocalDateTime lastActiveTime;
 
-  /** 注册时间 */
-  @Builder.Default private LocalDateTime registerTime = LocalDateTime.now();
+  /**
+   * 注册时间
+   */
+  @Builder.Default
+  private LocalDateTime registerTime = LocalDateTime.now();
 
-  /** 关联的MQTT客户端ID */
+  /**
+   * 关联的MQTT客户端ID
+   */
   private String mqttClientId;
 
-  /** 网关产品Key（如果是子设备） */
+  /**
+   * 网关产品Key（如果是子设备）
+   */
   private String gatewayProductKey;
 
-  /** 网关设备ID（如果是子设备） */
+  /**
+   * 网关设备ID（如果是子设备）
+   */
   private String gatewayDeviceId;
 
-  /** 是否为网关设备 */
-  @Builder.Default private boolean isGateway = false;
+  /**
+   * 是否为网关设备
+   */
+  @Builder.Default
+  private boolean isGateway = false;
 
-  /** 设备属性 */
+  /**
+   * 设备属性
+   */
   private String properties;
 
-  /** 设备标签 */
+  /**
+   * 设备标签
+   */
   private String tags;
 
-  /** 设备状态枚举 */
+  /**
+   * 设备状态枚举
+   */
   public enum DeviceStatus {
     ONLINE, // 在线
     OFFLINE, // 离线
@@ -77,7 +108,9 @@ public class MQTTDeviceInfo {
     UNKNOWN // 未知
   }
 
-  /** 获取设备唯一标识 */
+  /**
+   * 获取设备唯一标识
+   */
   public String getDeviceUniqueId() {
     if (deviceUniqueId == null && productKey != null && deviceId != null) {
       deviceUniqueId = productKey + ":" + deviceId;
@@ -85,12 +118,16 @@ public class MQTTDeviceInfo {
     return deviceUniqueId;
   }
 
-  /** 检查是否为子设备 */
+  /**
+   * 检查是否为子设备
+   */
   public boolean isSubDevice() {
     return gatewayProductKey != null && gatewayDeviceId != null;
   }
 
-  /** 更新最后活跃时间 */
+  /**
+   * 更新最后活跃时间
+   */
   public void updateLastActiveTime() {
     this.lastActiveTime = LocalDateTime.now();
     if (this.status == DeviceStatus.OFFLINE) {

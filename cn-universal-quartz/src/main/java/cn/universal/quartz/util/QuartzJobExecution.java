@@ -15,7 +15,9 @@ package cn.universal.quartz.util;
 import cn.universal.quartz.domain.SysJob;
 import org.quartz.JobExecutionContext;
 
-/** 定时任务处理（允许并发执行） @Author ruoyi */
+/**
+ * 定时任务处理（允许并发执行） @Author ruoyi
+ */
 public class QuartzJobExecution extends AbstractQuartzJob {
 
   @Override

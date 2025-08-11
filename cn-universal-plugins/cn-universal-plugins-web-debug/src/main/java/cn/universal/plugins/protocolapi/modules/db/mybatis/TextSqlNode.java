@@ -49,7 +49,9 @@ public class TextSqlNode extends SqlNode {
   private static final GenericTokenParser INOUT_TOKEN_PARSER =
       new GenericTokenParser("@{", "(", true);
 
-  /** SQL */
+  /**
+   * SQL
+   */
   private final String text;
 
   public TextSqlNode(String text) {

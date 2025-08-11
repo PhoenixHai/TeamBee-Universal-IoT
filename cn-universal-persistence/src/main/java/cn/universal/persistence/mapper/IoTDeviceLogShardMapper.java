@@ -31,13 +31,19 @@ public interface IoTDeviceLogShardMapper extends BaseMapper<IoTDeviceLog> {
 
   List<IoTDeviceLogVO> queryLogPageV2ByIdList(LogQuery logQuery);
 
-  /** 分页查询设备日志列表 */
+  /**
+   * 分页查询设备日志列表
+   */
   List<IoTDeviceLogVO> queryLogPageList(IoTDeviceLogBO bo);
 
-  /** 分页查询设备日志列表 */
+  /**
+   * 分页查询设备日志列表
+   */
   List<IoTDeviceLogVO> queryLogPageV2List(LogQuery logQuery);
 
-  /** 根据主键查询 */
+  /**
+   * 根据主键查询
+   */
   IoTDeviceLogVO queryLogById(LogQuery logQuery);
 
   /**
@@ -51,10 +57,14 @@ public interface IoTDeviceLogShardMapper extends BaseMapper<IoTDeviceLog> {
 
   void addFunctionLog(IoTDeviceLogBO bo);
 
-  /** 查询最新包含坐标的第二条日志 */
+  /**
+   * 查询最新包含坐标的第二条日志
+   */
   IoTDeviceLog queryCoordinatesLogByIotId(@Param("iotId") String iotId);
 
-  /** 查询最新包含坐标的第一条日志 */
+  /**
+   * 查询最新包含坐标的第一条日志
+   */
   IoTDeviceLog queryLatestCoordinatesLogByIotId(@Param("iotId") String iotId);
 
   IoTDeviceLog selectOneForCtwing(

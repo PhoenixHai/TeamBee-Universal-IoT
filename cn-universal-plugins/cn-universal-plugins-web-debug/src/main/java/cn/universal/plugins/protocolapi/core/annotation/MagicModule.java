@@ -16,6 +16,8 @@ import java.lang.annotation.Target;
 @Documented
 public @interface MagicModule {
 
-  /** 模块名 */
+  /**
+   * 模块名
+   */
   String value();
 }

@@ -20,7 +20,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * @ClassName: AESUtil @Description 参数对称加密 @Author Administrator
- *
  * @since 2025/4/1 20:34
  */
 public class AESUtil {
@@ -32,7 +31,7 @@ public class AESUtil {
   /**
    * AES加密
    *
-   * @param data 加密串
+   * @param data   加密串
    * @param aesKey
    * @return
    * @throws Exception
@@ -54,7 +53,7 @@ public class AESUtil {
   /**
    * 解密
    *
-   * @param data 解密的字符串
+   * @param data   解密的字符串
    * @param aesKey 解密的key值
    * @return
    * @throws Exception
@@ -74,7 +73,9 @@ public class AESUtil {
     }
   }
 
-  /** 空格转+号 */
+  /**
+   * 空格转+号
+   */
   public static String SpaceTurnPlus(String str) {
     char[] chars = str.toCharArray();
     StringBuffer returnStr = new StringBuffer();
@@ -88,7 +89,8 @@ public class AESUtil {
     return returnStr.toString();
   }
 
-  public static void main(String[] args) throws Exception {}
+  public static void main(String[] args) throws Exception {
+  }
 
   // 加密
   public static String Encrypt(String content, String key) throws Exception {

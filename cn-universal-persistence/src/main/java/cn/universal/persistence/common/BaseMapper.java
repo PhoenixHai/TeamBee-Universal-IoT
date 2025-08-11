@@ -25,4 +25,6 @@ import tk.mybatis.mapper.common.MySqlMapper;
  * @since 2025/8/11 16:59
  */
 public interface BaseMapper<T extends Serializable>
-    extends Mapper<T>, MySqlMapper<T>, ConditionMapper<T>, IdsMapper<T> {}
+    extends Mapper<T>, MySqlMapper<T>, ConditionMapper<T>, IdsMapper<T> {
+
+}

@@ -70,24 +70,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
 
-  @Resource private DelayedTaskUtil delayedTaskUtil;
+  @Resource
+  private DelayedTaskUtil delayedTaskUtil;
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Resource private SupportMapAreasMapper supportMapAreasMapper;
+  @Resource
+  private SupportMapAreasMapper supportMapAreasMapper;
 
-  @Resource private IoTDeviceService iotDeviceService;
+  @Resource
+  private IoTDeviceService iotDeviceService;
 
-  @Autowired private ImoulifeRequest imoulifeRequest;
+  @Autowired
+  private ImoulifeRequest imoulifeRequest;
 
-  @Autowired private LechenOnlineTask lechenOnlineTask;
+  @Autowired
+  private LechenOnlineTask lechenOnlineTask;
 
   @Resource(name = "ioTDeviceActionAfterService")
   private IoTDeviceLifeCycle ioTDeviceLifeCycle;
 
-  @Resource private ISysOssService iSysOssService;
+  @Resource
+  private ISysOssService iSysOssService;
 
-  @Resource private IoTProductMapper ioTProductMapper;
+  @Resource
+  private IoTProductMapper ioTProductMapper;
 
   public R down(ImoulifeDownRequest downRequest) {
     if (downRequest == null || downRequest.getCmd() == null) {
@@ -341,7 +349,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok();
   }
 
-  /** 获取乐橙设备的播放信息 */
+  /**
+   * 获取乐橙设备的播放信息
+   */
   private R devPlay(ImoulifeDownRequest downRequest) throws ParseException {
     // 0:直播、1:本地录像、2:云录像
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
@@ -415,7 +425,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok("ok", object.toString());
   }
 
-  /** 云台控制 */
+  /**
+   * 云台控制
+   */
   private R devTurn(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -452,7 +464,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
 
   // --------------------------------------------------设备锁----------------------------------------------------------
 
-  /** 设备锁电量 */
+  /**
+   * 设备锁电量
+   */
   private R devElectricQuantity(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -466,7 +480,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁密钥列表 */
+  /**
+   * 设备锁密钥列表
+   */
   private R devDoorKeys(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -480,7 +496,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁开门信息 */
+  /**
+   * 设备锁开门信息
+   */
   private R devOpenDoorRecord(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -549,7 +567,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 生成门锁密码 devGenerateSnapkey */
+  /**
+   * 生成门锁密码 devGenerateSnapkey
+   */
   private R devGenerateSnapkey(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -610,7 +630,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁 废弃密钥 */
+  /**
+   * 设备锁 废弃密钥
+   */
   private R devDeleteDoorKey(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -636,7 +658,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁 获取临时秘钥列表 */
+  /**
+   * 设备锁 获取临时秘钥列表
+   */
   private R devSnapkeyList(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -703,7 +727,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁 唤醒休眠的门锁设备 */
+  /**
+   * 设备锁 唤醒休眠的门锁设备
+   */
   private R devWakeUp(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -718,7 +744,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁 直播抓图 */
+  /**
+   * 设备锁 直播抓图
+   */
   private R devSnap(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -733,7 +761,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁 生成直播流 */
+  /**
+   * 设备锁 生成直播流
+   */
   private R devLive(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -753,7 +783,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁 获取直播流 */
+  /**
+   * 设备锁 获取直播流
+   */
   private R devLiveStreamInfo(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -770,7 +802,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error();
   }
 
-  /** 设备锁 获取乐橙设备信息 */
+  /**
+   * 设备锁 获取乐橙设备信息
+   */
   private R devSetting(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -790,7 +824,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
   // --------------------------------------------------设备锁
   // end----------------------------------------------------------
 
-  /** 查询某天本地录像数量 */
+  /**
+   * 查询某天本地录像数量
+   */
   private R devVideoLocal(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String startTime = jsonUtil.getStr("beginTime");
@@ -827,7 +863,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 查询某天云录像数量 */
+  /**
+   * 查询某天云录像数量
+   */
   private R devVideoCloud(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String startTime = jsonUtil.getStr("beginTime");
@@ -864,7 +902,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 本地回放片段信息 */
+  /**
+   * 本地回放片段信息
+   */
   private R devPlayback(ImoulifeDownRequest downRequest) throws ParseException {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String beginTime = jsonUtil.getStr("beginTime");
@@ -925,7 +965,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", data);
   }
 
-  /** 云回放片段信息 */
+  /**
+   * 云回放片段信息
+   */
   private R devPlaybackCloud(ImoulifeDownRequest downRequest) throws ParseException {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String beginTime = jsonUtil.getStr("beginTime");
@@ -989,7 +1031,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", data);
   }
 
-  /** 获取摄像头SD卡状态 */
+  /**
+   * 获取摄像头SD卡状态
+   */
   private R deviceSdcardStatus(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -1012,7 +1056,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 获取设备升级状态和进度 */
+  /**
+   * 获取设备升级状态和进度
+   */
   private R upgradeProcessDevice(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -1035,7 +1081,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 获取设备升级状态和进度 */
+  /**
+   * 获取设备升级状态和进度
+   */
   private R setNightVisionMode(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String mode = jsonUtil.getStr("mode");
@@ -1066,7 +1114,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 设备详情查询(通道信息) */
+  /**
+   * 设备详情查询(通道信息)
+   */
   private R listDeviceDetailsByIds(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     JSONArray array = new JSONArray();
@@ -1109,7 +1159,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 查询设备是否支持对讲 */
+  /**
+   * 查询设备是否支持对讲
+   */
   private R isIntercomByIds(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     JSONArray array = new JSONArray();
@@ -1146,7 +1198,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 获取摄像头存储介质容量信息 */
+  /**
+   * 获取摄像头存储介质容量信息
+   */
   private R deviceStorage(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -1170,7 +1224,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 摄像头SD卡格式化 */
+  /**
+   * 摄像头SD卡格式化
+   */
   private R recoverSDCard(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -1193,7 +1249,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 摄像头使能控制(设备指示灯、设备提示音、红外灯) */
+  /**
+   * 摄像头使能控制(设备指示灯、设备提示音、红外灯)
+   */
   private R enableConfig(ImoulifeDownRequest downRequest) {
     String deviceId = downRequest.getDeviceId();
     IoTDevice ioTDevice = new IoTDevice();
@@ -1261,7 +1319,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 摄像头获取当前设备的云存储服务信息 */
+  /**
+   * 摄像头获取当前设备的云存储服务信息
+   */
   private R getDeviceCloud(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
@@ -1290,7 +1350,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 摄像头获取设备版本和可升级信息 */
+  /**
+   * 摄像头获取设备版本和可升级信息
+   */
   private R deviceVersion(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceIds", downRequest.getDeviceId());
@@ -1311,7 +1373,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 设备升级 */
+  /**
+   * 设备升级
+   */
   private R upgradeDevice(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -1334,7 +1398,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 摄像头周边WIFI信息 */
+  /**
+   * 摄像头周边WIFI信息
+   */
   private R wifiAround(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -1355,7 +1421,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 摄像头控制设备连接热点 */
+  /**
+   * 摄像头控制设备连接热点
+   */
   private R controlDeviceWifi(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String ssid = jsonUtil.getStr("ssid");
@@ -1387,7 +1455,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 获取使能开关状态 */
+  /**
+   * 获取使能开关状态
+   */
   private R getDeviceCameraStatus(ImoulifeDownRequest downRequest) {
     String deviceId = downRequest.getDeviceId();
     IoTDevice ioTDevice = new IoTDevice();
@@ -1447,7 +1517,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 获取设备分贝 */
+  /**
+   * 获取设备分贝
+   */
   private R getSoundVolumeSize(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String type = jsonUtil.getStr("type");
@@ -1477,7 +1549,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 获取画面翻转状态 */
+  /**
+   * 获取画面翻转状态
+   */
   private R frameReverseStatus(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
@@ -1504,7 +1578,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 摄像头抓图，返回本地网络路径 */
+  /**
+   * 摄像头抓图，返回本地网络路径
+   */
   private R capture(ImoulifeDownRequest downRequest) {
     String url1 = "http://oss-cn-universal-public.oss-cn-hangzhou.aliyuncs.com/snapshot/";
     JSONObject param = new JSONObject();
@@ -1575,7 +1651,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 用户告警列表 */
+  /**
+   * 用户告警列表
+   */
   private R getAlarmMessage(ImoulifeDownRequest downRequest) throws ParseException {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String beginTime = jsonUtil.getStr("beginTime");
@@ -1629,7 +1707,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", data);
   }
 
-  /** 设置设备音量分贝 */
+  /**
+   * 设置设备音量分贝
+   */
   private R setSoundVolumeSize(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String type = jsonUtil.getStr("type");
@@ -1663,7 +1743,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 重启乐橙摄像头 */
+  /**
+   * 重启乐橙摄像头
+   */
   private R restartDevice(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -1686,7 +1768,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 设置乐橙摄像头画面翻转 */
+  /**
+   * 设置乐橙摄像头画面翻转
+   */
   private R modifyFrameReverseStatus(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String direction = jsonUtil.getStr("direction");
@@ -1717,7 +1801,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 设置设备免费云存储服务开关 */
+  /**
+   * 设置设备免费云存储服务开关
+   */
   private R setStorageStrategy(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String status = jsonUtil.getStr("status");
@@ -1748,7 +1834,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 开通设备云存储 */
+  /**
+   * 开通设备云存储
+   */
   private R openCloudRecord(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String strategyId = jsonUtil.getStr("strategyId");
@@ -1783,7 +1871,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 解绑设备云存储 */
+  /**
+   * 解绑设备云存储
+   */
   private R unBindDeviceCloud(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String channelId = jsonUtil.getStr("channelId");
@@ -1815,7 +1905,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 查询设备通道下所有云存储服务 */
+  /**
+   * 查询设备通道下所有云存储服务
+   */
   private R deviceCloudList(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String channelId = jsonUtil.getStr("channelId");
@@ -1847,7 +1939,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 设置当前设备的云存储服务开关 */
+  /**
+   * 设置当前设备的云存储服务开关
+   */
   private R setAllStorageStrategy(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String status = jsonUtil.getStr("status");
@@ -1881,7 +1975,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 查询云存储开通接口的剩余调用次数 */
+  /**
+   * 查询云存储开通接口的剩余调用次数
+   */
   private R queryCloudRecordCallNum(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String strategyId = jsonUtil.getStr("strategyId");
@@ -1909,7 +2005,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 获取未启用的云存储服务列表 */
+  /**
+   * 获取未启用的云存储服务列表
+   */
   private R unUsedCloudList(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String strategyId = jsonUtil.getStr("strategyId");
@@ -1938,7 +2036,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 倒序查询设备云录像片段 */
+  /**
+   * 倒序查询设备云录像片段
+   */
   private R getCloudRecords(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String beginTime = jsonUtil.getStr("beginTime");
@@ -1973,7 +2073,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 查询设备本地录像计划 */
+  /**
+   * 查询设备本地录像计划
+   */
   private R queryLocalRecordPlan(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
@@ -2002,7 +2104,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 设置设备本地录像计划 */
+  /**
+   * 设置设备本地录像计划
+   */
   private R setLocalRecordPlanRules(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String beginTime = jsonUtil.getStr("beginTime");
@@ -2041,7 +2145,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 查询设备本地录像视频流 */
+  /**
+   * 查询设备本地录像视频流
+   */
   private R queryLocalRecordStream(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
@@ -2070,7 +2176,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 设置设备本地录像视频流 */
+  /**
+   * 设置设备本地录像视频流
+   */
   private R setLocalRecordStream(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String streamType = jsonUtil.getStr("streamType");
@@ -2101,7 +2209,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", datas);
   }
 
-  /** 修改摄像头的名称 */
+  /**
+   * 修改摄像头的名称
+   */
   private R devUpdate(ImoulifeDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -2166,7 +2276,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return result;
   }
 
-  /** 删除设备 删除设备接口文档：https://open.ys7.com/doc/zh/book/index/device_option.html#device_option-api2 */
+  /**
+   * 删除设备 删除设备接口文档：https://open.ys7.com/doc/zh/book/index/device_option.html#device_option-api2
+   */
   private R devDel(ImoulifeDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -2198,7 +2310,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.error("解绑失败");
   }
 
-  /** 创建flv协议直播地址 */
+  /**
+   * 创建flv协议直播地址
+   */
   private R createDeviceFlvLive(ImoulifeDownRequest downRequest) {
     JSONObject jsonUtil = JSONUtil.parseObj(downRequest.getFunction().get("data"));
     String channelId = jsonUtil.getStr("channelId");
@@ -2223,7 +2337,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok("ok", object.toString());
   }
 
-  /** 查询设备通道flv直播地址 */
+  /**
+   * 查询设备通道flv直播地址
+   */
   private R queryDeviceFlvLive(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -2239,7 +2355,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     return R.ok(0, "", object);
   }
 
-  /** 创建rtmp协议直播地址 */
+  /**
+   * 创建rtmp协议直播地址
+   */
   private R createDeviceRtmpLive(ImoulifeDownRequest downRequest) {
     JSONObject param = new JSONObject();
     param.set("deviceId", downRequest.getDeviceId());
@@ -2264,7 +2382,9 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
     iotDeviceService.delDevInstance(ioTDevice.getIotId());
   }
 
-  /** 添加设备 添加设备接口文档 */
+  /**
+   * 添加设备 添加设备接口文档
+   */
   private R devAdd(ImoulifeDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -2317,7 +2437,8 @@ public class ImoulifeDownHandle extends IotDownAdapter<ImoulifeDownRequest> {
   }
 
   @Override
-  public void Rule() {}
+  public void Rule() {
+  }
 
   private Map<String, Object> saveDevInstance(ImoulifeDownRequest downRequest) {
     IoTDevice ioTDevice =

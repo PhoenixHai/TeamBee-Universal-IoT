@@ -19,7 +19,8 @@ import cn.onenet.protocol.nb.utils.HttpSendCenter;
 import okhttp3.Callback;
 
 /**
- * Created by zhuocongbin date 2018/3/16 apiKey: the product of api-key which can be found on OneNET
+ * Created by zhuocongbin date 2018/3/16 apiKey: the product of api-key which can be found on
+ * OneNET
  */
 public class UpdateDeviceOpe extends BasicOpe {
 

@@ -26,25 +26,40 @@ public interface ImoulifeConstant {
 
   public static final String PLATFORM_CODE = "imoulife";
 
-  /** 离线 */
+  /**
+   * 离线
+   */
   public static int OFFLINE = 0;
 
-  /** 在线 */
+  /**
+   * 在线
+   */
   public static int ONLINE = 1;
 
-  /** 消息类型 */
+  /**
+   * 消息类型
+   */
   public static enum CtwingMessageType {
-    /** 在线离线 */
+    /**
+     * 在线离线
+     */
     deviceOnlineOfflineReport,
-    /** 数据上报 */
+    /**
+     * 数据上报
+     */
     dataReport,
     dataReportTupUnion,
-    /** 事件上报 */
+    /**
+     * 事件上报
+     */
     eventReport,
-    /** 设备命令响应 */
+    /**
+     * 设备命令响应
+     */
     commandResponse;
 
-    private CtwingMessageType() {}
+    private CtwingMessageType() {
+    }
 
     @JsonCreator
     public static CtwingMessageType find(String value) {

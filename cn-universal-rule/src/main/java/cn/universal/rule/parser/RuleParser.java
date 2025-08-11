@@ -26,7 +26,7 @@ public interface RuleParser {
   /**
    * 解析指定格式的模型字符为规则模型
    *
-   * @param format 模型格式
+   * @param format            模型格式
    * @param modelDefineString 字符模型
    * @return 规则模型
    */

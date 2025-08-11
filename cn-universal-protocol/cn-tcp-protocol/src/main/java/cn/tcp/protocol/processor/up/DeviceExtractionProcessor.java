@@ -172,9 +172,9 @@
 //
 //    return null;
 //  }
-/// / /  @Override /  public void afterProcess(TcpUPRequest message, ProcessorResult result) { /
-/// // 记录提取统计信息 /    if (result == ProcessorResult.CONTINUE && message.isDeviceIdentified()) { /
-///  message.setContextValue("deviceExtractionSuccess", true); /
+/// / /  @Override /  public void afterProcess(TcpUPRequest message, ProcessorResult result) { / //
+/// 记录提取统计信息 /    if (result == ProcessorResult.CONTINUE && message.isDeviceIdentified()) { /
+/// message.setContextValue("deviceExtractionSuccess", true); /
 /// message.setContextValue("deviceUniqueId", message.getDeviceUniqueId()); /    } else { /
 /// message.setContextValue("deviceExtractionSuccess", false); /    } /  }
 // }

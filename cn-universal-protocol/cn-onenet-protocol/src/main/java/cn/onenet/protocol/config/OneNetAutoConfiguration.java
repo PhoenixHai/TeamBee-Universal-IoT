@@ -25,7 +25,7 @@ import jakarta.annotation.PreDestroy;
 
 /**
  * OneNet 协议模块自动配置类
- * 
+ *
  * <p>当 onenet.protocol.enabled=true 时，自动扫描包并创建所有OneNet相关的Bean
  * <p>通过 META-INF/spring.factories 实现 Spring Boot 自动配置
  *
@@ -45,7 +45,7 @@ public class OneNetAutoConfiguration {
   public OneNetAutoConfiguration() {
     log.info("[OneNet协议] OneNet(移动)协议模块自动配置已启用");
   }
-  
+
   @PostConstruct
   public void registerProtocol() {
     if (moduleInfo != null) {
@@ -53,7 +53,7 @@ public class OneNetAutoConfiguration {
       log.info("[OneNet自动配置] 协议模块已注册到运行时注册表");
     }
   }
-  
+
   @PreDestroy
   public void unregisterProtocol() {
     if (moduleInfo != null) {

@@ -80,7 +80,8 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
             shadowUpdatedCount++;
           }
           // 设备事件
-          if (updateEventName(upRequest)) {}
+          if (updateEventName(upRequest)) {
+          }
         }
       }
 
@@ -95,7 +96,8 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
       request.setContextValue("shadowUpdatedCount", shadowUpdatedCount);
       request.setContextValue("logShadowProcessed", true);
 
-      log.debug("[{}] 日志影子处理完成，日志: {}, 影子: {}", getName(), processedCount, shadowUpdatedCount);
+      log.debug("[{}] 日志影子处理完成，日志: {}, 影子: {}", getName(), processedCount,
+          shadowUpdatedCount);
       return ProcessorResult.CONTINUE;
 
     } catch (Exception e) {
@@ -125,7 +127,9 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
     return true;
   }
 
-  /** 保存设备日志 */
+  /**
+   * 保存设备日志
+   */
   protected boolean saveDeviceLog(BaseUPRequest upRequest, TcpUPRequest tcpUPRequest) {
     try {
       if (upRequest == null) {
@@ -155,7 +159,9 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
     }
   }
 
-  /** 更新设备影子 */
+  /**
+   * 更新设备影子
+   */
   protected boolean updateDeviceShadow(BaseUPRequest upRequest, TcpUPRequest tcpUPRequest) {
     try {
       if (upRequest == null) {
@@ -183,7 +189,9 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
     }
   }
 
-  /** 验证日志数据 */
+  /**
+   * 验证日志数据
+   */
   protected boolean validateLogData(BaseUPRequest upRequest) {
     if (upRequest == null) {
       return false;
@@ -208,7 +216,9 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
     return true;
   }
 
-  /** 收集日志统计信息 */
+  /**
+   * 收集日志统计信息
+   */
   protected void collectLogStatistics(TcpUPRequest request) {
     try {
       List<BaseUPRequest> requestList = request.getUpRequestList();
@@ -236,7 +246,9 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
     }
   }
 
-  /** 检查数据敏感性 */
+  /**
+   * 检查数据敏感性
+   */
   protected boolean isSensitiveData(BaseUPRequest upRequest) {
     if (upRequest == null) {
       return false;
@@ -250,7 +262,9 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
         || content.contains("token");
   }
 
-  /** 清理敏感数据 */
+  /**
+   * 清理敏感数据
+   */
   protected void sanitizeSensitiveData(BaseUPRequest upRequest) {
     if (isSensitiveData(upRequest)) {
       log.debug("[{}] 检测到敏感数据，进行脱敏处理", getName());
@@ -261,10 +275,14 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
 
   // ==================== 抽象方法，由子类实现 ====================
 
-  /** 获取主题类型名称 */
+  /**
+   * 获取主题类型名称
+   */
   protected abstract String getProcessorType();
 
-  /** 处理主题类型特定的日志影子逻辑 */
+  /**
+   * 处理主题类型特定的日志影子逻辑
+   */
   protected abstract boolean processTopicSpecificLogShadow(TcpUPRequest request);
 
   // ==================== 生命周期方法 ====================
@@ -291,7 +309,8 @@ public abstract class BaseLogShadowProcessorUP extends AbstratIoTService
           logCount != null ? logCount : 0,
           shadowCount != null ? shadowCount : 0);
     } else {
-      log.warn("[{}] 日志影子处理失败 - 设备: {}, 结果: {}", getName(), request.getDeviceId(), result);
+      log.warn("[{}] 日志影子处理失败 - 设备: {}, 结果: {}", getName(), request.getDeviceId(),
+          result);
     }
   }
 

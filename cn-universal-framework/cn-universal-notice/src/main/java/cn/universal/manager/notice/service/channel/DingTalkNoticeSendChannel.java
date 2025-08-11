@@ -77,7 +77,9 @@ public class DingTalkNoticeSendChannel extends AbstractNoticeSendChannel {
     }
   }
 
-  /** 计算HMAC-SHA256签名 */
+  /**
+   * 计算HMAC-SHA256签名
+   */
   private String calculateHmacSHA256(String data, String key) throws Exception {
     Mac mac = Mac.getInstance("HmacSHA256");
     SecretKeySpec secretKeySpec =

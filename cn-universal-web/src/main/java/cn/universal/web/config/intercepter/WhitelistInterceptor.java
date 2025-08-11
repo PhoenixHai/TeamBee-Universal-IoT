@@ -26,7 +26,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 @Component
 public class WhitelistInterceptor implements HandlerInterceptor {
 
-  @Resource private WhitelistService whitelistService;
+  @Resource
+  private WhitelistService whitelistService;
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

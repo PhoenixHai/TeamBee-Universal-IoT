@@ -73,17 +73,23 @@ public class TcpDownProcessorChain {
     return result != null ? result : R.error("无处理器成功处理该请求");
   }
 
-  /** 获取处理器数量 */
+  /**
+   * 获取处理器数量
+   */
   public int getProcessorCount() {
     return processors.size();
   }
 
-  /** 获取处理器名称列表（用于调试） */
+  /**
+   * 获取处理器名称列表（用于调试）
+   */
   public List<String> getProcessorNames() {
     return processorExecutor.getProcessorNames(processors);
   }
 
-  /** 检查是否有指定名称的处理器 */
+  /**
+   * 检查是否有指定名称的处理器
+   */
   public boolean hasProcessor(String name) {
     return processors.stream().anyMatch(p -> p.getName().equals(name));
   }

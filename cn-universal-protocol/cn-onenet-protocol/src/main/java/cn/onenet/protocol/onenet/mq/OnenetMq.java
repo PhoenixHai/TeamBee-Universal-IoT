@@ -14,9 +14,11 @@ package cn.onenet.protocol.onenet.mq;
 
 public final class OnenetMq {
 
-  private OnenetMq() {}
+  private OnenetMq() {
+  }
 
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
+  }
 
   public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
     registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
@@ -27,17 +29,25 @@ public final class OnenetMq {
       // @@protoc_insertion_point(interface_extends:com.onenet.mq.Msg)
       com.google.protobuf.MessageOrBuilder {
 
-    /** <code>uint64 msgid = 1;</code> */
+    /**
+     * <code>uint64 msgid = 1;</code>
+     */
     long getMsgid();
 
-    /** <code>bytes data = 2;</code> */
+    /**
+     * <code>bytes data = 2;</code>
+     */
     com.google.protobuf.ByteString getData();
 
-    /** <code>uint64 timestamp = 3;</code> */
+    /**
+     * <code>uint64 timestamp = 3;</code>
+     */
     long getTimestamp();
   }
 
-  /** Protobuf type {@code com.onenet.mq.Msg} */
+  /**
+   * Protobuf type {@code com.onenet.mq.Msg}
+   */
   public static final class Msg extends com.google.protobuf.GeneratedMessageV3
       implements
       // @@protoc_insertion_point(message_implements:com.onenet.mq.Msg)
@@ -83,28 +93,24 @@ public final class OnenetMq {
             case 0:
               done = true;
               break;
-            case 8:
-              {
-                msgid_ = input.readUInt64();
-                break;
+            case 8: {
+              msgid_ = input.readUInt64();
+              break;
+            }
+            case 18: {
+              data_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              timestamp_ = input.readUInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                done = true;
               }
-            case 18:
-              {
-                data_ = input.readBytes();
-                break;
-              }
-            case 24:
-              {
-                timestamp_ = input.readUInt64();
-                break;
-              }
-            default:
-              {
-                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -130,7 +136,9 @@ public final class OnenetMq {
     public static final int MSGID_FIELD_NUMBER = 1;
     private long msgid_;
 
-    /** <code>uint64 msgid = 1;</code> */
+    /**
+     * <code>uint64 msgid = 1;</code>
+     */
     public long getMsgid() {
       return msgid_;
     }
@@ -138,7 +146,9 @@ public final class OnenetMq {
     public static final int DATA_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString data_;
 
-    /** <code>bytes data = 2;</code> */
+    /**
+     * <code>bytes data = 2;</code>
+     */
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
@@ -146,7 +156,9 @@ public final class OnenetMq {
     public static final int TIMESTAMP_FIELD_NUMBER = 3;
     private long timestamp_;
 
-    /** <code>uint64 timestamp = 3;</code> */
+    /**
+     * <code>uint64 timestamp = 3;</code>
+     */
     public long getTimestamp() {
       return timestamp_;
     }
@@ -340,7 +352,9 @@ public final class OnenetMq {
       return builder;
     }
 
-    /** Protobuf type {@code com.onenet.mq.Msg} */
+    /**
+     * Protobuf type {@code com.onenet.mq.Msg}
+     */
     public static final class Builder
         extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
         implements
@@ -368,7 +382,8 @@ public final class OnenetMq {
       }
 
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+        }
       }
 
       @Override
@@ -498,12 +513,16 @@ public final class OnenetMq {
 
       private long msgid_;
 
-      /** <code>uint64 msgid = 1;</code> */
+      /**
+       * <code>uint64 msgid = 1;</code>
+       */
       public long getMsgid() {
         return msgid_;
       }
 
-      /** <code>uint64 msgid = 1;</code> */
+      /**
+       * <code>uint64 msgid = 1;</code>
+       */
       public Builder setMsgid(long value) {
 
         msgid_ = value;
@@ -511,7 +530,9 @@ public final class OnenetMq {
         return this;
       }
 
-      /** <code>uint64 msgid = 1;</code> */
+      /**
+       * <code>uint64 msgid = 1;</code>
+       */
       public Builder clearMsgid() {
 
         msgid_ = 0L;
@@ -521,12 +542,16 @@ public final class OnenetMq {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
 
-      /** <code>bytes data = 2;</code> */
+      /**
+       * <code>bytes data = 2;</code>
+       */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
 
-      /** <code>bytes data = 2;</code> */
+      /**
+       * <code>bytes data = 2;</code>
+       */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
           throw new NullPointerException();
@@ -537,7 +562,9 @@ public final class OnenetMq {
         return this;
       }
 
-      /** <code>bytes data = 2;</code> */
+      /**
+       * <code>bytes data = 2;</code>
+       */
       public Builder clearData() {
 
         data_ = getDefaultInstance().getData();
@@ -547,12 +574,16 @@ public final class OnenetMq {
 
       private long timestamp_;
 
-      /** <code>uint64 timestamp = 3;</code> */
+      /**
+       * <code>uint64 timestamp = 3;</code>
+       */
       public long getTimestamp() {
         return timestamp_;
       }
 
-      /** <code>uint64 timestamp = 3;</code> */
+      /**
+       * <code>uint64 timestamp = 3;</code>
+       */
       public Builder setTimestamp(long value) {
 
         timestamp_ = value;
@@ -560,7 +591,9 @@ public final class OnenetMq {
         return this;
       }
 
-      /** <code>uint64 timestamp = 3;</code> */
+      /**
+       * <code>uint64 timestamp = 3;</code>
+       */
       public Builder clearTimestamp() {
 
         timestamp_ = 0L;
@@ -633,19 +666,19 @@ public final class OnenetMq {
 
   static {
     String[] descriptorData = {
-      "\n\017onenet-mq.proto\022\rcom.onenet.mq\"5\n\003Msg\022"
-          + "\r\n\005msgid\030\001 \001(\004\022\014\n\004data\030\002 \001(\014\022\021\n\ttimestam"
-          + "p\030\003 \001(\004b\006proto3"
+        "\n\017onenet-mq.proto\022\rcom.onenet.mq\"5\n\003Msg\022"
+            + "\r\n\005msgid\030\001 \001(\004\022\014\n\004data\030\002 \001(\014\022\021\n\ttimestam"
+            + "p\030\003 \001(\004b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[]{});
     internal_static_com_onenet_mq_Msg_descriptor = getDescriptor().getMessageTypes().get(0);
     internal_static_com_onenet_mq_Msg_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_com_onenet_mq_Msg_descriptor,
-            new String[] {
-              "Msgid", "Data", "Timestamp",
+            new String[]{
+                "Msgid", "Data", "Timestamp",
             });
   }
 

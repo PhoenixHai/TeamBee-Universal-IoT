@@ -78,7 +78,8 @@ public class BoundSql {
     this.sqlModule = sqlModule;
   }
 
-  private BoundSql() {}
+  private BoundSql() {
+  }
 
   private void init() {
     Map<String, Object> varMap = new HashMap<>();
@@ -127,22 +128,30 @@ public class BoundSql {
     this.excludeColumns = excludeColumns;
   }
 
-  /** 添加SQL参数 */
+  /**
+   * 添加SQL参数
+   */
   public void addParameter(Object value) {
     parameters.add(value);
   }
 
-  /** 获取要执行的SQL */
+  /**
+   * 获取要执行的SQL
+   */
   public String getSql() {
     return sqlOrXml;
   }
 
-  /** 设置要执行的SQL */
+  /**
+   * 设置要执行的SQL
+   */
   public void setSql(String sql) {
     this.sqlOrXml = sql;
   }
 
-  /** 获取要执行的参数 */
+  /**
+   * 获取要执行的参数
+   */
   public Object[] getParameters() {
     return parameters.toArray();
   }
@@ -168,7 +177,9 @@ public class BoundSql {
         .collect(Collectors.toList());
   }
 
-  /** 设置要执行的参数 */
+  /**
+   * 设置要执行的参数
+   */
   public void setParameters(List<Object> parameters) {
     this.parameters = parameters;
   }
@@ -177,7 +188,9 @@ public class BoundSql {
     return runtimeContext;
   }
 
-  /** 获取缓存值 */
+  /**
+   * 获取缓存值
+   */
   @SuppressWarnings({"unchecked"})
   private <T> T getCacheValue(String sql, Object[] params, Supplier<T> supplier) {
     if (sqlModule.getCacheName() == null) {
@@ -193,7 +206,9 @@ public class BoundSql {
     return value;
   }
 
-  /** 获取缓存值 */
+  /**
+   * 获取缓存值
+   */
   @SuppressWarnings("unchecked")
   <T> T execute(List<SQLInterceptor> interceptors, Supplier<T> supplier, boolean cacheable) {
     RequestEntity requestEntity = RequestContext.getRequestEntity();

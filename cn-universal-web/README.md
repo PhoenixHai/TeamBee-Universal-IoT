@@ -143,16 +143,13 @@ cn-universal-web/
 # 服务器配置
 server.port=8080
 server.servlet.context-path=/api
-
 # 安全配置
 security.production.enabled=false
 security.actuator.enabled=true
-
 # 数据库配置
 spring.datasource.url=jdbc:mysql://localhost:3306/iot_universal
 spring.datasource.username=root
 spring.datasource.password=password
-
 # Redis配置
 spring.redis.host=localhost
 spring.redis.port=6379
@@ -165,7 +162,6 @@ spring.redis.port=6379
 security.production.enabled=true
 security.allowed.ips=192.168.1.100,192.168.1.101
 security.actuator.enabled=false
-
 # 性能优化
 spring.jvm.memory=-Xms2g -Xmx4g
 spring.threads.virtual.enabled=true
@@ -178,7 +174,6 @@ spring.threads.virtual.enabled=true
 ```properties
 # 允许访问的IP地址（逗号分隔）
 security.allowed.ips=192.168.1.100,192.168.1.101,10.0.0.50
-
 # 允许访问的主机名
 security.allowed.hosts=example.com,api.example.com
 ```

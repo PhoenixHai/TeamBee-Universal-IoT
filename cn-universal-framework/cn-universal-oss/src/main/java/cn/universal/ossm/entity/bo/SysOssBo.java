@@ -18,7 +18,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/** OSS云存储分页查询对象 sys_oss @Author Lion Li */
+/**
+ * OSS云存储分页查询对象 sys_oss @Author Lion Li
+ */
 @Data
 @Schema(description = "OSS云存储分页查询对象")
 @AllArgsConstructor
@@ -26,42 +28,62 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SysOssBo {
 
-  /** 分页大小 */
+  /**
+   * 分页大小
+   */
   @Schema(description = "分页大小")
   private Integer pageSize;
 
-  /** 当前页数 */
+  /**
+   * 当前页数
+   */
   @Schema(description = "当前页数")
   private Integer pageNum;
 
-  /** 排序列 */
+  /**
+   * 排序列
+   */
   @Schema(description = "排序列")
   private String orderByColumn;
 
-  /** 排序的方向desc或者asc */
+  /**
+   * 排序的方向desc或者asc
+   */
   private String isAsc;
 
-  /** 文件名 */
+  /**
+   * 文件名
+   */
   @Schema(description = "文件名")
   private String fileName;
 
-  /** 原名 */
+  /**
+   * 原名
+   */
   @Schema(description = "原名")
   private String originalName;
 
-  /** 文件后缀名 */
+  /**
+   * 文件后缀名
+   */
   @Schema(description = "文件后缀名")
   private String fileSuffix;
 
-  /** URL地址 */
+  /**
+   * URL地址
+   */
   @Schema(description = "URL地址")
   private String url;
 
-  /** 服务商 */
+  /**
+   * 服务商
+   */
   @Schema(description = "服务商")
   private String service;
 
-  /** 创建者 */
+  /**
+   * 创建者
+   */
   @Schema(description = "创建者")
   private String createBy;
 }

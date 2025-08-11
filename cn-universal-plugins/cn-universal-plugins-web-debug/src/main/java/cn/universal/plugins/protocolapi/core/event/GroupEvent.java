@@ -7,10 +7,14 @@ import java.util.List;
 
 public class GroupEvent extends MagicEvent {
 
-  /** 分组信息 */
+  /**
+   * 分组信息
+   */
   private Group group;
 
-  /** 子分组 */
+  /**
+   * 子分组
+   */
   private List<MagicEntity> entities;
 
   public GroupEvent(String type, EventAction action, Group group) {

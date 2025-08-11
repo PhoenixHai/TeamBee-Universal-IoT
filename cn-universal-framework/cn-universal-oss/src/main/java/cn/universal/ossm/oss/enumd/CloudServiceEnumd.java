@@ -16,7 +16,9 @@ import cn.universal.ossm.oss.service.impl.AliyunCloudStorageServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-/** 云存储服务商枚举 @Author Lion Li */
+/**
+ * 云存储服务商枚举 @Author Lion Li
+ */
 @Getter
 @AllArgsConstructor
 public enum CloudServiceEnumd {
@@ -24,13 +26,17 @@ public enum CloudServiceEnumd {
   /** 七牛云 */
   //  QINIU("qiniu", QiniuCloudStorageServiceImpl.class),
 
-  /** 阿里云 */
+  /**
+   * 阿里云
+   */
   ALIYUN("aliyun", AliyunCloudStorageServiceImpl.class);
 
   /** 腾讯云 */
   //  QCLOUD("qcloud", QcloudCloudStorageServiceImpl.class),
 
-  /** minio */
+  /**
+   * minio
+   */
   //  MINIO("minio", MinioCloudStorageServiceImpl.class);
 
   private final String value;

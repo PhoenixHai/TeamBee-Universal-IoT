@@ -37,20 +37,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-/** 物联网平台海康设备在线记录保存 */
+/**
+ * 物联网平台海康设备在线记录保存
+ */
 @Service
 @Slf4j
 public class LechenOnlineTask {
 
-  @Resource private DelayedTaskUtil delayedTaskUtil;
+  @Resource
+  private DelayedTaskUtil delayedTaskUtil;
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Resource private IoTDeviceShadowMapper ioTDeviceShadowMapper;
+  @Resource
+  private IoTDeviceShadowMapper ioTDeviceShadowMapper;
 
-  @Resource private IoTProductMapper ioTProductMapper;
+  @Resource
+  private IoTProductMapper ioTProductMapper;
 
-  @Autowired private ImoulifeRequest imoulifeRequest;
+  @Autowired
+  private ImoulifeRequest imoulifeRequest;
 
   @Resource(name = "ioTDeviceActionAfterService")
   private IoTDeviceActionAfterService ioTDeviceActionAfterService;
@@ -58,7 +65,8 @@ public class LechenOnlineTask {
   @Resource(name = "lechenUPService")
   private IUP iup;
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
   private final String LE_CHEN = "lechen";
 
@@ -127,7 +135,9 @@ public class LechenOnlineTask {
     }
   }
 
-  /** 获取乐橙设备的在线信息 */
+  /**
+   * 获取乐橙设备的在线信息
+   */
   //  @Scheduled(cron = "0 0 0/4 * *  ? ")
   public void saveOnlineQtyTask() {
     Boolean flag =
@@ -182,7 +192,8 @@ public class LechenOnlineTask {
                     ioTDevice.getState(),
                     ioTDevice.getConfiguration());
                 // 触发上线事件
-                ioTDeviceActionAfterService.online(ioTDevice.getProductKey(), ioTDevice.getDeviceId());
+                ioTDeviceActionAfterService.online(ioTDevice.getProductKey(),
+                    ioTDevice.getDeviceId());
                 // 更新上线设备的丢弃值为0
                 IoTDevice instance = new IoTDevice();
                 instance.setId(ioTDevice.getId());
@@ -213,7 +224,8 @@ public class LechenOnlineTask {
               }
             }
           } catch (Exception e) {
-            log.error("乐橙摄像头定时任务异常 devMsg = {} result = {}", ioTDevice.toString(), e.getMessage());
+            log.error("乐橙摄像头定时任务异常 devMsg = {} result = {}", ioTDevice.toString(),
+                e.getMessage());
           }
         }
         start += limit;
@@ -224,7 +236,9 @@ public class LechenOnlineTask {
     }
   }
 
-  /** 延迟20秒检测在线状态 */
+  /**
+   * 延迟20秒检测在线状态
+   */
   public void delayCheckOnlineStatus(IoTDevice ioTDevice) {
     delayedTaskUtil.putTask(
         () -> {
@@ -238,7 +252,8 @@ public class LechenOnlineTask {
           if ("1".equals(online)) {
             if (!ioTDevice.getState()) {
               // 触发上线事件
-              ioTDeviceActionAfterService.online(ioTDevice.getProductKey(), ioTDevice.getDeviceId());
+              ioTDeviceActionAfterService.online(ioTDevice.getProductKey(),
+                  ioTDevice.getDeviceId());
               // 更新上线设备的丢弃值为0
               IoTDevice instance = new IoTDevice();
               instance.setId(ioTDevice.getId());
@@ -259,7 +274,8 @@ public class LechenOnlineTask {
               config.set("discardValue", newValue);
               instance.setConfiguration(config.toString());
               ioTDeviceMapper.updateDevInstance(instance);
-              ioTDeviceActionAfterService.offline(ioTDevice.getProductKey(), ioTDevice.getDeviceId());
+              ioTDeviceActionAfterService.offline(ioTDevice.getProductKey(),
+                  ioTDevice.getDeviceId());
             }
           }
         },
@@ -267,7 +283,9 @@ public class LechenOnlineTask {
         TimeUnit.SECONDS);
   }
 
-  /** 无延迟检测在线状态 */
+  /**
+   * 无延迟检测在线状态
+   */
   public void checkOnlineStatus(IoTDevice ioTDevice) {
     delayedTaskUtil.putTask(
         () -> {
@@ -281,7 +299,8 @@ public class LechenOnlineTask {
           if ("1".equals(online)) {
             if (!ioTDevice.getState()) {
               // 触发上线事件
-              ioTDeviceActionAfterService.online(ioTDevice.getProductKey(), ioTDevice.getDeviceId());
+              ioTDeviceActionAfterService.online(ioTDevice.getProductKey(),
+                  ioTDevice.getDeviceId());
               // 更新上线设备的丢弃值为0
               IoTDevice instance = new IoTDevice();
               instance.setId(ioTDevice.getId());
@@ -302,7 +321,8 @@ public class LechenOnlineTask {
               config.set("discardValue", newValue);
               instance.setConfiguration(config.toString());
               ioTDeviceMapper.updateDevInstance(instance);
-              ioTDeviceActionAfterService.offline(ioTDevice.getProductKey(), ioTDevice.getDeviceId());
+              ioTDeviceActionAfterService.offline(ioTDevice.getProductKey(),
+                  ioTDevice.getDeviceId());
             }
           }
         },

@@ -27,7 +27,6 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Author 01
- *
  * @program wrapper-demo
  * @description 包装HttpServletRequest，目的是让其输入流可重复读
  * @create 2018-12-24 20:48
@@ -36,7 +35,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RequestWrapper extends HttpServletRequestWrapper {
 
-  /** 存储body数据的容器 */
+  /**
+   * 存储body数据的容器
+   */
   private final byte[] body;
 
   public RequestWrapper(HttpServletRequest request) throws IOException {
@@ -132,7 +133,8 @@ public class RequestWrapper extends HttpServletRequestWrapper {
       }
 
       @Override
-      public void setReadListener(ReadListener readListener) {}
+      public void setReadListener(ReadListener readListener) {
+      }
     };
   }
 }

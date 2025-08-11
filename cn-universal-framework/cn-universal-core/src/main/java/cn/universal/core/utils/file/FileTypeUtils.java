@@ -15,7 +15,9 @@ package cn.universal.core.utils.file;
 import java.io.File;
 import org.apache.commons.lang3.StringUtils;
 
-/** 文件类型工具类 @Author ruoyi */
+/**
+ * 文件类型工具类 @Author ruoyi
+ */
 public class FileTypeUtils {
 
   /**

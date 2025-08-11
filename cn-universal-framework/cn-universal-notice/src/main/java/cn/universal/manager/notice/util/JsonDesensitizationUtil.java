@@ -5,7 +5,9 @@ import cn.hutool.json.JSONUtil;
 import java.util.Iterator;
 import java.util.Map;
 
-/** JSON脱敏工具类 用于检测和脱敏包含Secret关键字的字段 */
+/**
+ * JSON脱敏工具类 用于检测和脱敏包含Secret关键字的字段
+ */
 public class JsonDesensitizationUtil {
 
   private static final String SECRET_KEYWORD = "secret";

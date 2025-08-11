@@ -5,4 +5,6 @@ package cn.universal.plugins.protocolapi.core.config;
  *
  * @author mxd
  */
-public interface MagicFunction {}
+public interface MagicFunction {
+
+}

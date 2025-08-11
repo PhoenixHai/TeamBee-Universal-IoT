@@ -20,7 +20,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * @Author 🐤 Aleo ✉ Aleo@outlook.com
- *
  * @since ⏰ 2019/1/17
  */
 @Configuration

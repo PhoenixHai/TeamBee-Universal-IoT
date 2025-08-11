@@ -27,7 +27,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Slf4j
 public abstract class AbstractDownService<T> extends AbstratIoTService implements IDown, ICodec {
 
-  @Autowired protected ICodecService codecService;
+  @Autowired
+  protected ICodecService codecService;
 
   /**
    * 消息转换和编解码

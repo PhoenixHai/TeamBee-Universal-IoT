@@ -24,12 +24,15 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-/** 子设备逻辑校验 */
+/**
+ * 子设备逻辑校验
+ */
 @Service("ioTSubDeviceAddIntercept")
 @Slf4j
 public class IoTSubDeviceAddIntercept implements IotDownWrapper {
 
-  @Resource private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
 
   @Override
   public R beforeDownAction(IoTProduct product, Object data, DownRequest downRequest) {
@@ -61,5 +64,6 @@ public class IoTSubDeviceAddIntercept implements IotDownWrapper {
     return null;
   }
 
-  private void doAddAction() {}
+  private void doAddAction() {
+  }
 }

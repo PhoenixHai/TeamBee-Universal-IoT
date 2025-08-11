@@ -1,6 +1,8 @@
 package cn.universal.plugins.protocolapi.core.config;
 
-/** 消息类型 */
+/**
+ * 消息类型
+ */
 public enum MessageType {
   /* S -> C message */
   /* 日志消息 */

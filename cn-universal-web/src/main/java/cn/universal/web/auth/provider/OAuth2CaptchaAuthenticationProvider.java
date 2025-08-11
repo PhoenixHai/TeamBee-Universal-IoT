@@ -56,13 +56,19 @@ import org.springframework.util.StringUtils;
 @Component
 public class OAuth2CaptchaAuthenticationProvider implements AuthenticationProvider {
 
-  @Autowired private StringRedisTemplate stringRedisTemplate;
-  @Autowired private UserDetailsService userDetailsService;
+  @Autowired
+  private StringRedisTemplate stringRedisTemplate;
+  @Autowired
+  private UserDetailsService userDetailsService;
 
-  @Autowired private AsyncService asyncService;
-  @Autowired private IIotUserService iIotUserService;
-  @Autowired private OAuth2AuthorizationService authorizationService;
-  @Autowired private OAuth2TokenGenerator<?> tokenGenerator;
+  @Autowired
+  private AsyncService asyncService;
+  @Autowired
+  private IIotUserService iIotUserService;
+  @Autowired
+  private OAuth2AuthorizationService authorizationService;
+  @Autowired
+  private OAuth2TokenGenerator<?> tokenGenerator;
 
   private static final Integer maxRetryCount = 5;
   private static final Integer maxIpRetryCount = 15;
@@ -91,14 +97,17 @@ public class OAuth2CaptchaAuthenticationProvider implements AuthenticationProvid
 
     // 校验验证码
     if (!StringUtils.hasText(captcha)) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "验证码不能为空", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "验证码不能为空", null));
     }
     String code = stringRedisTemplate.opsForValue().get("captcha_codes:" + uuid);
     if (!StringUtils.hasText(code)) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "验证码已过期", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "验证码已过期", null));
     }
     if (!code.equalsIgnoreCase(captcha)) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "验证码输入错误", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "验证码输入错误", null));
     }
 
     // 登录重试次数/IP 限制
@@ -140,7 +149,8 @@ public class OAuth2CaptchaAuthenticationProvider implements AuthenticationProvid
     Matcher matcher = IotConstant.pattern.matcher(password);
     if (!matcher.matches()) {
       throw new OAuth2AuthenticationException(
-          new OAuth2Error("invalid_grant", "密码中必须包含字母、数字、特殊字符，至少8个字符，最多20个字符", null));
+          new OAuth2Error("invalid_grant",
+              "密码中必须包含字母、数字、特殊字符，至少8个字符，最多20个字符", null));
     }
 
     // 独占式登录判断
@@ -149,7 +159,8 @@ public class OAuth2CaptchaAuthenticationProvider implements AuthenticationProvid
       stringRedisTemplate
           .opsForValue()
           .set(ipKey, String.valueOf(ipCount + 1), 60, TimeUnit.MINUTES);
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "用户名或密码错误", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "用户名或密码错误", null));
     }
     if (IotConstant.UN_NORMAL.toString().equals(user.getStatus())) {
       throw new OAuth2AuthenticationException(
@@ -163,7 +174,8 @@ public class OAuth2CaptchaAuthenticationProvider implements AuthenticationProvid
           stringRedisTemplate.opsForValue().get(IotConstant.EXCLUSIVE_LOGIN + ":" + username);
       if (StrUtil.isNotBlank(loginedIp)) {
         throw new OAuth2AuthenticationException(
-            new OAuth2Error("invalid_grant", "账号已登录，请先退出已登录的账号,IP：" + loginedIp, null));
+            new OAuth2Error("invalid_grant", "账号已登录，请先退出已登录的账号,IP：" + loginedIp,
+                null));
       }
     }
 
@@ -178,7 +190,8 @@ public class OAuth2CaptchaAuthenticationProvider implements AuthenticationProvid
       stringRedisTemplate
           .opsForValue()
           .set(ipKey, String.valueOf(ipCount + 1), 60, TimeUnit.MINUTES);
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "用户名或密码错误", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "用户名或密码错误", null));
     }
 
     // 登录成功
@@ -207,7 +220,8 @@ public class OAuth2CaptchaAuthenticationProvider implements AuthenticationProvid
         tokenContextBuilder.tokenType(OAuth2TokenType.ACCESS_TOKEN).build();
     OAuth2Token generatedAccessToken = tokenGenerator.generate(tokenContext);
     if (generatedAccessToken == null) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "请联系管理员", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "请联系管理员", null));
     }
 
     OAuth2AccessToken accessToken =

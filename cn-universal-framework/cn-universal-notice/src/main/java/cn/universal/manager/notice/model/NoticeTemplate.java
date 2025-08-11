@@ -9,7 +9,8 @@ import java.util.Date;
 @Table(name = "notice_template")
 public class NoticeTemplate implements Serializable {
 
-  @Id private Long id;
+  @Id
+  private Long id;
   private String name;
 
   @Column(name = "channel_type")

@@ -2,13 +2,19 @@ package cn.universal.plugins.protocolapi.core.model;
 
 public class Plugin {
 
-  /** 插件名 */
+  /**
+   * 插件名
+   */
   private final String name;
 
-  /** js全局变量名 */
+  /**
+   * js全局变量名
+   */
   private String globalName;
 
-  /** js文件名 */
+  /**
+   * js文件名
+   */
   private String javascriptFilename;
 
   public Plugin(String name, String globalName, String javascriptFilename) {

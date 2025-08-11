@@ -11,15 +11,21 @@ public interface MagicResourceStorage<T extends MagicEntity> {
 
   String separatorWithLF = "\n================================\n";
 
-  /** 文件夹名 */
+  /**
+   * 文件夹名
+   */
   String folder();
 
-  /** 允许的后缀，为空则不限制 */
+  /**
+   * 允许的后缀，为空则不限制
+   */
   String suffix();
 
   Class<T> magicClass();
 
-  /** 是否支持path */
+  /**
+   * 是否支持path
+   */
   boolean requirePath();
 
   default boolean requiredScript() {
@@ -66,8 +72,11 @@ public interface MagicResourceStorage<T extends MagicEntity> {
     return buildMappingKey((T) entity);
   }
 
-  /** 校验参数 */
-  default void validate(T entity) {}
+  /**
+   * 校验参数
+   */
+  default void validate(T entity) {
+  }
 
   void setMagicResourceService(MagicResourceService magicResourceService);
 }

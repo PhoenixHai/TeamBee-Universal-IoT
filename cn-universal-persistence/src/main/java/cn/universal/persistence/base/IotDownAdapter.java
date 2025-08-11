@@ -48,19 +48,23 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 @Slf4j
 public abstract class IotDownAdapter<T extends BaseDownRequest> implements IRule {
 
-  @Resource private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
 
   @Resource(name = "ioTDeviceActionBeforeService")
   private IoTDeviceLifeCycle ioTDeviceLifeCycle;
 
-  @Resource private DeviceExtTemplate deviceExtTemplate;
+  @Resource
+  private DeviceExtTemplate deviceExtTemplate;
 
   @Resource(name = "iotDownRuleService")
   private IotDownWrapper iotDownWrapper;
 
-  @Resource private SupportMapAreasMapper supportMapAreasMapper;
+  @Resource
+  private SupportMapAreasMapper supportMapAreasMapper;
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
   private String CUSTOM_FIELD = "customField";
 
@@ -87,7 +91,9 @@ public abstract class IotDownAdapter<T extends BaseDownRequest> implements IRule
     return null;
   }
 
-  /** 调用全局功能函数 如果没有匹配到返回null */
+  /**
+   * 调用全局功能函数 如果没有匹配到返回null
+   */
   protected R callGlobalFunction(IoTProduct product, IoTDevice ioTDevice, DownRequest downRequest) {
     Map<String, IotDownWrapper> downWrapperMap = SpringUtil.getBeansOfType(IotDownWrapper.class);
     if (MapUtil.isNotEmpty(downWrapperMap)) {
@@ -131,7 +137,9 @@ public abstract class IotDownAdapter<T extends BaseDownRequest> implements IRule
     }
   }
 
-  /** 保存发送指令 */
+  /**
+   * 保存发送指令
+   */
   protected void storeCommand(String productKey, String deviceId, Object data) {
     String value =
         stringRedisTemplate
@@ -159,7 +167,9 @@ public abstract class IotDownAdapter<T extends BaseDownRequest> implements IRule
     }
   }
 
-  /** 同一function保留最后一条指令 */
+  /**
+   * 同一function保留最后一条指令
+   */
   private JSONArray keepLatestFunction(JSONArray array, Object data) {
     JSONArray result = new JSONArray();
     AtomicBoolean isOldData = new AtomicBoolean(false);

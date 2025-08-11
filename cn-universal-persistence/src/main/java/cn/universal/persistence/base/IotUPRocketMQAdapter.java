@@ -18,7 +18,9 @@ package cn.universal.persistence.base;
  */
 public interface IotUPRocketMQAdapter {
 
-  /** 判断是否存在rocketmq消费者 */
+  /**
+   * 判断是否存在rocketmq消费者
+   */
   final String IOT_ROCKETMQ_EXIST_CONSUMER = "existIotConsumer";
 
   default Object send(String topic, String message) {
@@ -29,17 +31,24 @@ public interface IotUPRocketMQAdapter {
     return null;
   }
 
-  default void sendAsync(String topic, String message) {}
+  default void sendAsync(String topic, String message) {
+  }
 
-  default void sendAsync(String topic, String message, String tag) {}
+  default void sendAsync(String topic, String message, String tag) {
+  }
 
-  default void sendFifo(String topic, String orderKey, String message, String tag) {}
+  default void sendFifo(String topic, String orderKey, String message, String tag) {
+  }
 
-  default void sendFifo(String topic, String orderKey, String message) {}
+  default void sendFifo(String topic, String orderKey, String message) {
+  }
 
-  default void sendTransaction(String topic, String message, String tag) {}
+  default void sendTransaction(String topic, String message, String tag) {
+  }
 
-  default void sendTransaction(String topic, String message) {}
+  default void sendTransaction(String topic, String message) {
+  }
 
-  default void sendDelaySeconds(String topic, Object message, long seconds) {}
+  default void sendDelaySeconds(String topic, Object message, long seconds) {
+  }
 }

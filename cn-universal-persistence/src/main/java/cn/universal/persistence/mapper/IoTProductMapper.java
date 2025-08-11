@@ -130,15 +130,23 @@ public interface IoTProductMapper extends BaseMapper<IoTProduct> {
   @Cacheable("selectAllEnableNetworkProductKey")
   List<String> selectAllEnableNetworkProductKey();
 
-  /** 统计引用指定network_union_id的产品数量 */
+  /**
+   * 统计引用指定network_union_id的产品数量
+   */
   int countByNetworkUnionId(String networkUnionId);
 
-  /** 模糊搜索productKey和name */
+  /**
+   * 模糊搜索productKey和name
+   */
   List<Map<String, String>> searchProductKeyAndName(IoTProductQuery query);
 
-  /** 根据productKey更新network_union_id */
+  /**
+   * 根据productKey更新network_union_id
+   */
   int updateNetworkUnionIdByProductKey(String productKey, String networkUnionId);
 
-  /** 根据network_union_id查找productKey */
+  /**
+   * 根据network_union_id查找productKey
+   */
   String findProductKeyByNetworkUnionId(String networkUnionId);
 }

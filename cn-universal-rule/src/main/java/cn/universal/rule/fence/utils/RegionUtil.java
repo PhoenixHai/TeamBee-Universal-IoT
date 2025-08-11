@@ -37,8 +37,8 @@ public class RegionUtil {
    *
    * @param pointLon 要判断的点的横坐标 经度
    * @param pointLat 要判断的点的纵坐标 维度
-   * @param lon 区域各顶点的横坐标数组
-   * @param lat 区域各顶点的纵坐标数组
+   * @param lon      区域各顶点的横坐标数组
+   * @param lat      区域各顶点的纵坐标数组
    * @return
    */
   public static boolean isInPolygon(double pointLon, double pointLat, double[] lon, double[] lat) {
@@ -57,7 +57,7 @@ public class RegionUtil {
   }
 
   /**
-   * @param point 要判断的点的横纵坐标
+   * @param point   要判断的点的横纵坐标
    * @param polygon 组成的顶点坐标集合
    * @return
    */
@@ -96,9 +96,9 @@ public class RegionUtil {
     double s =
         2
             * Math.asin(
-                Math.sqrt(
-                    Math.pow(Math.sin(a / 2), 2)
-                        + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+            Math.sqrt(
+                Math.pow(Math.sin(a / 2), 2)
+                    + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
     s = s * EARTH_RADIUS;
     s = Math.round(s * 10000d) / 10000d;
     // double len=s/EARTH_SEA;
@@ -107,10 +107,10 @@ public class RegionUtil {
   }
 
   /**
-   * @param lng1 经度
-   * @param lng2 经度
-   * @param lat1 纬度
-   * @param lat2 纬度
+   * @param lng1   经度
+   * @param lng2   经度
+   * @param lat1   纬度
+   * @param lat2   纬度
    * @param radius 判断一个点是否在圆形区域内,比较坐标点与圆心的距离是否小于半径
    */
   public static boolean isInCircle(

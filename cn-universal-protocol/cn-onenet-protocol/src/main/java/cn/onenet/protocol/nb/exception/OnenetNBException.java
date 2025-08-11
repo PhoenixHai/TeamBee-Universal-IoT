@@ -12,7 +12,9 @@
 
 package cn.onenet.protocol.nb.exception;
 
-/** Created by zhuocongbin date 2018/3/15 */
+/**
+ * Created by zhuocongbin date 2018/3/15
+ */
 public class OnenetNBException extends RuntimeException {
 
   private NBStatus status;

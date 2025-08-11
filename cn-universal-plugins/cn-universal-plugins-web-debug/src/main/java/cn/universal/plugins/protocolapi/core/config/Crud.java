@@ -9,10 +9,14 @@ package cn.universal.plugins.protocolapi.core.config;
  */
 public class Crud {
 
-  /** 逻辑删除列 */
+  /**
+   * 逻辑删除列
+   */
   private String logicDeleteColumn = "is_valid";
 
-  /** 逻辑删除值 */
+  /**
+   * 逻辑删除值
+   */
   private String logicDeleteValue = "0";
 
   public String getLogicDeleteColumn() {

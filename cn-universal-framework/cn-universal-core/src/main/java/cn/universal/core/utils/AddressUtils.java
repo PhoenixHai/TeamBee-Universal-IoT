@@ -14,7 +14,9 @@ package cn.universal.core.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
-/** 获取地址类 @Author ruoyi */
+/**
+ * 获取地址类 @Author ruoyi
+ */
 @Slf4j
 public class AddressUtils {
 

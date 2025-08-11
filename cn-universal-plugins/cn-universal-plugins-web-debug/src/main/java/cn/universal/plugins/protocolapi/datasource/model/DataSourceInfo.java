@@ -4,25 +4,39 @@ import cn.universal.plugins.protocolapi.core.model.MagicEntity;
 
 public class DataSourceInfo extends MagicEntity {
 
-  /** URL */
+  /**
+   * URL
+   */
   private String url;
 
-  /** 用户名 */
+  /**
+   * 用户名
+   */
   private String username;
 
-  /** 密码 */
+  /**
+   * 密码
+   */
   private String password;
 
-  /** 数据源key */
+  /**
+   * 数据源key
+   */
   private String key;
 
-  /** 最多返回条数 */
+  /**
+   * 最多返回条数
+   */
   private int maxRows = -1;
 
-  /** 驱动类 */
+  /**
+   * 驱动类
+   */
   private String driverClassName;
 
-  /** 连接池类型 */
+  /**
+   * 连接池类型
+   */
   private String type;
 
   public String getUrl() {

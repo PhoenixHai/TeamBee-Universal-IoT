@@ -2,7 +2,9 @@ package cn.universal.mqtt.protocol.config;
 
 import java.util.regex.Pattern;
 
-/** MQTT 主题常量统一定义 */
+/**
+ * MQTT 主题常量统一定义
+ */
 public interface MqttConstant {
 
   // ================= 固定前缀 =================
@@ -47,18 +49,28 @@ public interface MqttConstant {
   String TYPE_DOWN = "THING_DOWN";
   String TYPE_PASSTHROUGH_UP = "PASSTHROUGH_UP";
 
-  /** 主题分类枚举 */
+  /**
+   * 主题分类枚举
+   */
   enum TopicCategory {
-    /** 物模型类别 */
+    /**
+     * 物模型类别
+     */
     THING_MODEL,
 
-    /** 透传类别 */
+    /**
+     * 透传类别
+     */
     PASSTHROUGH,
 
-    /** 系统级类别 */
+    /**
+     * 系统级类别
+     */
     SYSTEM_LEVEL,
 
-    /** 未知类别 */
+    /**
+     * 未知类别
+     */
     UNKNOWN
   }
 }

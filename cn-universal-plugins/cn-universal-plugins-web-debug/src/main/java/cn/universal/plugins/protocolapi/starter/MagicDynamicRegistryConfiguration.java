@@ -23,7 +23,9 @@ public class MagicDynamicRegistryConfiguration {
 
   private final MagicAPIProperties properties;
 
-  @Autowired @Lazy private RequestMappingHandlerMapping requestMappingHandlerMapping;
+  @Autowired
+  @Lazy
+  private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
   public MagicDynamicRegistryConfiguration(MagicAPIProperties properties) {
     this.properties = properties;

@@ -17,19 +17,29 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @ConfigurationProperties(prefix = "magic-api")
 public class MagicAPIProperties {
 
-  /** 版本号 */
+  /**
+   * 版本号
+   */
   private final String version = RequestHandler.class.getPackage().getImplementationVersion();
 
-  /** web页面入口 */
+  /**
+   * web页面入口
+   */
   private String web;
 
-  /** 接口路径前缀 */
+  /**
+   * 接口路径前缀
+   */
   private String prefix;
 
-  /** 打印banner */
+  /**
+   * 打印banner
+   */
   private boolean banner = true;
 
-  /** 是否抛出异常 */
+  /**
+   * 是否抛出异常
+   */
   private boolean throwException = false;
 
   /**
@@ -102,7 +112,9 @@ public class MagicAPIProperties {
    */
   private String pushPath = "/_magic-api-sync";
 
-  /** 启动完成之后打印地址 */
+  /**
+   * 启动完成之后打印地址
+   */
   private boolean showUrl = true;
 
   /**
@@ -112,7 +124,9 @@ public class MagicAPIProperties {
    */
   private boolean showSql = true;
 
-  /** 插件开关 - 设置为true时启用插件 */
+  /**
+   * 插件开关 - 设置为true时启用插件
+   */
   private boolean enabled = true;
 
   public boolean isEnabled() {
@@ -129,7 +143,7 @@ public class MagicAPIProperties {
    * @since 1.5.2
    */
   private String[] datePattern =
-      new String[] {"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyyMMddHHmmss", "yyyyMMdd"};
+      new String[]{"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyyMMddHHmmss", "yyyyMMdd"};
 
   /**
    * 编译缓存容量
@@ -145,24 +159,34 @@ public class MagicAPIProperties {
    */
   private boolean persistenceResponseBody = true;
 
-  /** 实例ID，集群环境下，要保证每台机器不同。默认启动后随机生成uuid */
+  /**
+   * 实例ID，集群环境下，要保证每台机器不同。默认启动后随机生成uuid
+   */
   private String instanceId = UUID.randomUUID().toString();
 
-  @NestedConfigurationProperty private Security security = new Security();
+  @NestedConfigurationProperty
+  private Security security = new Security();
 
-  @NestedConfigurationProperty private Page page = new Page();
+  @NestedConfigurationProperty
+  private Page page = new Page();
 
-  @NestedConfigurationProperty private Cache cache = new Cache();
+  @NestedConfigurationProperty
+  private Cache cache = new Cache();
 
-  @NestedConfigurationProperty private Debug debug = new Debug();
+  @NestedConfigurationProperty
+  private Debug debug = new Debug();
 
-  @NestedConfigurationProperty private Resource resource = new Resource();
+  @NestedConfigurationProperty
+  private Resource resource = new Resource();
 
-  @NestedConfigurationProperty private ResponseCode responseCode = new ResponseCode();
+  @NestedConfigurationProperty
+  private ResponseCode responseCode = new ResponseCode();
 
-  @NestedConfigurationProperty private Crud crud = new Crud();
+  @NestedConfigurationProperty
+  private Crud crud = new Crud();
 
-  @NestedConfigurationProperty private Backup backup = new Backup();
+  @NestedConfigurationProperty
+  private Backup backup = new Backup();
 
   public String getWeb() {
     if (StringUtils.isBlank(web)) {

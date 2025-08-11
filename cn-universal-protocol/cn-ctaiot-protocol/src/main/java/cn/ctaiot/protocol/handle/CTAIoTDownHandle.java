@@ -80,7 +80,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
-  @Resource private CTAIoTModuleInfo ctaIoTModuleInfo;
+
+  @Resource
+  private CTAIoTModuleInfo ctaIoTModuleInfo;
 
   @Resource(name = "ioTDeviceActionAfterService")
   private IoTDeviceLifeCycle ioTDeviceLifeCycle;
@@ -88,56 +90,65 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
   @Resource(name = "ioTProductActionService")
   private IoTProductAction ioTProductAction;
 
-  @Resource private AepDeviceManagementClient aepDeviceManagementClient;
+  @Resource
+  private AepDeviceManagementClient aepDeviceManagementClient;
 
-  @Resource private AepProductManagementClient aepProductManagementClient;
+  @Resource
+  private AepProductManagementClient aepProductManagementClient;
 
-  @Resource private AepPublicProductManagementClient aepPublicProductManagementClient;
+  @Resource
+  private AepPublicProductManagementClient aepPublicProductManagementClient;
 
-  @Resource private AepDeviceCommandClient aepDeviceCommandClient;
+  @Resource
+  private AepDeviceCommandClient aepDeviceCommandClient;
 
-  @Resource private AepDeviceCommandLwmProfileClient aepDeviceCommandLwmProfileClient;
+  @Resource
+  private AepDeviceCommandLwmProfileClient aepDeviceCommandLwmProfileClient;
 
-  @Resource private IoTProductMapper ioTProductMapper;
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
-  @Resource private SupportMapAreasMapper supportMapAreasMapper;
+  @Resource
+  private IoTProductMapper ioTProductMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private SupportMapAreasMapper supportMapAreasMapper;
 
-  @Resource private IoTDeviceService iotDeviceService;
+  @Resource
+  private IoTDeviceService iotDeviceService;
 
   String havICCID =
       """
-                 {
-                   "tags": [],
-                   "events": [
-                     {
-                       "id": "online",
-                       "name": "上线",
-                       "valueType": {
-                         "type": "string"
-                       }
-                     },
-                     {
-                       "id": "offline",
-                       "name": "下线",
-                       "valueType": {
-                         "type": "string"
-                       }
-                     }
-                   ],
-                   "functions": [],
-                   "properties": [
-                     {
-                       "id": "iccid",
-                       "mode": "r",
-                       "name": "ICCID",
-                       "valueType": {
-                         "type": "string"
-                       },
-                       "description": "SIM卡ICCID"
-                     }
-                   ]
-                 }
-                 """;
+          {
+            "tags": [],
+            "events": [
+              {
+                "id": "online",
+                "name": "上线",
+                "valueType": {
+                  "type": "string"
+                }
+              },
+              {
+                "id": "offline",
+                "name": "下线",
+                "valueType": {
+                  "type": "string"
+                }
+              }
+            ],
+            "functions": [],
+            "properties": [
+              {
+                "id": "iccid",
+                "mode": "r",
+                "name": "ICCID",
+                "valueType": {
+                  "type": "string"
+                },
+                "description": "SIM卡ICCID"
+              }
+            ]
+          }
+          """;
 
   public R down(CTAIoTDownRequest downRequest) {
     if (downRequest == null || downRequest.getCmd() == null) {
@@ -183,7 +194,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return r;
   }
 
-  /** 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 */
+  /**
+   * 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001
+   */
   private R devConfig(CTAIoTDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -347,7 +360,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return R.error(ERROR_CODE.DEV_CONFIG_ERROR.getCode(), ERROR_CODE.DEV_CONFIG_ERROR.getName());
   }
 
-  /** 设备添加 */
+  /**
+   * 设备添加
+   */
   private R devAdd(CTAIoTDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -470,9 +485,12 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
   }
 
   @Override
-  public void Rule() {}
+  public void Rule() {
+  }
 
-  /** 删除电信平台设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo */
+  /**
+   * 删除电信平台设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo
+   */
   private R devDel(CTAIoTDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -532,7 +550,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return R.ok();
   }
 
-  /** 删除本地数据库设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo */
+  /**
+   * 删除本地数据库设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo
+   */
   private void deleteDevInstance(List<IoTDevice> ioTDeviceList, DownRequest downRequest) {
     for (IoTDevice dev : ioTDeviceList) {
       // 设备生命周期-删除
@@ -543,7 +563,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     }
   }
 
-  /** 修改电信平台设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 */
+  /**
+   * 修改电信平台设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001
+   */
   private R devUpdate(CTAIoTDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -594,7 +616,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return R.ok("ok", downRequest.getIoTProduct().getId());
   }
 
-  /** 修改本地数据库设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo */
+  /**
+   * 修改本地数据库设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo
+   */
   private Map<String, Object> updateDevInstance(
       IoTDevice ioTDevice, CTAIoTDownRequest downRequest) {
 
@@ -630,7 +654,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return result;
   }
 
-  /** 产品添加 */
+  /**
+   * 产品添加
+   */
   private R proAdd(CTAIoTDownRequest downRequest) {
     Map<String, Object> proAdd = new HashMap<>();
     proAdd.put("productName", downRequest.getCtwingRequestData().getProductName());
@@ -676,7 +702,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return R.error("新增电信产品异常");
   }
 
-  /** 公共产品添加 */
+  /**
+   * 公共产品添加
+   */
   private R pubproAdd(CTAIoTDownRequest downRequest) {
     InstantiateProductRequest request = new InstantiateProductRequest();
     Map<String, Object> map = new HashMap<>();
@@ -703,7 +731,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return R.error("添加电信公共产品异常");
   }
 
-  /** 本地添加产品 */
+  /**
+   * 本地添加产品
+   */
   private IoTProduct saveProduct(JSONObject jsonObject, CTAIoTDownRequest downRequest) {
     JSONObject json = jsonObject.getJSONObject("result");
     JSONObject configuration = new JSONObject();
@@ -741,7 +771,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return ioTProduct;
   }
 
-  /** 本地添加公共产品 */
+  /**
+   * 本地添加公共产品
+   */
   private IoTProduct savePublicProduct(JSONObject jsonObject, CTAIoTDownRequest downRequest) {
     JSONObject json = jsonObject.getJSONObject("result");
     JSONObject configuration = new JSONObject();
@@ -778,7 +810,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return ioTProduct;
   }
 
-  /** 删除电信产品 */
+  /**
+   * 删除电信产品
+   */
   private R proDel(CTAIoTDownRequest downRequest) {
     DeleteProductRequest request = new DeleteProductRequest();
     request.setParamMasterKey(downRequest.getCtwingRequestData().getMasterKey());
@@ -803,13 +837,17 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return R.error("删除电信产品异常");
   }
 
-  /** 删除本地数据库产品 */
+  /**
+   * 删除本地数据库产品
+   */
   private int deleteDevProduct(String productKey) {
     IoTProduct ioTProduct = IoTProduct.builder().productKey(productKey).build();
     return ioTProductMapper.delete(ioTProduct);
   }
 
-  /** 修改电信产品 */
+  /**
+   * 修改电信产品
+   */
   private R proUpdate(CTAIoTDownRequest downRequest) {
 
     UpdateProductRequest request = new UpdateProductRequest();
@@ -840,7 +878,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return R.error("修改电信产品异常");
   }
 
-  /** 修改本地数据库产品 */
+  /**
+   * 修改本地数据库产品
+   */
   private int updateDevProduct(String productKey, CTAIoTDownRequest downRequest) {
     IoTProduct ioTProduct = ioTProductMapper.getProductByProductKey(productKey);
     ioTProduct.setClassifiedId(downRequest.getCtwingRequestData().getClassifiedId());
@@ -856,7 +896,9 @@ public class CTAIoTDownHandle extends IotDownAdapter<CTAIoTDownRequest> {
     return count;
   }
 
-  /** 查询电信公共产品 */
+  /**
+   * 查询电信公共产品
+   */
   private R pubproGet(CTAIoTDownRequest downRequest) {
     QueryAllPublicProductListRequest request = new QueryAllPublicProductListRequest();
     request.setParamSearchValue(downRequest.getCtwingRequestData().getSearchValue());

@@ -21,8 +21,8 @@ public interface LanguageProvider {
    * 执行具体脚本
    *
    * @param languageName 语言类型
-   * @param script 脚本内容
-   * @param context 当前环境中的变量信息
+   * @param script       脚本内容
+   * @param context      当前环境中的变量信息
    * @return 执行结果
    * @throws Exception 执行过程中抛出的异常
    */

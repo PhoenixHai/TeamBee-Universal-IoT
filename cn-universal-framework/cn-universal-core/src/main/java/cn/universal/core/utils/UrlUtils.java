@@ -16,7 +16,9 @@ import cn.hutool.core.util.StrUtil;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** Created by terry on 2017/8/1. */
+/**
+ * Created by terry on 2017/8/1.
+ */
 public class UrlUtils {
 
   private static final String RE_TOP_DOMAIN =
@@ -64,22 +66,23 @@ public class UrlUtils {
 
   public static void main(String[] args) {
     String[] urls = {
-      "yunfan.tcp.univiot.cn",
-      "http://meiwen.me/src/index.html",
-      "http://1000chi.com/game/index.html",
-      "http://see.xidian.edu.cn/cpp/html/1429.html",
-      "https://docs.python.org/2/howto/regex.html",
-      "https://www.google.com.hk/search?client=aff-cs-360chromium&hs=TSj&q=url%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90"
-          + "%8Dre&oq=url%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8Dre&gs_l=serp.3...74418.86867.0.87673.28.25.2.0.0.0.541"
-          + ".2454.2-6j0j1j1.8.0....0...1c.1j4.53.serp..26.2.547.IuHTj4uoyHg",
-      "file:///D:/code/echarts-2.0.3/doc/example/tooltip.html",
-      "http://api.mongodb.org/python/current/faq.html#is-pymongo-thread-safe",
-      "https://pypi.python.org/pypi/publicsuffix/",
-      "http://127.0.0.1:8000",
+        "yunfan.tcp.univiot.cn",
+        "http://meiwen.me/src/index.html",
+        "http://1000chi.com/game/index.html",
+        "http://see.xidian.edu.cn/cpp/html/1429.html",
+        "https://docs.python.org/2/howto/regex.html",
+        "https://www.google.com.hk/search?client=aff-cs-360chromium&hs=TSj&q=url%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90"
+            + "%8Dre&oq=url%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8Dre&gs_l=serp.3...74418.86867.0.87673.28.25.2.0.0.0.541"
+            + ".2454.2-6j0j1j1.8.0....0...1c.1j4.53.serp..26.2.547.IuHTj4uoyHg",
+        "file:///D:/code/echarts-2.0.3/doc/example/tooltip.html",
+        "http://api.mongodb.org/python/current/faq.html#is-pymongo-thread-safe",
+        "https://pypi.python.org/pypi/publicsuffix/",
+        "http://127.0.0.1:8000",
     };
 
     System.out.println(StrUtil.subBefore("yunfan.tcp.univiot.cn", ".", false));
   }
 
-  public static void test() {}
+  public static void test() {
+  }
 }

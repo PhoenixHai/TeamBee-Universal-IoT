@@ -19,10 +19,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ProtocolModuleRuntimeRegistry {
 
-  /** 运行时协议模块注册表 Key: 协议代码, Value: 协议模块信息 */
+  /**
+   * 运行时协议模块注册表 Key: 协议代码, Value: 协议模块信息
+   */
   private static final Map<String, ProtocolModuleInfo> runtimeRegistry = new ConcurrentHashMap<>();
 
-  /** 协议模块启动状态 Key: 协议代码, Value: 启动状态 */
+  /**
+   * 协议模块启动状态 Key: 协议代码, Value: 启动状态
+   */
   private static final Map<String, ProtocolStartupStatus> startupStatusMap =
       new ConcurrentHashMap<>();
 
@@ -176,8 +180,11 @@ public class ProtocolModuleRuntimeRegistry {
     return new RuntimeStatistics(totalRunning, coreCount, optionalCount, categoryStats);
   }
 
-  /** 协议启动状态 */
+  /**
+   * 协议启动状态
+   */
   public static class ProtocolStartupStatus {
+
     private final String protocolCode;
     private final boolean running;
     private final long startupTime;
@@ -201,8 +208,11 @@ public class ProtocolModuleRuntimeRegistry {
     }
   }
 
-  /** 运行时统计信息 */
+  /**
+   * 运行时统计信息
+   */
   public static class RuntimeStatistics {
+
     private final int totalRunning;
     private final int coreCount;
     private final int optionalCount;

@@ -61,12 +61,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
 
-  @Resource private PlatformProperties ctwingProperties;
-  @Resource private IoTProductMapper ioTProductMapper;
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
-  @Resource private SupportMapAreasMapper supportMapAreasMapper;
-  @Resource private Token token;
-  @Resource private IoTDeviceService iotDeviceService;
+  @Resource
+  private PlatformProperties ctwingProperties;
+  @Resource
+  private IoTProductMapper ioTProductMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private SupportMapAreasMapper supportMapAreasMapper;
+  @Resource
+  private Token token;
+  @Resource
+  private IoTDeviceService iotDeviceService;
 
   @Resource(name = "ioTDeviceActionAfterService")
   private IoTDeviceLifeCycle ioTDeviceLifeCycle;
@@ -115,7 +121,9 @@ public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
     return r;
   }
 
-  /** 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 */
+  /**
+   * 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001
+   */
   private R devConfig(OnenetDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -138,7 +146,9 @@ public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
     return R.ok();
   }
 
-  /** 设备添加 */
+  /**
+   * 设备添加
+   */
   private R devAdd(OnenetDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -271,9 +281,12 @@ public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
   }
 
   @Override
-  public void Rule() {}
+  public void Rule() {
+  }
 
-  /** 删除电信平台设备 */
+  /**
+   * 删除电信平台设备
+   */
   private R devDel(OnenetDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -329,7 +342,9 @@ public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
     return R.error(ERROR_CODE.DEV_DEL_ERROR.getCode(), ERROR_CODE.DEV_DEL_ERROR.getName());
   }
 
-  /** 删除本地数据库设备 */
+  /**
+   * 删除本地数据库设备
+   */
   private void deleteDevInstance(List<IoTDevice> ioTDeviceList, DownRequest downRequest) {
     for (IoTDevice dev : ioTDeviceList) {
       Map<String, Object> objectMap = new HashMap<>();
@@ -345,7 +360,9 @@ public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
     }
   }
 
-  /** 修改电信平台设备 */
+  /**
+   * 修改电信平台设备
+   */
   private R devUpdate(OnenetDownRequest downRequest) {
     IoTDevice ioTDevice =
         IoTDevice.builder()
@@ -392,7 +409,9 @@ public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
     return R.error(ERROR_CODE.DEV_UPDATE_ERROR.getCode(), ERROR_CODE.DEV_UPDATE_ERROR.getName());
   }
 
-  /** 修改本地数据库设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo */
+  /**
+   * 修改本地数据库设备 详见文档 https://apiportalweb.ctwing.cn/index.html#/apiDetail/10255/218/1001 Aleo
+   */
   private Map<String, Object> updateDevInstance(
       IoTDevice ioTDevice, OnenetDownRequest downRequest) {
     if (StrUtil.isNotBlank(downRequest.getOnenetRequestData().getLatitude())
@@ -428,7 +447,9 @@ public class OnenetDownHandle extends IotDownAdapter<OnenetDownRequest> {
     return result;
   }
 
-  /** 设备批量添加 */
+  /**
+   * 设备批量添加
+   */
   private R devAdds(OnenetDownRequest downRequest) {
     /*IoTDevice devInstance = IoTDevice.builder().productKey(downRequest.getProductKey())
         .deviceId(downRequest

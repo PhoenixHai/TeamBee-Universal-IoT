@@ -10,34 +10,54 @@ import java.util.Objects;
  */
 public class BaseDefinition {
 
-  /** 名 */
+  /**
+   * 名
+   */
   private String name;
 
-  /** 值 */
+  /**
+   * 值
+   */
   private Object value;
 
-  /** 描述 */
+  /**
+   * 描述
+   */
   private String description;
 
-  /** 是否必填 */
+  /**
+   * 是否必填
+   */
   private boolean required;
 
-  /** 数据类型 */
+  /**
+   * 数据类型
+   */
   private DataType dataType;
 
-  /** 类型，函数专用 */
+  /**
+   * 类型，函数专用
+   */
   private String type;
 
-  /** 默认值 */
+  /**
+   * 默认值
+   */
   private String defaultValue;
 
-  /** 验证类型 */
+  /**
+   * 验证类型
+   */
   private String validateType;
 
-  /** 验证说明 */
+  /**
+   * 验证说明
+   */
   private String error;
 
-  /** 验证表达式 */
+  /**
+   * 验证表达式
+   */
   private String expression;
 
   /**
@@ -45,7 +65,8 @@ public class BaseDefinition {
    */
   private ArrayList<BaseDefinition> children;
 
-  public BaseDefinition() {}
+  public BaseDefinition() {
+  }
 
   public BaseDefinition(String name, String value) {
     this.name = name;

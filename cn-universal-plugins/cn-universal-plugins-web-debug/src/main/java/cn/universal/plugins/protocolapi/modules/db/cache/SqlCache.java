@@ -10,7 +10,9 @@ import java.util.Arrays;
  */
 public interface SqlCache {
 
-  /** 计算key */
+  /**
+   * 计算key
+   */
   default String buildSqlCacheKey(String sql, Object[] params) {
     return MD5Utils.encrypt(sql + ":" + Arrays.toString(params));
   }
@@ -18,8 +20,8 @@ public interface SqlCache {
   /**
    * 存入缓存
    *
-   * @param name 名字
-   * @param key key
+   * @param name  名字
+   * @param key   key
    * @param value 值
    */
   void put(String name, String key, Object value);
@@ -27,10 +29,10 @@ public interface SqlCache {
   /**
    * 存入缓存
    *
-   * @param name 名字
-   * @param key key
+   * @param name  名字
+   * @param key   key
    * @param value 值
-   * @param ttl 有效期
+   * @param ttl   有效期
    */
   void put(String name, String key, Object value, long ttl);
 
@@ -38,7 +40,7 @@ public interface SqlCache {
    * 获取缓存
    *
    * @param name 名字
-   * @param key key
+   * @param key  key
    */
   <T> T get(String name, String key);
 

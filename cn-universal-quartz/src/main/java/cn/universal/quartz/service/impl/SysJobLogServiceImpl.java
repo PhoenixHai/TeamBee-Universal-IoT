@@ -19,11 +19,14 @@ import jakarta.annotation.Resource;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-/** 定时任务调度日志信息 服务层 @Author ruoyi */
+/**
+ * 定时任务调度日志信息 服务层 @Author ruoyi
+ */
 @Service
 public class SysJobLogServiceImpl implements ISysJobLogService {
 
-  @Resource private SysJobLogMapper sysJobLogMapper;
+  @Resource
+  private SysJobLogMapper sysJobLogMapper;
 
   /**
    * 获取quartz调度器日志的计划任务
@@ -79,7 +82,9 @@ public class SysJobLogServiceImpl implements ISysJobLogService {
     return sysJobLogMapper.deleteByPrimaryKey(jobId);
   }
 
-  /** 清空任务日志 */
+  /**
+   * 清空任务日志
+   */
   @Override
   public void cleanJobLog() {
     sysJobLogMapper.delete(new SysJobLog());

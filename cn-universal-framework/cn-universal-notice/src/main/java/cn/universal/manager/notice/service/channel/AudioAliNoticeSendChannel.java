@@ -32,7 +32,8 @@ public class AudioAliNoticeSendChannel extends AbstractNoticeSendChannel {
       }
       // TODO: 实现阿里云语音API调用
       logger.info(
-          "阿里云语音发送 - 接收者: {}, 内容: {}, 配置: {}", receivers, content, configObj.toJSONString());
+          "阿里云语音发送 - 接收者: {}, 内容: {}, 配置: {}", receivers, content,
+          configObj.toJSONString());
       logSend("AudioAli", content, receivers, true, "发送成功（模拟）");
       return NoticeSendResult.builder()
           .success(true)

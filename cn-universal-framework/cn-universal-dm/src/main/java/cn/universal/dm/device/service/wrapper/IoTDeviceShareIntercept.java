@@ -36,18 +36,24 @@ import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-/** 设备分享，实际上是绑定了订阅 */
+/**
+ * 设备分享，实际上是绑定了订阅
+ */
 @Service("ioTDeviceShareIntercept")
 @Slf4j
 public class IoTDeviceShareIntercept implements IotDownWrapper {
 
-  @Resource private IoTDeviceSubscribeService iotDeviceSubscribeService;
+  @Resource
+  private IoTDeviceSubscribeService iotDeviceSubscribeService;
 
-  @Resource private IoTUserApplicationMapper iotUserApplicationMapper;
+  @Resource
+  private IoTUserApplicationMapper iotUserApplicationMapper;
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Resource private SupportMapAreasMapper supportMapAreasMapper;
+  @Resource
+  private SupportMapAreasMapper supportMapAreasMapper;
 
   @Override
   public R beforeDownAction(IoTProduct product, Object data, DownRequest downRequest) {
@@ -72,7 +78,7 @@ public class IoTDeviceShareIntercept implements IotDownWrapper {
             iotUserApplicationMapper.selectIotUserApplicationById(downRequest.getApplicationId());
         if (applicationAdd == null
             || (StrUtil.isBlank(applicationAdd.getNotifyUrl())
-                && StrUtil.isBlank(applicationAdd.getUpTopic()))) {
+            && StrUtil.isBlank(applicationAdd.getUpTopic()))) {
           return R.error(APIErrorCode.DATA_CAN_NOT_NULL.getCode(), "添加失败");
         }
         // 添加订阅
@@ -126,7 +132,8 @@ public class IoTDeviceShareIntercept implements IotDownWrapper {
                 location.getStr("longitude"), location.getStr("latitude"));
         if (supportMapAreas == null) {
           log.info(
-              "查询区域id为空,lot={},lat={}", location.getStr("longitude"), location.getStr("latitude"));
+              "查询区域id为空,lot={},lat={}", location.getStr("longitude"),
+              location.getStr("latitude"));
         } else {
           ioTDevice.setAreasId(supportMapAreas.getId());
         }

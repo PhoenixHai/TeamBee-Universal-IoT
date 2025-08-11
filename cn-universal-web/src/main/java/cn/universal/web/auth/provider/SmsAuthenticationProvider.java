@@ -39,11 +39,15 @@ import org.springframework.util.StringUtils;
 @Component
 public class SmsAuthenticationProvider implements AuthenticationProvider {
 
-  @Autowired private StringRedisTemplate stringRedisTemplate;
-  @Autowired private UserDetailsService userDetailsService;
+  @Autowired
+  private StringRedisTemplate stringRedisTemplate;
+  @Autowired
+  private UserDetailsService userDetailsService;
 
-  @Autowired private AsyncService asyncService;
-  @Autowired private IIotUserService iIotUserService;
+  @Autowired
+  private AsyncService asyncService;
+  @Autowired
+  private IIotUserService iIotUserService;
 
   private static final Integer maxRetryCount = 5;
   private static final Integer maxIpRetryCount = 15;
@@ -63,14 +67,17 @@ public class SmsAuthenticationProvider implements AuthenticationProvider {
 
     // 校验短信验证码
     if (!StringUtils.hasText(smsCode)) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "短信验证码不能为空", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "短信验证码不能为空", null));
     }
     String code = stringRedisTemplate.opsForValue().get("sms_codes:" + phone);
     if (!StringUtils.hasText(code)) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "短信验证码已过期", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "短信验证码已过期", null));
     }
     if (!code.equalsIgnoreCase(smsCode)) {
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "短信验证码输入错误", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "短信验证码输入错误", null));
     }
 
     // 登录重试次数/IP 限制
@@ -100,7 +107,8 @@ public class SmsAuthenticationProvider implements AuthenticationProvider {
       stringRedisTemplate
           .opsForValue()
           .set(ipKey, String.valueOf(ipCount + 1), 60, TimeUnit.MINUTES);
-      throw new OAuth2AuthenticationException(new OAuth2Error("invalid_grant", "手机号未注册", null));
+      throw new OAuth2AuthenticationException(
+          new OAuth2Error("invalid_grant", "手机号未注册", null));
     }
     if (IotConstant.UN_NORMAL.toString().equals(user.getStatus())) {
       throw new OAuth2AuthenticationException(
@@ -117,14 +125,16 @@ public class SmsAuthenticationProvider implements AuthenticationProvider {
               .get(IotConstant.EXCLUSIVE_LOGIN + ":" + user.getUsername());
       if (StrUtil.isNotBlank(loginedIp)) {
         throw new OAuth2AuthenticationException(
-            new OAuth2Error("invalid_grant", "账号已登录，请先退出已登录的账号,登录ip：" + loginedIp, null));
+            new OAuth2Error("invalid_grant", "账号已登录，请先退出已登录的账号,登录ip：" + loginedIp,
+                null));
       }
     }
 
     UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
 
     // 登录成功
-    asyncService.recordLogininfor(user.getUsername(), Constants.LOGIN_SUCCESS, "短信验证码登录成功", null);
+    asyncService.recordLogininfor(user.getUsername(), Constants.LOGIN_SUCCESS, "短信验证码登录成功",
+        null);
     stringRedisTemplate.delete(retryKey);
     stringRedisTemplate.delete(ipKey);
 

@@ -29,7 +29,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class CnUniversalTest {
 
-  @Resource private LoggingSystem loggingSystem;
+  @Resource
+  private LoggingSystem loggingSystem;
 
   @Before
   public void before() {

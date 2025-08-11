@@ -15,22 +15,34 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class ForeachSqlNode extends SqlNode {
 
-  /** 数据集合，支持Collection、数组 */
+  /**
+   * 数据集合，支持Collection、数组
+   */
   private String collection;
 
-  /** item 变量名 */
+  /**
+   * item 变量名
+   */
   private String item;
 
-  /** 拼接起始SQL */
+  /**
+   * 拼接起始SQL
+   */
   private String open;
 
-  /** 拼接结束SQL */
+  /**
+   * 拼接结束SQL
+   */
   private String close;
 
-  /** 分隔符 */
+  /**
+   * 分隔符
+   */
   private String separator;
 
-  /** 序号 */
+  /**
+   * 序号
+   */
   private String index;
 
   public void setCollection(String collection) {

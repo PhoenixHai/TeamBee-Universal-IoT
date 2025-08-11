@@ -17,21 +17,28 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-/** 自定义用户名密码登录 */
+/**
+ * 自定义用户名密码登录
+ */
 @Component // 注入到Spring容器中
 @Slf4j
 public class CustomAuthorizationInterceptor implements AuthorizationInterceptor {
 
   private Map<String, Object> user = new HashMap<>();
-  @Autowired private UserDetailsService userDetailsService;
+  @Autowired
+  private UserDetailsService userDetailsService;
 
-  /** 配置是否需要登录 */
+  /**
+   * 配置是否需要登录
+   */
   @Override
   public boolean requireLogin() {
     return true;
   }
 
-  /** 根据Token获取User */
+  /**
+   * 根据Token获取User
+   */
   @Override
   public MagicUser getUserByToken(String token) throws MagicLoginException {
     String username = SymmetricEncryptionUtil.desDecryptWithBuiltinKey(token);

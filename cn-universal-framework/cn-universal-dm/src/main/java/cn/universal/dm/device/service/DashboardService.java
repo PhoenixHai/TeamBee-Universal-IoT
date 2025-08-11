@@ -26,15 +26,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class DashboardService {
 
-  @Autowired private IoTDashboardStatisticsMapper dashboardStatisticsMapper;
+  @Autowired
+  private IoTDashboardStatisticsMapper dashboardStatisticsMapper;
 
-  @Autowired private StringRedisTemplate redisTemplate;
+  @Autowired
+  private StringRedisTemplate redisTemplate;
 
-  @Autowired private SystemMonitorService systemMonitorService;
+  @Autowired
+  private SystemMonitorService systemMonitorService;
 
-  @Autowired private PushStatisticsProcessor pushStatisticsProcessor;
+  @Autowired
+  private PushStatisticsProcessor pushStatisticsProcessor;
 
-  @Autowired private IoTDeviceMapper ioTDeviceMapper;
+  @Autowired
+  private IoTDeviceMapper ioTDeviceMapper;
 
   private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -90,7 +95,9 @@ public class DashboardService {
     }
   }
 
-  /** 调试方法：查看数据库中的统计记录 */
+  /**
+   * 调试方法：查看数据库中的统计记录
+   */
   public List<IoTDashboardStatistics> debugStatistics(LocalDate date) {
     log.info("[仪表盘调试] 查询日期: {}", date);
 
@@ -113,12 +120,16 @@ public class DashboardService {
     return allRecords;
   }
 
-  /** 获取实时数据 */
+  /**
+   * 获取实时数据
+   */
   public Map<String, Object> getRealtimeData() {
     return getTodayOverview(); // 实时数据就是今日概览
   }
 
-  /** 获取图表数据 */
+  /**
+   * 获取图表数据
+   */
   public Map<String, Object> getChartData(LocalDate date, String type, String channel) {
     Map<String, Object> chartData = new HashMap<>();
 
@@ -149,7 +160,9 @@ public class DashboardService {
     return chartData;
   }
 
-  /** 获取系统监控数据 */
+  /**
+   * 获取系统监控数据
+   */
   public Map<String, Object> getSystemMonitorData() {
     Map<String, Object> monitorData = new HashMap<>();
 
@@ -173,22 +186,30 @@ public class DashboardService {
     return monitorData;
   }
 
-  /** 获取统计管理器状态 */
+  /**
+   * 获取统计管理器状态
+   */
   public Map<String, Object> getStatisticsManagerStatus() {
     return pushStatisticsProcessor.getManagerStatus();
   }
 
-  /** 强制刷新统计到Redis */
+  /**
+   * 强制刷新统计到Redis
+   */
   public void forceFlushStatistics() {
     pushStatisticsProcessor.forceFlushToRedis();
   }
 
-  /** 获取系统监控服务 */
+  /**
+   * 获取系统监控服务
+   */
   public SystemMonitorService getSystemMonitorService() {
     return systemMonitorService;
   }
 
-  /** 获取今日概览数据 */
+  /**
+   * 获取今日概览数据
+   */
   public Map<String, Object> getTodayOverview() {
     Map<String, Object> overview = new HashMap<>();
 
@@ -222,7 +243,9 @@ public class DashboardService {
     return overview;
   }
 
-  /** 获取今日概览数据（带用户权限过滤） */
+  /**
+   * 获取今日概览数据（带用户权限过滤）
+   */
   public Map<String, Object> getTodayOverviewWithUserFilter(String unionId, boolean isAdmin) {
     Map<String, Object> overview = new HashMap<>();
 
@@ -256,7 +279,9 @@ public class DashboardService {
     return overview;
   }
 
-  /** 从数据库获取设备统计数据（带用户权限过滤） */
+  /**
+   * 从数据库获取设备统计数据（带用户权限过滤）
+   */
   public Map<String, Object> getDeviceStatsFromDB(String unionId, boolean isAdmin) {
     Map<String, Object> deviceStats = new HashMap<>();
 
@@ -296,7 +321,9 @@ public class DashboardService {
 
   // ==================== 私有方法 ====================
 
-  /** 获取设备统计数据（带用户权限过滤） */
+  /**
+   * 获取设备统计数据（带用户权限过滤）
+   */
   private Map<String, Object> getDeviceStatsWithUserFilter(
       String dateKey, String unionId, boolean isAdmin) {
     Map<String, Object> deviceStats = new HashMap<>();
@@ -338,7 +365,9 @@ public class DashboardService {
     return deviceStats;
   }
 
-  /** 获取消息统计数据（带用户权限过滤） */
+  /**
+   * 获取消息统计数据（带用户权限过滤）
+   */
   private Map<String, Object> getMessageStatsWithUserFilter(
       String dateKey, String unionId, boolean isAdmin) {
     Map<String, Object> messageStats = new HashMap<>();
@@ -363,7 +392,9 @@ public class DashboardService {
     return messageStats;
   }
 
-  /** 获取渠道统计数据（带用户权限过滤） */
+  /**
+   * 获取渠道统计数据（带用户权限过滤）
+   */
   private Map<String, Object> getChannelStatsWithUserFilter(
       String dateKey, String unionId, boolean isAdmin) {
     Map<String, Object> channelStats = new HashMap<>();
@@ -384,7 +415,9 @@ public class DashboardService {
     return channelStats;
   }
 
-  /** 获取设备统计数据 */
+  /**
+   * 获取设备统计数据
+   */
   private Map<String, Object> getDeviceStats(String dateKey) {
     Map<String, Object> deviceStats = new HashMap<>();
 
@@ -418,7 +451,9 @@ public class DashboardService {
     return deviceStats;
   }
 
-  /** 获取消息统计数据 */
+  /**
+   * 获取消息统计数据
+   */
   private Map<String, Object> getMessageStats(String dateKey) {
     Map<String, Object> messageStats = new HashMap<>();
 
@@ -452,7 +487,9 @@ public class DashboardService {
     return messageStats;
   }
 
-  /** 获取性能统计数据 */
+  /**
+   * 获取性能统计数据
+   */
   private Map<String, Object> getPerformanceStats(String dateKey) {
     Map<String, Object> performanceStats = new HashMap<>();
 
@@ -485,7 +522,9 @@ public class DashboardService {
     return performanceStats;
   }
 
-  /** 获取渠道统计数据 */
+  /**
+   * 获取渠道统计数据
+   */
   private Map<String, Object> getChannelStats(String dateKey) {
     Map<String, Object> channelStats = new HashMap<>();
 
@@ -510,7 +549,9 @@ public class DashboardService {
     return channelStats;
   }
 
-  /** 获取消息处理速度（消息/秒） */
+  /**
+   * 获取消息处理速度（消息/秒）
+   */
   private double getMessageProcessingSpeed(String dateKey) {
     try {
       String totalKey = String.format("dashboard:metric:%s:all:all:all:message_total", dateKey);
@@ -523,14 +564,18 @@ public class DashboardService {
     return 0.0;
   }
 
-  /** 获取系统吞吐量（MB/s） */
+  /**
+   * 获取系统吞吐量（MB/s）
+   */
   private double getSystemThroughput() {
     // 这里可以集成系统监控数据
     // 暂时返回模拟数据
     return Math.random() * 10.0 + 1.0; // 1.0-11.0 MB/s
   }
 
-  /** 获取连接稳定性（%） */
+  /**
+   * 获取连接稳定性（%）
+   */
   private double getConnectionStability(String dateKey) {
     try {
       String totalKey = String.format("dashboard:metric:%s:all:all:all:device_total", dateKey);
@@ -550,7 +595,9 @@ public class DashboardService {
     return 0.0;
   }
 
-  /** 获取设备趋势数据 */
+  /**
+   * 获取设备趋势数据
+   */
   private Map<String, Object> getDeviceTrendData(String dateKey) {
     Map<String, Object> data = new HashMap<>();
     // 这里可以实现24小时设备在线趋势数据
@@ -560,7 +607,9 @@ public class DashboardService {
     return data;
   }
 
-  /** 获取消息趋势数据 */
+  /**
+   * 获取消息趋势数据
+   */
   private Map<String, Object> getMessageTrendData(String dateKey, String channel) {
     Map<String, Object> data = new HashMap<>();
     // 这里可以实现24小时消息趋势数据
@@ -569,7 +618,9 @@ public class DashboardService {
     return data;
   }
 
-  /** 获取渠道分布数据 */
+  /**
+   * 获取渠道分布数据
+   */
   private Map<String, Object> getChannelDistributionData(String dateKey) {
     Map<String, Object> data = new HashMap<>();
     data.put("title", "渠道消息分布");
@@ -577,7 +628,9 @@ public class DashboardService {
     return data;
   }
 
-  /** 获取性能指标数据 */
+  /**
+   * 获取性能指标数据
+   */
   private Map<String, Object> getPerformanceMetricsData(String dateKey) {
     Map<String, Object> data = new HashMap<>();
     data.put("title", "系统性能指标");

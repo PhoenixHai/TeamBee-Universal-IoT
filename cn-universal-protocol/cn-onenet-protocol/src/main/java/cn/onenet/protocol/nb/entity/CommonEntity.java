@@ -14,7 +14,9 @@ package cn.onenet.protocol.nb.entity;
 
 import cn.hutool.json.JSONObject;
 
-/** Created by zhuocongbin date 2018/3/16 */
+/**
+ * Created by zhuocongbin date 2018/3/16
+ */
 public abstract class CommonEntity {
 
   // 设备imei号，平台唯一，必填参数

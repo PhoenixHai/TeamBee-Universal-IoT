@@ -26,11 +26,15 @@ public interface MagicLoggerContext {
     }
   }
 
-  /** 移除ThreadLocal中的sessionId */
+  /**
+   * 移除ThreadLocal中的sessionId
+   */
   static void remove() {
     SESSION.remove();
   }
 
-  /** 生成appender */
+  /**
+   * 生成appender
+   */
   void generateAppender();
 }

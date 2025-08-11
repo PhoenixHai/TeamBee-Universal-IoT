@@ -86,7 +86,8 @@ public class NoticeServiceImpl implements NoticeService {
             .filter(c -> c.support(channelConfig.getChannelType()))
             .findFirst()
             .orElseThrow(
-                () -> new IllegalArgumentException("不支持的通知类型:" + channelConfig.getChannelType()));
+                () -> new IllegalArgumentException(
+                    "不支持的通知类型:" + channelConfig.getChannelType()));
     String content = TemplateUtil.replaceParams(template.getContent(), request.getParams());
     String mergedReceivers =
         mergeReceivers(template.getReceivers(), request.getReceivers(), request.getParams());

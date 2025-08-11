@@ -7,19 +7,29 @@ package cn.universal.plugins.protocolapi.core.config;
  */
 public class Page {
 
-  /** 默认page表达式 */
+  /**
+   * 默认page表达式
+   */
   private String page = "page";
 
-  /** 默认size表达式 */
+  /**
+   * 默认size表达式
+   */
   private String size = "size";
 
-  /** 默认首页 */
+  /**
+   * 默认首页
+   */
   private long defaultPage = 1;
 
-  /** 默认页大小 */
+  /**
+   * 默认页大小
+   */
   private long defaultSize = 10;
 
-  /** 最大页大小， -1 为不限制 */
+  /**
+   * 最大页大小， -1 为不限制
+   */
   private long maxPageSize = -1;
 
   public String getPage() {

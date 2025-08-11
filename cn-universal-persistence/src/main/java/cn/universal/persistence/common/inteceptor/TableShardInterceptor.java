@@ -37,10 +37,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Intercepts({
-  @Signature(
-      type = StatementHandler.class,
-      method = "prepare",
-      args = {Connection.class, Integer.class})
+    @Signature(
+        type = StatementHandler.class,
+        method = "prepare",
+        args = {Connection.class, Integer.class})
 })
 public class TableShardInterceptor implements Interceptor {
 
@@ -138,9 +138,12 @@ public class TableShardInterceptor implements Interceptor {
   }
 
   @Override
-  public void setProperties(Properties properties) {}
+  public void setProperties(Properties properties) {
+  }
 
-  /** 基本数据类型验证，true是，false否 */
+  /**
+   * 基本数据类型验证，true是，false否
+   */
   private boolean isBaseType(Object object) {
     if (object.getClass().isPrimitive()
         || object instanceof String
@@ -157,7 +160,9 @@ public class TableShardInterceptor implements Interceptor {
     }
   }
 
-  /** 替换sql */
+  /**
+   * 替换sql
+   */
   private void replaceSql(
       TableShard tableShard, Object value, MetaObject metaObject, BoundSql boundSql) {
     String tableNamePrefix = tableShard.tableNamePrefix();
@@ -174,7 +179,9 @@ public class TableShardInterceptor implements Interceptor {
     metaObject.setValue("delegate.boundSql.sql", sql.replaceAll(tableNamePrefix, shardTableName));
   }
 
-  /** 获取MetaObject对象-mybatis里面提供的一个工具类，类似反射的效果 */
+  /**
+   * 获取MetaObject对象-mybatis里面提供的一个工具类，类似反射的效果
+   */
   private MetaObject getMetaObject(Invocation invocation) {
     StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
     // MetaObject是mybatis里面提供的一个工具类，类似反射的效果
@@ -188,7 +195,9 @@ public class TableShardInterceptor implements Interceptor {
     return metaObject;
   }
 
-  /** 获取分表注解 - 修复版本 */
+  /**
+   * 获取分表注解 - 修复版本
+   */
   private TableShard getTableShard(MappedStatement mappedStatement) throws ClassNotFoundException {
     String id = mappedStatement.getId();
     // 获取Class

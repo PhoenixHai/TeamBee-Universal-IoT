@@ -15,7 +15,9 @@ package cn.ctaiot.protocol.config;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-/** 电信天翼物联AIoT（ctwing）配置类 */
+/**
+ * 电信天翼物联AIoT（ctwing）配置类
+ */
 @Slf4j
 @Data
 public class CTAIoTConfig {

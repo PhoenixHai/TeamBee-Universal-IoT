@@ -21,7 +21,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-/** 网络访问监控 @Author Aleo */
+/**
+ * 网络访问监控 @Author Aleo
+ */
 @Slf4j
 @Component
 public class NetworkAccessMonitor implements HandlerInterceptor {
@@ -60,7 +62,8 @@ public class NetworkAccessMonitor implements HandlerInterceptor {
 
     // 生产环境下的异常访问监控
     if (productionSecurityEnabled && isExternalNetwork(clientIp)) {
-      log.warn("检测到外网访问 - IP: {}, 访问次数: {}, URI: {}", clientIp, currentCount, requestUri);
+      log.warn("检测到外网访问 - IP: {}, 访问次数: {}, URI: {}", clientIp, currentCount,
+          requestUri);
 
       // 如果外网IP访问次数过多，可以考虑告警
       if (currentCount > 100) {

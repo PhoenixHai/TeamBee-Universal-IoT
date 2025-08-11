@@ -57,9 +57,13 @@ public class IoTProductQuery extends BasePage {
     return null;
   }
 
-  /** 存在设备 */
+  /**
+   * 存在设备
+   */
   private boolean hasDevice;
 
-  /** 是否自有 */
+  /**
+   * 是否自有
+   */
   private boolean self;
 }

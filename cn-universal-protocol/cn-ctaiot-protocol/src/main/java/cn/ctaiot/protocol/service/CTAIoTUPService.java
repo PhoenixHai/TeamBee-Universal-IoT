@@ -58,18 +58,24 @@ import org.springframework.stereotype.Service;
 @Service("ctaIoTUPService")
 @Slf4j
 public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implements ICodec {
-  @Resource private CTAIoTModuleInfo ctaIoTModuleInfo;
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private CTAIoTModuleInfo ctaIoTModuleInfo;
+
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
   @Resource(name = "ioTDeviceActionAfterService")
   private IoTDeviceLifeCycle ioTDeviceLifeCycle;
 
-  @Resource private CTAIoTUPHandle ctAIoTUPHandle;
+  @Resource
+  private CTAIoTUPHandle ctAIoTUPHandle;
 
-  @Resource private CTAIoTDownService ctAIoTDownService;
+  @Resource
+  private CTAIoTDownService ctAIoTDownService;
 
-  @Autowired private ICodecService codecService;
+  @Autowired
+  private ICodecService codecService;
 
   /**
    * https://www.ctwing.cn/dyts/105
@@ -90,7 +96,8 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
                 .thirdPlatform(name())
                 .build());
     if (ioTDeviceDTO == null) {
-      log.warn("[CT-AIoT上行][设备未匹配] deviceId={} content={}", jsonObject.getStr("deviceId"), content);
+      log.warn("[CT-AIoT上行][设备未匹配] deviceId={} content={}", jsonObject.getStr("deviceId"),
+          content);
       return null;
     }
     // 如果是透传
@@ -124,7 +131,8 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
       case dataReportTupUnion:
         // 忽略合并数据变化，避免重复业务处理
         requests = null;
-        log.info("[CT-AIoT上行][TUP合并数据变化] dataReportTupUnion, requests=null, content={}", content);
+        log.info("[CT-AIoT上行][TUP合并数据变化] dataReportTupUnion, requests=null, content={}",
+            content);
         break;
       default:
         log.warn("[CT-AIoT上行][未匹配数据] content={}", content);
@@ -213,7 +221,9 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
     }
   }
 
-  /** TUP合并数据变化 */
+  /**
+   * TUP合并数据变化
+   */
   private List<CTAIoTUPRequest> dataReportTupUnion(
       List<CTAIoTUPRequest> requests, IoTDeviceDTO ioTDeviceDTO, JSONObject json) {
     Object payload = json.get("payload");
@@ -224,7 +234,9 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
     return requests;
   }
 
-  /** 设备命令响应 */
+  /**
+   * 设备命令响应
+   */
   private List<CTAIoTUPRequest> commandResponse(
       List<CTAIoTUPRequest> requests, IoTDeviceDTO ioTDeviceDTO, JSONObject json) {
     String commandId = json.getStr("taskId");
@@ -233,7 +245,8 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
       String resultCode = result.getStr("resultCode");
       String resultDetail = result.getStr("resultDetail");
       log.info(
-          "ctaiot 指令回复,imei={},taskId={},指令回复={}", ioTDeviceDTO.getDeviceId(), commandId, result);
+          "ctaiot 指令回复,imei={},taskId={},指令回复={}", ioTDeviceDTO.getDeviceId(), commandId,
+          result);
       if (CommandRespons.DELIVERED.name().equals(resultCode)
           || CommandRespons.SUCCESSFUL.name().equals(resultCode)) {
         ioTDeviceLifeCycle.commandResp(ioTDeviceDTO, commandId, result);
@@ -242,7 +255,9 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
     return null;
   }
 
-  /** 数据上报 */
+  /**
+   * 数据上报
+   */
   private List<CTAIoTUPRequest> dataReport(
       List<CTAIoTUPRequest> requests, IoTDeviceDTO ioTDeviceDTO, JSONObject json) {
     Object payload = json.get("payload");
@@ -253,7 +268,9 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
     return requests;
   }
 
-  /** 事件上报 */
+  /**
+   * 事件上报
+   */
   private List<CTAIoTUPRequest> eventReport(
       List<CTAIoTUPRequest> requests, IoTDeviceDTO ioTDeviceDTO, JSONObject json) {
     Object payload = json.get("eventContent");
@@ -264,7 +281,9 @@ public class CTAIoTUPService extends AbstractUPService<CTAIoTUPRequest> implemen
     return requests;
   }
 
-  /** 设备上下线。2023-1-20 使用设备生命周期变动 */
+  /**
+   * 设备上下线。2023-1-20 使用设备生命周期变动
+   */
   private List<CTAIoTUPRequest> onOffLineReport(
       List<CTAIoTUPRequest> rts, IoTDeviceDTO dib, JSONObject json) {
     return null;

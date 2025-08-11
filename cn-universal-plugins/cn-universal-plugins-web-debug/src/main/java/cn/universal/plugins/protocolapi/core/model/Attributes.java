@@ -16,7 +16,7 @@ public class Attributes<T> {
   /**
    * 设置属性
    *
-   * @param key key
+   * @param key   key
    * @param value value
    */
   public void setAttribute(String key, T value) {

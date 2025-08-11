@@ -28,7 +28,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CodecServiceFactory {
 
-  @Autowired private ICodecService defaultCodecService;
+  @Autowired
+  private ICodecService defaultCodecService;
 
   /**
    * 获取默认编解码服务

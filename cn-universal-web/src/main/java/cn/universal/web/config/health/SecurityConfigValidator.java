@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-/** 安全配置验证器 @Author Aleo */
+/**
+ * 安全配置验证器 @Author Aleo
+ */
 @Slf4j
 @Component
 public class SecurityConfigValidator implements CommandLineRunner {

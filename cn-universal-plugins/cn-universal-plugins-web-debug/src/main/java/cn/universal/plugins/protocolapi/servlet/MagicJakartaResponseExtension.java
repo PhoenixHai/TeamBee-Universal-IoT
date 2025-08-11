@@ -12,7 +12,9 @@ import org.apache.commons.lang3.StringUtils;
 
 public class MagicJakartaResponseExtension implements ExtensionMethod {
 
-  /** 添加cookie */
+  /**
+   * 添加cookie
+   */
   @Comment("添加Cookie")
   public ResponseModule addCookie(
       ResponseModule module, @Comment(name = "cookie", value = "Cookie对象") Cookie cookie) {
@@ -25,7 +27,9 @@ public class MagicJakartaResponseExtension implements ExtensionMethod {
     return module;
   }
 
-  /** 批量添加cookie */
+  /**
+   * 批量添加cookie
+   */
   @Comment("批量添加Cookie")
   public ResponseModule addCookies(
       ResponseModule module,
@@ -33,14 +37,16 @@ public class MagicJakartaResponseExtension implements ExtensionMethod {
     return addCookies(module, cookies, null);
   }
 
-  /** 添加cookie */
+  /**
+   * 添加cookie
+   */
   @Comment("添加Cookie")
   public ResponseModule addCookie(
       ResponseModule module,
       @Comment(name = "name", value = "Cookie名") String name,
       @Comment(name = "value", value = "Cookie值") String value,
       @Comment(name = "options", value = "Cookie选项，如`path`、`httpOnly`、`domain`、`maxAge`")
-          Map<String, Object> options) {
+      Map<String, Object> options) {
     if (StringUtils.isNotBlank(name)) {
       Cookie cookie = new Cookie(name, value);
       if (options != null) {
@@ -60,7 +66,7 @@ public class MagicJakartaResponseExtension implements ExtensionMethod {
         int age;
         if (maxAge != null
             && (age = ObjectConvertExtension.asInt(maxAge, Integer.MIN_VALUE))
-                != Integer.MIN_VALUE) {
+            != Integer.MIN_VALUE) {
           cookie.setMaxAge(age);
         }
       }
@@ -69,7 +75,9 @@ public class MagicJakartaResponseExtension implements ExtensionMethod {
     return module;
   }
 
-  /** 添加cookie */
+  /**
+   * 添加cookie
+   */
   @Comment("添加Cookie")
   public ResponseModule addCookie(
       ResponseModule module,
@@ -81,13 +89,15 @@ public class MagicJakartaResponseExtension implements ExtensionMethod {
     return module;
   }
 
-  /** 批量添加cookie */
+  /**
+   * 批量添加cookie
+   */
   @Comment("批量添加Cookie")
   public ResponseModule addCookies(
       ResponseModule module,
       @Comment(name = "cookies", value = "Cookies") Map<String, String> cookies,
       @Comment(name = "options", value = "Cookie选项，如`path`、`httpOnly`、`domain`、`maxAge`")
-          Map<String, Object> options) {
+      Map<String, Object> options) {
     if (cookies != null) {
       for (Map.Entry<String, String> entry : cookies.entrySet()) {
         addCookie(module, entry.getKey(), entry.getValue(), options);

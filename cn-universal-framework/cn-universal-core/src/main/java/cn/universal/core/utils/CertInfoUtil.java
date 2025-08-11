@@ -55,7 +55,9 @@ public class CertInfoUtil {
     return info;
   }
 
-  /** 自动提取证书支持的所有域名（SAN、CN、通配符） */
+  /**
+   * 自动提取证书支持的所有域名（SAN、CN、通配符）
+   */
   public static List<String> parseDomainsFromCert(String certContent) {
     List<String> domains = new ArrayList<>();
     List<X509Certificate> certs = parseCertificateChain(certContent);

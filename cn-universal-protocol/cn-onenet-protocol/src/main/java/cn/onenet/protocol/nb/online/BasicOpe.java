@@ -16,7 +16,9 @@ import cn.hutool.json.JSONObject;
 import cn.onenet.protocol.nb.entity.CommonEntity;
 import okhttp3.Callback;
 
-/** Created by zhuocongbin date 2018/3/16 */
+/**
+ * Created by zhuocongbin date 2018/3/16
+ */
 public abstract class BasicOpe {
 
   protected String apiKey;

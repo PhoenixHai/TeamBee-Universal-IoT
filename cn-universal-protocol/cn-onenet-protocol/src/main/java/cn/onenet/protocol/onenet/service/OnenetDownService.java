@@ -37,8 +37,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class OnenetDownService extends AbstractDownService<OnenetDownRequest> implements ICodec {
 
-  @Resource private OnenetDownHandle onenetDownHandle;
-  @Resource private OneNetModuleInfo oneNetModuleInfo;
+  @Resource
+  private OnenetDownHandle onenetDownHandle;
+  @Resource
+  private OneNetModuleInfo oneNetModuleInfo;
 
   @Override
   public String code() {

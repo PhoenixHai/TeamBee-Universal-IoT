@@ -10,7 +10,9 @@ import cn.universal.plugins.protocolapi.core.servlet.MagicHttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-/** 自定义未授权访问 */
+/**
+ * 自定义未授权访问
+ */
 @Component
 @Slf4j
 public class CustomRequestInterceptor implements RequestInterceptor {

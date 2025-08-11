@@ -15,7 +15,9 @@ package cn.universal.persistence.mapper.admin;
 import cn.universal.persistence.entity.admin.SysConfig;
 import java.util.List;
 
-/** 参数配置 数据层 @Author ruoyi */
+/**
+ * 参数配置 数据层 @Author ruoyi
+ */
 public interface SysConfigMapper {
 
   /**

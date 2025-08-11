@@ -25,7 +25,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Role;
 
-/** jackson 配置 @Author Lion Li */
+/**
+ * jackson 配置 @Author Lion Li
+ */
 @Slf4j
 @Configuration
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)

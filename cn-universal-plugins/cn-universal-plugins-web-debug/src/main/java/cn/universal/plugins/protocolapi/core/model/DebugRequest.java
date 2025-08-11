@@ -28,7 +28,9 @@ public class DebugRequest {
     return new DebugRequest(request);
   }
 
-  /** 获得断点 */
+  /**
+   * 获得断点
+   */
   public List<Integer> getRequestedBreakpoints() {
     String breakpoints = request.getHeader(HEADER_REQUEST_BREAKPOINTS);
     if (breakpoints != null) {
@@ -40,12 +42,16 @@ public class DebugRequest {
     return Collections.emptyList();
   }
 
-  /** 获取测试scriptId */
+  /**
+   * 获取测试scriptId
+   */
   public String getRequestedScriptId() {
     return request.getHeader(HEADER_REQUEST_SCRIPT_ID);
   }
 
-  /** 获取测试clientId */
+  /**
+   * 获取测试clientId
+   */
   public String getRequestedClientId() {
     return request.getHeader(HEADER_REQUEST_CLIENT_ID);
   }

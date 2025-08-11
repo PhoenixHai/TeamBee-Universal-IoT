@@ -45,24 +45,34 @@ public class IoTAPIQuery extends BasePage {
 
   private String deviceId;
 
-  /** 传输协议 */
+  /**
+   * 传输协议
+   */
   private String transportProtocol;
 
   private String deviceNode;
 
   private String companyNo;
 
-  /** 产品型号；例如 WS101-470M */
+  /**
+   * 产品型号；例如 WS101-470M
+   */
   private String productId;
 
-  /** 经度 */
+  /**
+   * 经度
+   */
   private String longitude;
 
-  /** 维度 */
+  /**
+   * 维度
+   */
   private String latitude;
 
   private String gwProductKey;
 
-  /** 备注说明 */
+  /**
+   * 备注说明
+   */
   private String detail;
 }

@@ -35,13 +35,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MQTTPublishMessage {
 
-  /** 消息唯一标识 */
+  /**
+   * 消息唯一标识
+   */
   private String messageId;
 
-  /** 目标主题 */
+  /**
+   * 目标主题
+   */
   private String topic;
 
-  /** 消息载荷 */
+  /**
+   * 消息载荷
+   */
   private byte[] payload;
 
   //   /**
@@ -49,73 +55,129 @@ public class MQTTPublishMessage {
   //    */
   //   private String content;
 
-  /** QoS级别 (0, 1, 2) */
-  @Builder.Default private int qos = 1;
+  /**
+   * QoS级别 (0, 1, 2)
+   */
+  @Builder.Default
+  private int qos = 1;
 
-  /** 是否保留消息 */
-  @Builder.Default private boolean retained = false;
+  /**
+   * 是否保留消息
+   */
+  @Builder.Default
+  private boolean retained = false;
 
-  /** 是否重复消息 */
-  @Builder.Default private boolean duplicate = false;
+  /**
+   * 是否重复消息
+   */
+  @Builder.Default
+  private boolean duplicate = false;
 
-  /** 消息过期时间（秒） */
+  /**
+   * 消息过期时间（秒）
+   */
   private Long messageExpiryInterval;
 
-  /** 响应主题（MQTT 5.0） */
+  /**
+   * 响应主题（MQTT 5.0）
+   */
   private String responseTopic;
 
-  /** 相关数据（MQTT 5.0） */
+  /**
+   * 相关数据（MQTT 5.0）
+   */
   private byte[] correlationData;
 
-  /** 用户属性（MQTT 5.0） */
+  /**
+   * 用户属性（MQTT 5.0）
+   */
   private Map<String, String> userProperties;
 
-  /** 内容类型（MQTT 5.0） */
+  /**
+   * 内容类型（MQTT 5.0）
+   */
   private String contentType;
 
-  /** 载荷格式指示器（MQTT 5.0） */
+  /**
+   * 载荷格式指示器（MQTT 5.0）
+   */
   private Integer payloadFormatIndicator;
 
-  /** 消息创建时间 */
-  @Builder.Default private LocalDateTime createdTime = LocalDateTime.now();
+  /**
+   * 消息创建时间
+   */
+  @Builder.Default
+  private LocalDateTime createdTime = LocalDateTime.now();
 
-  /** 发送时间 */
+  /**
+   * 发送时间
+   */
   private LocalDateTime publishTime;
 
-  /** 来源产品Key */
+  /**
+   * 来源产品Key
+   */
   private String productKey;
 
-  /** 来源设备ID */
+  /**
+   * 来源设备ID
+   */
   private String deviceId;
 
-  /** 消息类型 */
+  /**
+   * 消息类型
+   */
   private String messageType;
 
-  /** 优先级 */
-  @Builder.Default private int priority = 0;
+  /**
+   * 优先级
+   */
+  @Builder.Default
+  private int priority = 0;
 
-  /** 重试次数 */
-  @Builder.Default private int retryCount = 0;
+  /**
+   * 重试次数
+   */
+  @Builder.Default
+  private int retryCount = 0;
 
-  /** 最大重试次数 */
-  @Builder.Default private int maxRetries = 3;
+  /**
+   * 最大重试次数
+   */
+  @Builder.Default
+  private int maxRetries = 3;
 
-  /** 是否需要确认 */
-  @Builder.Default private boolean ackRequired = false;
+  /**
+   * 是否需要确认
+   */
+  @Builder.Default
+  private boolean ackRequired = false;
 
-  /** 确认超时时间（毫秒） */
-  @Builder.Default private long ackTimeout = 30000;
+  /**
+   * 确认超时时间（毫秒）
+   */
+  @Builder.Default
+  private long ackTimeout = 30000;
 
-  /** 扩展属性 */
+  /**
+   * 扩展属性
+   */
   private Map<String, Object> attributes;
 
-  /** 错误信息 */
+  /**
+   * 错误信息
+   */
   private String errorMessage;
 
-  /** 消息状态 */
-  @Builder.Default private MessageStatus status = MessageStatus.CREATED;
+  /**
+   * 消息状态
+   */
+  @Builder.Default
+  private MessageStatus status = MessageStatus.CREATED;
 
-  /** 消息状态枚举 */
+  /**
+   * 消息状态枚举
+   */
   public enum MessageStatus {
     CREATED, // 已创建
     PUBLISHING, // 发布中
@@ -126,12 +188,16 @@ public class MQTTPublishMessage {
     CANCELLED // 已取消
   }
 
-  /** 获取字符串形式的载荷 */
+  /**
+   * 获取字符串形式的载荷
+   */
   public String getPayloadAsString() {
     return StrUtil.str(payload, StandardCharsets.UTF_8);
   }
 
-  /** 获取字节形式的载荷 */
+  /**
+   * 获取字节形式的载荷
+   */
   public byte[] getPayloadAsBytes() {
     if (payload != null) {
       return payload;
@@ -139,12 +205,16 @@ public class MQTTPublishMessage {
     return new byte[0];
   }
 
-  /** 设置字节载荷 */
+  /**
+   * 设置字节载荷
+   */
   public void setPayload(byte[] payload) {
     this.payload = payload;
   }
 
-  /** 检查消息是否有效 */
+  /**
+   * 检查消息是否有效
+   */
   public boolean isValid() {
     return topic != null && !topic.trim().isEmpty() && (payload != null) && qos >= 0 && qos <= 2;
   }

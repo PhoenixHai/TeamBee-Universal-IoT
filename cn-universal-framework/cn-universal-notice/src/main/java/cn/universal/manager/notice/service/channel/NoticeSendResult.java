@@ -7,7 +7,8 @@ public class NoticeSendResult {
   private String content;
   private String errorMessage;
 
-  public NoticeSendResult() {}
+  public NoticeSendResult() {
+  }
 
   public NoticeSendResult(boolean success, String receivers, String content, String errorMessage) {
     this.success = success;

@@ -34,9 +34,11 @@ import org.springframework.stereotype.Component;
 @Component(value = "kiteUserDetailsService")
 public class KiteUserDetailsService implements UserDetailsService {
 
-  @Resource private IoTUserMapper iotUserMapper;
+  @Resource
+  private IoTUserMapper iotUserMapper;
 
-  @Resource private AsyncService asyncService;
+  @Resource
+  private AsyncService asyncService;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

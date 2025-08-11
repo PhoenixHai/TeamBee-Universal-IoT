@@ -60,7 +60,8 @@ public class WebhookNoticeSendChannel extends AbstractNoticeSendChannel {
       String result = response.body();
       int status = response.getStatus();
       logger.warn(
-          "[Webhook推送] url={}, status={}, body={}, result={}", webhookUrl, status, content, result);
+          "[Webhook推送] url={}, status={}, body={}, result={}", webhookUrl, status, content,
+          result);
       if (status >= 200 && status < 300) {
         logSend("Webhook", content, receivers, true, "发送成功");
         return NoticeSendResult.builder()

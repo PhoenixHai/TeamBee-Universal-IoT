@@ -43,14 +43,14 @@ public class SmsTencentNoticeSendChannel extends AbstractNoticeSendChannel {
       if (params != null && !params.isEmpty()) {
         templateParams = params.values().stream().map(Object::toString).toArray(String[]::new);
       } else {
-        templateParams = new String[] {content};
+        templateParams = new String[]{content};
       }
       SendSmsRequest request = new SendSmsRequest();
       request.setSmsSdkAppId("1400000000"); // 需要配置实际的SDK AppId
       request.setSignName(configObj.getString("signName"));
       request.setTemplateId(configObj.getString("templateCode"));
       request.setTemplateParamSet(templateParams);
-      request.setPhoneNumberSet(new String[] {receivers});
+      request.setPhoneNumberSet(new String[]{receivers});
       SendSmsResponse response = client.SendSms(request);
       if (response.getSendStatusSet() != null && response.getSendStatusSet().length > 0) {
         String status = response.getSendStatusSet()[0].getCode();

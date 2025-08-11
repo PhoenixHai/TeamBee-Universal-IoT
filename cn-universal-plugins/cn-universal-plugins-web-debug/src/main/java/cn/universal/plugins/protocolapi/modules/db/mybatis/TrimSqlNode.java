@@ -12,16 +12,24 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class TrimSqlNode extends SqlNode {
 
-  /** 前缀 prefix */
+  /**
+   * 前缀 prefix
+   */
   protected String prefix;
 
-  /** 后缀 suffix */
+  /**
+   * 后缀 suffix
+   */
   protected String suffix;
 
-  /** 前缀 prefixOverrides */
+  /**
+   * 前缀 prefixOverrides
+   */
   protected String prefixOverrides;
 
-  /** 后缀 suffixOverrides */
+  /**
+   * 后缀 suffixOverrides
+   */
   protected String suffixOverrides;
 
   public void setPrefix(String prefix) {

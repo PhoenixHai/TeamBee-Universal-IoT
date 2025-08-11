@@ -11,14 +11,15 @@ import org.springframework.core.type.AnnotationMetadata;
 @AutoConfigureBefore(MagicAPIAutoConfiguration.class)
 public class MagicServletConfiguration {
 
-  public MagicServletConfiguration() {}
+  public MagicServletConfiguration() {
+  }
 
   static class JakartaConfigurationImportSelector implements ImportSelector {
 
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-      return new String[] {
-        "cn.universal.plugins.protocolapi.servlet.MagicJakartaServletConfiguration"
+      return new String[]{
+          "cn.universal.plugins.protocolapi.servlet.MagicJakartaServletConfiguration"
       };
     }
   }
@@ -26,5 +27,7 @@ public class MagicServletConfiguration {
   @Configuration
   @ConditionalOnClass(name = "jakarta.servlet.http.HttpServletRequest")
   @Import(JakartaConfigurationImportSelector.class)
-  static class JakartaEEConfiguration {}
+  static class JakartaEEConfiguration {
+
+  }
 }

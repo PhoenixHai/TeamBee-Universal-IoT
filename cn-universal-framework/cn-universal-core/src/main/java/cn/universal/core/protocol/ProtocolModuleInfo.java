@@ -79,15 +79,25 @@ public interface ProtocolModuleInfo {
     return ProtocolCategory.TRANSPORT;
   }
 
-  /** 协议分类枚举 */
+  /**
+   * 协议分类枚举
+   */
   enum ProtocolCategory {
-    /** 消息传输协议 */
+    /**
+     * 消息传输协议
+     */
     MESSAGING("消息传输"),
-    /** 传输层协议 */
+    /**
+     * 传输层协议
+     */
     TRANSPORT("传输层"),
-    /** 第三方平台协议 */
+    /**
+     * 第三方平台协议
+     */
     PLATFORM("第三方平台"),
-    /** 应用层协议 */
+    /**
+     * 应用层协议
+     */
     APPLICATION("应用层");
 
     private final String description;

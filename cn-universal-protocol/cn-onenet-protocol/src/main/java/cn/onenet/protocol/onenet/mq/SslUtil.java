@@ -32,10 +32,10 @@ public class SslUtil {
 
   public static SSLSocketFactory getSocketFactory(final InputStream caCrtFile)
       throws NoSuchAlgorithmException,
-          IOException,
-          KeyStoreException,
-          CertificateException,
-          KeyManagementException {
+      IOException,
+      KeyStoreException,
+      CertificateException,
+      KeyManagementException {
     Security.addProvider(new BouncyCastleProvider());
 
     // ===========加载 ca 证书==================================

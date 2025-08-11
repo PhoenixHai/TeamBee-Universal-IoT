@@ -2,7 +2,9 @@ package cn.universal.plugins.protocolapi.core.model;
 
 public class PathMagicEntity extends MagicEntity {
 
-  /** 路径 */
+  /**
+   * 路径
+   */
   protected String path;
 
   public String getPath() {

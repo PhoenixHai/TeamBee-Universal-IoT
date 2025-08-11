@@ -16,7 +16,9 @@ import java.text.ParseException;
 import java.util.Date;
 import org.quartz.CronExpression;
 
-/** cron表达式工具类 @Author ruoyi */
+/**
+ * cron表达式工具类 @Author ruoyi
+ */
 public class CronUtils {
 
   /**

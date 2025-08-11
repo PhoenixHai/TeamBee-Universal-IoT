@@ -167,7 +167,8 @@ public class CustomClientRegistrationService implements RegisteredClientReposito
     Set<String> authorities = parseCommaDelimitedString(clientDetails.getAuthorities());
 
     logger.debug(
-        "解析结果 - 授权类型: {}, 作用域: {}, 重定向URI: {}", authorizedGrantTypes, scopes, redirectUris);
+        "解析结果 - 授权类型: {}, 作用域: {}, 重定向URI: {}", authorizedGrantTypes, scopes,
+        redirectUris);
 
     // 检查客户端密钥格式
     String clientSecret = clientDetails.getClientSecret();

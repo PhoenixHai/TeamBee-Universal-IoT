@@ -118,16 +118,24 @@ public abstract class BaseAutoRegisterProcessorUP extends AbstratIoTService
     return false;
   }
 
-  /** 获取主题类型名称 */
+  /**
+   * 获取主题类型名称
+   */
   protected abstract String getTopicType();
 
-  /** 增强注册请求（添加主题类型特定的数据） */
+  /**
+   * 增强注册请求（添加主题类型特定的数据）
+   */
   protected abstract void enhanceRegisterRequest(TcpUPRequest request, JSONObject deviceData);
 
-  /** 处理主题类型特定的自动注册逻辑 */
+  /**
+   * 处理主题类型特定的自动注册逻辑
+   */
   protected abstract boolean processTopicSpecificAutoRegister(TcpUPRequest request);
 
-  /** 检查是否启用自动注册 */
+  /**
+   * 检查是否启用自动注册
+   */
   protected boolean isAutoRegisterEnabled(TcpUPRequest request) {
     try {
       IoTProduct ioTProduct = request.getIoTProduct();
@@ -154,13 +162,16 @@ public abstract class BaseAutoRegisterProcessorUP extends AbstratIoTService
     }
   }
 
-  /** 执行自动注册 */
+  /**
+   * 执行自动注册
+   */
   protected boolean performAutoRegister(TcpUPRequest request) {
     try {
       String deviceId = request.getDeviceId();
       IoTProduct ioTProduct = request.getIoTProduct();
 
-      log.info("[{}] 开始自动注册设备: {}, 产品: {}", getName(), deviceId, ioTProduct.getProductKey());
+      log.info("[{}] 开始自动注册设备: {}, 产品: {}", getName(), deviceId,
+          ioTProduct.getProductKey());
 
       // 构建注册请求
       JSONObject downRequest = buildAutoRegisterRequest(request, deviceId, ioTProduct);
@@ -189,7 +200,9 @@ public abstract class BaseAutoRegisterProcessorUP extends AbstratIoTService
     }
   }
 
-  /** 构建自动注册请求 */
+  /**
+   * 构建自动注册请求
+   */
   protected JSONObject buildAutoRegisterRequest(
       TcpUPRequest request, String deviceId, IoTProduct ioTProduct) {
     JSONObject downRequest = new JSONObject();
@@ -213,7 +226,9 @@ public abstract class BaseAutoRegisterProcessorUP extends AbstratIoTService
     return downRequest;
   }
 
-  /** 重新回填设备信息 */
+  /**
+   * 重新回填设备信息
+   */
   protected boolean refillDeviceInfo(TcpUPRequest request) {
     try {
       // 重新查询设备信息

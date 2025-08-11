@@ -32,13 +32,17 @@ import org.springframework.stereotype.Service;
 @Service("iotUPRuleService")
 public class IotUPRuleService implements IotUPWrapper<BaseUPRequest> {
 
-  @Resource private SceneLinkageService sceneLinkageService;
+  @Resource
+  private SceneLinkageService sceneLinkageService;
 
-  @Resource private RuleService ruleService;
+  @Resource
+  private RuleService ruleService;
 
-  @Resource private FenceService fenceService;
+  @Resource
+  private FenceService fenceService;
 
-  @Resource private IoTDeviceUPIntercept iotDeviceUPWrapper;
+  @Resource
+  private IoTDeviceUPIntercept iotDeviceUPWrapper;
 
   @Override
   //  @Async

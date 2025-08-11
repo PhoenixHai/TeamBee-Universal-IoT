@@ -44,7 +44,9 @@ public class EmailNoticeSendChannel extends AbstractNoticeSendChannel {
     }
   }
 
-  /** 创建邮件发送器 */
+  /**
+   * 创建邮件发送器
+   */
   private JavaMailSender createMailSender(JSONObject config) {
     JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
     mailSender.setHost(config.getString("smtpHost"));

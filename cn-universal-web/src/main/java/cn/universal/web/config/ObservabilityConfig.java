@@ -33,7 +33,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ObservabilityConfig {
 
-  /** 自定义Meter Registry - 添加应用标签 */
+  /**
+   * 自定义Meter Registry - 添加应用标签
+   */
   @Bean
   public MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() {
     return registry ->
@@ -43,19 +45,25 @@ public class ObservabilityConfig {
             .commonTags("version", "1.4-SNAPSHOT");
   }
 
-  /** 虚拟线程监控指标 */
+  /**
+   * 虚拟线程监控指标
+   */
   @Bean
   public VirtualThreadMetrics virtualThreadMetrics() {
     return new VirtualThreadMetrics();
   }
 
-  /** 定时切面 - 自动添加@Timed注解支持 */
+  /**
+   * 定时切面 - 自动添加@Timed注解支持
+   */
   @Bean
   public TimedAspect timedAspect(MeterRegistry registry) {
     return new TimedAspect(registry);
   }
 
-  /** JVM指标绑定器 */
+  /**
+   * JVM指标绑定器
+   */
   @Bean
   public JvmMemoryMetrics jvmMemoryMetrics() {
     return new JvmMemoryMetrics();
@@ -81,7 +89,9 @@ public class ObservabilityConfig {
     return new ProcessorMetrics();
   }
 
-  /** 虚拟线程监控指标类 */
+  /**
+   * 虚拟线程监控指标类
+   */
   public static class VirtualThreadMetrics {
 
     public void recordVirtualThreadCreated() {

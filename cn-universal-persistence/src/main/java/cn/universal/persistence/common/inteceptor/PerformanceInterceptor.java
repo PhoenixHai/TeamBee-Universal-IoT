@@ -42,14 +42,14 @@ import org.slf4j.LoggerFactory;
  * @since 2025/8/11 16:59
  */
 @Intercepts({
-  @Signature(
-      type = Executor.class,
-      method = "query",
-      args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
-  @Signature(
-      type = Executor.class,
-      method = "update",
-      args = {MappedStatement.class, Object.class})
+    @Signature(
+        type = Executor.class,
+        method = "query",
+        args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
+    @Signature(
+        type = Executor.class,
+        method = "update",
+        args = {MappedStatement.class, Object.class})
 })
 public class PerformanceInterceptor implements Interceptor {
 
@@ -88,7 +88,8 @@ public class PerformanceInterceptor implements Interceptor {
   }
 
   @Override
-  public void setProperties(Properties properties) {}
+  public void setProperties(Properties properties) {
+  }
 
   private String getSql(BoundSql boundSql, Object parameterObject, Configuration configuration) {
     String sql = "";

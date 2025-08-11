@@ -43,7 +43,7 @@ public class AudioTencentNoticeSendChannel extends AbstractNoticeSendChannel {
       if (params != null && !params.isEmpty()) {
         templateParams = params.values().stream().map(Object::toString).toArray(String[]::new);
       } else {
-        templateParams = new String[] {content};
+        templateParams = new String[]{content};
       }
       TextToVoiceRequest request = new TextToVoiceRequest();
       request.setText(content);

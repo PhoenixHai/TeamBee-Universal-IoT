@@ -13,7 +13,9 @@ public class LoggerManager {
 
   private static final Logger logger = LoggerFactory.getLogger(LoggerManager.class);
 
-  /** 创建一个新的appender至项目中，用于UI界面 */
+  /**
+   * 创建一个新的appender至项目中，用于UI界面
+   */
   public static void createMagicAppender() {
     ILoggerFactory loggerFactory = LoggerFactory.getILoggerFactory();
     String loggerFactoryClassName = loggerFactory.getClass().getName();

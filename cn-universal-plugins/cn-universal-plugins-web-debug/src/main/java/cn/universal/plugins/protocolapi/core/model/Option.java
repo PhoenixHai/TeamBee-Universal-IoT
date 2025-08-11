@@ -2,7 +2,8 @@ package cn.universal.plugins.protocolapi.core.model;
 
 public class Option extends BaseDefinition {
 
-  public Option() {}
+  public Option() {
+  }
 
   public Option(String name, String value) {
     super(name, value);

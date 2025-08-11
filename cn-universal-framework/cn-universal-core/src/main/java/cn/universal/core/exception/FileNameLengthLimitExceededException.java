@@ -12,12 +12,14 @@
 
 package cn.universal.core.exception;
 
-/** 文件名称超长限制异常类 @Author ruoyi */
+/**
+ * 文件名称超长限制异常类 @Author ruoyi
+ */
 public class FileNameLengthLimitExceededException extends FileException {
 
   private static final long serialVersionUID = 1L;
 
   public FileNameLengthLimitExceededException(int defaultFileNameLength) {
-    super("upload.filename.exceed.length", new Object[] {defaultFileNameLength});
+    super("upload.filename.exceed.length", new Object[]{defaultFileNameLength});
   }
 }

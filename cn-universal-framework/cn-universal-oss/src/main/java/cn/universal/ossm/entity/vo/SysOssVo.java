@@ -16,42 +16,60 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Date;
 import lombok.Data;
 
-/** OSS云存储视图对象 sys_oss @Author Lion Li */
+/**
+ * OSS云存储视图对象 sys_oss @Author Lion Li
+ */
 @Data
 @Schema(description = "OSS云存储视图对象")
 public class SysOssVo {
 
   private static final long serialVersionUID = 1L;
 
-  /** 云存储主键 */
+  /**
+   * 云存储主键
+   */
   @Schema(description = "云存储主键")
   private Long ossId;
 
-  /** 文件名 */
+  /**
+   * 文件名
+   */
   @Schema(description = "文件名")
   private String fileName;
 
-  /** 原名 */
+  /**
+   * 原名
+   */
   @Schema(description = "原名")
   private String originalName;
 
-  /** 文件后缀名 */
+  /**
+   * 文件后缀名
+   */
   @Schema(description = "文件后缀名")
   private String fileSuffix;
 
-  /** URL地址 */
+  /**
+   * URL地址
+   */
   @Schema(description = "URL地址")
   private String url;
 
-  /** 创建时间 */
+  /**
+   * 创建时间
+   */
   @Schema(description = "创建时间")
   private Date createTime;
 
-  /** 上传人 */
+  /**
+   * 上传人
+   */
   @Schema(description = "上传人")
   private String createBy;
 
-  /** 服务商 */
+  /**
+   * 服务商
+   */
   @Schema(description = "服务商")
   private String service;
 }

@@ -46,11 +46,15 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class ImoulifeUPService extends AbstractUPService<ImoulifeUPRequest> implements ICodec {
 
-  @Resource private ImouLifeModuleInfo imouLifeModuleInfo;
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private ImouLifeModuleInfo imouLifeModuleInfo;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Resource private ImoulifeUPHandle imoulifeUPHandle;
-  @Resource private IoTDeviceActionAfterService ioTDeviceActionAfterService;
+  @Resource
+  private ImoulifeUPHandle imoulifeUPHandle;
+  @Resource
+  private IoTDeviceActionAfterService ioTDeviceActionAfterService;
 
   @Override
   protected List<ImoulifeUPRequest> convert(String content) {

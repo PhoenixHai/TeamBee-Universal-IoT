@@ -22,7 +22,9 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 import org.springframework.security.web.authentication.AuthenticationConverter;
 
-/** 密码模式 OAuth2 配置 独立配置，不影响原有的验证码模式 */
+/**
+ * 密码模式 OAuth2 配置 独立配置，不影响原有的验证码模式
+ */
 @Configuration
 public class PasswordOAuth2Config {
 

@@ -13,10 +13,13 @@ public class MagicUser {
 
   private String token;
 
-  /** token 有效期，<=0 为永不过期 */
+  /**
+   * token 有效期，<=0 为永不过期
+   */
   private long timeout = -1;
 
-  public MagicUser() {}
+  public MagicUser() {
+  }
 
   public MagicUser(String id, String username, String token) {
     this.id = id;

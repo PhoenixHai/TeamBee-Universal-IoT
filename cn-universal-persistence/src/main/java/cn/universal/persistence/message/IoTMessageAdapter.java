@@ -26,9 +26,13 @@ public interface IoTMessageAdapter {
    */
   String name();
 
-  /** 格式化上行消息 */
+  /**
+   * 格式化上行消息
+   */
   String formatUpMessage(BaseUPRequest upRequest);
 
-  /** 格式化下行消息 */
+  /**
+   * 格式化下行消息
+   */
   String formatDownMessage(BaseDownRequest downRequest);
 }

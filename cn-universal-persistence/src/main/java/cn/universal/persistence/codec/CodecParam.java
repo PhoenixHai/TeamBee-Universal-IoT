@@ -24,9 +24,13 @@ import lombok.Data;
 @AllArgsConstructor
 public class CodecParam {
 
-  /** 唯一编号 */
+  /**
+   * 唯一编号
+   */
   private String codeKey;
 
-  /** 编解码内容 */
+  /**
+   * 编解码内容
+   */
   private Object codeBody;
 }

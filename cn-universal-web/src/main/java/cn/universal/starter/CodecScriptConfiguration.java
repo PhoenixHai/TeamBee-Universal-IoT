@@ -15,7 +15,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-/** magic-api自动配置类 */
+/**
+ * magic-api自动配置类
+ */
 @Configuration
 @ConditionalOnClass({RequestMappingHandlerMapping.class})
 public class CodecScriptConfiguration implements ApplicationContextAware {
@@ -30,7 +32,9 @@ public class CodecScriptConfiguration implements ApplicationContextAware {
     setupMagicModules(null);
   }
 
-  /** 注册模块、类型扩展 */
+  /**
+   * 注册模块、类型扩展
+   */
   private void setupMagicModules(List<ExtensionMethod> extensionMethods) {
     // 设置脚本import时 class加载策略
     MagicResourceLoader.setClassLoader(

@@ -9,10 +9,14 @@ import java.util.List;
  */
 public class PageResult<T> {
 
-  /** 总条数 */
+  /**
+   * 总条数
+   */
   private long total;
 
-  /** 数据项 */
+  /**
+   * 数据项
+   */
   private List<T> list;
 
   public PageResult(long total, List<T> list) {
@@ -20,7 +24,8 @@ public class PageResult<T> {
     this.list = list;
   }
 
-  public PageResult() {}
+  public PageResult() {
+  }
 
   public long getTotal() {
     return total;

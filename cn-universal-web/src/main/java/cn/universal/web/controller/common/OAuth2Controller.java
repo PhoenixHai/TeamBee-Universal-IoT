@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OAuth2Controller {
 
-  /** 向后兼容的 /oauth/token 端点 转发到新的 Spring Authorization Server 的 /oauth2/token 端点 */
+  /**
+   * 向后兼容的 /oauth/token 端点 转发到新的 Spring Authorization Server 的 /oauth2/token 端点
+   */
   @PostMapping("/oauth/token")
   public void forwardLegacyTokenEndpoint(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
@@ -31,7 +33,9 @@ public class OAuth2Controller {
     dispatcher.forward(request, response);
   }
 
-  /** 向后兼容的 /api/oauth/token 端点 转发到新的 Spring Authorization Server 的 /oauth2/token 端点 */
+  /**
+   * 向后兼容的 /api/oauth/token 端点 转发到新的 Spring Authorization Server 的 /oauth2/token 端点
+   */
   @PostMapping("/api/oauth/token")
   public void forwardApiTokenEndpoint(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {

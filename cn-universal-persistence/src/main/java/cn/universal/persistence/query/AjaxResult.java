@@ -17,7 +17,6 @@ import lombok.Data;
 
 /**
  * @Author Aleo
- *
  * @since 2018年12月17日 上午11:38
  */
 @Data
@@ -67,7 +66,8 @@ public class AjaxResult<T> {
     return new AjaxResult<>(SUCCESS, msg, data);
   }
 
-  public AjaxResult() {}
+  public AjaxResult() {
+  }
 
   public static AjaxResult<Void> error() {
     return error(ERROR_MSG);

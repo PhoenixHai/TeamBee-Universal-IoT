@@ -21,7 +21,9 @@ import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 
-/** 任务执行工具 @Author ruoyi */
+/**
+ * 任务执行工具 @Author ruoyi
+ */
 public class JobInvokeUtil {
 
   /**
@@ -47,16 +49,16 @@ public class JobInvokeUtil {
   /**
    * 调用任务方法
    *
-   * @param bean 目标对象
-   * @param methodName 方法名称
+   * @param bean         目标对象
+   * @param methodName   方法名称
    * @param methodParams 方法参数
    */
   private static void invokeMethod(Object bean, String methodName, List<Object[]> methodParams)
       throws NoSuchMethodException,
-          SecurityException,
-          IllegalAccessException,
-          IllegalArgumentException,
-          InvocationTargetException {
+      SecurityException,
+      IllegalAccessException,
+      IllegalArgumentException,
+      InvocationTargetException {
     if (Validator.isNotNull(methodParams) && methodParams.size() > 0) {
       Method method =
           bean.getClass().getDeclaredMethod(methodName, getMethodParamsType(methodParams));
@@ -116,25 +118,25 @@ public class JobInvokeUtil {
       String str = StrUtil.trimToEmpty(methodParams[i]);
       // String字符串类型，包含'
       if (StrUtil.contains(str, "'")) {
-        classs.add(new Object[] {StrUtil.replace(str, "'", ""), String.class});
+        classs.add(new Object[]{StrUtil.replace(str, "'", ""), String.class});
       }
       // boolean布尔类型，等于true或者false
       else if (StrUtil.equals(str, "true") || StrUtil.equalsIgnoreCase(str, "false")) {
-        classs.add(new Object[] {Boolean.valueOf(str), Boolean.class});
+        classs.add(new Object[]{Boolean.valueOf(str), Boolean.class});
       }
       // long长整形，包含L
       else if (StrUtil.containsIgnoreCase(str, "L")) {
         classs.add(
-            new Object[] {Long.valueOf(StrUtil.replaceIgnoreCase(str, "L", "")), Long.class});
+            new Object[]{Long.valueOf(StrUtil.replaceIgnoreCase(str, "L", "")), Long.class});
       }
       // double浮点类型，包含D
       else if (StrUtil.containsIgnoreCase(str, "D")) {
         classs.add(
-            new Object[] {Double.valueOf(StrUtil.replaceIgnoreCase(str, "D", "")), Double.class});
+            new Object[]{Double.valueOf(StrUtil.replaceIgnoreCase(str, "D", "")), Double.class});
       }
       // 其他类型归类为整形
       else {
-        classs.add(new Object[] {Integer.valueOf(str), Integer.class});
+        classs.add(new Object[]{Integer.valueOf(str), Integer.class});
       }
     }
     return classs;

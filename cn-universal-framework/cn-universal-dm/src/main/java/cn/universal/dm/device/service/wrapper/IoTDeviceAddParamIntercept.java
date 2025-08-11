@@ -44,7 +44,8 @@ public class IoTDeviceAddParamIntercept implements IotDownWrapper {
   private String STOCK_DEVICE_CHECK = "stockDeviceCheck";
   private String RELATED_PRODUCT_KEY = "canNotRelateProductKey";
 
-  @Resource private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
 
   @Override
   public R beforeDownAction(IoTProduct product, Object data, DownRequest downRequest) {
@@ -76,7 +77,8 @@ public class IoTDeviceAddParamIntercept implements IotDownWrapper {
         if (jsonObject == null || customFields == null || customFields.size() <= 0) {
           return;
         }
-        StringBuilder builder = new StringBuilder("产品[" + product.getName() + "]data中的必填参数不能为空,");
+        StringBuilder builder = new StringBuilder(
+            "产品[" + product.getName() + "]data中的必填参数不能为空,");
         for (Object obj : customFields) {
           JSONObject object = (JSONObject) obj;
           Object fieldValue = BeanUtil.getFieldValue(data, object.getStr("id"));

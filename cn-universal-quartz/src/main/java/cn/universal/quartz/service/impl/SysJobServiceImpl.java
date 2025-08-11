@@ -33,14 +33,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-/** 定时任务调度信息 服务层 @Author ruoyi */
+/**
+ * 定时任务调度信息 服务层 @Author ruoyi
+ */
 @Service
 public class SysJobServiceImpl implements ISysJobService {
 
-  @Autowired private Scheduler scheduler;
-  @Resource private SysJobMapper sysJobMapper;
+  @Autowired
+  private Scheduler scheduler;
+  @Resource
+  private SysJobMapper sysJobMapper;
 
-  /** 项目启动时，初始化定时器 主要是防止手动修改数据库导致未同步到定时任务处理（注：不能手动修改数据库ID和任务组名，否则会导致脏数据） */
+  /**
+   * 项目启动时，初始化定时器 主要是防止手动修改数据库导致未同步到定时任务处理（注：不能手动修改数据库ID和任务组名，否则会导致脏数据）
+   */
   @PostConstruct
   public void init() throws SchedulerException {
     scheduler.clear();
@@ -222,7 +228,7 @@ public class SysJobServiceImpl implements ISysJobService {
   /**
    * 更新任务
    *
-   * @param job 任务对象
+   * @param job      任务对象
    * @param jobGroup 任务组名
    */
   public void updateSchedulerJob(SysJob job, String jobGroup) throws SchedulerException {

@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import cn.universal.mqtt.protocol.config.MqttConstant;
 import org.junit.jupiter.api.Test;
 
-/** MQTT主题模式测试 */
+/**
+ * MQTT主题模式测试
+ */
 public class MqttTopicPatternTest {
 
   @Test

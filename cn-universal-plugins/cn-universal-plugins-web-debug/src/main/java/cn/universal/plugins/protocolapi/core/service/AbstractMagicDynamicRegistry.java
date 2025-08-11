@@ -17,7 +17,9 @@ import org.springframework.context.event.EventListener;
 public abstract class AbstractMagicDynamicRegistry<T extends MagicEntity>
     implements MagicDynamicRegistry<T> {
 
-  /** 已缓存的映射信息 */
+  /**
+   * 已缓存的映射信息
+   */
   private final Map<String, MappingNode<T>> mappings = new ConcurrentHashMap<>();
 
   protected final MagicResourceStorage<T> magicResourceStorage;
@@ -114,7 +116,8 @@ public abstract class AbstractMagicDynamicRegistry<T extends MagicEntity>
     return true;
   }
 
-  protected void unregister(MappingNode<T> mappingNode) {}
+  protected void unregister(MappingNode<T> mappingNode) {
+  }
 
   public List<T> mappings() {
     return this.mappings.values().stream().map(MappingNode::getEntity).collect(Collectors.toList());

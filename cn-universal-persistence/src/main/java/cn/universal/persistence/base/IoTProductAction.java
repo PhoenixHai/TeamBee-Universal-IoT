@@ -14,14 +14,16 @@ package cn.universal.persistence.base;
 
 import cn.universal.persistence.entity.IoTProduct;
 
-/** 产品（设备）全Action生命周期接口 */
+/**
+ * 产品（设备）全Action生命周期接口
+ */
 public interface IoTProductAction extends IoTAction {
 
   /**
    * 产品创建
    *
    * @param productKey 产品唯一标识
-   * @param unionId 创建用户
+   * @param unionId    创建用户
    */
   void create(String productKey, String unionId);
 
@@ -65,19 +67,22 @@ public interface IoTProductAction extends IoTAction {
    *
    * @param productKey
    */
-  default void metadataCreate(String productKey) {}
+  default void metadataCreate(String productKey) {
+  }
 
   /**
    * 物模型更新
    *
    * @param productKey
    */
-  default void metadataUpdate(String productKey) {}
+  default void metadataUpdate(String productKey) {
+  }
 
   /**
    * 物模型删除
    *
    * @param productKey
    */
-  default void metadataDelete(String productKey) {}
+  default void metadataDelete(String productKey) {
+  }
 }

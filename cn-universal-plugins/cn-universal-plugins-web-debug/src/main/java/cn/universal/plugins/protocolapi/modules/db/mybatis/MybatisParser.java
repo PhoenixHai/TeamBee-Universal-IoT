@@ -76,7 +76,9 @@ public class MybatisParser {
     return sqlNode;
   }
 
-  /** 解析foreach节点 */
+  /**
+   * 解析foreach节点
+   */
   private static ForeachSqlNode parseForeachSqlNode(NodeStream stream) {
     Node node = stream.consume();
     ForeachSqlNode foreachSqlNode = new ForeachSqlNode();
@@ -89,7 +91,9 @@ public class MybatisParser {
     return processChildren(foreachSqlNode, node);
   }
 
-  /** 解析trim节点 */
+  /**
+   * 解析trim节点
+   */
   private static TrimSqlNode parseTrimSqlNode(NodeStream stream) {
     Node node = stream.consume();
     TrimSqlNode trimSqlNode = new TrimSqlNode();
@@ -100,12 +104,16 @@ public class MybatisParser {
     return processChildren(trimSqlNode, node);
   }
 
-  /** 解析set节点 */
+  /**
+   * 解析set节点
+   */
   private static SetSqlNode parseSetSqlNode(NodeStream stream) {
     return processChildren(new SetSqlNode(), stream.consume());
   }
 
-  /** 解析where节点 */
+  /**
+   * 解析where节点
+   */
   private static WhereSqlNode parseWhereSqlNode(NodeStream stream) {
     return processChildren(new WhereSqlNode(), stream.consume());
   }

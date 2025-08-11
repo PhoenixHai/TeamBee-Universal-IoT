@@ -7,7 +7,8 @@ package cn.universal.plugins.protocolapi.core.model;
  */
 public class Path extends BaseDefinition {
 
-  public Path() {}
+  public Path() {
+  }
 
   public Path(String name, String value) {
     super(name, value);

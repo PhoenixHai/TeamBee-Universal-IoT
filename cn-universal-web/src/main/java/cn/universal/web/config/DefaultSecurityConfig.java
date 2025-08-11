@@ -57,19 +57,27 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class DefaultSecurityConfig {
 
-  /** 是否启用生产环境安全模式 */
+  /**
+   * 是否启用生产环境安全模式
+   */
   @Value("${security.production.enabled:false}")
   private boolean productionSecurityEnabled;
 
-  /** 允许访问的IP地址列表（逗号分隔） */
+  /**
+   * 允许访问的IP地址列表（逗号分隔）
+   */
   @Value("${security.allowed.ips:}")
   private String allowedIps;
 
-  /** 允许访问的主机名列表（逗号分隔） */
+  /**
+   * 允许访问的主机名列表（逗号分隔）
+   */
   @Value("${security.allowed.hosts:}")
   private String allowedHosts;
 
-  /** 是否启用Actuator端点访问 */
+  /**
+   * 是否启用Actuator端点访问
+   */
   @Value("${security.actuator.enabled:false}")
   private boolean actuatorEnabled;
 
@@ -255,7 +263,7 @@ public class DefaultSecurityConfig {
    * <p>验证请求IP是否在允许的IP列表中或为内网IP
    *
    * @param authentication 认证信息提供者
-   * @param context 请求授权上下文
+   * @param context        请求授权上下文
    * @return 授权决策
    */
   private AuthorizationDecision hasValidIpAccess(
@@ -281,7 +289,7 @@ public class DefaultSecurityConfig {
    * <p>验证是否允许访问Actuator监控端点
    *
    * @param authentication 认证信息提供者
-   * @param context 请求授权上下文
+   * @param context        请求授权上下文
    * @return 授权决策
    */
   private AuthorizationDecision hasActuatorAccess(
@@ -338,7 +346,9 @@ public class DefaultSecurityConfig {
         || ip.startsWith("192.168."); // C类内网
   }
 
-  /** 获取客户端真实IP */
+  /**
+   * 获取客户端真实IP
+   */
   private String getClientIpAddress(HttpServletRequest request) {
     String xForwardedFor = request.getHeader("X-Forwarded-For");
     if (xForwardedFor != null
@@ -355,7 +365,9 @@ public class DefaultSecurityConfig {
     return request.getRemoteAddr();
   }
 
-  /** CORS配置 */
+  /**
+   * CORS配置
+   */
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();

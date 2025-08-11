@@ -31,7 +31,8 @@ import org.springframework.stereotype.Service;
 @Service("iotDownRuleService")
 public class IotDownRuleService implements IotDownWrapper {
 
-  @Resource private FenceService fenceService;
+  @Resource
+  private FenceService fenceService;
 
   @Override
   public R beforeFunctionOrConfigDown(

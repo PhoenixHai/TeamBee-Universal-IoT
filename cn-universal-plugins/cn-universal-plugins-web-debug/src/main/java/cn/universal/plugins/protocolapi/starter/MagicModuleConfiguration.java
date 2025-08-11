@@ -48,16 +48,24 @@ public class MagicModuleConfiguration {
 
   private final MagicAPIProperties properties;
 
-  /** SQL拦截器 */
+  /**
+   * SQL拦截器
+   */
   private final ObjectProvider<List<SQLInterceptor>> sqlInterceptorsProvider;
 
-  /** 单表API拦截器 */
+  /**
+   * 单表API拦截器
+   */
   private final ObjectProvider<List<NamedTableInterceptor>> namedTableInterceptorsProvider;
 
-  /** 自定义的方言 */
+  /**
+   * 自定义的方言
+   */
   private final ObjectProvider<List<Dialect>> dialectsProvider;
 
-  /** 自定义的列名转换 */
+  /**
+   * 自定义的列名转换
+   */
   private final ObjectProvider<List<ColumnMapperProvider>> columnMapperProvidersProvider;
 
   private final Environment environment;
@@ -80,7 +88,9 @@ public class MagicModuleConfiguration {
     this.environment = environment;
   }
 
-  /** 注入动态数据源 */
+  /**
+   * 注入动态数据源
+   */
   @Bean
   @ConditionalOnMissingBean(MagicDynamicDataSource.class)
   public MagicDynamicDataSource magicDynamicDataSource(
@@ -113,7 +123,9 @@ public class MagicModuleConfiguration {
         pageConfig.getMaxPageSize());
   }
 
-  /** 注入SQL缓存实现 */
+  /**
+   * 注入SQL缓存实现
+   */
   @Bean
   @ConditionalOnMissingBean(SqlCache.class)
   public SqlCache sqlCache() {
@@ -125,7 +137,9 @@ public class MagicModuleConfiguration {
     return new DefaultSqlCache(cacheConfig.getCapacity(), cacheConfig.getTtl());
   }
 
-  /** 注入数据库查询模块 */
+  /**
+   * 注入数据库查询模块
+   */
   @Bean
   @ConditionalOnBean({MagicDynamicDataSource.class})
   public SQLModule magicSqlModule(
@@ -186,7 +200,9 @@ public class MagicModuleConfiguration {
     return new RequestModule(magicRequestContextHolder);
   }
 
-  /** 注入结果构建方法 */
+  /**
+   * 注入结果构建方法
+   */
   @Bean
   @ConditionalOnMissingBean(ResultProvider.class)
   public ResultProvider resultProvider() {

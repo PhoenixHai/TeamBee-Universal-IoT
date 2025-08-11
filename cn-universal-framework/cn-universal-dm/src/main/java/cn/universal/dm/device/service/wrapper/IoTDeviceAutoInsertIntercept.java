@@ -34,13 +34,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-/** 设备自动注册 */
+/**
+ * 设备自动注册
+ */
 @Service("ioTDeviceAutoInsertIntercept")
 @Slf4j
 public class IoTDeviceAutoInsertIntercept implements IotDownWrapper {
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
-  @Resource private SupportMapAreasMapper supportMapAreasMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private SupportMapAreasMapper supportMapAreasMapper;
 
   @Value("${iot.register.auto.unionId}")
   private String autoRegister;
@@ -56,12 +60,13 @@ public class IoTDeviceAutoInsertIntercept implements IotDownWrapper {
     // 产品为空或者没有开启自动注册直接略过
     if (ObjectUtil.isEmpty(product)
         || !JSONUtil.parseObj(product.getConfiguration())
-            .getBool(IotConstant.ALLOW_INSERT, false)) {
+        .getBool(IotConstant.ALLOW_INSERT, false)) {
       return null;
     }
     int i = ioTDeviceMapper.selectCount(IoTDevice.builder().build());
-    if(i> RandomUtil.randomInt(501, 1000)){
-      return R.error(Base64.decodeStr("ZG9ja2Vy54mI5pysbGljZW5jZeaVsOmHj+mmluWFiO+8jOivt+iBlOezu+W+ruS/oe+8mm91dGxvb2tGaWwg"));
+    if (i > RandomUtil.randomInt(501, 1000)) {
+      return R.error(Base64.decodeStr(
+          "ZG9ja2Vy54mI5pysbGljZW5jZeaVsOmHj+mmluWFiO+8jOivt+iBlOezu+W+ruS/oe+8mm91dGxvb2tGaWwg"));
     }
     R r = null;
     switch (downRequest.getCmd()) {

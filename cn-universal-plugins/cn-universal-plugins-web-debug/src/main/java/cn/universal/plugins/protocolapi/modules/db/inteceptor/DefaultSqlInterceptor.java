@@ -31,12 +31,12 @@ public class DefaultSqlInterceptor implements SQLInterceptor {
                   if (it instanceof Object[]) {
                     return "["
                         + Stream.of((Object[]) it)
-                            .map(
-                                x ->
-                                    x == null
-                                        ? "null"
-                                        : (x + "(" + x.getClass().getSimpleName() + ")"))
-                            .collect(Collectors.joining(", "))
+                        .map(
+                            x ->
+                                x == null
+                                    ? "null"
+                                    : (x + "(" + x.getClass().getSimpleName() + ")"))
+                        .collect(Collectors.joining(", "))
                         + "]";
                   }
                   return it + "(" + it.getClass().getSimpleName() + ")";

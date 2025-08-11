@@ -22,30 +22,40 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-/** 根据设备iotId的hash值分表 @Author Aleo */
+/**
+ * 根据设备iotId的hash值分表 @Author Aleo
+ */
 @Component
 public class TableShardStrategyByIotIdForLogMeta implements ITableShardStrategy {
 
   private static Integer maxTableShard;
   private static Integer virtualNode;
 
-  /** 日志分表是否开启 */
+  /**
+   * 日志分表是否开启
+   */
   @Value("${shard.logMeta.enable}")
   private Boolean enable;
 
-  /** 日志分表数量 */
+  /**
+   * 日志分表数量
+   */
   @Value("${shard.logMeta.table.number}")
   public void setMaxTableShard(Integer maxTableShard) {
     TableShardStrategyByIotIdForLogMeta.maxTableShard = maxTableShard;
   }
 
-  /** 每个实际节点对应节点数量 */
+  /**
+   * 每个实际节点对应节点数量
+   */
   @Value("${shard.logMeta.virtual.number}")
   public void setVirtualNode(Integer virtualNode) {
     TableShardStrategyByIotIdForLogMeta.virtualNode = virtualNode;
   }
 
-  /** key表示日志表序号的hash值，value表示日志表序号 */
+  /**
+   * key表示日志表序号的hash值，value表示日志表序号
+   */
   private static SortedMap<Integer, Integer> sortedMap = new TreeMap<>();
 
   private static Cache<String, Integer> tableNoMap =
@@ -87,7 +97,9 @@ public class TableShardStrategyByIotIdForLogMeta implements ITableShardStrategy 
     return tableNamePrefix + "_" + tableNo;
   }
 
-  /** 根据设备iotId转换hash获取分表序号 */
+  /**
+   * 根据设备iotId转换hash获取分表序号
+   */
   private int convertToHash(String iotId) {
     int hash = getHash(iotId);
     SortedMap<Integer, Integer> subMap = sortedMap.tailMap(hash);
@@ -112,7 +124,9 @@ public class TableShardStrategyByIotIdForLogMeta implements ITableShardStrategy 
     //    return hash;
   }
 
-  /** 计算Hash值, 使用FNV1_32_HASH算法 */
+  /**
+   * 计算Hash值, 使用FNV1_32_HASH算法
+   */
   public static int getHash(String str) {
     final int p = 16777619;
     int hash = (int) 2166136261L;

@@ -125,7 +125,8 @@ public class RequestMagicDynamicRegistry extends AbstractMagicDynamicRegistry<Ap
         mapping.paths(path).methods(RequestMethod.valueOf(requestMethod.toUpperCase())).build();
     if (mapping.getHandlerMethods().containsKey(requestMappingInfo)) {
       if (!allowOverride) {
-        logger.error("接口[{}({})]与应用冲突，无法注册", mappingNode.getEntity().getName(), mappingKey);
+        logger.error("接口[{}({})]与应用冲突，无法注册", mappingNode.getEntity().getName(),
+            mappingKey);
         throw new InvalidArgumentException(
             REQUEST_PATH_CONFLICT.format(mappingNode.getEntity().getName(), mappingKey));
       }
@@ -141,7 +142,8 @@ public class RequestMagicDynamicRegistry extends AbstractMagicDynamicRegistry<Ap
 
   @Override
   protected void unregister(MappingNode<ApiInfo> mappingNode) {
-    logger.debug("取消注册接口[{}({})]", mappingNode.getEntity().getName(), mappingNode.getMappingKey());
+    logger.debug("取消注册接口[{}({})]", mappingNode.getEntity().getName(),
+        mappingNode.getMappingKey());
     mapping.unregister((RequestMappingInfo) mappingNode.getMappingData());
   }
 }

@@ -38,7 +38,9 @@ public interface MagicBackupService {
    */
   List<Backup> backupById(String id);
 
-  /** 根据对象ID和备份时间查询 */
+  /**
+   * 根据对象ID和备份时间查询
+   */
   Backup backupInfo(String id, long timestamp);
 
   /**

@@ -43,20 +43,26 @@ public class IoTDeviceActionBeforeService implements IoTDeviceLifeCycle {
   }
 
   @Override
-  public void online(String productKey, String deviceId) {}
+  public void online(String productKey, String deviceId) {
+  }
 
   @Override
-  public void offline(String productKey, String deviceId) {}
+  public void offline(String productKey, String deviceId) {
+  }
 
   @Override
-  public void update(String iotId) {}
+  public void update(String iotId) {
+  }
 
   @Override
-  public void enable(String iotId) {}
+  public void enable(String iotId) {
+  }
 
   @Override
-  public void disable(String iotId) {}
+  public void disable(String iotId) {
+  }
 
   @Override
-  public void delete(IoTDeviceDTO ioTDeviceDTO, DownRequest downRequest) {}
+  public void delete(IoTDeviceDTO ioTDeviceDTO, DownRequest downRequest) {
+  }
 }

@@ -16,7 +16,9 @@ import cn.universal.quartz.domain.SysJob;
 import java.util.List;
 import org.quartz.SchedulerException;
 
-/** 定时任务调度信息信息 服务层 @Author ruoyi */
+/**
+ * 定时任务调度信息信息 服务层 @Author ruoyi
+ */
 public interface ISysJobService {
 
   /**

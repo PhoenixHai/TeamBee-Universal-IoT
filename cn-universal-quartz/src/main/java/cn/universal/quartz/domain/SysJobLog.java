@@ -25,7 +25,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-/** 定时任务调度日志表 sys_job_log @Author ruoyi */
+/**
+ * 定时任务调度日志表 sys_job_log @Author ruoyi
+ */
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
@@ -34,52 +36,77 @@ public class SysJobLog {
 
   private static final long serialVersionUID = 1L;
 
-  /** ID */
+  /**
+   * ID
+   */
   @Excel(name = "日志序号")
   @Id
   private Long jobLogId;
 
-  /** 任务名称 */
+  /**
+   * 任务名称
+   */
   @Excel(name = "任务名称")
   @Column(name = "job_name")
   private String jobName;
 
-  /** 任务组名 */
+  /**
+   * 任务组名
+   */
   @Excel(name = "任务组名")
   @Column(name = "job_group")
   private String jobGroup;
 
-  /** 调用目标字符串 */
+  /**
+   * 调用目标字符串
+   */
   @Excel(name = "调用目标字符串")
   @Column(name = "invoke_target")
   private String invokeTarget;
 
-  /** 日志信息 */
+  /**
+   * 日志信息
+   */
   @Excel(name = "日志信息")
   @Column(name = "job_message")
   private String jobMessage;
 
-  /** 执行状态（0正常 1失败） */
+  /**
+   * 执行状态（0正常 1失败）
+   */
   @Excel(name = "执行状态", readConverterExp = "0=正常,1=失败")
   @Column(name = "status")
   private String status;
 
-  /** 异常信息 */
+  /**
+   * 异常信息
+   */
   @Excel(name = "异常信息")
   @Column(name = "exception_info")
   private String exceptionInfo;
 
-  /** 创建时间 */
+  /**
+   * 创建时间
+   */
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @Column(name = "create_time")
   private Date createTime;
 
-  /** 请求参数 */
-  @Transient private Map<String, Object> params = new HashMap<>();
+  /**
+   * 请求参数
+   */
+  @Transient
+  private Map<String, Object> params = new HashMap<>();
 
-  /** 开始时间 */
-  @Transient private Date startTime;
+  /**
+   * 开始时间
+   */
+  @Transient
+  private Date startTime;
 
-  /** 停止时间 */
-  @Transient private Date stopTime;
+  /**
+   * 停止时间
+   */
+  @Transient
+  private Date stopTime;
 }

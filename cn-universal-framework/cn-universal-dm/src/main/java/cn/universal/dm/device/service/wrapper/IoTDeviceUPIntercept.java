@@ -42,8 +42,10 @@ import tk.mybatis.mapper.entity.Example;
 @Slf4j
 public class IoTDeviceUPIntercept {
 
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
-  @Resource private SupportMapAreasMapper supportMapAreasMapper;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private SupportMapAreasMapper supportMapAreasMapper;
 
   @Async
   public void messageProcess(BaseUPRequest upRequest) {
@@ -84,7 +86,9 @@ public class IoTDeviceUPIntercept {
     }
   }
 
-  /** 处理定位设备经纬度 */
+  /**
+   * 处理定位设备经纬度
+   */
   private void propertiesGeoPoint(BaseUPRequest baseUPRequest, Map<String, Object> properties) {
     JSONObject cfg = baseUPRequest.getIoTDeviceDTO().getProductConfig();
     if (cfg != null
@@ -92,7 +96,8 @@ public class IoTDeviceUPIntercept {
         && cfg.getBool(IotConstant.IS_GPS_PRODUCT)
         && properties.containsKey(DeviceManagerConstant.COORDINATE)) {
       String geoPoint = (String) properties.get(DeviceManagerConstant.COORDINATE);
-      log.info("处理定位类经纬度数据处理，deviceId={},coordinate={}", baseUPRequest.getDeviceId(), geoPoint);
+      log.info("处理定位类经纬度数据处理，deviceId={},coordinate={}", baseUPRequest.getDeviceId(),
+          geoPoint);
       if (StrUtil.isNotBlank(geoPoint)) {
         IoTDevice ioTDevice = new IoTDevice();
         ioTDevice.setIotId(baseUPRequest.getIotId());
@@ -111,7 +116,9 @@ public class IoTDeviceUPIntercept {
     }
   }
 
-  /** 保存设备解析出来的iccid到设备表 */
+  /**
+   * 保存设备解析出来的iccid到设备表
+   */
   private void propertiesICCID(BaseUPRequest baseUPRequest, Map<String, Object> properties) {
     if (properties.containsKey("iccid") || properties.containsKey("ICCID")) {
       String iccid = (String) properties.get("iccid");

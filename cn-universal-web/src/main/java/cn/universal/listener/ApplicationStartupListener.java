@@ -6,7 +6,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-/** 应用启动完成监听器 在应用完全启动后（包括所有Bean初始化完成）执行 */
+/**
+ * 应用启动完成监听器 在应用完全启动后（包括所有Bean初始化完成）执行
+ */
 @Slf4j
 @Component
 public class ApplicationStartupListener implements ApplicationListener<ApplicationReadyEvent> {
@@ -30,7 +32,9 @@ public class ApplicationStartupListener implements ApplicationListener<Applicati
     printStartupSuccess(duration, durationText);
   }
 
-  /** 格式化耗时显示 */
+  /**
+   * 格式化耗时显示
+   */
   private String formatDuration(long duration) {
     if (duration < 1000) {
       return duration + " ms";
@@ -43,7 +47,9 @@ public class ApplicationStartupListener implements ApplicationListener<Applicati
     }
   }
 
-  /** 获取应用端口信息 */
+  /**
+   * 获取应用端口信息
+   */
   private String getPortInfo() {
     String serverPort = environment.getProperty("server.port", "8080");
     String contextPath = environment.getProperty("server.servlet.context-path", "");
@@ -55,7 +61,9 @@ public class ApplicationStartupListener implements ApplicationListener<Applicati
     return String.format("🌐 访问地址: %s", contextUrl);
   }
 
-  /** 打印启动成功信息 */
+  /**
+   * 打印启动成功信息
+   */
   private void printStartupSuccess(long duration, String durationText) {
     String separator = "=".repeat(80);
     String successMessage = String.format("iot Universal Run Success (耗时: %s)", durationText);

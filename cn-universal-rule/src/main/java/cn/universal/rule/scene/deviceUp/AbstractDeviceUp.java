@@ -42,15 +42,22 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public abstract class AbstractDeviceUp implements DeviceUp {
 
-  /** 场景联动类型 */
+  /**
+   * 场景联动类型
+   */
   public byte ruleLogType = 1;
 
-  @Resource private SceneLinkageMapper sceneLinkageMapper;
-  @Resource private StringRedisTemplate stringRedisTemplate;
-  @Resource protected ExpressTemplate expressTemplate;
-  @Resource private SenceIoTDeviceDownService downService;
+  @Resource
+  private SceneLinkageMapper sceneLinkageMapper;
+  @Resource
+  private StringRedisTemplate stringRedisTemplate;
+  @Resource
+  protected ExpressTemplate expressTemplate;
+  @Resource
+  private SenceIoTDeviceDownService downService;
 
-  @Resource private IoTDeviceRuleLogMapper ioTDeviceRuleLogMapper;
+  @Resource
+  private IoTDeviceRuleLogMapper ioTDeviceRuleLogMapper;
 
   @Override
   @Async
@@ -58,7 +65,9 @@ public abstract class AbstractDeviceUp implements DeviceUp {
     doTestTrigger(object, ioTDeviceDTO);
   }
 
-  /** 判断触发条件是否满足 */
+  /**
+   * 判断触发条件是否满足
+   */
   public void doTestTrigger(JSONObject param, IoTDeviceDTO instance) {
     // 查询启用的规则
     List<SceneLinkage> sceneLinkageList =
@@ -110,7 +119,8 @@ public abstract class AbstractDeviceUp implements DeviceUp {
             }
             if (!isTouch) {
               log.info(
-                  "场景联动结束，不满足触发条件,场景联动id:{},设备id:{}", sceneLinkage.getId(), instance.getDeviceId());
+                  "场景联动结束，不满足触发条件,场景联动id:{},设备id:{}", sceneLinkage.getId(),
+                  instance.getDeviceId());
               return;
             }
             // 执行动作，返回结果
@@ -136,7 +146,9 @@ public abstract class AbstractDeviceUp implements DeviceUp {
     }
   }
 
-  /** 判断是否存在设备触发的条件 */
+  /**
+   * 判断是否存在设备触发的条件
+   */
   public Boolean testDeviceTrigger(SceneLinkage sceneLinkage, JSONObject param) {
     JSONArray jsonArray = JSONUtil.parseArray(sceneLinkage.getTriggerCondition());
     if (CollectionUtils.isEmpty(jsonArray)) {
@@ -161,7 +173,9 @@ public abstract class AbstractDeviceUp implements DeviceUp {
     return testAlarm(triggers, separator, param);
   }
 
-  /** 具体判断事件或属性 */
+  /**
+   * 具体判断事件或属性
+   */
   public boolean testAlarm(List<TriggerBO> triggers, String separator, JSONObject param) {
     return false;
   }

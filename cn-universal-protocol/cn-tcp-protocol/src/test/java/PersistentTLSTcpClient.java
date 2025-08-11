@@ -125,16 +125,18 @@ public class PersistentTLSTcpClient {
     SSLContext sslContext = SSLContext.getInstance("TLSv1.3");
     sslContext.init(
         null,
-        new TrustManager[] {
-          new X509TrustManager() {
-            public X509Certificate[] getAcceptedIssuers() {
-              return null;
+        new TrustManager[]{
+            new X509TrustManager() {
+              public X509Certificate[] getAcceptedIssuers() {
+                return null;
+              }
+
+              public void checkClientTrusted(X509Certificate[] certs, String authType) {
+              }
+
+              public void checkServerTrusted(X509Certificate[] certs, String authType) {
+              }
             }
-
-            public void checkClientTrusted(X509Certificate[] certs, String authType) {}
-
-            public void checkServerTrusted(X509Certificate[] certs, String authType) {}
-          }
         },
         new SecureRandom());
     return sslContext;

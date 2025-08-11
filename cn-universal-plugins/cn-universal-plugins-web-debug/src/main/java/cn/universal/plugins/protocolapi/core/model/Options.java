@@ -7,34 +7,54 @@ package cn.universal.plugins.protocolapi.core.model;
  */
 public enum Options {
 
-  /** 包装请求参数到一个变量中 */
+  /**
+   * 包装请求参数到一个变量中
+   */
   WRAP_REQUEST_PARAMETERS("包装请求参数到一个变量中", "wrap_request_parameter"),
 
-  /** 配置默认数据源的key */
+  /**
+   * 配置默认数据源的key
+   */
   DEFAULT_DATA_SOURCE("配置默认数据源的key", "default_data_source"),
 
-  /** 允许拥有该权限的访问 */
+  /**
+   * 允许拥有该权限的访问
+   */
   PERMISSION("允许拥有该权限的访问", "permission"),
 
-  /** 允许拥有该权限的查看 */
+  /**
+   * 允许拥有该权限的查看
+   */
   PERMISSION_VISIBLE("允许拥有该权限的查看", "permission_visible"),
 
-  /** 允许拥有该角色的访问 */
+  /**
+   * 允许拥有该角色的访问
+   */
   ROLE("允许拥有该角色的访问", "role"),
 
-  /** 允许拥有该角色的可查看 */
+  /**
+   * 允许拥有该角色的可查看
+   */
   ROLE_VISIBLE("允许拥有该角色的查看", "role_visible"),
 
-  /** 该接口需要登录才允许访问 */
+  /**
+   * 该接口需要登录才允许访问
+   */
   REQUIRE_LOGIN("该接口需要登录才允许访问", "require_login", "true"),
 
-  /** 该接口不需要登录也可访问 */
+  /**
+   * 该接口不需要登录也可访问
+   */
   ANONYMOUS("该接口不需要登录也可访问", "anonymous", "true"),
 
-  /** 不接收未经定义的参数 */
+  /**
+   * 不接收未经定义的参数
+   */
   DISABLED_UNKNOWN_PARAMETER("不接收未经定义的参数", "disabled_unknown_parameter", "true"),
 
-  /** 禁止验证requestBody */
+  /**
+   * 禁止验证requestBody
+   */
   DISABLED_VALIDATE_REQUEST_BODY("禁止验证RequestBody", "disabled_validate_request_body", "false");
 
   private final String name;

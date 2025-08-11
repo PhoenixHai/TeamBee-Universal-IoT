@@ -59,21 +59,30 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j(topic = "api_log")
 public class IoTController extends BaseApiController {
 
-  @Resource private IoTProductDeviceService iotProductDeviceService;
-  @Resource private IoTDeviceShadowService iotDeviceShadowService;
-  @Resource private IoTInnerAuthContext ioTInnerAuthContext;
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  @Resource
+  private IoTProductDeviceService iotProductDeviceService;
+  @Resource
+  private IoTDeviceShadowService iotDeviceShadowService;
+  @Resource
+  private IoTInnerAuthContext ioTInnerAuthContext;
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  @Resource private IoTDeviceService iotDeviceService;
+  @Resource
+  private IoTDeviceService iotDeviceService;
 
-  /** 产品详情 */
+  /**
+   * 产品详情
+   */
   @GetMapping(value = "/product/{productKey}")
   public R queryProduct(@PathVariable("productKey") String productKey) {
     IoTProductVO devProduct = iotProductDeviceService.apiProductDetail(productKey);
     return R.ok(devProduct);
   }
 
-  /** 产品列表查询 */
+  /**
+   * 产品列表查询
+   */
   @GetMapping(value = "/product/list")
   public PageRet queryProduct(IoTAPIQuery iotAPIQuery) {
     iotAPIQuery.setIotUnionId(iotUnionId());
@@ -81,14 +90,18 @@ public class IoTController extends BaseApiController {
     return PageRet.ok(deviceList);
   }
 
-  /** 产品列表查询 */
+  /**
+   * 产品列表查询
+   */
   @GetMapping(value = "/product/list/v2")
   public PageRet queryProductV2(IoTAPIQuery iotAPIQuery) {
     Page<IoTProductVO> deviceList = iotProductDeviceService.apiProductList(iotAPIQuery);
     return PageRet.ok(deviceList);
   }
 
-  /** 设备列表查询 */
+  /**
+   * 设备列表查询
+   */
   @GetMapping(value = "/device/list")
   public PageRet deviceList(IoTAPIQuery iotAPIQuery) {
     String iotUnionId = iotUnionId();
@@ -98,7 +111,9 @@ public class IoTController extends BaseApiController {
     return PageRet.ok(deviceList);
   }
 
-  /** 设备影子查询，设备状态数据查询 */
+  /**
+   * 设备影子查询，设备状态数据查询
+   */
   @GetMapping(value = "/device/shadow/{iotId}")
   public R shadow(@PathVariable("iotId") String iotId) {
     log.info("当前用户={}", TtlAuthContextHolder.getInstance().getContext());
@@ -111,7 +126,9 @@ public class IoTController extends BaseApiController {
     return R.ok(propertiesBOS);
   }
 
-  /** 设备增加 */
+  /**
+   * 设备增加
+   */
   @PostMapping("/device/{productKey}/add")
   public R devAdd(@PathVariable("productKey") String productKey, @RequestBody String downRequest) {
     String iotUnionId = iotUnionId();
@@ -162,7 +179,9 @@ public class IoTController extends BaseApiController {
     return R.ok(objectMap);
   }
 
-  /** 设备删除 */
+  /**
+   * 设备删除
+   */
   @DeleteMapping("/device/del/{iotId}")
   public R devDel(@PathVariable("iotId") String iotId) {
     log.info("删除设备,用户标识={},iotId={}", iotUnionId(), iotId);
@@ -182,7 +201,9 @@ public class IoTController extends BaseApiController {
     return IotServiceImplFactory.getIDown(ioTProduct.getThirdPlatform()).down(param);
   }
 
-  /** 设备查询 */
+  /**
+   * 设备查询
+   */
   @GetMapping("/device/info/{iotId}")
   public R deviceInfo(@PathVariable("iotId") String iotId) {
     log.info("查询设备,用户标识={},iotId={}", iotUnionId(), iotId);
@@ -195,7 +216,9 @@ public class IoTController extends BaseApiController {
     return R.ok(ioTDeviceVO);
   }
 
-  /** 设备查询,通过deviceId */
+  /**
+   * 设备查询,通过deviceId
+   */
   @GetMapping("/device/info/{productKey}/{deviceId}")
   public R deviceInfo(
       @PathVariable("productKey") String productKey, @PathVariable("deviceId") String deviceId) {
@@ -209,7 +232,9 @@ public class IoTController extends BaseApiController {
     return R.ok(ioTDeviceVO);
   }
 
-  /** 设备绑定 */
+  /**
+   * 设备绑定
+   */
   @PutMapping("/device/app/bind/{appid}/{iotId}")
   public R appBind(@PathVariable("appid") String appid, @PathVariable("iotId") String iotId) {
     log.info("设备绑定应用,用户标识={},iotId={}", iotUnionId(), iotId);
@@ -224,7 +249,9 @@ public class IoTController extends BaseApiController {
         APIErrorCode.APPLICATION_BIND_FAILURE.getName());
   }
 
-  /** 设备解绑 */
+  /**
+   * 设备解绑
+   */
   @PutMapping("/device/app/unbind/{iotId}")
   public R appBind(@PathVariable("iotId") String iotId) {
     log.info("设备解绑应用，用户={},iotId={} ", iotUnionId(), iotId);
@@ -238,7 +265,9 @@ public class IoTController extends BaseApiController {
         APIErrorCode.APPLICATION_BIND_FAILURE.getName());
   }
 
-  /** 设备功能配置下发 */
+  /**
+   * 设备功能配置下发
+   */
   @PostMapping("/device/function/{iotId}")
   public R devFunction(@PathVariable("iotId") String iotId, @RequestBody String function) {
     log.info("设备功能下发，用户={},iotId={} data={} ", iotUnionId(), iotId, function);

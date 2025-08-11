@@ -7,4 +7,6 @@ import lombok.Data;
  * @since 2025/7/1 10:15
  */
 @Data
-public class IoTProductDTO {}
+public class IoTProductDTO {
+
+}

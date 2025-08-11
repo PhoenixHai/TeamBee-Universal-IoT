@@ -10,7 +10,8 @@ public class TreeNode<T> {
 
   private List<TreeNode<T>> children = new ArrayList<>();
 
-  public TreeNode() {}
+  public TreeNode() {
+  }
 
   public TreeNode(T node) {
     this.node = node;

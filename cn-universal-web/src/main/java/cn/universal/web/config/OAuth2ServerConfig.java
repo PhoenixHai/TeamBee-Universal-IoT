@@ -89,7 +89,7 @@ public class OAuth2ServerConfig {
     return context -> {
       if (context.getPrincipal() != null
           && context.getPrincipal().getPrincipal()
-              instanceof org.springframework.security.core.userdetails.UserDetails userDetails) {
+          instanceof org.springframework.security.core.userdetails.UserDetails userDetails) {
         context.getClaims().claim("username", userDetails.getUsername());
         context.getClaims().claim("unionId", userDetails.getUsername());
         Collection<? extends GrantedAuthority> Authorities = userDetails.getAuthorities();

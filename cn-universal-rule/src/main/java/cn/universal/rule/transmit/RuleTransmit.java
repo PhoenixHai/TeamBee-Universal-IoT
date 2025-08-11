@@ -32,7 +32,7 @@ public interface RuleTransmit {
   /**
    * 数据转发
    *
-   * @param data 数据
+   * @param data   数据
    * @param target 转发目标
    */
   String transmit(JSONObject data, RuleTarget target);
@@ -40,7 +40,7 @@ public interface RuleTransmit {
   /**
    * 测试数据转发
    *
-   * @param data 数据
+   * @param data   数据
    * @param target 转发目标
    */
   String testTransmit(JSONObject data, RuleTarget target);

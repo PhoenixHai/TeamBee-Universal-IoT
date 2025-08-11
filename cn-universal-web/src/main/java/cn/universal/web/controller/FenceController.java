@@ -61,23 +61,41 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class FenceController extends BaseController {
 
-  /** IoT内部认证上下文 */
-  @Resource private IoTInnerAuthContext ioTInnerAuthContext;
+  /**
+   * IoT内部认证上下文
+   */
+  @Resource
+  private IoTInnerAuthContext ioTInnerAuthContext;
 
-  /** IoT设备地理围栏数据访问层 */
-  @Resource private IoTDeviceGeoFenceMapper ioTDeviceGeoFenceMapper;
+  /**
+   * IoT设备地理围栏数据访问层
+   */
+  @Resource
+  private IoTDeviceGeoFenceMapper ioTDeviceGeoFenceMapper;
 
-  /** IoT设备数据访问层 */
-  @Resource private IoTDeviceMapper ioTDeviceMapper;
+  /**
+   * IoT设备数据访问层
+   */
+  @Resource
+  private IoTDeviceMapper ioTDeviceMapper;
 
-  /** IoT设备围栏关联数据访问层 */
-  @Resource private IoTDeviceFenceRelMapper ioTDeviceFenceRelMapper;
+  /**
+   * IoT设备围栏关联数据访问层
+   */
+  @Resource
+  private IoTDeviceFenceRelMapper ioTDeviceFenceRelMapper;
 
-  /** IoT设备服务 */
-  @Resource private IIoTDeviceService devInstanceService;
+  /**
+   * IoT设备服务
+   */
+  @Resource
+  private IIoTDeviceService devInstanceService;
 
-  /** 围栏服务 */
-  @Resource private FenceService fenceService;
+  /**
+   * 围栏服务
+   */
+  @Resource
+  private FenceService fenceService;
 
   /**
    * 查询围栏列表
@@ -85,7 +103,7 @@ public class FenceController extends BaseController {
    * <p>根据查询条件分页获取地理围栏列表，支持按名称、类型、 触发方式等条件筛选
    *
    * @param downRequest 加密的请求数据
-   * @param request HTTP请求对象
+   * @param request     HTTP请求对象
    * @return 围栏列表分页结果
    */
   @PostMapping(value = "/selectFence")
@@ -124,7 +142,7 @@ public class FenceController extends BaseController {
    * <p>创建新的地理围栏，支持圆形和多边形围栏类型， 可配置触发条件、时间规则等
    *
    * @param downRequest 加密的请求数据
-   * @param request HTTP请求对象
+   * @param request     HTTP请求对象
    * @return 创建的围栏ID
    */
   @PostMapping("/setFence")
@@ -161,7 +179,7 @@ public class FenceController extends BaseController {
    * <p>更新现有地理围栏的配置信息，包括围栏形状、触发条件等
    *
    * @param downRequest 加密的请求数据
-   * @param request HTTP请求对象
+   * @param request     HTTP请求对象
    * @return 更新结果
    */
   @PostMapping("/updateFence")
@@ -219,7 +237,7 @@ public class FenceController extends BaseController {
    * <p>获取指定围栏的完整配置信息
    *
    * @param downRequest 加密的请求数据
-   * @param request HTTP请求对象
+   * @param request     HTTP请求对象
    * @return 围栏详细信息
    */
   @PostMapping("/selectFenceById")
@@ -230,7 +248,9 @@ public class FenceController extends BaseController {
     return R.ok(ioTDeviceGeoFence);
   }
 
-  /** 复制围栏 */
+  /**
+   * 复制围栏
+   */
   @PostMapping("/fence/copy")
   public R copyFence(@RequestBody String downRequest, HttpServletRequest request) {
 
@@ -245,7 +265,9 @@ public class FenceController extends BaseController {
     return R.ok(ioTDeviceGeoFence);
   }
 
-  /** 查询绑定围栏设备列表 */
+  /**
+   * 查询绑定围栏设备列表
+   */
   @PostMapping("/selectFenceDevice")
   public R selectFenceDevice(@RequestBody String downRequest, HttpServletRequest request) {
     JSONObject jsonObject = ioTInnerAuthContext.checkAndDecryptMsg(downRequest, request);
@@ -270,7 +292,9 @@ public class FenceController extends BaseController {
     return R.ok(pageBean);
   }
 
-  /** 根据设备iotId与创建者查询围栏 */
+  /**
+   * 根据设备iotId与创建者查询围栏
+   */
   @PostMapping("/selectFenceByIotId")
   public R selectFenceByIotId(@RequestBody String downRequest, HttpServletRequest request) {
     JSONObject jsonObject = ioTInnerAuthContext.checkAndDecryptMsg(downRequest, request);
@@ -282,7 +306,9 @@ public class FenceController extends BaseController {
     return R.ok(pageBean);
   }
 
-  /** 绑定设备 */
+  /**
+   * 绑定设备
+   */
   @PostMapping("/addFenceDevice")
   public R addFenceDevice(@RequestBody String downRequest, HttpServletRequest request) {
     JSONObject jsonObject = ioTInnerAuthContext.checkAndDecryptMsg(downRequest, request);
@@ -302,7 +328,9 @@ public class FenceController extends BaseController {
     return R.ok();
   }
 
-  /** 解绑设备 */
+  /**
+   * 解绑设备
+   */
   @PostMapping("/delFenceDevice")
   public R delFenceDevice(@RequestBody String downRequest, HttpServletRequest request) {
     JSONObject jsonObject = ioTInnerAuthContext.checkAndDecryptMsg(downRequest, request);

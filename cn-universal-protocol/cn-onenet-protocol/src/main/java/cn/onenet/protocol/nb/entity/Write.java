@@ -14,16 +14,18 @@ package cn.onenet.protocol.nb.entity;
 
 import cn.onenet.protocol.nb.config.Config;
 
-/** Created by zhuocongbin date 2018/3/15 */
+/**
+ * Created by zhuocongbin date 2018/3/15
+ */
 public class Write extends CommonEntity {
 
   private Integer mode;
 
   /**
-   * @param imei 设备IMEI
-   * @param objId 写对象ID
+   * @param imei      设备IMEI
+   * @param objId     写对象ID
    * @param objInstId 写实例ID
-   * @param mode 写的模式（1：replace，2：partial update）
+   * @param mode      写的模式（1：replace，2：partial update）
    */
   public Write(String imei, Integer objId, Integer objInstId, Integer mode) {
     this.imei = imei;

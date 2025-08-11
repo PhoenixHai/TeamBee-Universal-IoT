@@ -18,8 +18,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/** 指定编解码编解码对象 @Author Aleo */
+/**
+ * 指定编解码编解码对象 @Author Aleo
+ */
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface CodeBody {}
+public @interface CodeBody {
+
+}

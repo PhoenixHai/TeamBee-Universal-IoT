@@ -30,14 +30,18 @@ import lombok.NoArgsConstructor;
 @Builder
 public class IoTDeviceDTO {
 
-  /** 归属应用ID */
+  /**
+   * 归属应用ID
+   */
   private String applicationId;
 
   private String appId;
   private String userId;
   private IoTProductDTO iotProductDTO;
 
-  /** 用户唯一标志 */
+  /**
+   * 用户唯一标志
+   */
   private String userUnionId;
 
   private String upTopic;
@@ -57,20 +61,28 @@ public class IoTDeviceDTO {
   // 在线和离线
   private Boolean state;
 
-  /** 应用状态,true表示禁用 */
+  /**
+   * 应用状态,true表示禁用
+   */
   private boolean appDisable;
 
-  /** 首次注册时间 */
+  /**
+   * 首次注册时间
+   */
   private Integer registryTime;
 
   private Integer onlineTime;
   private List<String> devGroupId;
   private JSONObject productConfig;
 
-  /** 是否有影子 */
+  /**
+   * 是否有影子
+   */
   private boolean shadow;
 
-  /** 设备配置字段 */
+  /**
+   * 设备配置字段
+   */
   private String devConfiguration;
 
   private String areasId;

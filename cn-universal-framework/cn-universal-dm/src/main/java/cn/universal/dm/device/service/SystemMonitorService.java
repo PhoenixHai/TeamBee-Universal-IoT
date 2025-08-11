@@ -30,7 +30,9 @@ public class SystemMonitorService {
   private long lastCpuTime = 0;
   private long lastCpuIdleTime = 0;
 
-  /** 定时更新系统监控数据（每5秒执行一次） */
+  /**
+   * 定时更新系统监控数据（每5秒执行一次）
+   */
 //  @Scheduled(fixedRate = 5000)
   public void updateSystemMetrics() {
     try {
@@ -62,14 +64,17 @@ public class SystemMonitorService {
       // 更新缓存
       systemMetrics.set(metrics);
 
-      log.debug("[系统监控] 系统指标已更新: CPU={}%, Memory={}%, Disk={}%", cpuUsage, memoryUsage, diskUsage);
+      log.debug("[系统监控] 系统指标已更新: CPU={}%, Memory={}%, Disk={}%", cpuUsage, memoryUsage,
+          diskUsage);
 
     } catch (Exception e) {
       log.error("[系统监控] 更新系统指标失败", e);
     }
   }
 
-  /** 获取CPU使用率 */
+  /**
+   * 获取CPU使用率
+   */
   private double getCpuUsage() {
     try {
       // 读取/proc/stat文件获取CPU信息
@@ -121,7 +126,9 @@ public class SystemMonitorService {
     return 0.0;
   }
 
-  /** 获取内存使用率 */
+  /**
+   * 获取内存使用率
+   */
   private double getMemoryUsage() {
     try {
       // 读取/proc/meminfo文件获取内存信息
@@ -161,7 +168,8 @@ public class SystemMonitorService {
       if (totalMemory > 0) {
         double usage = 100.0 * (1.0 - (double) availableMemory / totalMemory);
         log.debug(
-            "[系统监控] 内存使用率计算: 总内存={} kB, 可用内存={} kB, 使用率={}%", totalMemory, availableMemory, usage);
+            "[系统监控] 内存使用率计算: 总内存={} kB, 可用内存={} kB, 使用率={}%", totalMemory,
+            availableMemory, usage);
         return Math.min(100.0, Math.max(0.0, usage));
       }
     } catch (Exception e) {
@@ -170,7 +178,9 @@ public class SystemMonitorService {
     return 0.0;
   }
 
-  /** 获取磁盘使用率 */
+  /**
+   * 获取磁盘使用率
+   */
   private double getDiskUsage() {
     try {
       // 使用df命令获取磁盘使用情况
@@ -199,7 +209,9 @@ public class SystemMonitorService {
     return 0.0;
   }
 
-  /** 获取网络流量 */
+  /**
+   * 获取网络流量
+   */
   private Map<String, Object> getNetworkTraffic() {
     Map<String, Object> networkData = new HashMap<>();
 
@@ -243,7 +255,8 @@ public class SystemMonitorService {
                 totalTxBytes += txBytes;
 
                 log.debug(
-                    "[系统监控] 网络接口: {}, 接收: {} bytes, 发送: {} bytes", interfaceName, rxBytes, txBytes);
+                    "[系统监控] 网络接口: {}, 接收: {} bytes, 发送: {} bytes", interfaceName,
+                    rxBytes, txBytes);
               }
             } catch (NumberFormatException e) {
               // 跳过无法解析的行
@@ -282,7 +295,9 @@ public class SystemMonitorService {
     return networkData;
   }
 
-  /** 获取系统负载 */
+  /**
+   * 获取系统负载
+   */
   private Map<String, Object> getSystemLoad() {
     Map<String, Object> loadData = new HashMap<>();
 
@@ -315,30 +330,40 @@ public class SystemMonitorService {
     return loadData;
   }
 
-  /** 获取系统监控数据 */
+  /**
+   * 获取系统监控数据
+   */
   public Map<String, Object> getSystemMetrics() {
     return systemMetrics.get();
   }
 
-  /** 获取CPU使用率 */
+  /**
+   * 获取CPU使用率
+   */
   public double getCpuUsageRate() {
     Map<String, Object> metrics = systemMetrics.get();
     return (Double) metrics.getOrDefault("cpuUsage", 0.0);
   }
 
-  /** 获取内存使用率 */
+  /**
+   * 获取内存使用率
+   */
   public double getMemoryUsageRate() {
     Map<String, Object> metrics = systemMetrics.get();
     return (Double) metrics.getOrDefault("memoryUsage", 0.0);
   }
 
-  /** 获取磁盘使用率 */
+  /**
+   * 获取磁盘使用率
+   */
   public double getDiskUsageRate() {
     Map<String, Object> metrics = systemMetrics.get();
     return (Double) metrics.getOrDefault("diskUsage", 0.0);
   }
 
-  /** 获取网络流量（MB/s） */
+  /**
+   * 获取网络流量（MB/s）
+   */
   public double getNetworkTrafficMBps() {
     Map<String, Object> metrics = systemMetrics.get();
     Map<String, Object> networkData =
@@ -346,13 +371,17 @@ public class SystemMonitorService {
     return (Double) networkData.getOrDefault("rxMBps", 0.0);
   }
 
-  /** 检查是否为Linux系统 */
+  /**
+   * 检查是否为Linux系统
+   */
   public boolean isLinuxSystem() {
     String os = System.getProperty("os.name").toLowerCase();
     return os.contains("linux");
   }
 
-  /** 获取系统信息 */
+  /**
+   * 获取系统信息
+   */
   public Map<String, Object> getSystemInfo() {
     Map<String, Object> systemInfo = new HashMap<>();
 
@@ -391,7 +420,9 @@ public class SystemMonitorService {
     return systemInfo;
   }
 
-  /** 获取调试信息 */
+  /**
+   * 获取调试信息
+   */
   public Map<String, Object> getDebugInfo() {
     Map<String, Object> debugInfo = new HashMap<>();
 

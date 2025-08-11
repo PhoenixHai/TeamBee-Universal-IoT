@@ -27,9 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/dashboard")
 public class DashboardController extends BaseController {
 
-  @Autowired private DashboardService dashboardService;
+  @Autowired
+  private DashboardService dashboardService;
 
-  @Autowired private DashboardStatisticsTask dashboardStatisticsTask;
+  @Autowired
+  private DashboardStatisticsTask dashboardStatisticsTask;
 
   /**
    * 获取仪表盘首页数据 包含：设备总数、在线设备、今日消息、成功率等概览数据 对应图片中的4个顶部概览卡片
@@ -167,7 +169,8 @@ public class DashboardController extends BaseController {
 
     log.info("[仪表盘] 清理重复统计数据，日期: {}", cleanupDate);
     dashboardStatisticsTask.cleanupDuplicateStatistics(cleanupDate);
-    return Map.of("success", true, "message", "重复统计数据清理完成", "date", cleanupDate.toString());
+    return Map.of("success", true, "message", "重复统计数据清理完成", "date",
+        cleanupDate.toString());
   }
 
   /**
@@ -184,16 +187,16 @@ public class DashboardController extends BaseController {
   /**
    * 获取图表数据 支持多种图表类型
    *
-   * @param date 统计日期
-   * @param type 图表类型：device_trend(设备趋势)、message_trend(消息趋势)、
-   *     channel_distribution(渠道分布)、performance_metrics(性能指标)
+   * @param date    统计日期
+   * @param type    图表类型：device_trend(设备趋势)、message_trend(消息趋势)、
+   *                channel_distribution(渠道分布)、performance_metrics(性能指标)
    * @param channel 渠道（可选）
    * @return 图表数据
    */
   @GetMapping("/chart-data")
   public Map<String, Object> getChartData(
       @RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd")
-          LocalDate date,
+      LocalDate date,
       @RequestParam("type") String type,
       @RequestParam(value = "channel", required = false) String channel) {
 

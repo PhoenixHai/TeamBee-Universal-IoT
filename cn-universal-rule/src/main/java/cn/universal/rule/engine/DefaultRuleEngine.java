@@ -40,11 +40,14 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class DefaultRuleEngine implements RuleEngine {
 
-  @Resource private RuleParser ruleParser;
+  @Resource
+  private RuleParser ruleParser;
 
-  @Resource private ExpressTemplate expressTemplate;
+  @Resource
+  private ExpressTemplate expressTemplate;
 
-  @Resource private RuleFunctionTemplate ruleFunctionTemplate;
+  @Resource
+  private RuleFunctionTemplate ruleFunctionTemplate;
 
   @Override
   public JSONObject executeRule(JSONObject param, String modelDefineString, String appId) {

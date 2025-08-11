@@ -53,7 +53,7 @@ public interface ISysOssService {
    *
    * <p>处理Web表单上传的文件，自动关联到指定用户 适用于Web界面的文件上传功能
    *
-   * @param file 上传的文件对象
+   * @param file    上传的文件对象
    * @param unionId 用户唯一标识，用于关联文件所有者
    * @return 上传后的文件信息
    */
@@ -65,7 +65,7 @@ public interface ISysOssService {
    * <p>处理流式文件上传，适用于程序内部的文件上传 支持任意类型的文件上传
    *
    * @param inputStream 文件输入流
-   * @param fileName 文件名
+   * @param fileName    文件名
    * @return 上传后的文件信息
    */
   SysOss uploadStream(InputStream inputStream, String fileName);
@@ -76,7 +76,7 @@ public interface ISysOssService {
    * <p>专门处理视频文件的上传，可能包含视频特有的处理逻辑 如视频格式验证、缩略图生成等
    *
    * @param inputStream 视频文件输入流
-   * @param fileName 视频文件名
+   * @param fileName    视频文件名
    * @return 上传后的视频文件信息
    */
   SysOss uploadVideoStream(InputStream inputStream, String fileName);
@@ -86,7 +86,7 @@ public interface ISysOssService {
    *
    * <p>根据文件ID列表批量删除文件，支持删除前的业务验证 验证失败的文件不会被删除
    *
-   * @param ids 要删除的文件ID集合
+   * @param ids     要删除的文件ID集合
    * @param isValid 是否进行业务验证
    * @return 删除操作是否成功
    */
@@ -97,7 +97,7 @@ public interface ISysOssService {
    *
    * <p>根据文件URL列表批量删除文件，支持删除前的业务验证 适用于通过文件访问地址进行删除的场景
    *
-   * @param urls 要删除的文件URL数组
+   * @param urls    要删除的文件URL数组
    * @param isValid 是否进行业务验证
    * @return 删除操作是否成功
    */

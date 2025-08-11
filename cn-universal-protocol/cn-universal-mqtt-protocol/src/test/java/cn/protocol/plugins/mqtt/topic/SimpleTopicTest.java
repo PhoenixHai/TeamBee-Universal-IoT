@@ -7,7 +7,9 @@ import cn.universal.mqtt.protocol.topic.MQTTTopicManager;
 import cn.universal.mqtt.protocol.topic.MQTTTopicType;
 import org.junit.jupiter.api.Test;
 
-/** 简单的主题解析测试 */
+/**
+ * 简单的主题解析测试
+ */
 public class SimpleTopicTest {
 
   @Test

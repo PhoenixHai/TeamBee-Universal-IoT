@@ -27,13 +27,19 @@ import javax.crypto.Cipher;
 
 public class RSAUtils {
 
-  /** 密钥长度 于原文长度对应 以及越长速度越慢 */
+  /**
+   * 密钥长度 于原文长度对应 以及越长速度越慢
+   */
   private static final int KEY_SIZE = 1024;
 
-  /** 用于封装随机产生的公钥与私钥 */
+  /**
+   * 用于封装随机产生的公钥与私钥
+   */
   public static Map<Integer, String> keyMap = new HashMap<Integer, String>();
 
-  /** 随机生成密钥对 */
+  /**
+   * 随机生成密钥对
+   */
   public static void genKeyPair() throws Exception {
     // KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象
     KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
@@ -68,7 +74,7 @@ public class RSAUtils {
   /**
    * RSA公钥加密
    *
-   * @param str 加密字符串
+   * @param str       加密字符串
    * @param publicKey 公钥
    * @return 密文
    * @throws Exception 加密过程中的异常信息
@@ -89,7 +95,7 @@ public class RSAUtils {
   /**
    * RSA私钥解密
    *
-   * @param str 加密字符串
+   * @param str        加密字符串
    * @param privateKey 私钥
    * @return 明文
    * @throws Exception 解密过程中的异常信息

@@ -20,9 +20,13 @@ package cn.universal.http.protocol.config;
  */
 public interface HttpConstant {
 
-  /** 是否支持南向云对接 */
+  /**
+   * 是否支持南向云对接
+   */
   String THIRD_DOWN_SUPPORT = "thirdDownSupport";
 
-  /** 南向云对接地址 */
+  /**
+   * 南向云对接地址
+   */
   String THIRD_DOWN_URL = "thirdDownUrl";
 }

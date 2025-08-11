@@ -20,7 +20,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 
-/** 乐橙配置 */
+/**
+ * 乐橙配置
+ */
 @Component
 @Data
 public class ImoulifeConfig {

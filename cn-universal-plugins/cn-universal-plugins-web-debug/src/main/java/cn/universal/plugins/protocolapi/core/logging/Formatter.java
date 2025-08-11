@@ -10,13 +10,13 @@ import java.util.Date;
 public class Formatter {
 
   private static final String[] SPACES = {
-    " ",
-    "  ",
-    "    ",
-    "        ", // 1,2,4,8
-    // spaces
-    "                ", // 16 spaces
-    "                                "
+      " ",
+      "  ",
+      "    ",
+      "        ", // 1,2,4,8
+      // spaces
+      "                ", // 16 spaces
+      "                                "
   }; // 32 spaces
 
   private static final CachingDateFormatter CACHING_DATE_FORMATTER =
@@ -27,7 +27,8 @@ public class Formatter {
 
   private StringBuilder buf = new StringBuilder();
 
-  private Formatter() {}
+  private Formatter() {
+  }
 
   public static Formatter create() {
     return new Formatter();
@@ -59,7 +60,9 @@ public class Formatter {
     }
   }
 
-  /** Fast space padding method. */
+  /**
+   * Fast space padding method.
+   */
   private static void spacePad(StringBuilder sbuf, int length) {
     while (length >= 32) {
       sbuf.append(SPACES[5]);

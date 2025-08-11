@@ -53,10 +53,10 @@ public interface Dialect {
   /**
    * 获取分页sql
    *
-   * @param sql 原始SQL
+   * @param sql      原始SQL
    * @param boundSql boundSql对象
-   * @param offset 跳过条数
-   * @param limit 限制条数
+   * @param offset   跳过条数
+   * @param limit    限制条数
    * @return 返回分页SQL
    */
   String getPageSql(String sql, BoundSql boundSql, long offset, long limit);

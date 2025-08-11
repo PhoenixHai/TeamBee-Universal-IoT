@@ -26,7 +26,9 @@ import org.quartz.SchedulerException;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
 
-/** 定时任务工具类 @Author ruoyi */
+/**
+ * 定时任务工具类 @Author ruoyi
+ */
 public class ScheduleUtils {
 
   /**
@@ -40,17 +42,23 @@ public class ScheduleUtils {
     return isConcurrent ? QuartzJobExecution.class : QuartzDisallowConcurrentExecution.class;
   }
 
-  /** 构建任务触发对象 */
+  /**
+   * 构建任务触发对象
+   */
   public static TriggerKey getTriggerKey(Long jobId, String jobGroup) {
     return TriggerKey.triggerKey(ScheduleConstants.TASK_CLASS_NAME + jobId, jobGroup);
   }
 
-  /** 构建任务键对象 */
+  /**
+   * 构建任务键对象
+   */
   public static JobKey getJobKey(Long jobId, String jobGroup) {
     return JobKey.jobKey(ScheduleConstants.TASK_CLASS_NAME + jobId, jobGroup);
   }
 
-  /** 创建定时任务 */
+  /**
+   * 创建定时任务
+   */
   public static void createScheduleJob(Scheduler scheduler, SysJob job) throws SchedulerException {
     Class<? extends Job> jobClass = getQuartzJobClass(job);
     // 构建job信息
@@ -88,7 +96,9 @@ public class ScheduleUtils {
     }
   }
 
-  /** 设置定时任务策略 */
+  /**
+   * 设置定时任务策略
+   */
   public static CronScheduleBuilder handleCronScheduleMisfirePolicy(
       SysJob job, CronScheduleBuilder cb) throws BizException {
     switch (job.getMisfirePolicy()) {

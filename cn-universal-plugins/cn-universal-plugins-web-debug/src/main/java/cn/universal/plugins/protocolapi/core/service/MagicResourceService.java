@@ -14,23 +14,29 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
-/** 资源存储服务 */
+/**
+ * 资源存储服务
+ */
 public interface MagicResourceService {
 
-  /** 刷新缓存 */
+  /**
+   * 刷新缓存
+   */
   void refresh();
 
   Resource getResource();
 
   boolean processNotify(MagicNotify magicNotify);
 
-  /** 保存分组 */
+  /**
+   * 保存分组
+   */
   boolean saveGroup(Group group);
 
   /**
    * 移动
    *
-   * @param src 源ID
+   * @param src     源ID
    * @param groupId 目标分组
    */
   boolean move(String src, String groupId);
@@ -38,15 +44,19 @@ public interface MagicResourceService {
   /**
    * 复制分组
    *
-   * @param src 源ID
+   * @param src    源ID
    * @param target 目标分组
    */
   String copyGroup(String src, String target);
 
-  /** 全部分组 */
+  /**
+   * 全部分组
+   */
   TreeNode<Group> tree(String type);
 
-  /** 全部分组 */
+  /**
+   * 全部分组
+   */
   Map<String, TreeNode<Group>> tree();
 
   List<Group> getGroupsByFileId(String id);
@@ -86,26 +96,38 @@ public interface MagicResourceService {
    */
   <T extends MagicEntity> List<T> files(String type);
 
-  /** 获取文件详情 */
+  /**
+   * 获取文件详情
+   */
   <T extends MagicEntity> T file(String id);
 
-  /** 获取分组详情 */
+  /**
+   * 获取分组详情
+   */
   Group getGroup(String id);
 
   void export(String groupId, List<SelectedResource> resources, OutputStream os) throws IOException;
 
-  /** 锁定资源 */
+  /**
+   * 锁定资源
+   */
   boolean lock(String id);
 
-  /** 解锁资源 */
+  /**
+   * 解锁资源
+   */
   boolean unlock(String id);
 
   boolean upload(InputStream inputStream, boolean full) throws IOException;
 
-  /** 获取完整分组路径 */
+  /**
+   * 获取完整分组路径
+   */
   String getGroupPath(String groupId);
 
-  /** 获取完整分组名称 */
+  /**
+   * 获取完整分组名称
+   */
   String getGroupName(String groupId);
 
   default String getScriptName(MagicEntity entity) {

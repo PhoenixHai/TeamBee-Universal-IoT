@@ -23,7 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.util.StringUtils;
 
-/** IP白名单过滤器 @Author Aleo */
+/**
+ * IP白名单过滤器 @Author Aleo
+ */
 @Slf4j
 public class IpWhitelistFilter extends BasicAuthenticationFilter {
 

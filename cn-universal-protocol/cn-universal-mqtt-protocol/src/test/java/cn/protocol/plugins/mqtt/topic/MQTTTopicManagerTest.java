@@ -45,7 +45,8 @@ class MQTTTopicManagerTest {
 
   private static final Logger log = LoggerFactory.getLogger(MQTTTopicManagerTest.class);
 
-  @InjectMocks private MQTTTopicManager topicManager;
+  @InjectMocks
+  private MQTTTopicManager topicManager;
 
   // Mock 数据
   private static final String VALID_THING_PROPERTY_TOPIC =
@@ -71,37 +72,41 @@ class MQTTTopicManagerTest {
 
   // ==================== 测试数据准备 ====================
 
-  /** 创建测试用的主题配置JSON */
+  /**
+   * 创建测试用的主题配置JSON
+   */
   private String createTestTopicConfigJson() {
     return """
-           {
-               "thing-model": {
-                   "description": "物模型主题",
-                   "topics": [
-                       "$thing/up/property/+/+",
-                       "$thing/up/event/+/+",
-                       "$thing/down/+/+"
-                   ]
-               },
-               "system-level": {
-                   "description": "系统级主题",
-                   "topics": [
-                       "$ota/report/+/+",
-                       "$ota/update/+/+"
-                   ]
-               },
-               "passthrough": {
-                   "description": "透传主题",
-                   "topics": [
-                       "$thing/up/+/+",
-                       "$thing/down/+/+"
-                   ]
-               }
-           }
-           """;
+        {
+            "thing-model": {
+                "description": "物模型主题",
+                "topics": [
+                    "$thing/up/property/+/+",
+                    "$thing/up/event/+/+",
+                    "$thing/down/+/+"
+                ]
+            },
+            "system-level": {
+                "description": "系统级主题",
+                "topics": [
+                    "$ota/report/+/+",
+                    "$ota/update/+/+"
+                ]
+            },
+            "passthrough": {
+                "description": "透传主题",
+                "topics": [
+                    "$thing/up/+/+",
+                    "$thing/down/+/+"
+                ]
+            }
+        }
+        """;
   }
 
-  /** 创建测试用的配置Map */
+  /**
+   * 创建测试用的配置Map
+   */
   private Map<String, Object> createTestConfigMap() {
     Map<String, Object> configMap = new HashMap<>();
     configMap.put("subscribeTopics", "$thing/up/property/+/+,$thing/up/event/+/+,$ota/report/+/+");

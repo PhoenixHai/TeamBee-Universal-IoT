@@ -104,11 +104,11 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @ConditionalOnClass({RequestMappingHandlerMapping.class})
 @EnableConfigurationProperties(MagicAPIProperties.class)
 @Import({
-  MagicServletConfiguration.class,
-  MagicJsonAutoConfiguration.class,
-  ApplicationUriPrinter.class,
-  MagicModuleConfiguration.class,
-  MagicDynamicRegistryConfiguration.class
+    MagicServletConfiguration.class,
+    MagicJsonAutoConfiguration.class,
+    ApplicationUriPrinter.class,
+    MagicModuleConfiguration.class,
+    MagicDynamicRegistryConfiguration.class
 })
 @EnableWebSocket
 @AutoConfigureAfter(MagicPluginConfiguration.class)
@@ -116,18 +116,26 @@ public class MagicAPIAutoConfiguration implements WebMvcConfigurer, WebSocketCon
 
   private static final Logger logger = LoggerFactory.getLogger(MagicAPIAutoConfiguration.class);
 
-  /** 请求拦截器 */
+  /**
+   * 请求拦截器
+   */
   private final ObjectProvider<List<RequestInterceptor>> requestInterceptorsProvider;
 
-  /** 自定义的类型扩展 */
+  /**
+   * 自定义的类型扩展
+   */
   private final ObjectProvider<List<ExtensionMethod>> extensionMethodsProvider;
 
-  /** 内置的消息转换 */
+  /**
+   * 内置的消息转换
+   */
   private final ObjectProvider<List<HttpMessageConverter<?>>> httpMessageConvertersProvider;
 
   private final ObjectProvider<AuthorizationInterceptor> authorizationInterceptorProvider;
 
-  /** 自定义的函数 */
+  /**
+   * 自定义的函数
+   */
   private final ObjectProvider<List<MagicFunction>> magicFunctionsProvider;
 
   private final ObjectProvider<List<MagicPluginConfiguration>> magicPluginsProvider;
@@ -150,7 +158,9 @@ public class MagicAPIAutoConfiguration implements WebMvcConfigurer, WebSocketCon
 
   private boolean registerWebsocket = false;
 
-  @Autowired @Lazy private RequestMappingHandlerMapping requestMappingHandlerMapping;
+  @Autowired
+  @Lazy
+  private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
   public MagicAPIAutoConfiguration(
       MagicAPIProperties properties,
@@ -188,7 +198,8 @@ public class MagicAPIAutoConfiguration implements WebMvcConfigurer, WebSocketCon
       MagicDynamicDataSource magicDynamicDataSource) {
     Resource resourceConfig = properties.getResource();
     if (magicDynamicDataSource.isEmpty()) {
-      throw new MagicAPIException("当前未配置数据源，如已配置，请引入 spring-boot-starter-jdbc 后在试!");
+      throw new MagicAPIException(
+          "当前未配置数据源，如已配置，请引入 spring-boot-starter-jdbc 后在试!");
     }
     MagicDynamicDataSource.DataSourceNode dataSourceNode =
         magicDynamicDataSource.getDataSource(resourceConfig.getDatasource());
@@ -247,11 +258,15 @@ public class MagicAPIAutoConfiguration implements WebMvcConfigurer, WebSocketCon
   @Bean
   @ConditionalOnMissingBean(MagicNotifyService.class)
   public MagicNotifyService magicNotifyService() {
-    logger.info("未配置集群通知服务，本实例不会推送通知，集群环境下可能会有问题，如需开启，请引用magic-api-plugin-cluster插件");
-    return magicNotify -> {};
+    logger.info(
+        "未配置集群通知服务，本实例不会推送通知，集群环境下可能会有问题，如需开启，请引用magic-api-plugin-cluster插件");
+    return magicNotify -> {
+    };
   }
 
-  /** 注入API调用Service */
+  /**
+   * 注入API调用Service
+   */
   @Bean
   @ConditionalOnMissingBean
   public MagicAPIService magicAPIService(
@@ -273,7 +288,9 @@ public class MagicAPIAutoConfiguration implements WebMvcConfigurer, WebSocketCon
         applicationContext);
   }
 
-  /** 注册模块、类型扩展 */
+  /**
+   * 注册模块、类型扩展
+   */
   private void setupMagicModules(
       List<ExtensionMethod> extensionMethods, List<LanguageProvider> languageProviders) {
     // 设置脚本import时 class加载策略

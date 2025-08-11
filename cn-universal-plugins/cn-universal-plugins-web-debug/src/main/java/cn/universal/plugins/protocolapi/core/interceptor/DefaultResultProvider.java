@@ -7,7 +7,9 @@ import cn.universal.plugins.protocolapi.core.context.RequestEntity;
 import cn.universal.plugins.protocolapi.utils.ScriptManager;
 import java.util.Map;
 
-/** 默认结果封装实现 */
+/**
+ * 默认结果封装实现
+ */
 public class DefaultResultProvider implements ResultProvider {
 
   private final String responseScript;

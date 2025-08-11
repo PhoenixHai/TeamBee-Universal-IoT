@@ -23,7 +23,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-/** OSS云存储对象 @Author Lion Li */
+/**
+ * OSS云存储对象 @Author Lion Li
+ */
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
@@ -34,47 +36,68 @@ public class SysOss implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  /** 云存储主键 */
+  /**
+   * 云存储主键
+   */
   //  @TableId(value = "oss_id", type = IdType.AUTO)
-  @Id private Long ossId;
+  @Id
+  private Long ossId;
 
-  /** 文件名 */
+  /**
+   * 文件名
+   */
   @Column(name = "file_name")
   private String fileName;
 
-  /** 原名 */
+  /**
+   * 原名
+   */
   @Column(name = "original_name")
   private String originalName;
 
-  /** 文件后缀名 */
+  /**
+   * 文件后缀名
+   */
   @Column(name = "file_suffix")
   private String fileSuffix;
 
-  /** URL地址 */
+  /**
+   * URL地址
+   */
   @Column(name = "url")
   private String url;
 
-  /** 创建时间 */
+  /**
+   * 创建时间
+   */
   //  @TableField(fill = FieldFill.INSERT)
   @Column(name = "create_time")
   private Date createTime;
 
-  /** 上传人 */
+  /**
+   * 上传人
+   */
   //  @TableField(fill = FieldFill.INSERT)
   @Column(name = "create_by")
   private String createBy;
 
-  /** 更新时间 */
+  /**
+   * 更新时间
+   */
   //  @TableField(fill = FieldFill.INSERT_UPDATE)
   @Column(name = "update_time")
   private Date updateTime;
 
-  /** 更新人 */
+  /**
+   * 更新人
+   */
   //  @TableField(fill = FieldFill.INSERT_UPDATE)
   @Column(name = "update_by")
   private String updateBy;
 
-  /** 服务商 */
+  /**
+   * 服务商
+   */
   @Column(name = "third")
   private String service;
 }

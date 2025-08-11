@@ -10,4 +10,6 @@ package cn.universal.core.service;
  * @Wechat: outlookFil
  *
  *
- */ public interface IOta {}
+ */ public interface IOta {
+
+}

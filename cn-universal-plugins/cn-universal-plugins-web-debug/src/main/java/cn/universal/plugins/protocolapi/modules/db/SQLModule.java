@@ -95,7 +95,8 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
   private String logicDeleteValue;
   public static List<SqlParameter> params;
 
-  public SQLModule() {}
+  public SQLModule() {
+  }
 
   public SQLModule(MagicDynamicDataSource dynamicDataSource) {
     this.dynamicDataSource = dynamicDataSource;
@@ -242,7 +243,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     }
   }
 
-  /** 开启事务，手动提交和回滚 */
+  /**
+   * 开启事务，手动提交和回滚
+   */
   @Comment("开启事务，返回事务对象")
   public Transaction transaction() {
     return new Transaction(this.dataSourceNode.getDataSourceTransactionManager());
@@ -252,7 +255,7 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
    * 使用缓存
    *
    * @param cacheName 缓存名
-   * @param ttl 过期时间
+   * @param ttl       过期时间
    */
   @Comment("使用缓存")
   public SQLModule cache(
@@ -310,7 +313,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return sqlModule;
   }
 
-  /** 数据源切换 */
+  /**
+   * 数据源切换
+   */
   @Override
   @Transient
   public SQLModule getDynamicAttribute(String key) {
@@ -323,7 +328,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return sqlModule;
   }
 
-  /** 查询List */
+  /**
+   * 查询List
+   */
   @Comment("查询SQL，返回List类型结果")
   public List<Map<String, Object>> select(
       RuntimeContext runtimeContext,
@@ -331,7 +338,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return select(runtimeContext, sqlOrXml, null);
   }
 
-  /** 查询List，并传入变量信息 */
+  /**
+   * 查询List，并传入变量信息
+   */
   @Comment("查询SQL，并传入变量信息，返回List类型结果")
   public List<Map<String, Object>> select(
       RuntimeContext runtimeContext,
@@ -363,7 +372,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     }
   }
 
-  /** 执行update */
+  /**
+   * 执行update
+   */
   @Comment("执行update操作，返回受影响行数")
   public int update(
       RuntimeContext runtimeContext,
@@ -371,7 +382,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return update(runtimeContext, sqlOrXml, null);
   }
 
-  /** 执行update，并传入变量信息 */
+  /**
+   * 执行update，并传入变量信息
+   */
   @Comment("执行update操作，并传入变量信息，返回受影响行数")
   public int update(
       RuntimeContext runtimeContext,
@@ -396,7 +409,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
             });
   }
 
-  /** 插入并返回主键 */
+  /**
+   * 插入并返回主键
+   */
   @Comment("执行insert操作，返回插入主键")
   public Object insert(
       RuntimeContext runtimeContext,
@@ -404,7 +419,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return insert(runtimeContext, sqlOrXml, null, null);
   }
 
-  /** 插入并返回主键，并传入变量信息 */
+  /**
+   * 插入并返回主键，并传入变量信息
+   */
   @Comment("执行insert操作，并传入变量信息，返回插入主键")
   public Object insert(
       RuntimeContext runtimeContext,
@@ -413,7 +430,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return insert(runtimeContext, sqlOrXml, null, params);
   }
 
-  /** 插入并返回主键 */
+  /**
+   * 插入并返回主键
+   */
   @Comment("执行insert操作，返回插入主键")
   public Object insert(
       RuntimeContext runtimeContext,
@@ -422,7 +441,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return insert(runtimeContext, sqlOrXml, primary, null);
   }
 
-  /** 插入并返回主键 */
+  /**
+   * 插入并返回主键
+   */
   @Comment("执行insert操作，并传入主键和变量信息，返回插入主键")
   public Object insert(
       RuntimeContext runtimeContext,
@@ -446,7 +467,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     deleteCache(this.cacheName);
   }
 
-  /** 插入并返回主键 */
+  /**
+   * 插入并返回主键
+   */
   @Comment("批量执行操作，返回受影响的行数")
   public int batchUpdate(RuntimeContext runtimeContext, String sql, List<Object[]> args) {
     assertDatasourceNotNull();
@@ -477,7 +500,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return this;
   }
 
-  /** 插入并返回主键 */
+  /**
+   * 插入并返回主键
+   */
   @Comment("批量执行操作，返回受影响的行数")
   public int batchUpdate(
       RuntimeContext runtimeContext, String sql, int batchSize, List<Object[]> args) {
@@ -520,7 +545,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
         false);
   }
 
-  /** 插入并返回主键 */
+  /**
+   * 插入并返回主键
+   */
   @Comment("批量执行操作，返回受影响的行数")
   public int batchUpdate(@Comment(name = "sqls", value = "`SQL`语句") List<String> sqls) {
     assertDatasourceNotNull();
@@ -542,7 +569,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
         false);
   }
 
-  /** 分页查询 */
+  /**
+   * 分页查询
+   */
   @Comment("执行分页查询，分页条件自动获取")
   public Object page(
       RuntimeContext runtimeContext,
@@ -551,7 +580,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return page(new BoundSql(runtimeContext, sqlOrXml, params, this));
   }
 
-  /** 分页查询,并传入变量信息 */
+  /**
+   * 分页查询,并传入变量信息
+   */
   @Comment("执行分页查询，并传入变量信息，分页条件自动获取")
   public Object page(
       RuntimeContext runtimeContext,
@@ -559,7 +590,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return page(runtimeContext, sqlOrXml, (Map<String, Object>) null);
   }
 
-  /** 分页查询（手动传入limit和offset参数） */
+  /**
+   * 分页查询（手动传入limit和offset参数）
+   */
   @Comment("执行分页查询，分页条件手动传入")
   public Object page(
       RuntimeContext runtimeContext,
@@ -569,7 +602,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return page(runtimeContext, sqlOrXml, limit, offset, null);
   }
 
-  /** 分页查询（手动传入limit和offset参数） */
+  /**
+   * 分页查询（手动传入limit和offset参数）
+   */
   @Comment("执行分页查询，并传入变量信息，分页条件手动传入")
   public Object page(
       RuntimeContext runtimeContext,
@@ -592,7 +627,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return this.dataSourceNode == null ? "unknown" : dataSourceNode.getName();
   }
 
-  /** 分页查询（手动传入分页SQL语句） */
+  /**
+   * 分页查询（手动传入分页SQL语句）
+   */
   @Comment("执行分页查询，分页`SQL`语句手动传入")
   public Object page(
       RuntimeContext runtimeContext,
@@ -601,7 +638,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return page(runtimeContext, countSqlOrXml, sqlOrXml, null);
   }
 
-  /** 分页查询（手动传入分页SQL语句） */
+  /**
+   * 分页查询（手动传入分页SQL语句）
+   */
   @Comment("执行分页查询，并传入变量信息，分页`SQL`countSqlOrXml")
   public Object page(
       RuntimeContext runtimeContext,
@@ -614,7 +653,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return page(count, boundSql, page, null);
   }
 
-  /** 分页查询（手动传入count） */
+  /**
+   * 分页查询（手动传入count）
+   */
   @Comment("执行分页查询，并传入变量信息，分页`SQL`count")
   public Object page(
       RuntimeContext runtimeContext,
@@ -650,7 +691,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return page(count, boundSql, page, dialect);
   }
 
-  /** 查询总条目数 */
+  /**
+   * 查询总条目数
+   */
   @Comment("查询总条目数")
   public Integer count(
       RuntimeContext runtimeContext,
@@ -658,7 +701,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return count(runtimeContext, sqlOrXml, null);
   }
 
-  /** 查询总条目数 */
+  /**
+   * 查询总条目数
+   */
   @Comment("查询总条目数，并传入变量信息")
   public Integer count(
       RuntimeContext runtimeContext,
@@ -670,7 +715,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return selectInt(countBoundSql);
   }
 
-  /** 查询int值 */
+  /**
+   * 查询int值
+   */
   @Comment("查询int值，适合单行单列int的结果")
   public Integer selectInt(
       RuntimeContext runtimeContext,
@@ -678,7 +725,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return selectInt(runtimeContext, sqlOrXml, null);
   }
 
-  /** 查询int值 */
+  /**
+   * 查询int值
+   */
   @Comment("查询int值，并传入变量信息，适合单行单列int的结果")
   public Integer selectInt(
       RuntimeContext runtimeContext,
@@ -701,7 +750,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
                     boundSql.getParameters()));
   }
 
-  /** 查询Map */
+  /**
+   * 查询Map
+   */
   @Comment("查询单条结果，查不到返回null")
   public Map<String, Object> selectOne(
       RuntimeContext runtimeContext,
@@ -709,7 +760,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return selectOne(runtimeContext, sqlOrXml, null);
   }
 
-  /** 查询Map,并传入变量信息 */
+  /**
+   * 查询Map,并传入变量信息
+   */
   @Comment("查询单条结果，并传入变量信息，查不到返回null")
   public Map<String, Object> selectOne(
       RuntimeContext runtimeContext,
@@ -738,7 +791,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
         });
   }
 
-  /** 查询单行单列的值 */
+  /**
+   * 查询单行单列的值
+   */
   @Comment("查询单行单列的值")
   public Object selectValue(
       RuntimeContext runtimeContext,
@@ -746,7 +801,9 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
     return selectValue(runtimeContext, sqlOrXml, null);
   }
 
-  /** 查询单行单列的值，并传入变量信息 */
+  /**
+   * 查询单行单列的值，并传入变量信息
+   */
   @Comment("查询单行单列的值，并传入变量信息")
   public Object selectValue(
       RuntimeContext runtimeContext,
@@ -807,7 +864,7 @@ public class SQLModule implements DynamicAttribute<SQLModule, SQLModule>, Dynami
       if (useGeneratedKeys) {
         return connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
       }
-      return connection.prepareStatement(sql, new String[] {primary});
+      return connection.prepareStatement(sql, new String[]{primary});
     }
 
     public Object getObjectKey() {

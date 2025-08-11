@@ -16,7 +16,9 @@ import cn.universal.quartz.domain.SysJob;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobExecutionContext;
 
-/** 定时任务处理（禁止并发执行） @Author ruoyi */
+/**
+ * 定时任务处理（禁止并发执行） @Author ruoyi
+ */
 @DisallowConcurrentExecution
 public class QuartzDisallowConcurrentExecution extends AbstractQuartzJob {
 

@@ -19,7 +19,8 @@ public class TtlAuthContextHolder {
   private TransmittableThreadLocal threadLocal = new TransmittableThreadLocal();
   private static final TtlAuthContextHolder instance = new TtlAuthContextHolder();
 
-  private TtlAuthContextHolder() {}
+  private TtlAuthContextHolder() {
+  }
 
   public static TtlAuthContextHolder getInstance() {
     return instance;
