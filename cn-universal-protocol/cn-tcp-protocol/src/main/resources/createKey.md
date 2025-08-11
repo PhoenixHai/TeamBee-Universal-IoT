@@ -1,0 +1,11 @@
+### 生成服务端密钥
+
+1）keytool -genkey -alias clientkey -keystore server.keystore
+2）keytool -export -alias clientkey -keystore server.keystore -file client.crt
+3）keytool -import -alias clientkey -file client.crt -keystore trust_server.keystore
+
+## 生成客户端密钥
+
+1）keytool -genkey -alias clientkey -keystore client.keystore
+2）keytool -export -alias clientkey -keystore client.keystore -file client.crt
+3）keytool -import -alias clientkey -file client.crt -keystore trust_client.keystore
