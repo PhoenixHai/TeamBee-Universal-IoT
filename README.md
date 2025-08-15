@@ -78,11 +78,11 @@ Universal IoT
 
 ### 直接使用天翼产品
 
-<video src="/__MACOSX/shot/ctaiot.mp4" controls loop poster="cover.jpg" width="100%"></video>
+<img src="__MACOSX/shot/99.gif">
 
-|                             |                            | 
-|-----------------------------------|----------------------------|
-| ![](/__MACOSX/shot/50.png) | ![](/__MACOSX/shot/51.png) | 
+|                            |                            |                            | 
+|----------------------------|----------------------------|----------------------------|
+| ![](/__MACOSX/shot/52.png) | ![](/__MACOSX/shot/51.png) | ![](/__MACOSX/shot/50.png) | 
 
 
 ### 强大调试器
