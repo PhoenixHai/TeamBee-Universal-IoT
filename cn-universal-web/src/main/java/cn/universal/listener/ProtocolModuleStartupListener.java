@@ -14,13 +14,12 @@ package cn.universal.listener;
 
 import cn.universal.core.protocol.ProtocolModuleInfo;
 import cn.universal.core.protocol.ProtocolModuleRuntimeRegistry;
+import java.util.Collection;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
-
-import java.util.Collection;
-import java.util.List;
 
 /**
  * 协议模块启动监听器 在应用完全启动后显示已启用的协议模块信息

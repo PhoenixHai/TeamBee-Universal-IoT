@@ -12,10 +12,10 @@
 
 package cn.tcp.protocol.processor;
 
-import cn.universal.core.iot.constant.IotConstant;
-import cn.universal.dm.device.service.plugin.ProcessorExecutor;
 import cn.tcp.protocol.entity.TcpUPRequest;
 import cn.tcp.protocol.processor.TcpUPMessageProcessor.ProcessorResult;
+import cn.universal.core.iot.constant.IotConstant;
+import cn.universal.dm.device.service.plugin.ProcessorExecutor;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;

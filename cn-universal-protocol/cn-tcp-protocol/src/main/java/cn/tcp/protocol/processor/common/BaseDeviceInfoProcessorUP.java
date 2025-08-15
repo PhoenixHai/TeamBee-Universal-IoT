@@ -14,16 +14,16 @@ package cn.tcp.protocol.processor.common;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import cn.tcp.protocol.core.DeviceIdentityExtractorRegistry;
+import cn.tcp.protocol.entity.TcpUPRequest;
+import cn.tcp.protocol.manager.TcpConnectionManager;
+import cn.tcp.protocol.processor.TcpUPMessageProcessor;
 import cn.universal.core.iot.message.UPRequest;
 import cn.universal.core.service.ICodecService;
 import cn.universal.dm.device.service.AbstratIoTService;
 import cn.universal.persistence.dto.IoTDeviceDTO;
 import cn.universal.persistence.entity.IoTProduct;
 import cn.universal.persistence.query.IoTDeviceQuery;
-import cn.tcp.protocol.core.DeviceIdentityExtractorRegistry;
-import cn.tcp.protocol.entity.TcpUPRequest;
-import cn.tcp.protocol.manager.TcpConnectionManager;
-import cn.tcp.protocol.processor.TcpUPMessageProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 

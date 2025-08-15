@@ -2,6 +2,7 @@ package cn.tcp.protocol.processor;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import cn.tcp.protocol.manager.TcpServerManager;
 import cn.universal.core.config.InstanceIdProvider;
 import cn.universal.core.event.EventMessage;
 import cn.universal.core.event.processer.ProductConfigProcessor;
@@ -9,7 +10,6 @@ import cn.universal.core.iot.constant.IotConstant.ProductFlushType;
 import cn.universal.core.iot.protocol.jar.ProtocolCodecJar;
 import cn.universal.core.iot.protocol.jscrtipt.ProtocolCodecJscript;
 import cn.universal.core.iot.protocol.magic.ProtocolCodecMagic;
-import cn.tcp.protocol.manager.TcpServerManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

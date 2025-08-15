@@ -13,13 +13,13 @@
 package cn.tcp.protocol.processor.common;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.tcp.protocol.entity.TcpUPRequest;
+import cn.tcp.protocol.processor.TcpUPMessageProcessor;
 import cn.universal.core.iot.constant.IotConstant.MessageType;
 import cn.universal.core.iot.metadata.AbstractEventMetadata;
 import cn.universal.core.iot.metadata.DeviceMetadata;
 import cn.universal.dm.device.service.AbstratIoTService;
 import cn.universal.persistence.base.BaseUPRequest;
-import cn.tcp.protocol.entity.TcpUPRequest;
-import cn.tcp.protocol.processor.TcpUPMessageProcessor;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 

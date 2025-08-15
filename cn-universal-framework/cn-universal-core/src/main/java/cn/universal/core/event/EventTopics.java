@@ -9,8 +9,8 @@ package cn.universal.core.event;
  * eventPublisher.publishEvent(EventTopics.getTcpCommandTopic(instanceId), command);
  *
  * <p>// 订阅事件（在RedisEventSubscriber中） container.addMessageListener( new
- * MessageListenerAdapter(this,
- * "handleProtocolUpdated"), new ChannelTopic(EventTopics.PROTOCOL_UPDATED));
+ * MessageListenerAdapter(this, "handleProtocolUpdated"), new
+ * ChannelTopic(EventTopics.PROTOCOL_UPDATED));
  *
  * <p>// 模式匹配订阅 container.addMessageListener( new MessageListenerAdapter(this, "handleTcpCommand"),
  * new PatternTopic(EventTopics.TCP_COMMAND));

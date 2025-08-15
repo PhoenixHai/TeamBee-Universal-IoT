@@ -12,8 +12,8 @@
 
 package cn.tcp.protocol.processor;
 
-import cn.universal.dm.device.service.plugin.BaseMessageProcessor;
 import cn.tcp.protocol.entity.TcpUPRequest;
+import cn.universal.dm.device.service.plugin.BaseMessageProcessor;
 
 /**
  * TCP消息处理器接口

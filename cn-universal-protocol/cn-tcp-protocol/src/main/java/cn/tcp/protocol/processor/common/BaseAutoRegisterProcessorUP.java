@@ -15,6 +15,8 @@ package cn.tcp.protocol.processor.common;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import cn.tcp.protocol.entity.TcpUPRequest;
+import cn.tcp.protocol.processor.TcpUPMessageProcessor;
 import cn.universal.core.base.R;
 import cn.universal.core.iot.constant.IotConstant;
 import cn.universal.core.service.IotServiceImplFactory;
@@ -22,8 +24,6 @@ import cn.universal.dm.device.service.AbstratIoTService;
 import cn.universal.persistence.dto.IoTDeviceDTO;
 import cn.universal.persistence.entity.IoTProduct;
 import cn.universal.persistence.query.IoTDeviceQuery;
-import cn.tcp.protocol.entity.TcpUPRequest;
-import cn.tcp.protocol.processor.TcpUPMessageProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 

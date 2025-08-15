@@ -12,9 +12,9 @@
 
 package cn.tcp.protocol.processor;
 
+import cn.tcp.protocol.entity.TcpDownRequest;
 import cn.universal.core.base.R;
 import cn.universal.dm.device.service.plugin.ProcessorExecutor;
-import cn.tcp.protocol.entity.TcpDownRequest;
 import java.util.List;
 import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;

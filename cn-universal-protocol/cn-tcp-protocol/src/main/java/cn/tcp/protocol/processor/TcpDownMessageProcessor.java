@@ -12,9 +12,9 @@
 
 package cn.tcp.protocol.processor;
 
+import cn.tcp.protocol.entity.TcpDownRequest;
 import cn.universal.core.base.R;
 import cn.universal.dm.device.service.plugin.BaseMessageProcessor;
-import cn.tcp.protocol.entity.TcpDownRequest;
 
 /**
  * TCP消息下行处理器接口

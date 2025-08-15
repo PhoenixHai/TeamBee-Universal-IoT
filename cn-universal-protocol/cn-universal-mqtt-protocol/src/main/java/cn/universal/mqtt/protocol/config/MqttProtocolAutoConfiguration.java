@@ -13,13 +13,12 @@
 package cn.universal.mqtt.protocol.config;
 
 import cn.universal.core.protocol.ProtocolModuleRuntimeRegistry;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 
 /**
  * MQTT-v2 自动配置类
