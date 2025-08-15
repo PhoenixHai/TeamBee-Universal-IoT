@@ -44,13 +44,13 @@ Universal IoT
 
 ### 🚀 协议接入现状
 
-| 协议类型         | 状态   | 核心功能                             |
-|--------------|------|----------------------------------|
-| **TCP设备**    | ✅ 已实现 | 16进制报文传输、协议解析、云调试、在线测试           |
-| **MQTT设备**   | ✅ 已实现 | 物模型/透传模式、云调试、在线测试、支持EMQX/HiveMQ等 |
+| 协议类型         | 状态    | 核心功能                              |
+|--------------|-------|-----------------------------------|
+| **TCP设备**    | ✅ 已实现 | 16进制报文传输、协议解析、云调试、在线测试            |
+| **MQTT设备**   | ✅ 已实现 | 物模型/透传模式、云调试、在线测试、支持EMQX/HiveMQ等  |
 | **HTTP设备**   | ✅ 已实现 | REST API、Java SDK、OAuth2认证、完整接口规范 |
-| **天翼物联**     | ✅ 已实现 | 设备注册、数据上报、指令下发、标准协议对接            |
-| **云云对接**     | ✅ 已实现 | Java SDK 引入后三行代码完成对接             |
+| **天翼物联**     | ✅ 已实现 | 完整的产品创建设备注册、数据上报、指令下发、标准协议对接      |
+| **云云对接**     | ✅ 已支持 | Java SDK 自行扩展协议模块                 |
 
 
 ## 技术架构
@@ -63,20 +63,31 @@ Universal IoT
 
 ## 界面展示
 
+### 功能截图
 
-|           功能截图             |                               |                               |
-|------------------------|----------------------------------|----------------------------------|
-| ![](/__MACOSX/shot/01.png) | ![](/__MACOSX/shot/02.png)       | ![](/__MACOSX/shot/03.png)       |
-| ![](/__MACOSX/shot/04.png) | ![](/__MACOSX/shot/05.png)       | ![](/__MACOSX/shot/06.png)       |
-| ![](/__MACOSX/shot/07.png) | ![](/__MACOSX/shot/08.png)       | ![](/__MACOSX/shot/09.png)       |
-| ![](/__MACOSX/shot/10.png) | ![](/__MACOSX/shot/11.png)       | ![](/__MACOSX/shot/12.png)       |
-| ![](/__MACOSX/shot/13.png) | ![](/__MACOSX/shot/14.png)       | ![](/__MACOSX/shot/15.png)       |
-| ![](/__MACOSX/shot/16.png) | ![](/__MACOSX/shot/17.png)       | ![](/__MACOSX/shot/18.png)       |
-| ![](/__MACOSX/shot/19.png) | ![](/__MACOSX/shot/20.png)       | ![](/__MACOSX/shot/21.png)       |
+|                        |                            |                            |
+|----------------------------|----------------------------|----------------------------|
+| ![](/__MACOSX/shot/01.png) | ![](/__MACOSX/shot/02.png) | ![](/__MACOSX/shot/03.png) |
+| ![](/__MACOSX/shot/04.png) | ![](/__MACOSX/shot/05.png) | ![](/__MACOSX/shot/06.png) |
+| ![](/__MACOSX/shot/07.png) | ![](/__MACOSX/shot/08.png) | ![](/__MACOSX/shot/09.png) |
+| ![](/__MACOSX/shot/10.png) | ![](/__MACOSX/shot/11.png) | ![](/__MACOSX/shot/12.png) |
+| ![](/__MACOSX/shot/13.png) | ![](/__MACOSX/shot/14.png) | ![](/__MACOSX/shot/15.png) |
+| ![](/__MACOSX/shot/16.png) | ![](/__MACOSX/shot/17.png) | ![](/__MACOSX/shot/18.png) |
+| ![](/__MACOSX/shot/19.png) | ![](/__MACOSX/shot/20.png) | ![](/__MACOSX/shot/21.png) |
+| ![](/__MACOSX/shot/22.png) | ![](/__MACOSX/shot/23.png) | ![](/__MACOSX/shot/24.png) |
+
+### 直接使用天翼产品
+
+<video src="/__MACOSX/shot/ctaiot.mp4" controls loop poster="cover.jpg" width="100%"></video>
+
+|                             |                            | 
+|-----------------------------------|----------------------------|
+| ![](/__MACOSX/shot/50.png) | ![](/__MACOSX/shot/51.png) | 
 
 
+### 强大调试器
 
-| 强大调试器                               |                               |                               |
+|                               |                               |                               |
 |-------------------------------------|----------------------------------|----------------------------------|
 | ![](/__MACOSX/shot/debug/login.png) | ![](/__MACOSX/shot/debug/debug.png)        | ![](/__MACOSX/shot/debug/run.png)      |
 
