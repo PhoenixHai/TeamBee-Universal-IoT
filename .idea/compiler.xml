@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for cn-universal" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="cn-universal-common" />
+        <module name="cn-universal-plugins-message-format" />
+        <module name="cn-universal-security" />
+        <module name="cn-ctaiot-protocol" />
+        <module name="cn-universal-cache" />
+        <module name="cn-universal-message" />
+        <module name="cn-onenet-protocol" />
+        <module name="cn-imoulife-protocol" />
+        <module name="cn-universal-dm" />
+        <module name="cn-universal-oss" />
+        <module name="cn-universal-database" />
+        <module name="cn-universal-exception" />
+        <module name="cn-universal-config" />
+        <module name="cn-universal-core" />
+        <module name="cn-universal-notice" />
+        <module name="cn-universal-plugins-extend-kafka" />
+        <module name="cn-universal-storage" />
+        <module name="cn-tcp-protocol" />
+        <module name="cn-universal-mqtt-protocol" />
+        <module name="cn-universal-plugins-extend-jdbc" />
+        <module name="cn-universal-http-protocol" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cn-universal-admin" target="21" />
+      <module name="cn-universal-framework" target="21" />
+      <module name="cn-universal-infrastructure" target="21" />
+      <module name="cn-universal-persistence" target="21" />
+      <module name="cn-universal-plugins" target="21" />
+      <module name="cn-universal-plugins-web-debug" target="21" />
+      <module name="cn-universal-protocol" target="21" />
+      <module name="cn-universal-quartz" target="21" />
+      <module name="cn-universal-rule" target="21" />
+      <module name="cn-universal-web" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cn-ctaiot-protocol" options="-parameters" />
+      <module name="cn-imoulife-protocol" options="-parameters" />
+      <module name="cn-onenet-protocol" options="-parameters" />
+      <module name="cn-tcp-protocol" options="-parameters" />
+      <module name="cn-universal" options="-parameters" />
+      <module name="cn-universal-admin" options="-parameters" />
+      <module name="cn-universal-cache" options="-parameters" />
+      <module name="cn-universal-common" options="-parameters" />
+      <module name="cn-universal-config" options="-parameters" />
+      <module name="cn-universal-core" options="-parameters" />
+      <module name="cn-universal-database" options="-parameters" />
+      <module name="cn-universal-dm" options="-parameters" />
+      <module name="cn-universal-exception" options="-parameters" />
+      <module name="cn-universal-framework" options="-parameters" />
+      <module name="cn-universal-http-protocol" options="-parameters" />
+      <module name="cn-universal-infrastructure" options="-parameters" />
+      <module name="cn-universal-message" options="-parameters" />
+      <module name="cn-universal-mqtt-protocol" options="-parameters" />
+      <module name="cn-universal-notice" options="-parameters" />
+      <module name="cn-universal-oss" options="-parameters" />
+      <module name="cn-universal-persistence" options="-parameters" />
+      <module name="cn-universal-plugins" options="-parameters -parameters" />
+      <module name="cn-universal-plugins-extend-jdbc" options="-parameters -parameters" />
+      <module name="cn-universal-plugins-extend-kafka" options="-parameters -parameters" />
+      <module name="cn-universal-plugins-message-format" options="-parameters -parameters" />
+      <module name="cn-universal-plugins-web-debug" options="-parameters -parameters" />
+      <module name="cn-universal-protocol" options="-parameters" />
+      <module name="cn-universal-quartz" options="-parameters" />
+      <module name="cn-universal-rule" options="-parameters" />
+      <module name="cn-universal-security" options="-parameters" />
+      <module name="cn-universal-storage" options="-parameters" />
+      <module name="cn-universal-web" options="-parameters -parameters" />
+    </option>
+  </component>
+</project>

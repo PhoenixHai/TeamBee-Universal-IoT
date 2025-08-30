@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/cn-universal-admin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-framework/cn-universal-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-framework/cn-universal-dm/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-framework/cn-universal-notice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-framework/cn-universal-oss/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-persistence/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-persistence/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-plugins/cn-universal-plugins-extend-jdbc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-plugins/cn-universal-plugins-extend-kafka/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-plugins/cn-universal-plugins-message-format/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-ctaiot-protocol/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-ctaiot-protocol/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-imoulife-protocol/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-imoulife-protocol/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-onenet-protocol/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-onenet-protocol/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-tcp-protocol/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-tcp-protocol/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-universal-http-protocol/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-universal-http-protocol/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-universal-mqtt-protocol/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-protocol/cn-universal-mqtt-protocol/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-quartz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-quartz/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-rule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cn-universal-web/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

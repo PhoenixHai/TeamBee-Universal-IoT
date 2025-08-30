@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/cn-universal-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-framework/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-persistence/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-plugins/cn-universal-plugins-web-debug/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-plugins/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-protocol/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-quartz/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-rule/pom.xml" />
+        <option value="$PROJECT_DIR$/cn-universal-web/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="graalvm-21" project-jdk-type="JavaSDK" />
+</project>
